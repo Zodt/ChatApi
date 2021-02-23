@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2007 James Newton-King
+Copyright (c) 2021 Roman Vorontsov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
