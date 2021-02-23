@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="GetDialogs" xml:space="preserve">
+        <value>dialogs</value>
+    </data>
+    <data name="GetDialog" xml:space="preserve">
+        <value>dialog</value>
+    </data>
+    <data name="CreateGroup" xml:space="preserve">
+        <value>group</value>
+    </data>
+    <data name="PinChat" xml:space="preserve">
+        <value>pinChat</value>
+    </data>
+    <data name="UnpinChat" xml:space="preserve">
+        <value>unpinChat</value>
+    </data>
+    <data name="UnReadChat" xml:space="preserve">
+        <value>unreadChat</value>
+    </data>
+    <data name="LabeledChat" xml:space="preserve">
+        <value>labelChat</value>
+    </data>
+    <data name="UnlabeledChat" xml:space="preserve">
+        <value>unlabelChat</value>
+    </data>
+    <data name="ReadChat" xml:space="preserve">
+        <value>readChat</value>
+    </data>
+    <data name="RemoveDialog" xml:space="preserve">
+        <value>removeChat</value>
+    </data>
+    <data name="JoinGroup" xml:space="preserve">
+        <value>joinGroup</value>
+    </data>
+    <data name="LeaveGroup" xml:space="preserve">
+        <value>leaveGroup</value>
+    </data>
+    <data name="AddParticipant" xml:space="preserve">
+        <value>addGroupParticipant</value>
+    </data>
+    <data name="RemoveParticipant" xml:space="preserve">
+        <value>removeGroupParticipant</value>
+    </data>
+    <data name="DemoteParticipant" xml:space="preserve">
+        <value>demoteGroupParticipant</value>
+    </data>
+    <data name="PromoteParticipant" xml:space="preserve">
+        <value>promoteGroupParticipant</value>
+    </data>
+    <data name="SendTypingStatus" xml:space="preserve">
+        <value>typing</value>
+    </data>
+    <data name="SendVoiceRecordingStatus" xml:space="preserve">
+        <value>recording</value>
+    </data>
+    <data name="GetLabels" xml:space="preserve">
+        <value>labelsList</value>
+    </data>
+    <data name="CreateLabel" xml:space="preserve">
+        <value>createLabel</value>
+    </data>
+    <data name="UpdateLabel" xml:space="preserve">
+        <value>updateLabel</value>
+    </data>
+    <data name="RemoveLabel" xml:space="preserve">
+        <value>removeLabel</value>
+    </data>
+</root>

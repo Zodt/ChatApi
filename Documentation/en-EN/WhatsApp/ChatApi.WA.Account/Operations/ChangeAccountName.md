@@ -1,0 +1,1 @@
+Doesn`t work on WhatsApp Business

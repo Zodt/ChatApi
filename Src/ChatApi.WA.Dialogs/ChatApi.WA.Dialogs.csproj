@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>WhatsAppApi.Dialogs</Title>
+        <Authors>Roman Vorontsov</Authors>
+        <Description>API for chat-api service.</Description>
+        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <RepositoryUrl>https://github.com/Zodt/WhatsAppApi</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageTags>WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Helpers\Abstract\Interfaces" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resourse.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resourse.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Remove="Documentation\en-EN\**" />
+      <EmbeddedResource Remove="Documentation\ru-RU\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resourse.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resourse.resx</DependentUpon>
+      </Compile>
+      <Compile Remove="Documentation\en-EN\**" />
+      <Compile Remove="Documentation\ru-RU\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ChatApi.Core\ChatApi.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Documentation\en-EN\**" />
+      <None Remove="Documentation\ru-RU\**" />
+    </ItemGroup>
+
+</Project>
