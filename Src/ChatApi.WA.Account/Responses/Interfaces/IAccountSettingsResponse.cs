@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using ChatApi.Core.Converters;
+using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Account.Models.Interfaces;
 using ChatApi.WA.Account.Requests;
 

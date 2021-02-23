@@ -1,10 +1,14 @@
-﻿using ChatApi.Core.Helpers;
+﻿using System;
+
+using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
+
 using ChatApi.WA.Messages.Collections;
 using ChatApi.WA.Messages.Responses.Interfaces;
 
 namespace ChatApi.WA.Messages.Responses
 {
-    public sealed class MessagesResponse : IMessagesResponse
+    public sealed class MessagesResponse : Printable, IMessagesResponse
     {
         #region Properties
 
@@ -19,9 +23,8 @@ namespace ChatApi.WA.Messages.Responses
         public bool Equals(IMessagesResponse? other)
         {
             return other is not null &&
-                   LastMessageNumber == other.LastMessageNumber &&
-                   ErrorMessage == other.ErrorMessage &&
-                   Messages == other.Messages;
+                   LastMessageNumber == other.LastMessageNumber && Messages == other.Messages &&
+                   string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
         public override bool Equals(object? obj)
@@ -42,6 +45,17 @@ namespace ChatApi.WA.Messages.Responses
 
         public static bool operator ==(MessagesResponse? left, MessagesResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator !=(MessagesResponse? left, MessagesResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(LastMessageNumber), LastMessageNumber, shift);
+            AddMember(nameof(Messages), Messages?.PrintMembers(shift + 1), shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
 
         #endregion
     }

@@ -1,72 +1,28 @@
 ﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Account.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Models
 {
-    public class AccountSettings : IAccountSettings
+    public class AccountSettings : Printable, IAccountSettings
     {
         #region Properties
 
         public string? ErrorMessage { get; set; }
-        /// <summary>
-        /// Задержка в секундах между получение запроса на отправку сообщения и его фактической отправкой
-        /// </summary>
         public int? SendDelay { get; set; }
-        /// <summary>
-        /// Http или https URL для получения оповещений.
-        /// </summary>
         public string? WebhookUrl { get; set; }
-        /// <summary>
-        /// Включить или выключить сбор данных об изменении статуса инстанса.
-        /// </summary>
         public bool? InstanceStatuses { get; set; }
-        /// <summary>
-        /// Включить или выключить сбор данных о статусах вебхуков.
-        /// </summary>
         public bool? WebhookStatuses { get; set; }
-        /// <summary>
-        /// Включить или выключить отправку вебхука при изменении статуса инстанса.
-        /// </summary>
         public bool? StatusNotificationsOn { get; set; }
-        /// <summary>
-        /// Включить или выключить получение уведомлений о доставке и прочтении отправленных сообщений ack в webhook. Так же работает GET метод по тому же адресу.
-        /// </summary>
         public bool? AckNotificationsOn { get; set; }
-        /// <summary>
-        /// Включить или выключить получение уведомлений о изменении чатов в webhook. Так же работает GET метод по тому же адресу.
-        /// </summary>
         public bool? ChatUpdateOn { get; set; }
-        /// <summary>
-        /// Включить или выключить автозагрузку видео из сообщений.
-        /// </summary>
         public bool? VideoUploadOn { get; set; }
-        /// <summary>
-        /// Socks5 IP-адрес и порт прокси для аккаунта. Нерабочее прокси приведет к остановке работы аккаунта
-        /// </summary>
         public string? Proxy { get; set; }
-        /// <summary>
-        /// Гарантийная доставка вебхука. Каждый вебхук будет делать 20 попыток отправки до получения 200го статуса от сервера.
-        /// </summary>
         public bool? GuaranteedHooks { get; set; }
-        /// <summary>
-        /// Не отправлять вебхуки со старыми сообщениями (полученными с задержкой в 5 минут или oldMessagesPeriod секунд).
-        /// </summary>
         public bool? IgnoreOldMessages { get; set; }
-        /// <summary>
-        /// Время в секундах, после которого сообщение считается старым.
-        /// </summary>
         public int? OldMessagesPeriod { get; set; }
-        /// <summary>
-        /// Обрабатывать сообщения из архивированных чатов.
-        /// </summary>
         public bool? ProcessArchive { get; set; }
-        /// <summary>
-        /// Отключить/включить архивирование диалогов (может замедлить инстанс).
-        /// </summary>
         public bool? DisableDialogsArchive { get; set; }
-        /// <summary>
-        /// Включает/отключает параллельную отправку хуков.
-        /// </summary>
         public bool? ParallelHooks { get; set; }
 
         #endregion
@@ -125,6 +81,30 @@ namespace ChatApi.WA.Account.Models
 
         public static bool operator == (AccountSettings? left, AccountSettings? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (AccountSettings? left, AccountSettings? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+        
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(SendDelay), SendDelay, shift);
+            AddMember(nameof(WebhookUrl), WebhookUrl, shift);
+            AddMember(nameof(InstanceStatuses), InstanceStatuses, shift);
+            AddMember(nameof(WebhookStatuses), WebhookStatuses, shift);
+            AddMember(nameof(StatusNotificationsOn), StatusNotificationsOn, shift);
+            AddMember(nameof(AckNotificationsOn), AckNotificationsOn, shift);
+            AddMember(nameof(ChatUpdateOn), ChatUpdateOn, shift);
+            AddMember(nameof(VideoUploadOn), VideoUploadOn, shift);
+            AddMember(nameof(Proxy), Proxy, shift);
+            AddMember(nameof(GuaranteedHooks), GuaranteedHooks, shift);
+            AddMember(nameof(IgnoreOldMessages), IgnoreOldMessages, shift);
+            AddMember(nameof(OldMessagesPeriod), OldMessagesPeriod, shift);
+            AddMember(nameof(ProcessArchive), ProcessArchive, shift);
+            AddMember(nameof(DisableDialogsArchive), DisableDialogsArchive, shift);
+            AddMember(nameof(ParallelHooks), ParallelHooks, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
 
         #endregion
     }

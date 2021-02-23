@@ -6,7 +6,7 @@ using ChatApi.WA.Dialogs.Helpers.Collections;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
-    public interface IDialogCollectionResponse : IErrorResponse, IEquatable<IDialogCollectionResponse?>
+    public interface IDialogCollectionResponse : IErrorResponse, IEquatable<IDialogCollectionResponse?>, IPrintable
     {
         /// <summary>
         ///     Dialog collection

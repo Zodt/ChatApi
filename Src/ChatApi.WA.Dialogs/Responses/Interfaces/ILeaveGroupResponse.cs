@@ -7,7 +7,7 @@ using ChatApi.WA.Dialogs.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
-    public interface ILeaveGroupResponse : IErrorResponse, IEquatable<ILeaveGroupResponse?>
+    public interface ILeaveGroupResponse : IErrorResponse, IEquatable<ILeaveGroupResponse?>, IPrintable
     {
         [JsonConverter(typeof(InterfacesConverter<OperationMessageResult>))]
         [JsonProperty("result", NullValueHandling = NullValueHandling.Ignore)]

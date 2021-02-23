@@ -1,23 +1,40 @@
 ﻿using System;
 using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Helpers;
 using ChatApi.WA.Dialogs.Models.Interfaces;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
-    public sealed class DialogResponse : IDialogResponse
+    public sealed class DialogResponse : Printable, IDialogResponse
     {
+        #region Backing fields
+
+        private string? _chatId;
+        private ChatIdSplitter? _splitter;
+        private ChatIdSplitter? Splitter => string.IsNullOrWhiteSpace(_chatId) ? null : _splitter ?? new ChatIdSplitter(_chatId);
+
+        #endregion
+
         #region Properties
 
-        public string? ErrorMessage { get; set; }
-        public string? ChatId { get; set; }
+        public string? ChatId
+        {
+            get => _chatId;
+            set
+            {
+                _chatId = value;
+                _splitter = new ChatIdSplitter(value);
+            }
+        }
         public string? ChatName { get; set; }
-        public string? ChatCreator => new ChatIdSplitter(ChatId).GetChatCreator();
-        public DateTime? ChatCreationDate => new ChatIdSplitter(ChatId).GetChatCreationDate();
+        public string? ChatCreator => Splitter?.GetChatCreator();
+        public DateTime? ChatCreationDate => Splitter?.GetChatCreationDate();
         public string? Image { get; set; }
         public DateTime? LastMessageTime { get; set; }
         public IAdditionalChatInfo? AdditionalChatInfo { get; set; }
+        public string? ErrorMessage { get; set; }
 
         #endregion
 
@@ -57,6 +74,22 @@ namespace ChatApi.WA.Dialogs.Responses
 
         public static bool operator == (DialogResponse? left, DialogResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (DialogResponse? left, DialogResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(ChatId), ChatId, shift);
+            AddMember(nameof(ChatName), ChatName, shift);
+            AddMember(nameof(ChatCreator), ChatCreator, shift);
+            AddMember(nameof(ChatCreationDate), ChatCreationDate, shift);
+            AddMember(nameof(Image), Image, shift);
+            AddMember(nameof(LastMessageTime), LastMessageTime, shift);
+            AddMember(nameof(AdditionalChatInfo), AdditionalChatInfo, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
 
         #endregion
     }

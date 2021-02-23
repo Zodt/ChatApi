@@ -1,9 +1,10 @@
 ﻿using System;
+using ChatApi.Core.Models.Interfaces;
 using Newtonsoft.Json;
 
 namespace ChatApi.WA.Ban.Models.Interfaces
 {
-    public interface IBanSettings : IEquatable<IBanSettings?>
+    public interface IBanSettings : IEquatable<IBanSettings?>, IPrintable
     {
         /// <summary>
         ///     Regular expression on which bans on numbers will be sent

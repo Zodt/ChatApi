@@ -1,15 +1,22 @@
 ﻿using System;
 using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Helpers.Collections;
 using ChatApi.WA.Dialogs.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Models
 {
-    public sealed class AdditionalChatInfo : IAdditionalChatInfo
+    public sealed class AdditionalChatInfo : Printable, IAdditionalChatInfo
     {
-        public string? GroupInviteLink { get; set; }
+        #region Properties
+
         public bool? IsGroup { get; set; }
+        public string? GroupInviteLink { get; set; }
         public ParticipantsCollection? Participants { get; set; }
+
+        #endregion
+
+        #region Equatable
 
         public bool Equals(IAdditionalChatInfo? other)
         {
@@ -38,5 +45,13 @@ namespace ChatApi.WA.Dialogs.Models
 
         public static bool operator == (AdditionalChatInfo? left, AdditionalChatInfo? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (AdditionalChatInfo? left, AdditionalChatInfo? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(IsGroup), IsGroup, shift);
+            AddMember(nameof(GroupInviteLink), GroupInviteLink, shift);
+            AddMember(nameof(Participants), Participants?.PrintMembers(3, shift), shift);
+        }
     }
 }

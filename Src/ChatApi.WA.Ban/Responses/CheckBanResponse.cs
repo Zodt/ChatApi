@@ -1,15 +1,23 @@
 ﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Ban.Responses.Interfaces;
 
 namespace ChatApi.WA.Ban.Responses
 {
-    public sealed class CheckBanResponse : ICheckBanResponse
+    public sealed class CheckBanResponse : Printable, ICheckBanResponse
     {
-        public string? ErrorMessage { get; set; }
+        #region Properties
+
         public string? Phone { get; set; }
         public bool? IsBanned { get; set; }
         public string? Message { get; set; }
         public string? BanPhoneMask { get; set; }
+        public string? ErrorMessage { get; set; }
+
+
+        #endregion
+
+        #region Equatable
 
         public bool Equals(ICheckBanResponse? other)
         {
@@ -41,5 +49,20 @@ namespace ChatApi.WA.Ban.Responses
 
         public static bool operator == (CheckBanResponse? left, CheckBanResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (CheckBanResponse? left, CheckBanResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+        
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Phone), Phone, shift);
+            AddMember(nameof(IsBanned), IsBanned, shift);
+            AddMember(nameof(Message), Message, shift);
+            AddMember(nameof(BanPhoneMask), BanPhoneMask, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
+        #endregion
     }
 }

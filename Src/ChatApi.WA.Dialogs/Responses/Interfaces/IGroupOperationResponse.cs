@@ -4,7 +4,7 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
-    public interface IGroupOperationResponse : IErrorResponse, IEquatable<IGroupOperationResponse?>
+    public interface IGroupOperationResponse : IErrorResponse, IEquatable<IGroupOperationResponse?>, IPrintable
     {
         [JsonProperty("add", NullValueHandling = NullValueHandling.Ignore)]
         bool? IsSuccess { get; set; }

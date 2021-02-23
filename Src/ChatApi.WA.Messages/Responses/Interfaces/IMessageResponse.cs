@@ -4,7 +4,7 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Messages.Responses.Interfaces
 {
-    public interface IMessageResponse : IErrorResponse, IEquatable<IMessageResponse?>
+    public interface IMessageResponse : IErrorResponse, IEquatable<IMessageResponse?>, IPrintable
     {
         /// <summary>
         /// Unique message id

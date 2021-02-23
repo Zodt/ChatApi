@@ -4,7 +4,7 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Models.Interfaces
 {
-    public interface IAccountSettings : IErrorResponse, IEquatable<IAccountSettings?>
+    public interface IAccountSettings : IErrorResponse, IEquatable<IAccountSettings?>, IPrintable
     {
         
         /// <summary>

@@ -1,9 +1,10 @@
 ﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Messages.Responses.Interfaces;
 
 namespace ChatApi.WA.Messages.Responses
 {
-    public sealed class MessageResponse : IMessageResponse
+    public sealed class MessageResponse : Printable, IMessageResponse
     {
         #region Properties
 
@@ -41,6 +42,18 @@ namespace ChatApi.WA.Messages.Responses
 
         public static bool operator == (MessageResponse? left, MessageResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (MessageResponse? left, MessageResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Id), Id, shift);
+            AddMember(nameof(Sent), Sent, shift);
+            AddMember(nameof(Message), Message, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
 
         #endregion
     }

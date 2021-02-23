@@ -1,10 +1,11 @@
 ﻿using System;
+using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Dialogs.Helpers.Collections;
 using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Models.Interfaces
 {
-    public interface IAdditionalChatInfo : IEquatable<IAdditionalChatInfo?>
+    public interface IAdditionalChatInfo : IEquatable<IAdditionalChatInfo?>, IPrintable
     {
         /// <summary>
         ///     Link to the invitation to the group

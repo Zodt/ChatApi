@@ -36,5 +36,15 @@ namespace ChatApi.WA.Account.Responses
         public static bool operator != (AccountSettingsResponse? left, AccountSettingsResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
+        
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Update), Update, shift);
+            base.PrintContent(shift);
+        }
+
+        #endregion
     }
 }

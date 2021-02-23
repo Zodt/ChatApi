@@ -1,15 +1,22 @@
 ﻿using System;
 using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
-    public abstract class GroupOperationResponse : IGroupOperationResponse
+    public abstract class GroupOperationResponse : Printable, IGroupOperationResponse
     {
+        #region Properties
+
         public bool? IsSuccess { get; set; }
         public string? GroupId { get; set; }
         public string? ErrorMessage { get; set; }
         public string? StatusMessage { get; set; }
+
+        #endregion
+
+        #region Equatable
 
         public bool Equals(IGroupOperationResponse? other)
         {
@@ -38,5 +45,20 @@ namespace ChatApi.WA.Dialogs.Responses
 
         public static bool operator == (GroupOperationResponse? left, GroupOperationResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (GroupOperationResponse? left, GroupOperationResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(IsSuccess), IsSuccess, shift);
+            AddMember(nameof(GroupId), GroupId, shift);
+            AddMember(nameof(StatusMessage), StatusMessage, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
+        #endregion
+        
     }
 }

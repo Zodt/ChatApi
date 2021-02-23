@@ -1,11 +1,12 @@
 ﻿using System;
 using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Messages.Collections;
 using ChatApi.WA.Messages.Responses.Interfaces;
 
 namespace ChatApi.WA.Messages.Responses
 {
-    public sealed class MessagesHistoryResponse : IMessagesHistoryResponse
+    public sealed class MessagesHistoryResponse : Printable, IMessagesHistoryResponse
     {
         #region Properties
 
@@ -41,6 +42,17 @@ namespace ChatApi.WA.Messages.Responses
 
         public static bool operator ==(MessagesHistoryResponse? left, MessagesHistoryResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator !=(MessagesHistoryResponse? left, MessagesHistoryResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Page), Page, shift);
+            AddMember(nameof(Messages), Messages?.PrintMembers(shift + 1), shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
 
         #endregion
     }

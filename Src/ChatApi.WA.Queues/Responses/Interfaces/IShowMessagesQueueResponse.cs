@@ -6,7 +6,7 @@ using ChatApi.WA.Queues.Collections;
 
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
-    public interface IShowMessagesQueueResponse : IErrorResponse, IEquatable<IShowMessagesQueueResponse?>
+    public interface IShowMessagesQueueResponse : IErrorResponse, IEquatable<IShowMessagesQueueResponse?>, IPrintable
     {
         [JsonProperty("totalMessages", NullValueHandling = NullValueHandling.Ignore)]
         int? TotalMessage { get; set; }        

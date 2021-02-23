@@ -1,14 +1,21 @@
 ﻿using System;
 using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Models.Interfaces;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
-    public sealed class LeaveGroupResponse : ILeaveGroupResponse
+    public sealed class LeaveGroupResponse : Printable, ILeaveGroupResponse
     {
+        #region Properties
+
         public string? ErrorMessage { get; set; }
         public IOperationMessageResult? Result { get; set; }
+
+        #endregion
+
+        #region Equatable
 
         public bool Equals(ILeaveGroupResponse? other)
         {
@@ -32,5 +39,17 @@ namespace ChatApi.WA.Dialogs.Responses
 
         public static bool operator == (LeaveGroupResponse? left, LeaveGroupResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (LeaveGroupResponse? left, LeaveGroupResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Result), Result, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
+        #endregion
     }
 }

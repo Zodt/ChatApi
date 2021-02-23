@@ -5,7 +5,7 @@ using ChatApi.WA.Queues.Collections;
 
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
-    public interface IClearActionsQueueResponse : IErrorResponse, IEquatable<IClearActionsQueueResponse?>
+    public interface IClearActionsQueueResponse : IErrorResponse, IEquatable<IClearActionsQueueResponse?>, IPrintable
     {
         /// <summary>
         ///     Actions queue clear status

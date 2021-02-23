@@ -4,5 +4,5 @@ using ChatApi.WA.Messages.Models.Interfaces;
 
 namespace ChatApi.WA.Messages.Responses.Interfaces
 {
-    public interface IMessagesHistoryResponse : IMessages, IPage, IErrorResponse, IEquatable<IMessagesHistoryResponse?> { }
+    public interface IMessagesHistoryResponse : IMessages, IPage, IErrorResponse, IEquatable<IMessagesHistoryResponse?>, IPrintable { }
 }

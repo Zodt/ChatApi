@@ -131,7 +131,6 @@ namespace ChatApi.Core.Collections
         public string PrintMembers()
         {
             int shift = default;
-            int maxPrint = Count >= 3 ? 3 : Count;
             _stringBuilder.AppendLine("[");
 
             if (Count == 0)
@@ -139,7 +138,7 @@ namespace ChatApi.Core.Collections
                 _stringBuilder.Append(GetShift(--shift) + "]");
                 return _stringBuilder.ToString();
             }
-
+            int maxPrint = Count >= 3 ? 3 : Count;
             string currentShift = GetShift(++shift);
             if (this[0] is Printable)
                 for (int i = 0; i <= maxPrint - 1; i++)
@@ -149,16 +148,15 @@ namespace ChatApi.Core.Collections
                 for (int i = 0; i <= maxPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat(currentShift, this[i], ", "));
 
-            _stringBuilder.Remove(_stringBuilder.Length - currentShift.Length - 2, currentShift.Length + 2);
+            _stringBuilder.Remove(_stringBuilder.Length - shift - 1, shift + 1);
             if (Count > maxPrint) _stringBuilder.Append("\n" + currentShift +"... ");
             _stringBuilder.AppendLine();
-            _stringBuilder.Append("]");
+            _stringBuilder.Append(GetShift(shift-1) + "]");
 
             return _stringBuilder.ToString();
         }        
         public string PrintMembers(int shift)
         {
-            int maxPrint = Count >= 3 ? 3 : Count;
             _stringBuilder.AppendLine("[");
 
             if (Count == 0)
@@ -166,6 +164,7 @@ namespace ChatApi.Core.Collections
                 _stringBuilder.Append(GetShift(--shift) + "]");
                 return _stringBuilder.ToString();
             }
+            int maxPrint = Count >= 3 ? 3 : Count;
 
             string currentShift = GetShift(++shift);
             if (this[0] is Printable)
@@ -176,37 +175,37 @@ namespace ChatApi.Core.Collections
                 for (int i = 0; i <= maxPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat(currentShift, this[i], ", "));
 
-            _stringBuilder.Remove(_stringBuilder.Length - currentShift.Length - 2, currentShift.Length + 2);
+            _stringBuilder.Remove(_stringBuilder.Length - shift - 1, shift + 1);
 
             if (Count > maxPrint) _stringBuilder.Append("\n" + currentShift +"... ");
             _stringBuilder.AppendLine();
-            _stringBuilder.Append("]");
+            _stringBuilder.Append(GetShift(shift-1) + "]");
 
             return _stringBuilder.ToString();
         }
 
         public string PrintMembers(int countElementPrint, int shift)
         {
-            countElementPrint = countElementPrint > Count ? Count : countElementPrint;
-            
-            _stringBuilder.AppendLine(GetShift(shift - 1) + "[");
+            _stringBuilder.AppendLine("[");
 
             if (Count == 0) return _stringBuilder.Append(GetShift(--shift) + "]").ToString();
+            
+            countElementPrint = countElementPrint > Count ? Count : countElementPrint;
 
             string currentShift = GetShift(++shift);
             if (this[0] is Printable)
                 for (int i = 0; i <= countElementPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat((this[i] as Printable)!.PrintMembers(shift), ", "));
             
-            else if (this[0] is string || !typeof(T).IsInterface)
+            else if (this[0] is string || !typeof(T).IsInterface || !typeof(T).IsClass)
                 for (int i = 0; i <= countElementPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat(currentShift, this[i], ", "));
 
-            _stringBuilder.Remove(_stringBuilder.Length - currentShift.Length - 2, currentShift.Length + 2);
+            _stringBuilder.Remove(_stringBuilder.Length - shift - 1, shift + 1);
 
-            if (Count > countElementPrint) _stringBuilder.Append("\n" + currentShift +"... ");
+            if (Count > countElementPrint) _stringBuilder.Append("\n" + currentShift + "... ");
             _stringBuilder.AppendLine();
-            _stringBuilder.Append("]");
+            _stringBuilder.Append(GetShift(shift-1) + "]");
             
 
             return _stringBuilder.ToString();

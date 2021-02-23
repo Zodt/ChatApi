@@ -13,7 +13,7 @@ namespace ChatApi.Core.Models
 
         private void AddMember(string memberName, string? value, int shift)
         {
-            if (value is not null)
+            if (!string.IsNullOrWhiteSpace(value))
                 _stringBuilder.AppendLine(string.Concat(GetShift(shift), memberName, ": ", value));
         }
 
@@ -43,7 +43,7 @@ namespace ChatApi.Core.Models
         public string PrintMembers()
         {
             int shift = default;
-            _stringBuilder.AppendLine(string.Concat(GetShift(shift), "{"));
+            _stringBuilder.AppendLine("{");
             PrintContent(++shift);
             _stringBuilder.Append(string.Concat(GetShift(--shift), "}"));
             return _stringBuilder.ToString();
@@ -51,7 +51,7 @@ namespace ChatApi.Core.Models
 
         public string PrintMembers(int shift)
         {
-            _stringBuilder.AppendLine(string.Concat(GetShift(shift), "{"));
+            _stringBuilder.AppendLine("{");
             PrintContent(++shift);
             _stringBuilder.Append(string.Concat(GetShift(--shift), "}"));
             return _stringBuilder.ToString();

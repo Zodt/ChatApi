@@ -1,14 +1,21 @@
 ﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Queues.Collections;
 using ChatApi.WA.Queues.Responses.Interfaces;
 
 namespace ChatApi.WA.Queues.Responses
 {
-    public sealed class ClearMessagesQueueResponse : IClearMessagesQueueResponse
+    public sealed class ClearMessagesQueueResponse : Printable, IClearMessagesQueueResponse
     {
-        public string? ErrorMessage { get; set; }
+        #region Properties
+
         public string? Message { get; set; }
+        public string? ErrorMessage { get; set; }
         public MessageTextBodyCollection? MessagesCollection { get; set; }
+
+        #endregion
+
+        #region Equatable
 
         public bool Equals(IClearMessagesQueueResponse? other)
         {
@@ -36,5 +43,18 @@ namespace ChatApi.WA.Queues.Responses
 
         public static bool operator == (ClearMessagesQueueResponse? left, ClearMessagesQueueResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (ClearMessagesQueueResponse? left, ClearMessagesQueueResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Message), Message, shift);
+            AddMember(nameof(MessagesCollection), MessagesCollection?.PrintMembers(shift + 1), shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
+        #endregion
     }
 }

@@ -7,7 +7,7 @@ using ChatApi.WA.Dialogs.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
-    public interface IRemoveDialogResponse : IErrorResponse, IEquatable<IRemoveDialogResponse?>
+    public interface IRemoveDialogResponse : IErrorResponse, IEquatable<IRemoveDialogResponse?>, IPrintable
     {
         [JsonConverter(typeof(InterfacesConverter<OperationMessageResult>))]
         [JsonProperty("result", NullValueHandling = NullValueHandling.Ignore)]

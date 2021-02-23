@@ -5,7 +5,7 @@ using ChatApi.WA.Queues.Collections;
 
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
-    public interface IClearMessagesQueueResponse : IErrorResponse, IEquatable<IClearMessagesQueueResponse?>
+    public interface IClearMessagesQueueResponse : IErrorResponse, IEquatable<IClearMessagesQueueResponse?>, IPrintable
     {
         /// <summary>
         ///     Messages queue clear status

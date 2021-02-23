@@ -1,14 +1,24 @@
-﻿using ChatApi.Core.Helpers;
+﻿using System;
+
+using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
+
 using ChatApi.WA.Dialogs.Helpers.Collections;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
-    public sealed class DialogCollectionResponse : IDialogCollectionResponse
+    public sealed class DialogCollectionResponse : Printable, IDialogCollectionResponse
     {
-        public string? ErrorMessage { get; set; }
-        public DialogCollection? Dialogs { get; set; }
+        #region Properties
 
+        public DialogCollection? Dialogs { get; set; }
+        public string? ErrorMessage { get; set; }
+
+        #endregion
+
+
+        #region Equatable
 
         public bool Equals(IDialogCollectionResponse? other)
         {
@@ -33,5 +43,17 @@ namespace ChatApi.WA.Dialogs.Responses
 
         public static bool operator == (DialogCollectionResponse? left, DialogCollectionResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (DialogCollectionResponse? left, DialogCollectionResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Dialogs), Dialogs?.PrintMembers(3, shift), shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
+        #endregion
     }
 }

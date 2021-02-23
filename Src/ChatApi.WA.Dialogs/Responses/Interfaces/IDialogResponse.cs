@@ -7,7 +7,7 @@ using ChatApi.WA.Dialogs.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
-    public interface IDialogResponse : IErrorResponse, IEquatable<IDialogResponse?>
+    public interface IDialogResponse : IErrorResponse, IEquatable<IDialogResponse?>, IPrintable
     {
         /// <summary>
         ///     The unique ID of the chat

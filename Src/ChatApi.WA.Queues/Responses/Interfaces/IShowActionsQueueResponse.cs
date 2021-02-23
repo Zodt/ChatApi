@@ -6,7 +6,7 @@ using ChatApi.WA.Queues.Collections;
 
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
-    public interface IShowActionsQueueResponse : IErrorResponse, IEquatable<IShowActionsQueueResponse?>
+    public interface IShowActionsQueueResponse : IErrorResponse, IEquatable<IShowActionsQueueResponse?>, IPrintable
     {
         [JsonProperty("totalActions", NullValueHandling = NullValueHandling.Ignore)]
         int? TotalActions { get; set; }        

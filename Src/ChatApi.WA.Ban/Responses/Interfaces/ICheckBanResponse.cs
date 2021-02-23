@@ -4,7 +4,7 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Ban.Responses.Interfaces
 {
-    public interface ICheckBanResponse : IErrorResponse, IPhone, IEquatable<ICheckBanResponse?>
+    public interface ICheckBanResponse : IErrorResponse, IPhone, IEquatable<ICheckBanResponse?>, IPrintable
     {
         [JsonProperty("banned", NullValueHandling = NullValueHandling.Ignore)]
         bool? IsBanned { get; set; }

@@ -1,19 +1,27 @@
-﻿using ChatApi.Core.Helpers;
+﻿using System;
+using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Models.Interfaces;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
-    public sealed class RemoveDialogResponse : IRemoveDialogResponse
+    public sealed class RemoveDialogResponse : Printable, IRemoveDialogResponse
     {
+        #region Properties
+
         public string? ErrorMessage { get; set; }
         public IOperationMessageResult? Result { get; set; }
+
+        #endregion
+
+        #region Equatable
 
         public bool Equals(IRemoveDialogResponse? other)
         {
             return other is not null && 
-                ErrorMessage == other.ErrorMessage && 
-                Result == other.Result;
+                   ErrorMessage == other.ErrorMessage && 
+                   Result == other.Result;
         }
 
         public override bool Equals(object? obj)
@@ -32,5 +40,17 @@ namespace ChatApi.WA.Dialogs.Responses
 
         public static bool operator == (RemoveDialogResponse? left, RemoveDialogResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (RemoveDialogResponse? left, RemoveDialogResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Result), Result, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
+        #endregion
     }
 }
