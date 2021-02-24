@@ -5,7 +5,7 @@ using ChatApi.Core.Models.Interfaces;
 namespace ChatApi.WA.Account.Responses.Interfaces
 { /* ReSharper disable once InconsistentNaming */
     
-    public interface IOutputIPAddressResponse : IErrorResponse, IEquatable<IOutputIPAddressResponse?>
+    public interface IOutputIPAddressResponse : IErrorResponse, IEquatable<IOutputIPAddressResponse?>, IPrintable
     {
         /// <summary>
         ///     Instance IP-address

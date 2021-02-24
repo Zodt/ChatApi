@@ -1,11 +1,14 @@
 ﻿using System.Text;
+using ChatApi.Core.Models;
 using ChatApi.Core.Helpers;
 using ChatApi.WA.Account.Requests.Interfaces;
 
 namespace ChatApi.WA.Account.Requests
 {
-    public class AccountStatusRequest : IAccountStatusRequest
+    public class AccountStatusRequest : Printable, IAccountStatusRequest
     {
+        #region Properties
+
         public string Parameters
         {
             get
@@ -29,6 +32,10 @@ namespace ChatApi.WA.Account.Requests
 
         public bool? NoWakeup { get; set; }
         public bool? GetFullInformation { get; set; }
+
+        #endregion
+
+        #region Equatable
 
         public bool Equals(IAccountStatusRequest? other)
         {
@@ -55,5 +62,17 @@ namespace ChatApi.WA.Account.Requests
 
         public static bool operator == (AccountStatusRequest? left, AccountStatusRequest? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (AccountStatusRequest? left, AccountStatusRequest? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(NoWakeup), NoWakeup, shift);
+            AddMember(nameof(GetFullInformation), GetFullInformation, shift);
+        }
+
+        #endregion
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
 using ChatApi.Core.Converters;
+using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Account.Models;
 using ChatApi.WA.Account.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
-    public interface IAdditionInformationStatus : IEquatable<IAdditionInformationStatus?>
+    public interface IAdditionInformationStatus : IEquatable<IAdditionInformationStatus?>, IPrintable
     {
         [JsonConverter(typeof(InterfacesConverter<InstanceStatus>))]
         [JsonProperty("expiry", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]

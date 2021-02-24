@@ -4,7 +4,7 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Requests.Interfaces
 {
-    public interface IAccountStatusRequest : IParameters, IEquatable<IAccountStatusRequest?>
+    public interface IAccountStatusRequest : IParameters, IEquatable<IAccountStatusRequest?>, IPrintable
     {
         /// <summary>
         ///     Ignore account auto-wake

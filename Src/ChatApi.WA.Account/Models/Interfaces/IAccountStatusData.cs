@@ -1,13 +1,15 @@
 ﻿using System;
 using Newtonsoft.Json;
+
 using ChatApi.Core.Converters;
-using ChatApi.Core.Models;
+using ChatApi.Core.Models.Interfaces;
+
 using ChatApi.WA.Account.Responses;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Models.Interfaces
 {
-    public interface IAccountStatusData : IEquatable<IAccountStatusData>
+    public interface IAccountStatusData : IEquatable<IAccountStatusData>, IPrintable
     {
         /// <summary>
         ///     Instance Substatus

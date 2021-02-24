@@ -1,15 +1,16 @@
 ﻿using System;
 using Newtonsoft.Json;
+using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Models.Interfaces
 {
-    public interface IInstanceStatus : IEquatable<IInstanceStatus?>
+    public interface IInstanceStatus : IEquatable<IInstanceStatus?>, IPrintable
     {
         /// <summary>
-        ///     Method name, Enum = ["expiry", "retry", "takeover", "logout"]
+        ///     Method name
         /// </summary>
         [JsonProperty("act", NullValueHandling = NullValueHandling.Ignore)]
-        InstanceStatusActType? Act { get; set; } 
+        InstanceStatusActionType? Action { get; set; } 
 
         /// <summary>
         ///     Action caption for the button

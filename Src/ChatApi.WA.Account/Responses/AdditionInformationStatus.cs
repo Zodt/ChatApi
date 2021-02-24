@@ -1,21 +1,24 @@
 ﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Account.Models.Interfaces;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
-    public sealed class AdditionInformationStatus : IAdditionInformationStatus
+    public sealed class AdditionInformationStatus : Printable, IAdditionInformationStatus
     {
         #region Properties
 
-        public IInstanceStatus? Expiry { get; set; }
         public IInstanceStatus? Retry { get; set; }
+        public IInstanceStatus? Expiry { get; set; }
         public IInstanceStatus? Logout { get; set; }
         public IInstanceStatus? Takeover { get; set; }
         public IInstanceStatus? LearnMore { get; set; }
 
         #endregion
-        
+
+        #region Equatable
+
         public bool Equals(IAdditionInformationStatus? other)
         {
             return other is not null &&
@@ -46,5 +49,20 @@ namespace ChatApi.WA.Account.Responses
 
         public static bool operator == (AdditionInformationStatus? left, AdditionInformationStatus? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (AdditionInformationStatus? left, AdditionInformationStatus? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Retry), Retry, shift);
+            AddMember(nameof(Expiry), Expiry, shift);
+            AddMember(nameof(Logout), Logout, shift);
+            AddMember(nameof(Takeover), Takeover, shift);
+            AddMember(nameof(LearnMore), LearnMore, shift);
+        }
+
+        #endregion
     }
 }

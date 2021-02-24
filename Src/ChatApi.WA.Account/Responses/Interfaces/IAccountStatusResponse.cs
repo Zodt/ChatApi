@@ -1,12 +1,15 @@
 ﻿using System;
 using Newtonsoft.Json;
+
 using ChatApi.Core.Converters;
+using ChatApi.Core.Models.Interfaces;
+
 using ChatApi.WA.Account.Models;
 using ChatApi.WA.Account.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
-    public interface IAccountStatusResponse : IAccountStatus, IEquatable<IAccountStatusResponse?>
+    public interface IAccountStatusResponse : IAccountStatus, IEquatable<IAccountStatusResponse?>, IPrintable
     {
         /// <summary>
         ///     QR-code in base64 format

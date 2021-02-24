@@ -57,39 +57,6 @@ namespace ChatApi.WA.Account
         /// <summary>
         ///     Asynchronous get account settings
         /// </summary>
-        /// <remarks>
-        ///     Re-authorization is only required if you change the device or manually click "Log out of all devices" on the phone.
-        ///     Keep the WhatsApp app open during authorization. <br/><br/>
-        /// </remarks>
-        /// <list type="bullet|number|table">
-        ///     <listheader>
-        ///         <term>Account status</term>
-        ///         <description>The status of the account</description>
-        ///     </listheader>
-        ///     <item>
-        ///         <term>Authenticated</term>
-        ///         <description>Authorization passed successfully</description>
-        ///     </item>
-        ///     <item>
-        ///         <term>Init</term>
-        ///         <description>This is the initial status. Enabling it</description>
-        ///     </item>
-        ///     <item>
-        ///         <term>Loading</term>
-        ///         <description>Download, repeat after 30 seconds</description>
-        ///     </item>
-        ///     <item>
-        ///         <term>Got QR code</term>
-        ///         <description>
-        ///             The QR code is back and you need to take a picture of it in the Whatsapp app by going to Menu > WhatsApp Web > Add. <br/>
-        ///             The QR code is valid for one minute. Example of displaying a base64 image on a page.
-        ///         </description>
-        ///     </item>
-        /// </list>
-        /// <remarks>
-        ///     When you request the status of the account in standby mode (the "init" status), it is automatically enabled.
-        ///     To avoid this behavior, use the no_wakeup parameter.
-        /// </remarks>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IAccountSettingsResponse?>> GetSettingsAsync(IResponseSettings? responseSettings = null);
         
@@ -126,6 +93,12 @@ namespace ChatApi.WA.Account
         /// </summary>
         /// <param name="request">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
+        /// <remarks>
+        ///     Re-authorization is only required if you change the device or manually click "Log out of all devices" on the phone. <br/>
+        ///     Keep the WhatsApp app open during authorization. <br/>
+        ///     When you request the status of the account in standby mode (the "init" status), it is automatically enabled. <br/>
+        ///     To avoid this behavior, use the no_wakeup parameter.
+        /// </remarks>
         IChatApiResponse<IAccountStatusResponse?> GetStatus(IAccountStatusRequest request, IResponseSettings? responseSettings = null);
 
         /// <summary>
@@ -133,6 +106,12 @@ namespace ChatApi.WA.Account
         /// </summary>
         /// <param name="request">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
+        /// <remarks>
+        ///     Re-authorization is only required if you change the device or manually click "Log out of all devices" on the phone. <br/>
+        ///     Keep the WhatsApp app open during authorization. <br/>
+        ///     When you request the status of the account in standby mode (the "init" status), it is automatically enabled. <br/>
+        ///     To avoid this behavior, use the no_wakeup parameter.
+        /// </remarks>
         Task<IChatApiResponse<IAccountStatusResponse?>> GetStatusAsync(IAccountStatusRequest request, IResponseSettings? responseSettings = null);
         
         /// <summary>

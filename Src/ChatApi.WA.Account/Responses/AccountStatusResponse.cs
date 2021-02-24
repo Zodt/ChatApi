@@ -1,11 +1,12 @@
-﻿using ChatApi.Core.Helpers;
+﻿using ChatApi.Core.Models;
+using ChatApi.Core.Helpers;
 using ChatApi.WA.Account.Models;
 using ChatApi.WA.Account.Models.Interfaces;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
-    public sealed class AccountStatusResponse : IAccountStatusResponse
+    public sealed class AccountStatusResponse : Printable, IAccountStatusResponse
     {
         #region Properties
         public string? QrCode { get; set; }
@@ -54,6 +55,20 @@ namespace ChatApi.WA.Account.Responses
 
         public static bool operator == (AccountStatusResponse? left, AccountStatusResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (AccountStatusResponse? left, AccountStatusResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(QrCode), QrCode?.Substring(0, 20), shift);
+            AddMember(nameof(StatusData), StatusData, shift);
+            AddMember(nameof(AccountStatus), AccountStatus, shift);
+            AddMember(nameof(Success), Success, shift);
+            AddMember(nameof(Result), Result, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
 
         #endregion
     }

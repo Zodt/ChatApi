@@ -7,10 +7,10 @@ using ChatApi.WA.Account.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
-    public interface IAccountInformationResponse : IErrorResponse, IEquatable<IAccountInformationResponse?>
+    public interface IAccountInformationResponse : IErrorResponse, IEquatable<IAccountInformationResponse?>, IPrintable
     {
         /// <summary>
-        ///     WhatsApp account Id
+        ///     Unique ID of the chat with the account
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         string? Id { get; set; } 

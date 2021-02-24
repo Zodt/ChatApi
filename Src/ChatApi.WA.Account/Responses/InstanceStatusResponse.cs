@@ -49,5 +49,18 @@ namespace ChatApi.WA.Account.Responses
         public static bool operator != (InstanceStatusResponse? left, InstanceStatusResponse? right) => !EquatableHelper.IsEquatable(left, right);
         
         #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(AccountStatus), AccountStatus, shift);
+            base.PrintContent(shift);
+            AddMember(nameof(Result), Result, shift);
+            AddMember(nameof(Success), Success, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
+        #endregion
     }
 }

@@ -1,9 +1,10 @@
-﻿using ChatApi.Core.Helpers;
+﻿using ChatApi.Core.Models;
+using ChatApi.Core.Helpers;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 { /* ReSharper disable once InconsistentNaming */
-    public sealed class OutputIPAddressResponse : IOutputIPAddressResponse
+    public sealed class OutputIPAddressResponse : Printable, IOutputIPAddressResponse
     {
         #region Properties
 
@@ -36,6 +37,16 @@ namespace ChatApi.WA.Account.Responses
         public static bool operator == (OutputIPAddressResponse? left, OutputIPAddressResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (OutputIPAddressResponse? left, OutputIPAddressResponse? right) => !EquatableHelper.IsEquatable(left, right);
         
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Address), Address, shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
+
         #endregion
     }
 }

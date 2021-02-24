@@ -2,7 +2,7 @@
 
 namespace ChatApi.WA.Account.Models
 {
-    public enum InstanceStatusActType : byte
+    public enum InstanceStatusActionType : byte
     {
         [EnumMember(Value = "learn_more")]
         LearnMore = 0,
