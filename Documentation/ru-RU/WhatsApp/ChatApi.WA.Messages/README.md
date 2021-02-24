@@ -16,4 +16,4 @@
    8.  [`Удаление сообщения`](Operations/DeleteMessage.md)
    
    9.  [`Получение списка сообщений`](Operations/GetMessage.md)
-   10. [`Получение списока сообщений, отсортированных по времени, в порядке убывания.`](Operations/GetMessageHistory.md)
+   10. [`Получение списка сообщений, отсортированных по времени, в порядке убывания.`](Operations/GetMessageHistory.md)
