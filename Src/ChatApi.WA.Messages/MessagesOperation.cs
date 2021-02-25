@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
-
-using ChatApi.Core.Helpers;
 using ChatApi.Core.Connect.Interfaces;
-using ChatApi.Core.Response;
+using ChatApi.Core.Helpers;
 using ChatApi.Core.Response.Interfaces;
 using ChatApi.WA.Messages.Properties;
 using ChatApi.WA.Messages.Requests.Interfaces;

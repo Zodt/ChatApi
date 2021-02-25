@@ -21,7 +21,7 @@ namespace ChatApi.WA.Account.Responses
         {
             return base.Equals(other) && 
                    
-                   Result == other.Result && 
+                   Result == other!.Result && 
                    Success == other.Success && 
                    ErrorMessage == other.ErrorMessage && 
                    AccountStatus == other.AccountStatus;

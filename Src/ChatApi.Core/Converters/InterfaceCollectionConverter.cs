@@ -8,7 +8,7 @@ namespace ChatApi.Core.Converters
     public class InterfaceCollectionConverter<TClass, TInterface, TCollection> : JsonConverter<TCollection?> 
         where TClass : class, TInterface 
         where TInterface : IEquatable<TInterface?> 
-        where TCollection : Collection<TInterface>, new()
+        where TCollection : Collection<TInterface?>, new()
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override void WriteJson(JsonWriter writer, TCollection? value, JsonSerializer serializer)

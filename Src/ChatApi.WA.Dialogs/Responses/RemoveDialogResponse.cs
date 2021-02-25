@@ -1,5 +1,4 @@
-﻿using System;
-using ChatApi.Core.Helpers;
+﻿using ChatApi.Core.Helpers;
 using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Models.Interfaces;
 using ChatApi.WA.Dialogs.Responses.Interfaces;

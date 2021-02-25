@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using ChatApi.Core.Collections;
-using ChatApi.Core.Helpers;
 using Newtonsoft.Json;
 
 namespace ChatApi.Core.Converters

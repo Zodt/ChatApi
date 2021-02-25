@@ -6,7 +6,7 @@ using ChatApi.Core.Converters;
 
 namespace ChatApi.WA.Dialogs.Helpers
 {
-    public readonly struct ChatIdSplitter
+    internal readonly struct ChatIdSplitter
     {
         private List<string>? ChatIds { get; }
         public ChatIdSplitter(string? chatId)
@@ -15,13 +15,13 @@ namespace ChatApi.WA.Dialogs.Helpers
             else
             {
                 ChatIds = new Regex(@"\d*")
-                    .Matches(chatId)
+                    .Matches(chatId!)
                     .Cast<Match>()
                     .Select(x => x.Value)
                     .Where(x => !string.IsNullOrWhiteSpace(x))
                     .ToList();
 
-                if (ChatIds.Count != 2) ChatIds = null;
+                if (ChatIds!.Count != 2) ChatIds = null;
             }
         }
 

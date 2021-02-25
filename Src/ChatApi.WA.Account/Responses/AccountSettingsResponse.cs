@@ -17,7 +17,9 @@ namespace ChatApi.WA.Account.Responses
 
         public bool Equals(IAccountSettingsResponse? other)
         {
-            return base.Equals(other) && Update == other.Update;
+            return other is not null && 
+                   base.Equals(other) && 
+                   Update == other.Update;
         }
 
         public override bool Equals(object? obj)

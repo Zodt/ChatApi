@@ -1,8 +1,5 @@
-﻿using System;
-
-using ChatApi.Core.Helpers;
+﻿using ChatApi.Core.Helpers;
 using ChatApi.Core.Models;
-
 using ChatApi.WA.Dialogs.Helpers.Collections;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
@@ -16,7 +13,6 @@ namespace ChatApi.WA.Dialogs.Responses
         public string? ErrorMessage { get; set; }
 
         #endregion
-
 
         #region Equatable
 

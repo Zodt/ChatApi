@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ChatApi.Core.Helpers;
-using ChatApi.Core.Response;
 using ChatApi.Core.Response.Interfaces;
 using ChatApi.WA.Dialogs.Requests.UI.Interfaces;
 using ChatApi.WA.Dialogs.Responses.UI;

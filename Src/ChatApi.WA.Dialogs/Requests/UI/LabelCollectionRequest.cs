@@ -7,7 +7,7 @@ namespace ChatApi.WA.Dialogs.Requests.UI
     {
         public override int GetHashCode() => 0;
         public bool Equals(ILabelCollectionRequest? other) => other is not null;
-        public override bool Equals(object? obj) => !ReferenceEquals(null, obj) || obj is ILabelCollectionRequest other && Equals(other);
+        public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is ILabelCollectionRequest other && Equals(other);
         public static bool operator == (LabelCollectionRequest? left, LabelCollectionRequest? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (LabelCollectionRequest? left, LabelCollectionRequest? right) => !EquatableHelper.IsEquatable(left, right);
     }

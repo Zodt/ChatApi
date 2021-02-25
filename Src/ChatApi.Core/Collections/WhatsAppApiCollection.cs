@@ -10,7 +10,7 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.Core.Collections
 {
-    public abstract class WhatsAppApiCollection<T> : Collection<T>, IPrintableCollection, IEquatable<Collection<T>?> where T : class, IEquatable<T?>
+    public abstract class WhatsAppApiCollection<T> : Collection<T?>, IPrintableCollection, IEquatable<Collection<T?>?> where T : class, IEquatable<T?>
     {
         #region Overridden collection methods
 
@@ -68,7 +68,7 @@ namespace ChatApi.Core.Collections
 
         #region Equatable
 
-        public bool Equals(Collection<T>? other)
+        public bool Equals(Collection<T?>? other)
         {
             if (other is null || other.Count != Count) return false;
 
@@ -93,16 +93,16 @@ namespace ChatApi.Core.Collections
             unchecked
             {
                 if (Count == 0) return default;
-                int hashCode = this[0] is null ? 0 : this[0].GetHashCode();
+                int hashCode = this[0]?.GetHashCode() ?? 0;
 
                 for (int i = 0; i < Count; i++)
-                    hashCode = (hashCode * 397) ^ (this[i] is null ? 0 : this[i].GetHashCode());
+                    hashCode = (hashCode * 397) ^ (this[i]?.GetHashCode() ?? 0);
 
                 return hashCode;    
             }
         }
 
-        public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is Collection<T> self && Equals(self);
+        public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is Collection<T?> self && Equals(self);
         public static bool operator == (WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right) => !EquatableHelper.IsEquatable(left, right);
 
