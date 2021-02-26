@@ -30,25 +30,14 @@ namespace ChatApiClient
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operation = new DialogOperations(Сonnect);
-            
-            IDialogRequest request = new DialogRequest
-            {
-                ChatId = "17472822486-1603286775@g.us"
-            };
+            IAccountOperation accountOperation = new AccountOperation(connect);
 
-            var whatsAppResponse = operation.GetDialog(request);
-            if(!whatsAppResponse.IsSuccess) throw whatsAppResponse.Exception!;
+            var chatApiResponse = accountOperation.AccountReboot();
             
-            var actual = whatsAppResponse.GetResult();
-    
-            Console.WriteLine(actual?.ChatId);
-            Console.WriteLine(actual?.ChatName);
-            Console.WriteLine(actual?.ChatCreator);
-            Console.WriteLine(actual?.ChatCreationDate);
-            if (actual?.AdditionalChatInfo is {Participants: not null}) 
-                foreach (var message in actual.AdditionalChatInfo?.Participants) 
-                    Console.WriteLine(message.Body);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+            var response = chatApiResponse.GetResult();
+            
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

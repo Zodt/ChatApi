@@ -3,8 +3,8 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
-    public interface IQrCodeResponse : IErrorResponse, IEquatable<IQrCodeResponse?>
+    public interface IQrCodeResponse : IErrorResponse, IEquatable<IQrCodeResponse?>, IPrintable
     {
-        string? QrCodeImage { get; set; }
+        string? QrCodeImage { get; }
     }
 }

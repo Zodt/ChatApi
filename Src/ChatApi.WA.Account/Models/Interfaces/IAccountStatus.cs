@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using ChatApi.Core.Models.Interfaces;
+﻿using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Models.Interfaces
 {
-    public interface IAccountStatus : IOperationResponse
+    public interface IAccountStatus : IOperationResponse, IPrintable
     {
         /// <summary>
         ///     Account status

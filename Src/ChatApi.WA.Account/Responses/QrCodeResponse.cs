@@ -1,9 +1,10 @@
 ﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
-    public sealed class QrCodeResponse : IQrCodeResponse
+    public sealed class QrCodeResponse : Printable, IQrCodeResponse
     {
         #region Properties
 
@@ -34,6 +35,16 @@ namespace ChatApi.WA.Account.Responses
 
         public static bool operator == (QrCodeResponse? left, QrCodeResponse? right) => EquatableHelper.IsEquatable(left, right);
         public static bool operator != (QrCodeResponse? left, QrCodeResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
+
+        #region Printable
+
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(QrCodeImage), string.IsNullOrWhiteSpace(QrCodeImage) ? string.Empty : QrCodeImage?.Substring(0,50) + "...", shift);
+            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
+        }
 
         #endregion
     }

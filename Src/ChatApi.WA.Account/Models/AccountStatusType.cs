@@ -2,7 +2,7 @@
 
 namespace ChatApi.WA.Account.Models
 {
-    public enum AccountStatusType
+    public enum AccountStatusType : byte
     {
         [EnumMember(Value = "got qr code")]
         GotQrCode = 1,
@@ -24,6 +24,21 @@ namespace ChatApi.WA.Account.Models
         
         [EnumMember(Value = "Expiry request not sent because substatus don't equals \"expired\"")]
         ExpiryError = 7,
+        
+        [EnumMember(Value = "Takeover request sent to WhatsApp")]
+        TakeoverOk = 8,
+        
+        [EnumMember(Value = "Takeover request not sent because substatus don't equals \"conflict\"")]
+        TakeoverError = 9,
+        
+        [EnumMember(Value = "Logout request sent to WhatsApp")]
+        LogoutOk = 10,
+        
+        [EnumMember(Value = "Retry request sent to WhatsApp")]
+        RetrySynchronizeOk = 11,
+        
+        [EnumMember(Value = "Retry request not sent because reason don't equals \"syncing\"")]
+        RetrySynchronizeError = 12,
         
     }
 }

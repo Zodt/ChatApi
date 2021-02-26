@@ -2,5 +2,5 @@
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
-    public interface IAccountRebootResponse : IOperationResponse { }
+    public interface IAccountRebootResponse : IOperationResponse, IPrintable { }
 }
