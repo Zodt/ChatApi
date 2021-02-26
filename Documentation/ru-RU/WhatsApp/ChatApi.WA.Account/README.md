@@ -10,11 +10,11 @@
 4.  [`Получение IP-адреса аккаунта.`](Operations/GetOutputIPAddress.md)
 5.  [`Получение информации об аккаунте.`](Operations/GetAccountInformation.md)
 
-6.  [`Обновление QR-кода после истечения срока его действия`](Operations/Expiry.md)
+6.  [`Обновление QR-кода после истечения срока его действия.`](Operations/Expiry.md)
 7.  [`Выход из аккаунта и запрос нового QR-кода.`](Operations/Logout.md)
 8.  [`Возвращение активной сессии.`](Operations/Takeover.md)
 9.  [`Перезагрузка аккаунта WhatsApp.`](Operations/AccountReboot.md)
 10.  [`Повторная попытка синхронизации с устройством.`](Operations/RetrySynchronize.md)
-11.  [`Изменение настроек аккаунта`](Operations/ChangeSettings.md)
+11.  [`Изменение настроек аккаунта.`](Operations/ChangeSettings.md)
 12.  `* Изменение имеми пользователя.`
-13.  `* Изменение статуса пользователя`]
+13.  `* Изменение статуса пользователя.`]
