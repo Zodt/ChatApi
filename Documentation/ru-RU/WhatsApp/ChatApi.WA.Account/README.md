@@ -16,5 +16,5 @@
 9.  [`Перезагрузка аккаунта WhatsApp.`](Operations/AccountReboot.md)
 10.  [`Повторная попытка синхронизации с устройством.`](Operations/RetrySynchronize.md)
 11.  [`Изменение настроек аккаунта`](Operations/ChangeSettings.md)
-12.  [`* Изменение имеми пользователя.`](Operations/ChangeAccountName.md)
-13.  [`* Изменение статуса пользователя`](Operations/ChangeAccountStatus.md)
+12.  `* Изменение имеми пользователя.`
+13.  `* Изменение статуса пользователя`]
