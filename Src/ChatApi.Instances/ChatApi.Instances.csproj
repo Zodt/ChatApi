@@ -4,6 +4,15 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>default</LangVersion>
         <Nullable>enable</Nullable>
+        <Title>ChatApi.Instances</Title>
+        <Authors>Roman Vorontsov</Authors>
+        <Description>API for chat-api service.</Description>
+        <PackageProjectUrl>https://github.com/Zodt/WhatsAppApi</PackageProjectUrl>
+        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Zodt/WhatsAppApi</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <ItemGroup>
