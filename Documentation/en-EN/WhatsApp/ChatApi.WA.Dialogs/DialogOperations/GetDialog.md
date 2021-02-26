@@ -59,7 +59,7 @@ namespace ChatApiClient
             };
 
             var chatApiResponse = dialogOperations.GetDialog(dialogRequest);
-            if (chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
             var response = chatApiResponse.GetResult();
             Console.WriteLine(response?.PrintMembers());

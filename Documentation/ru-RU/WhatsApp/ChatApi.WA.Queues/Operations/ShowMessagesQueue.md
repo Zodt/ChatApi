@@ -45,7 +45,7 @@ namespace ChatApiClient
             IQueueOperations queuesOperation = new QueueOperations(Connect);
 
             var chatApiResponse = queuesOperation.ShowMessagesQueue();
-            if (chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
             var response = chatApiResponse.GetResult();
             Console.WriteLine(response?.PrintMembers());

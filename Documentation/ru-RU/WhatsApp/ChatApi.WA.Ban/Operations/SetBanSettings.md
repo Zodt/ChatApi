@@ -49,7 +49,7 @@ namespace ChatApiClient
             };
             
             IChatApiResponse<IBanSettingsResponse?> chatApiResponse = banOperation.SetBanSettings(banSettings);
-            if (chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
             IBanSettingsResponse? response = chatApiResponse.GetResult();
             Console.WriteLine(response?.PrintMembers());
