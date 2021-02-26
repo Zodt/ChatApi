@@ -3,7 +3,7 @@
 Returns a QR code image file in png format.<br/>
 This method is only available in the asynchronous implementation.
 
-## Пример использования
+## Example
 ```csharp
 using System;
 
