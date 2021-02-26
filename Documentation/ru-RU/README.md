@@ -1,4 +1,4 @@
-﻿0. [`Ядро`](ChatApi.Core/README.md)
+﻿0. `Ядро`
 1. [`Операции c экземплярами ChatApi`](ChatApi.Instances/README.md)
 2. `Операции с WhatsApp`
     1. [`Аккаунт`](WhatsApp/ChatApi.WA.Account/README.md)

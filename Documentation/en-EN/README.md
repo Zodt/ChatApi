@@ -1,4 +1,4 @@
-﻿0. [`Core`](ChatApi.Core/README.md)
+﻿0. `Core`
 1. [`ChatApi instance operations`](ChatApi.Instances/README.md)
 2. `WhatsApp operations`
     1. [`Account operations`](WhatsApp/ChatApi.WA.Account/README.md)
