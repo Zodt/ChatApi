@@ -7,13 +7,16 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>ChatApi.WA.Queues</Title>
         <Authors>Roman Vorontsov</Authors>
-        <Description>API for chat-api service.</Description>
-        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <RepositoryUrl>https://github.com/Zodt/WhatsAppApi</RepositoryUrl>
+        <Description>ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com</Description>
+        <PackageLicenseUrl></PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <RepositoryUrl>https://github.com/Zodt/ChatApi</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
         <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
-        <PackageIconUrl>https://github.com/Zodt/ChatApi/blob/master/Src/ChatApi.png?raw=true</PackageIconUrl>
+        <PackageIconUrl></PackageIconUrl>
+        <NeutralLanguage>en</NeutralLanguage>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>ChatApi.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,6 +36,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ChatApi.Core\ChatApi.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\ChatApi.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>

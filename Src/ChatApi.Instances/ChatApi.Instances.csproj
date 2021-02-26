@@ -6,14 +6,18 @@
         <Nullable>enable</Nullable>
         <Title>ChatApi.Instances</Title>
         <Authors>Roman Vorontsov</Authors>
-        <Description>API for chat-api service.</Description>
+        <Description>ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com</Description>
         <PackageProjectUrl></PackageProjectUrl>
-        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/Zodt/WhatsAppApi</RepositoryUrl>
+        <PackageLicenseUrl></PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Zodt/ChatApi</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
         <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageIconUrl>https://github.com/Zodt/ChatApi/blob/master/Src/ChatApi.png?raw=true</PackageIconUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageIconUrl></PackageIconUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageIcon>ChatApi.png</PackageIcon>
+        <NeutralLanguage>en</NeutralLanguage>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
@@ -29,6 +33,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ChatApi.Core\ChatApi.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\ChatApi.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>

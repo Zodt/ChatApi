@@ -7,14 +7,16 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>ChatApi.Core</Title>
         <Authors>Roman Vorontsov</Authors>
-        <Description>API for chat-api service.</Description>
-        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <RepositoryUrl>https://github.com/Zodt/WhatsAppApi</RepositoryUrl>
+        <Description>ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com</Description>
+        <PackageLicenseUrl></PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Zodt/ChatApi</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
         <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
         <PackageProjectUrl></PackageProjectUrl>
-        <PackageIconUrl>https://github.com/Zodt/ChatApi/blob/master/Src/ChatApi.png?raw=true</PackageIconUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageIcon>ChatApi.png</PackageIcon>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Helpers\Maybe.cs" />
       <Compile Update="Properties\Resources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -35,6 +36,13 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\ChatApi.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>
