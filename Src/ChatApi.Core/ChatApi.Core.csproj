@@ -13,7 +13,8 @@
         <RepositoryUrl>https://github.com/Zodt/WhatsAppApi</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
         <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
-        <PackageProjectUrl>https://github.com/Zodt/WhatsAppApi</PackageProjectUrl>
+        <PackageProjectUrl></PackageProjectUrl>
+        <PackageIconUrl>https://github.com/Zodt/ChatApi/blob/master/Src/ChatApi.png?raw=true</PackageIconUrl>
     </PropertyGroup>
 
     <ItemGroup>

@@ -5,14 +5,15 @@
         <LangVersion>latestmajor</LangVersion>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>WhatsAppApi.Queues</Title>
+        <Title>ChatApi.WA.Queues</Title>
         <Authors>Roman Vorontsov</Authors>
         <Description>API for chat-api service.</Description>
         <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/Zodt/WhatsAppApi</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
-        <PackageTags>WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
+        <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
+        <PackageIconUrl>https://github.com/Zodt/ChatApi/blob/master/Src/ChatApi.png?raw=true</PackageIconUrl>
     </PropertyGroup>
 
     <ItemGroup>
