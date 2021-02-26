@@ -42,41 +42,38 @@ This method is available in both synchronous and asynchronous implementations
 ```csharp
 using System;
 
-using WhatsAppApi.Connect;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.WA.Messages;
+using ChatApi.WA.Messages.Collections;
 
-using WhatsAppApi.Messages.Requests;
-using WhatsAppApi.Messages.Responses.Interfaces;
+using ChatApi.WA.Messages.Requests;
+using ChatApi.WA.Messages.Requests.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IMessagesOperation operation = new MessagesOperation(Сonnect);
+            IMessagesOperation messageOperation = new MessagesOperation(Connect);
             
             IMessagesRequest request = new MessagesRequest
             {
                 ChatId = "17472822486-1603286775@g.us"
             };
             
-            var actionResult = operation.GetMessagesHistory(request);
-            if(!actionResult.IsSuccess) throw actionResult.Exception!;
-            
-            var actual = actionResult.GetResult();
-            
-            foreach (var message in Actual.Messages) 
-                Console.WriteLine(message.Body);
+            var chatApiResponse = messageOperation.GetMessagesHistory(request);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

@@ -13,35 +13,29 @@ This method is available in both synchronous and asynchronous implementations
 ```csharp
 using System;
 
-using System;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.WA.Queues;
 
-using WhatsAppApi.Queues;
-using WhatsAppApi.Queues.Interfaces;
-using WhatsAppApi.Queues.Responses.Interfaces;
-
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
+            IQueueOperations queuesOperation = new QueueOperations(Connect);
 
-            var queuesOperation = new QueuesOperation(Connect);
+            var chatApiResponse = queuesOperation.ClearMessagesQueue();
+            if (chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            IWhatsAppResponse<IClearMessagesQueueResponse?> response = queuesOperation.ClearMessagesQueue();
-            if (response.IsSuccess) throw response.Exception!;
-
-            var messageResponse = response.GetResult();
-            Console.WriteLine(messageResponse!.Message);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

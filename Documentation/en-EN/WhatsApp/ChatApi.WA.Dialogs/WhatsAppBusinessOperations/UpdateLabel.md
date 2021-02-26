@@ -27,26 +27,29 @@ This method is available in both synchronous and asynchronous implementations.
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 
-using WhatsAppApi.Dialogs.SubOperations.UI.Responses.Interfaces;
+using ChatApi.WA.Dialogs.Requests.UI;
+using ChatApi.WA.Dialogs.Requests.UI.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operations = new DialogOperations(Сonnect);
+            IDialogOperations dialogOperations = new DialogOperations(Connect);
+            IUserInterfaceOperations userInterfaceOperations = dialogOperations.UserInterfaceOperations.Value;
+            IWhatsAppBusinessOperations whatsAppBusinessOperations = userInterfaceOperations.WhatsAppBusinessOperations.Value;
 
             ILabelUpdateRequest request = new LabelUpdateRequest
             {
@@ -54,11 +57,12 @@ namespace WhatsAppApiClient
                 LabelName = "VIP Client"
             };
 
-            whatsAppResponse = operation.UserInterfaceOperations.UpdateLabel(request);
-            if (!whatsAppResponse.IsSuccess) Console.WriteLine(whatsAppResponse.Exception);
-            actual = whatsAppResponse.GetResult();
+            var chatApiResponse = whatsAppBusinessOperations.UpdateLabel(request);
+            if (!chatApiResponse.IsSuccess) Console.WriteLine(chatApiResponse.Exception);
+            var response = chatApiResponse.GetResult();
 
-            Console.WriteLine(actual?.Success is not null ? actual.Result : actual?.ErrorMessage);
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }
+```

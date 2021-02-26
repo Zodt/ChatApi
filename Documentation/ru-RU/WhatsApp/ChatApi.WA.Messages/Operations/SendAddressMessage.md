@@ -23,41 +23,41 @@
 ```csharp
 using System;
 
-using WhatsAppApi.Connect;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.WA.Messages;
+using ChatApi.WA.Messages.Collections;
 
-using WhatsAppApi.Messages.Requests;
-using WhatsAppApi.Messages.Responses.Interfaces;
+using ChatApi.WA.Messages.Requests;
+using ChatApi.WA.Messages.Requests.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-
-            var messageOperation = new MessagesOperation(Connect);
-            var sendFileRequest = new LocationMessageRequest
+            IMessagesOperation messageOperation = new MessagesOperation(Connect);
+            
+            ILocationMessageRequest request = new LocationMessageRequest
             {
                 Phone = "+7(985) 462-44-18",
-                Address = @"Text under the message with the location.Supports two strings.",
+                Address = @"Text under the message with the location.\nSupports two strings.",
                 Longitude = 55.1179,
                 Latitude = 36.6021
             };
             
-            IWhatsAppResponse<IMessageResponse?> response = messageOperation.SendFileMessage(sendFileRequest);
-            if (response.IsSuccess) throw response.Exception!;
+            var chatApiResponse = messageOperation.SendLocationMessage(request);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            var messageResponse = response.GetResult();
-            Console.WriteLine(messageResponse!.Message);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

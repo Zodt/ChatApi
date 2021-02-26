@@ -19,26 +19,29 @@ This method is available in both synchronous and asynchronous implementations.
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
-using WhatsAppApi.Dialogs.Responses.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApi.WA.Dialogs.Requests.UI;
+using ChatApi.WA.Dialogs.Requests.UI.Interfaces;
+
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operations = new DialogOperations(Сonnect);
+            IDialogOperations dialogOperations = new DialogOperations(Connect);
+            IUserInterfaceOperations userInterfaceOperations = dialogOperations.UserInterfaceOperations.Value;
+            IWhatsAppBusinessOperations whatsAppBusinessOperations = userInterfaceOperations.WhatsAppBusinessOperations.Value;
 
             IUnlabeledChatRequest request = new UnlabeledChatRequest()
             {
@@ -46,12 +49,11 @@ namespace WhatsAppApiClient
                 ChatId = "79991111111-1111111111@g.us"
             };
 
-            var whatsAppResponse = operation.UserInterfaceOperations.UnlabeledChat(request);
-            if (!whatsAppResponse.IsSuccess) Console.WriteLine(whatsAppResponse.Exception);
-            var actual = whatsAppResponse.GetResult();
+            var chatApiResponse = whatsAppBusinessOperations.UnlabeledChat(request);
+            if (!chatApiResponse.IsSuccess) Console.WriteLine(chatApiResponse.Exception);
+            var response = chatApiResponse.GetResult();
 
-            Console.WriteLine(actual?.Result ?? actual?.ErrorMessage);
-            Console.WriteLine(actual?.ChatId ?? actual?.ErrorMessage);
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

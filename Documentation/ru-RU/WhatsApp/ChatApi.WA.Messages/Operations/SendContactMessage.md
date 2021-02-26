@@ -22,29 +22,29 @@
 ```csharp
 using System;
 
-using WhatsAppApi.Connect;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.WA.Messages;
+using ChatApi.WA.Messages.Collections;
 
-using WhatsAppApi.Messages.Requests;
-using WhatsAppApi.Messages.Responses.Interfaces;
+using ChatApi.WA.Messages.Requests;
+using ChatApi.WA.Messages.Requests.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-
-            var messageOperation = new MessagesOperation(Connect);
-            var sendContactRequest = new ContactMessageRequest
+            IMessagesOperation messageOperation = new MessagesOperation(Connect);
+            
+            IContactMessageRequest request = new ContactMessageRequest
             {
                 Phone = "79001111111",
                 PreviewBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ...",
@@ -52,11 +52,11 @@ namespace WhatsAppApiClient
                 Body = "https://upload.wikimedia.org/wikipedia/ru/3/33/NatureCover2001.jpg"
             };
         
-            IWhatsAppResponse<IMessageResponse?> response = messageOperation.SendContactMessage(sendContactRequest);
-            if (response.IsSuccess) throw response.Exception!;
+            var chatApiResponse = messageOperation.SendContactMessage(request);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            var messageResponse = response.GetResult();
-            Console.WriteLine(messageResponse!.Message);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

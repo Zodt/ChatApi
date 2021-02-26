@@ -23,37 +23,42 @@
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
+using ChatApi.Core.Response.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
-using WhatsAppApi.Dialogs.Responses.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Helpers.Collections;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApi.WA.Dialogs.Requests;
+using ChatApi.WA.Dialogs.Requests.Interfaces;
+using ChatApi.WA.Dialogs.Responses.Interfaces;
+
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operation = new DialogOperations(Сonnect);
-
+            IDialogOperations operation = new DialogOperations(Connect);
+            IGroupOperations groupOperations = operation.GroupOperations.Value;
+            
             ILeaveGroupRequest request = new LeaveGroupRequest
             {
-                ChatId = "79991111111-11111111111@g.us"
+                ChatId = "79269014589-1613397458@g.us"
             };
 
-            var whatsAppResponse = operation.GroupOperations.LeaveGroup(request);
-            if (!whatsAppResponse.IsSuccess) Console.WriteLine(whatsAppResponse.Exception);
-            var actual = whatsAppResponse.GetResult();
-
-            Console.WriteLine(actual?.Result?.Message ?? actual?.ErrorMessage);
+            var chatApiResponse = groupOperations.LeaveGroup(request);
+            if(!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+            
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

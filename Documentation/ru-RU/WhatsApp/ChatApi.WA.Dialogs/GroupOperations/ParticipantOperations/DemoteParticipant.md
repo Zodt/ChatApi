@@ -21,39 +21,42 @@
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
+using ChatApi.Core.Response.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
-using WhatsAppApi.Dialogs.SubOperations.Group.Requests;
-using WhatsAppApi.Dialogs.SubOperations.Group.Requests.Interfaces;
-using WhatsAppApi.Dialogs.SubOperations.Group.Responses.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApi.WA.Dialogs.Requests;
+using ChatApi.WA.Dialogs.Requests.Interfaces;
+using ChatApi.WA.Dialogs.Responses.Interfaces;
+
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operation = new DialogOperations(Сonnect);
+            IDialogOperations operation = new DialogOperations(Connect);
+            IGroupOperations groupOperations = operation.GroupOperations.Value;
+            IGroupParticipantOperations participantOperations = groupOperations.GroupParticipantOperations.Value;
             
             IDemoteGroupParticipantRequest request = new DemoteGroupParticipantRequest
             {
                 ParticipantPhone = "+7(999) 111-11-11"// or ParticipantChatId = "79991111111@c.us"
             };
 
-            var whatsAppResponse = operation.GroupOperations.DemoteParticipant(request);
-            if (!whatsAppResponse.IsSuccess) Console.WriteLine(whatsAppResponse.Exception);
-            var actual = whatsAppResponse.GetResult();
+            var chatApiResponse = participantOperations.DemoteParticipant(request);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            Console.WriteLine(actual?.StatusMessage ?? actual?.ErrorMessage);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

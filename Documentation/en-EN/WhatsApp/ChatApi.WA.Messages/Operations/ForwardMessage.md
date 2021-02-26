@@ -21,43 +21,43 @@ This method is available in both synchronous and asynchronous implementations
 ```csharp
 using System;
 
-using WhatsAppApi.Connect;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.WA.Messages;
+using ChatApi.WA.Messages.Collections;
 
-using WhatsAppApi.Messages.Requests;
-using WhatsAppApi.Messages.Responses.Interfaces;
+using ChatApi.WA.Messages.Requests;
+using ChatApi.WA.Messages.Requests.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
+            IMessagesOperation messageOperation = new MessagesOperation(Connect);
 
-            var messageOperation = new MessagesOperation(Connect);
-            var forwardMessageRequest = new ForwardMessageRequest
+            IForwardMessageRequest request = new ForwardMessageRequest
             {
-                Phone = "79001111111",
+                Phone = "7(900) 111-11-11",
                 MessagesCollection = new ForwardMessagesCollection
                 {
                     "false_6590996758@c.us_3EB03104D2B84CEAD82F", 
-                    "false_6590996758@c.us_3EB03104D2B84CEAD82G"
+                    "false_6590996758@c.us_3G0310CEAD824DEB42B8"
                 }
             };
 
-            IWhatsAppResponse<IMessageResponse?> response = messageOperation.SendTextMessage(forwardMessageRequest);
-            if (response.IsSuccess) throw response.Exception!;
+            var chatApiResponse = messageOperation.ForwardMessage(request);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            var messageResponse = response.GetResult();
-            Console.WriteLine(messageResponse!.Message);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

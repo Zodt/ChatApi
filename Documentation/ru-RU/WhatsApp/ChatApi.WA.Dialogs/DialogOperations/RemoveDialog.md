@@ -26,39 +26,39 @@
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
+using ChatApi.Core.Response.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
-using WhatsAppApi.Dialogs.Responses.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Requests;
+using ChatApi.WA.Dialogs.Responses.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
             IDialogOperations operation = new DialogOperations(Сonnect);
             
-            IOperationMessageResult request = new OperationMessageResult
+            IDialogOperations dialogOperations = new DialogOperations(Connect);
+
+            var request = new RemoveDialogRequest
             {
                 Phone = "7(999) 111-11-11" // or "79991111111@c.us"
             };
+
+            var chatApiResponse = dialogOperations.RemoveDialog(request);
+            if(!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
             
-            var actionResult = operation.RemoveDialog(request);
-            if(!actionResult.IsSuccess) throw actionResult.Exception!;
-            
-            var actual = actionResult.GetResult();
-    
-            if (actual?.Result is null) return;
-            Console.WriteLine(actual.Result?.Message);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

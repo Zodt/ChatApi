@@ -49,45 +49,42 @@ Files from messages are guaranteed to be stored only for 30 days and can be dele
 ```csharp
 using System;
 
-using WhatsAppApi.Connect;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.WA.Messages;
+using ChatApi.WA.Messages.Collections;
 
-using WhatsAppApi.Messages.Requests;
-using WhatsAppApi.Messages.Responses.Interfaces;
+using ChatApi.WA.Messages.Requests;
+using ChatApi.WA.Messages.Requests.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IMessagesOperation operation = new MessagesOperation(Сonnect);
+            IMessagesOperation messageOperation = new MessagesOperation(Connect);
             
             IMessagesRequest request = new MessagesRequest
             {
                 Last = true,
-                ChatId = "17472822486-1603286775@g.us",
+                ChatId = "17472843486-1603286775@g.us",
                 MinTime = new DateTime(2021, 02, 04, 16, 42, 47),
                 MaxTime = new DateTime(2021, 02, 04, 16, 43, 52),
                 Limit = 1
             };
             
-            var actionResult = operation.GetMessages(request);
-            if(!actionResult.IsSuccess) throw actionResult.Exception!;
-            
-            var actual = actionResult.GetResult();
-            
-            foreach (var message in Actual.Messages) 
-                Console.WriteLine(message.Body);
+            var chatApiResponse = messageOperation.GetMessages(request);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

@@ -19,39 +19,36 @@ This method is available in both synchronous and asynchronous implementations.
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Responses.UI.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApi.WA.Dialogs.Requests.UI;
+using ChatApi.WA.Dialogs.Requests.UI.Interfaces;
+
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operation = new DialogOperations(connect);
+            IDialogOperations dialogOperations = new DialogOperations(Connect);
+            IUserInterfaceOperations userInterfaceOperations = dialogOperations.UserInterfaceOperations.Value;
+            IWhatsAppBusinessOperations whatsAppBusinessOperations = userInterfaceOperations.WhatsAppBusinessOperations.Value;
+            
+            var chatApiResponse = whatsAppBusinessOperations.GetLabels();
+            if (!chatApiResponse.IsSuccess) Console.WriteLine(chatApiResponse.Exception);
+            var response = chatApiResponse.GetResult();
 
-            var userInterfaceOperations = operation.UserInterfaceOperations.Value;
-            var whatsAppBusinessOperations = userInterfaceOperations.WhatsAppBusinessOperations.Value;
-            var whatsAppResponse = whatsAppBusinessOperations.GetLabels();
-            if (!whatsAppResponse.IsSuccess) Console.WriteLine(whatsAppResponse.Exception);
-            var actual = whatsAppResponse.GetResult();
-
-            if (actual?.LabelCollection is null) return;
-            foreach (var label in actual.LabelCollection)
-            {
-                Console.WriteLine(label.LabelId);
-                Console.WriteLine(label.LabelName);
-                Console.WriteLine(label.HexColor);
-            }
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }
+```

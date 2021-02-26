@@ -39,53 +39,37 @@
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
+using ChatApi.Core.Response.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
-using WhatsAppApi.Dialogs.Responses.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Requests;
+using ChatApi.WA.Dialogs.Responses.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
             IDialogOperations operation = new DialogOperations(Сonnect);
             
-            IDialogCollectionRequest request = new DialogCollectionRequest
+            var request = new DialogCollectionRequest
             {
                 Limit = 1
             };
             
-            var actionResult = operation.GetDialogs(request);
-            if(!actionResult.IsSuccess) throw actionResult.Exception!;
+            IChatApiResponse<IDialogCollectionResponse?> chatApiResponse = dialogOperations.GetDialogs(request);
+            if(!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
             
-            var actual = actionResult.GetResult();
-    
-            if (actual?.Dialogs is null) return;
-            foreach (var dialog in actual.Dialogs)
-            {
-                Console.WriteLine(dialog.ChatId);
-                Console.WriteLine(dialog.ChatName);
-                Console.WriteLine(dialog.ChatCreator);
-                Console.WriteLine(dialog.ChatCreationDate);
-                Console.WriteLine(dialog.LastMessageTime);
-                Console.WriteLine(dialog.Image);
-                Console.WriteLine(dialog.AdditionalChatInfo?.IsGroup);
-                Console.WriteLine(dialog.AdditionalChatInfo?.GroupInviteLink);
-
-                Console.WriteLine("\n'Participants'");
-                if (dialog?.AdditionalChatInfo is not {Participants: not null}) return;
-                foreach (string participant in dialog.AdditionalChatInfo?.Participants!) Console.WriteLine(participant);
-            }
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

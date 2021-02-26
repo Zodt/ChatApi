@@ -23,41 +23,39 @@
 ```csharp
 using System;
 
-using System;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.WA.Messages;
+using ChatApi.WA.Messages.Collections;
 
-using WhatsAppApi.Messages;
-using WhatsAppApi.Messages.Interfaces;
-using WhatsAppApi.Messages.Requests;
-using WhatsAppApi.Messages.Responses.Interfaces;
+using ChatApi.WA.Messages.Requests;
+using ChatApi.WA.Messages.Requests.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-
-            var messageOperation = new MessagesOperation(Connect);
-            var textMessage = new TextMessageRequest
+            IMessagesOperation messageOperation = new MessagesOperation(Connect);
+            
+            ITextMessageRequest textMessage = new TextMessageRequest
             {
                 Phone = "79001111111",
                 Message = "Test TextMessage"
             };
 
-            IWhatsAppResponse<IMessageResponse?> sendTextMessage = messageOperation.SendTextMessage(textMessageRequest);
-            if (sendTextMessage.IsSuccess) throw sendTextMessage.Exception!;
+            var chatApiResponse = messageOperation.SendTextMessage(request);
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            var messageResponse = sendTextMessage.GetResult();
-            Console.WriteLine(messageResponse!.Message);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }
