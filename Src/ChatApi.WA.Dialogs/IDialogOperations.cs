@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-
 using ChatApi.Core.Response.Interfaces;
-
-using ChatApi.WA.Dialogs.Operations;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 using ChatApi.WA.Dialogs.Requests.Interfaces;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
@@ -17,12 +15,12 @@ namespace ChatApi.WA.Dialogs
         /// <summary>
         ///     Manage groups operations
         /// </summary>
-        Lazy<GroupOperations> GroupOperations { get; }
+        Lazy<IGroupOperations> GroupOperations { get; }
 
         /// <summary>
         ///     Manage UI operations
         /// </summary>
-        Lazy<UserInterfaceOperations> UserInterfaceOperations { get; }
+        Lazy<IUserInterfaceOperations> UserInterfaceOperations { get; }
 
         /// <summary>
         ///     Get info about group/dialog.
@@ -79,6 +77,5 @@ namespace ChatApi.WA.Dialogs
         /// <param name="removeDialog">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IRemoveDialogResponse?>> RemoveDialogAsync(IRemoveDialogRequest removeDialog, IResponseSettings? responseSettings = null);
-
     }
 }

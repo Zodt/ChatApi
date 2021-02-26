@@ -4,6 +4,7 @@ using ChatApi.Core.Connect.Interfaces;
 using ChatApi.Core.Helpers;
 using ChatApi.Core.Response.Interfaces;
 using ChatApi.WA.Dialogs.Operations;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 using ChatApi.WA.Dialogs.Properties;
 using ChatApi.WA.Dialogs.Requests.Interfaces;
 using ChatApi.WA.Dialogs.Responses;
@@ -15,15 +16,15 @@ namespace ChatApi.WA.Dialogs
     {
         private readonly IWhatsAppConnect _connect;
 
-        public Lazy<GroupOperations> GroupOperations { get; }
-        public Lazy<UserInterfaceOperations> UserInterfaceOperations { get; }
+        public Lazy<IGroupOperations> GroupOperations { get; }
+        public Lazy<IUserInterfaceOperations> UserInterfaceOperations { get; }
 
         public DialogOperations(IWhatsAppConnect connect)
         {
             _connect = connect;
 
-            GroupOperations = new Lazy<GroupOperations>(() => new GroupOperations(connect));
-            UserInterfaceOperations = new Lazy<UserInterfaceOperations>(() => new UserInterfaceOperations(connect));
+            GroupOperations = new Lazy<IGroupOperations>(() => new GroupOperations(connect));
+            UserInterfaceOperations = new Lazy<IUserInterfaceOperations>(() => new UserInterfaceOperations(connect));
         }
 
         #region Dialog API

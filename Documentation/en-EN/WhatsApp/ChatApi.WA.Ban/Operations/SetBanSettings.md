@@ -20,28 +20,26 @@ This method is available in both synchronous and asynchronous implementations
 ```csharp
 using System;
 
-using WhatsAppApi.Connect;
-using WhatsAppApi.Core.Helpers;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
+using ChatApi.Core.Response.Interfaces;
 
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.WA.Ban;
+using ChatApi.WA.Ban.Requests;
+using ChatApi.WA.Ban.Responses.Interfaces;
 
-using WhatsAppApi.Messages.Requests;
-using WhatsAppApi.Messages.Responses.Interfaces;
-
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-
-            var banOperation = new BanOperation(Connect);
+            IBanOperations banOperations = new BanOperations(Connect);
             
             var banSettings = new BanSettingRequest()
             {
@@ -49,11 +47,11 @@ namespace WhatsAppApiClient
                 PreBanMessage = @"Do not write to me, otherwise I will send you a ban"
             };
             
-            IWhatsAppResponse<IBanSettingsResponse?> response = banOperation.SetBanSettings(banSettings);
-            if (response.IsSuccess) throw response.Exception!;
+            IChatApiResponse<IBanSettingsResponse?> chatApiResponse = banOperation.SetBanSettings(banSettings);
+            if (chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            var messageResponse = response.GetResult();
-            Console.WriteLine(messageResponse!.IsSet);
+            IBanSettingsResponse? response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

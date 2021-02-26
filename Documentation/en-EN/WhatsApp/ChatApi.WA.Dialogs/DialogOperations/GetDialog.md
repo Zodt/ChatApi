@@ -32,16 +32,16 @@ This method is available in both synchronous and asynchronous implementations
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
+using ChatApi.Core.Response.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
-using WhatsAppApi.Dialogs.Responses.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Requests;
+using ChatApi.WA.Dialogs.Responses.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
@@ -51,25 +51,18 @@ namespace WhatsAppApiClient
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operation = new DialogOperations(Сonnect);
-            
-            IDialogRequest request = new DialogRequest
+            IDialogOperations dialogOperations = new DialogOperations(Connect);
+
+            var dialogRequest = new DialogRequest
             {
                 ChatId = "17472822486-1603286775@g.us"
             };
 
-            var whatsAppResponse = operation.GetDialog(request);
-            if(!whatsAppResponse.IsSuccess) throw whatsAppResponse.Exception!;
-            
-            var actual = whatsAppResponse.GetResult();
-    
-            Console.WriteLine(actual?.ChatId);
-            Console.WriteLine(actual?.ChatName);
-            Console.WriteLine(actual?.ChatCreator);
-            Console.WriteLine(actual?.ChatCreationDate);
-            if (actual?.AdditionalChatInfo is {Participants: not null}) 
-                foreach (var message in actual.AdditionalChatInfo?.Participants) 
-                    Console.WriteLine(message.Body);
+            var chatApiResponse = dialogOperations.GetDialog(dialogRequest);
+            if (chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

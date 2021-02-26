@@ -27,43 +27,44 @@ This method is available in both synchronous and asynchronous implementations.
 ```csharp
 using System;
 
-using WhatsAppApi.Core.Helpers;
-using WhatsAppApi.Core.Connect;
-using WhatsAppApi.Core.Connect.Interfaces;
+using ChatApi.Core.Connect;
+using ChatApi.Core.Connect.Interfaces;
+using ChatApi.Core.Response.Interfaces;
 
-using WhatsAppApi.Dialogs;
-using WhatsAppApi.Dialogs.Interfaces;
-using WhatsAppApi.Dialogs.Responses.Interfaces;
+using ChatApi.WA.Dialogs;
+using ChatApi.WA.Dialogs.Helpers.Collections;
+using ChatApi.WA.Dialogs.Operations.Interfaces;
 
-using WhatsAppApiClient.Properties;
-namespace WhatsAppApiClient
+using ChatApi.WA.Dialogs.Requests;
+using ChatApi.WA.Dialogs.Requests.Interfaces;
+using ChatApi.WA.Dialogs.Responses.Interfaces;
+
+using ChatApiClient.Properties;
+namespace ChatApiClient
 {
     internal class Program
     {
-        public static IWhatsAppConnect Connect { get; set; }
+        internal static IWhatsAppConnect Connect { get; set; }
 
-        private static void Main()
+        internal static void Main()
         {
             // put your chat-api's data
             Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
-            IDialogOperations operation = new DialogOperations(Сonnect);
-            
+            IDialogOperations operation = new DialogOperations(Connect);
+            IGroupOperations groupOperations = operation.GroupOperations.Value;
+       
             ICreateGroupRequest request = new CreateGroupRequest 
             {
                 Phones = new PhonesCollection { "7(999) 111-11-11" }, // or ChatIds = new ChatIdsCollection{ "79991111111@c.us" },
                 GroupName = "TestBotGroup",
                 MessageText = "Test group was created",
             };
-
-            var actionResult = operation.GroupOperations.CreateGroup(request);
-            if(!actionResult.IsSuccess) throw actionResult.Exception!;
             
-            var actual = actionResult.GetResult();
-
-            Console.WriteLine(actual?.Created);
-            Console.WriteLine(actual?.ChatId);
-            Console.WriteLine(actual?.GroupInviteLink);
-            Console.WriteLine(actual?.Message);
+            IChatApiResponse<ICreateGroupResponse?> chatApiResponse = groupOperations.CreateGroup(request);
+            if(!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+            
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }
