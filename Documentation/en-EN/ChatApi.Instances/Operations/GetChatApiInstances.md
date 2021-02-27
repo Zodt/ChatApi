@@ -43,22 +43,10 @@ namespace ChatApiClient
             IChatApiInstanceOperations instanceOperations = new ChatApiInstanceOperations(connect);
             
             IChatApiResponse<IChatApiInstanceCollectionResponse?> chatApiInstance = instanceOperations.GetChatApiInstances();
-            if (!chatApiInstance.IsSuccess) return;
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            var response = chatApiInstance.GetResult();
-            Console.WriteLine(response?.ErrorMessage);
-            if (response?.InstanceCollection is null) return;
-
-            foreach (var instance in response.InstanceCollection)
-            {
-                Console.WriteLine(instance.Name);
-                Console.WriteLine(instance.IsActive);
-                Console.WriteLine(instance.PaidTill);
-                Console.WriteLine(instance.PaymentsCount);
-                Console.WriteLine(instance.TypeInstance);
-                Console.WriteLine(instance.Instance);
-                Console.WriteLine(instance.ApiUrl);
-            }
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

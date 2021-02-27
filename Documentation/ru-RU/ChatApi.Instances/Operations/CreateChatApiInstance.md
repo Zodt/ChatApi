@@ -57,14 +57,10 @@ namespace ChatApiClient
             };
             
             IChatApiResponse<IChatApiCreateInstanceResponse?> chatApiInstance = instanceOperations.CreateChatApiInstance(request);
-            if (!chatApiInstance.IsSuccess) return;
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            IChatApiCreateInstanceResponse? response = chatApiInstance.GetResult();
-            Console.WriteLine(response?.ErrorMessage);
-            Console.WriteLine(response?.Result?.Status);
-            Console.WriteLine(response?.Result?.InstanceParameters?.Token);
-            Console.WriteLine(response?.Result?.InstanceParameters?.Instance);
-            Console.WriteLine(response?.Result?.InstanceParameters?.ApiUrl);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }

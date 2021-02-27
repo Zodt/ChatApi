@@ -41,11 +41,10 @@ namespace ChatApiClient
             request.Instance = "231564";
             
             var removeChatApiInstance = instanceOperations.RemoveChatApiInstance(request);
-            if (!removeChatApiInstance.IsSuccess) return;
-            var response = removeChatApiInstance.GetResult();
+            if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
-            Console.WriteLine(response?.Status);
-            Console.WriteLine(response?.ErrorMessage);
+            var response = chatApiResponse.GetResult();
+            Console.WriteLine(response?.PrintMembers());
         }
     }
 }
