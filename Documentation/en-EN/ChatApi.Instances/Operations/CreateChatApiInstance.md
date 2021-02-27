@@ -55,7 +55,7 @@ namespace ChatApiClient
                 Type = ChatApiInstanceType.WhatsAppDev
             };
             
-            IChatApiResponse<IChatApiCreateInstanceResponse?> chatApiInstance = instanceOperations.CreateChatApiInstance(request);
+            IChatApiResponse<IChatApiCreateInstanceResponse?> chatApiResponse = instanceOperations.CreateChatApiInstance(request);
             if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
             var response = chatApiResponse.GetResult();

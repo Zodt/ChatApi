@@ -39,7 +39,7 @@ namespace ChatApiClient
             ChatApiRemoveInstanceRequest request = (ChatApiInstanceConnect)connect;
             request.Instance = "231564";
             
-            var removeChatApiInstance = instanceOperations.RemoveChatApiInstance(request);
+            var chatApiResponse = instanceOperations.RemoveChatApiInstance(request);
             if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
             var response = chatApiResponse.GetResult();

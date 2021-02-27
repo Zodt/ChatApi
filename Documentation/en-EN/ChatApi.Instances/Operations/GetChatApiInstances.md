@@ -42,7 +42,7 @@ namespace ChatApiClient
             IChatApiInstanceConnect connect = new ChatApiInstanceConnect("ApiKey");
             IChatApiInstanceOperations instanceOperations = new ChatApiInstanceOperations(connect);
             
-            IChatApiResponse<IChatApiInstanceCollectionResponse?> chatApiInstance = instanceOperations.GetChatApiInstances();
+            IChatApiResponse<IChatApiInstanceCollectionResponse?> chatApiResponse = instanceOperations.GetChatApiInstances();
             if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
 
             var response = chatApiResponse.GetResult();
