@@ -1,4 +1,4 @@
-# ChatApi.Instances
+# ChatApi.Instances [![NuGet version (ChatApi.Instance)](../../../Images/NuGetVersions/ChatApi.Instance_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.Instance/)
 `ChatApi.Instances` allows you to work with ChatApi instances.
 
 ### Table of contents

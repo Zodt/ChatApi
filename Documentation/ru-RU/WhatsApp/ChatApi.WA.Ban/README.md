@@ -1,5 +1,5 @@
-# ChatApi.Ban
-ChatApi.Ban позволяет задавать шаблон для автоматической блокировки номеров телефонов.  <br/>
+# ChatApi.WA.Ban [![NuGet version (ChatApi.WA.Ban)](../../../../Images/NuGetVersions/ChatApi.WA.Ban_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Ban/)
+`ChatApi.WA.Ban` позволяет задавать шаблон для автоматической блокировки номеров телефонов.  <br/>
 Для более подробного ознакомления с имеющимся функционалом, рекомендуется прочтение материала, изложенного ниже.
 
 ### Оглавление

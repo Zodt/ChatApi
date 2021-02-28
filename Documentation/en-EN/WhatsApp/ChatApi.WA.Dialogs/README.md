@@ -1,5 +1,5 @@
-# WhatsAppApi.Dialogs
-`WhatsAppApi.Dialogs` allows you to work with chats and groups.
+# ChatApi.WA.Dialogs [![NuGet version (ChatApi.WA.Dialogs)](../../../../Images/NuGetVersions/ChatApi.WA.Dialogs_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Dialogs/)
+`ChatApi.WA.Dialogs` allows you to work with chats and groups.
 
 ### Table of contents
 

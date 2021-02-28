@@ -1,6 +1,5 @@
-# WhatsAppApi.Queues
-
-`WhatsAppApi.Queues` allows you to work directly with queues, performing operations such as: receiving messages or actions that are in the message queue, as well as clearing queues. <br/>
+# ChatApi.WA.Queues [![NuGet version (ChatApi.WA.Queues)](../../../../Images/NuGetVersions/ChatApi.WA.Queues_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Queues/)
+`ChatApi.WA.Queues` allows you to work directly with queues, performing operations such as: receiving messages or actions that are in the message queue, as well as clearing queues. <br/>
 For a more detailed introduction to the available functionality, it is recommended to read the material described below.
 
 ### Table of contents

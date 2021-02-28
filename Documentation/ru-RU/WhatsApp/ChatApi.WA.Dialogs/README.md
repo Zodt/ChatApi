@@ -1,5 +1,5 @@
-# ChatApi.Dialogs
-`ChatApi.Dialogs` позволяет работать с чатами и группами. <br/>
+# ChatApi.WA.Dialogs [![NuGet version (ChatApi.WA.Dialogs)](../../../../Images/NuGetVersions/ChatApi.WA.Dialogs_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Dialogs/)
+`ChatApi.WA.Dialogs` позволяет работать с чатами и группами. <br/>
 Для более подробного ознакомления с имеющимся функционалом, рекомендуется прочтение материала, изложенного ниже.
 
 ### Оглавление

@@ -1,5 +1,5 @@
-# ChatApi.Account
-'ChatApi.Account' allows you to set up a WhatsApp account. <br/>
+# ChatApi.WA.Account [![NuGet version (ChatApi.WA.Account)](../../../../Images/NuGetVersions/ChatApi.WA.Account_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Account/)
+`ChatApi.WA.Account` allows you to set up a WhatsApp account. <br/>
 For a more detailed introduction to the available functionality, it is recommended to read the material described below.
 Operations marked with `*` are reserved, but not implemented.
 

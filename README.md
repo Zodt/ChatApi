@@ -1,6 +1,7 @@
-# ChatApi
+# ChatApi [![NuGet version (ChatApi.Core)](Images/NuGetVersions/ChatApi.Core_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.Core/)
 
 ## What's ChatApi?
+
 ChatApi is an unofficial cross-platform collection of libraries for interacting with the [`сhat-api`](https://chat-api.com) service. <br/>
 It may be used for: sending and reading of messages, work on dialogs (personal chats and groups), accounts, queues for sending messages and blacklist operations. <br/> 
 Also WebHook operations for the instant notifications will be available soon.

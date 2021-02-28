@@ -1,5 +1,5 @@
-# ChatApi.Account
-`ChatApi.Account` позволяет настраивать аккаунт WhatsApp. <br/>
+# ChatApi.WA.Account [![NuGet version (ChatApi.WA.Account)](../../../../Images/NuGetVersions/ChatApi.WA.Account_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Account/)
+`ChatApi.WA.Account` позволяет настраивать аккаунт WhatsApp. <br/>
 Для более подробного ознакомления с имеющимся функционалом, рекомендуется прочтение материала, изложенного ниже.
 Операции помеченные `*` являются зарезервированными, но не имплементированными.
 
