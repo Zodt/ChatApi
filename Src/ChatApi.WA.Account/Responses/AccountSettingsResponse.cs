@@ -5,16 +5,19 @@ using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Account.Responses.Interfaces.IAccountSettingsResponse" />
     public sealed class AccountSettingsResponse : AccountSettings, IAccountSettingsResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public IAccountSettings? Update { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IAccountSettingsResponse? other)
         {
             return other is not null && 
@@ -22,10 +25,12 @@ namespace ChatApi.WA.Account.Responses
                    Update == other.Update;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IAccountSettingsResponse other && Equals(other);
         }
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -34,13 +39,16 @@ namespace ChatApi.WA.Account.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (AccountSettingsResponse? left, AccountSettingsResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (AccountSettingsResponse? left, AccountSettingsResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
         
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Update), Update, shift);

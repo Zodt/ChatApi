@@ -2,6 +2,7 @@
 
 namespace ChatApi.WA.Messages.Models.Interfaces
 {
+    /// <summary/>
     public interface IQuotedMessage
     {
         /// <summary>

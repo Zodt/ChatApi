@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
-
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace ChatApi.Core.Converters
 {
+    /// <inheritdoc />
     public class UnixDateTimeConverter : DateTimeConverterBase
     {
+        /// <summary>
+        ///     Time-zone offset. <br/> Default: current time zone offset
+        /// </summary>
         public TimeSpan? Offset { get; set; }
         private static readonly DateTime Epoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
+        /// <summary>
+        ///     Convert a date to UTC format
+        /// </summary>
+        /// <param name="value">date</param>
+        /// <exception cref="JsonSerializationException"></exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string? ConvertWrite(DateTime? value)
+        public static string? Convert(DateTime? value)
         {
             if (value is null) return null;
             
@@ -26,8 +34,13 @@ namespace ChatApi.Core.Converters
             return seconds.ToString();
         }
 
+        /// <summary>
+        ///     Convert a UTC format value to date
+        /// </summary>
+        /// <param name="value">UTC format value</param>
+        /// <param name="offset">Time-zone offset. Default: current time zone offset</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DateTime ConvertRead(long value, TimeSpan? offset = null)
+        public static DateTime Convert(long value, TimeSpan? offset = null)
         {
             DateTime dateTime;
             try
@@ -43,20 +56,22 @@ namespace ChatApi.Core.Converters
                 .DateTime;
         }
 
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (value is not DateTime dateTime) return;
-            writer.WriteRawValue(ConvertWrite(dateTime));
+            writer.WriteRawValue(Convert(dateTime));
         }
 
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (reader.Value is null) return null;
             var firstOrDefault = serializer.Converters
                 .FirstOrDefault(x => x is UnixDateTimeConverter) as UnixDateTimeConverter;
-            return ConvertRead((long) reader.Value, firstOrDefault?.Offset);
+            return Convert((long) reader.Value, firstOrDefault?.Offset);
         }
     }
 }

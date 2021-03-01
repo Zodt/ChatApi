@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Models.Interfaces
 {
+    /// <summary/>
     public interface IAdditionalChatInfo : IEquatable<IAdditionalChatInfo?>, IPrintable
     {
         /// <summary>

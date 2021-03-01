@@ -1,25 +1,30 @@
 ﻿using System;
-
 using ChatApi.Core.Helpers;
 using ChatApi.Core.Models;
-
 using ChatApi.WA.Messages.Collections;
 using ChatApi.WA.Messages.Responses.Interfaces;
 
 namespace ChatApi.WA.Messages.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Messages.Responses.Interfaces.IMessagesResponse" />
     public sealed class MessagesResponse : Printable, IMessagesResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        
+        /// <inheritdoc />
         public int? LastMessageNumber { get; set; }
+        
+        /// <inheritdoc />
         public MessageCollection? Messages { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IMessagesResponse? other)
         {
             return other is not null &&
@@ -27,11 +32,13 @@ namespace ChatApi.WA.Messages.Responses
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IMessagesResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -43,13 +50,16 @@ namespace ChatApi.WA.Messages.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator ==(MessagesResponse? left, MessagesResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator !=(MessagesResponse? left, MessagesResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(LastMessageNumber), LastMessageNumber, shift);

@@ -11,79 +11,93 @@ using ChatApi.WA.Dialogs.Responses.UI.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Operations
 {
+    /// <inheritdoc />
     public sealed class UserInterfaceOperations : IUserInterfaceOperations
     {
         private readonly IWhatsAppConnect _connect;
 
+        /// <inheritdoc />
         public Lazy<IWhatsAppBusinessOperations> WhatsAppBusinessOperations { get; }
+        /// <summary/>
         public UserInterfaceOperations(IWhatsAppConnect connect)
         {
             _connect = connect;
             WhatsAppBusinessOperations = new Lazy<IWhatsAppBusinessOperations>(() => new WhatsAppBusinessOperations(connect));
         }
 
-
         #region User Interface API
 
         #region PinChat
 
+        /// <inheritdoc />
         public IChatApiResponse<IPinChatResponse?> PinChat(IPinChatRequest pinChat, IResponseSettings? responseSettings = null) =>
-            _connect.Post<PinChatResponse>(Resourse.PinChat, pinChat.Serialize(), responseSettings);
+            _connect.Post<PinChatResponse>(Resources.PinChat, pinChat.Serialize(), responseSettings);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IPinChatResponse?>> PinChatAsync(IPinChatRequest pinChat, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<PinChatResponse, IPinChatResponse>(Resourse.PinChat, pinChat.Serialize(), responseSettings);
+            _connect.PostAsync<PinChatResponse, IPinChatResponse>(Resources.PinChat, pinChat.Serialize(), responseSettings);
 
         #endregion
 
         #region UnpinChat
 
+        /// <inheritdoc />
         public IChatApiResponse<IUnpinChatResponse?> UnpinChat(IUnpinChatRequest unpinChat, IResponseSettings? responseSettings = null) =>
-            _connect.Post<UnpinChatResponse>(Resourse.UnpinChat, unpinChat.Serialize(), responseSettings);
+            _connect.Post<UnpinChatResponse>(Resources.UnpinChat, unpinChat.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IUnpinChatResponse?>> UnpinChatAsync(IUnpinChatRequest unpinChat, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<UnpinChatResponse, IUnpinChatResponse>(Resourse.UnpinChat, unpinChat.Serialize(), responseSettings);
+            _connect.PostAsync<UnpinChatResponse, IUnpinChatResponse>(Resources.UnpinChat, unpinChat.Serialize(), responseSettings);
 
         #endregion
 
         
         #region ReadChat
 
+        /// <inheritdoc />
         public IChatApiResponse<IReadChatResponse?> ReadChat(IReadChatRequest readChat, IResponseSettings? responseSettings = null) =>
-            _connect.Post<ReadChatResponse>(Resourse.ReadChat, readChat.Serialize(), responseSettings);
+            _connect.Post<ReadChatResponse>(Resources.ReadChat, readChat.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IReadChatResponse?>> ReadChatAsync(IReadChatRequest readChat, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<ReadChatResponse, IReadChatResponse>(Resourse.ReadChat, readChat.Serialize(), responseSettings);
+            _connect.PostAsync<ReadChatResponse, IReadChatResponse>(Resources.ReadChat, readChat.Serialize(), responseSettings);
 
         #endregion
 
         #region UnreadChat
 
+        /// <inheritdoc />
         public IChatApiResponse<IUnreadChatResponse?> UnreadChat(IUnreadChatRequest unreadChat, IResponseSettings? responseSettings = null) =>
-            _connect.Post<UnreadChatResponse>(Resourse.UnReadChat, unreadChat.Serialize(), responseSettings);
+            _connect.Post<UnreadChatResponse>(Resources.UnReadChat, unreadChat.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IUnreadChatResponse?>> UnReadChatAsync(IUnreadChatRequest unreadChat, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<UnreadChatResponse, IUnreadChatResponse>(Resourse.UnReadChat, unreadChat.Serialize(), responseSettings);
+            _connect.PostAsync<UnreadChatResponse, IUnreadChatResponse>(Resources.UnReadChat, unreadChat.Serialize(), responseSettings);
 
         #endregion
         
 
         #region SendTypingStatus
 
+        /// <inheritdoc />
         public IChatApiResponse<ITypingResponse?> SendTypingStatus(ITypingRequest typing, IResponseSettings? responseSettings = null) =>
-            _connect.Post<TypingResponse>(Resourse.SendTypingStatus, typing.Serialize(), responseSettings);
+            _connect.Post<TypingResponse>(Resources.SendTypingStatus, typing.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<ITypingResponse?>> SendTypingStatusAsync(ITypingRequest typing, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<TypingResponse, ITypingResponse>(Resourse.SendTypingStatus, typing.Serialize(), responseSettings);
+            _connect.PostAsync<TypingResponse, ITypingResponse>(Resources.SendTypingStatus, typing.Serialize(), responseSettings);
 
         #endregion
 
         #region SendVoiceRecordingStatus
 
+        /// <inheritdoc />
         public IChatApiResponse<VoiceRecordingResponse?> SendVoiceRecordingStatus(IVoiceRecordingRequest voiceRecording, IResponseSettings? responseSettings = null) =>
-            _connect.Post<VoiceRecordingResponse>(Resourse.SendVoiceRecordingStatus, voiceRecording.Serialize(), responseSettings);
+            _connect.Post<VoiceRecordingResponse>(Resources.SendVoiceRecordingStatus, voiceRecording.Serialize(), responseSettings);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IVoiceRecordingResponse?>> SendVoiceRecordingStatusAsync(IVoiceRecordingRequest voiceRecording, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<VoiceRecordingResponse, IVoiceRecordingResponse>(Resourse.SendVoiceRecordingStatus, voiceRecording.Serialize(), responseSettings);
+            _connect.PostAsync<VoiceRecordingResponse, IVoiceRecordingResponse>(Resources.SendVoiceRecordingStatus, voiceRecording.Serialize(), responseSettings);
 
         #endregion
         

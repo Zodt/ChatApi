@@ -4,11 +4,21 @@ using ChatApi.WA.Dialogs.Requests.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Requests
 {
+    /// <inheritdoc />
     public sealed class JoinGroupRequest : IJoinGroupRequest
     {
+        #region Properties
+
+        /// <inheritdoc />
         public string? InvitationLink { get; set; }
+        /// <inheritdoc />
         public string? InvitationCode { get; set; }
 
+        #endregion
+
+        #region Equatable
+
+        /// <inheritdoc />
         public bool Equals(IJoinGroupRequest? other)
         {
             return other is not null &&
@@ -16,11 +26,13 @@ namespace ChatApi.WA.Dialogs.Requests
                    string.Equals(InvitationCode, other.InvitationCode, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IJoinGroupRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -30,7 +42,11 @@ namespace ChatApi.WA.Dialogs.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (JoinGroupRequest? left, JoinGroupRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (JoinGroupRequest? left, JoinGroupRequest? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
     }
 }

@@ -12,13 +12,17 @@ using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs
 {
+    /// <summary/>
     public sealed class DialogOperations : IDialogOperations
     {
         private readonly IWhatsAppConnect _connect;
 
+        /// <inheritdoc />
         public Lazy<IGroupOperations> GroupOperations { get; }
+        /// <inheritdoc />
         public Lazy<IUserInterfaceOperations> UserInterfaceOperations { get; }
 
+        /// <summary/>
         public DialogOperations(IWhatsAppConnect connect)
         {
             _connect = connect;
@@ -31,31 +35,37 @@ namespace ChatApi.WA.Dialogs
 
         #region GetDialog
 
+        /// <inheritdoc />
         public IChatApiResponse<IDialogResponse?> GetDialog(IDialogRequest dialogRequest, IResponseSettings? responseSettings = null) => 
-            _connect.Get<DialogResponse>(Resourse.GetDialog, responseSettings, dialogRequest.Parameters);  
+            _connect.Get<DialogResponse>(Resources.GetDialog, responseSettings, dialogRequest.Parameters);  
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IDialogResponse?>> GetDialogAsync(IDialogRequest dialogRequest, IResponseSettings? responseSettings = null) => 
-            _connect.GetAsync<DialogResponse, IDialogResponse>(Resourse.GetDialog, responseSettings, dialogRequest.Parameters);
+            _connect.GetAsync<DialogResponse, IDialogResponse>(Resources.GetDialog, responseSettings, dialogRequest.Parameters);
 
         #endregion
 
         #region GetDialogs
 
+        /// <inheritdoc />
         public IChatApiResponse<IDialogCollectionResponse?> GetDialogs(IDialogCollectionRequest dialogCollectionRequest, IResponseSettings? responseSettings = null) =>
-            _connect.Get<DialogCollectionResponse>(Resourse.GetDialogs, responseSettings, dialogCollectionRequest.Parameters);
+            _connect.Get<DialogCollectionResponse>(Resources.GetDialogs, responseSettings, dialogCollectionRequest.Parameters);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IDialogCollectionResponse?>> GetDialogsAsync(IDialogCollectionRequest dialogCollectionRequest, IResponseSettings? responseSettings = null) =>
-            _connect.GetAsync<DialogCollectionResponse, IDialogCollectionResponse>(Resourse.GetDialogs, responseSettings, dialogCollectionRequest.Parameters);
+            _connect.GetAsync<DialogCollectionResponse, IDialogCollectionResponse>(Resources.GetDialogs, responseSettings, dialogCollectionRequest.Parameters);
 
         #endregion
                 
         #region RemoveDialog
 
+        /// <inheritdoc />
         public IChatApiResponse<IRemoveDialogResponse?> RemoveDialog(IRemoveDialogRequest removeDialog, IResponseSettings? responseSettings = null) =>
-            _connect.Post<RemoveDialogResponse>(Resourse.RemoveDialog, removeDialog.Serialize(), responseSettings);
+            _connect.Post<RemoveDialogResponse>(Resources.RemoveDialog, removeDialog.Serialize(), responseSettings);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IRemoveDialogResponse?>> RemoveDialogAsync(IRemoveDialogRequest removeDialog, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<RemoveDialogResponse, IRemoveDialogResponse>(Resourse.RemoveDialog, removeDialog.Serialize(), responseSettings);
+            _connect.PostAsync<RemoveDialogResponse, IRemoveDialogResponse>(Resources.RemoveDialog, removeDialog.Serialize(), responseSettings);
 
         #endregion
         

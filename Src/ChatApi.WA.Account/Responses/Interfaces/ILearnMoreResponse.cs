@@ -2,5 +2,6 @@
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
+    /// <summary/>
     public interface ILearnMoreResponse : IAccountStatus, IExpiry { }
 }

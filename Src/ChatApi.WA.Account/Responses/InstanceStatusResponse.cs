@@ -4,19 +4,25 @@ using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Account.Responses.Interfaces.IInstanceStatusResponse" />
     public class InstanceStatusResponse : InstanceStatus, IInstanceStatusResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Result { get; set; }
+        /// <inheritdoc />
         public bool? Success { get; set; }
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        /// <inheritdoc />
         public AccountStatusType? AccountStatus { get; set; }
 
         #endregion
 
         #region Methods
 
+        /// <inheritdoc />
         public bool Equals(IInstanceStatusResponse? other)
         {
             return base.Equals(other) && 
@@ -27,11 +33,13 @@ namespace ChatApi.WA.Account.Responses
                    AccountStatus == other.AccountStatus;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IInstanceStatusResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -45,13 +53,16 @@ namespace ChatApi.WA.Account.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (InstanceStatusResponse? left, InstanceStatusResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (InstanceStatusResponse? left, InstanceStatusResponse? right) => !EquatableHelper.IsEquatable(left, right);
         
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(AccountStatus), AccountStatus, shift);

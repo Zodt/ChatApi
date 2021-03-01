@@ -7,6 +7,7 @@ using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IDialogResponse" />
     public sealed class DialogResponse : Printable, IDialogResponse
     {
         #region Backing fields
@@ -19,6 +20,7 @@ namespace ChatApi.WA.Dialogs.Responses
 
         #region Properties
 
+        /// <inheritdoc />
         public string? ChatId
         {
             get => _chatId;
@@ -28,18 +30,33 @@ namespace ChatApi.WA.Dialogs.Responses
                 _splitter = new ChatIdSplitter(value);
             }
         }
-        public string? ChatName { get; set; }
-        public string? ChatCreator => Splitter?.GetChatCreator();
-        public DateTime? ChatCreationDate => Splitter?.GetChatCreationDate();
+
+        /// <inheritdoc />
         public string? Image { get; set; }
+
+        /// <inheritdoc />
+        public string? ChatName { get; set; }
+
+        /// <inheritdoc />
         public DateTime? LastMessageTime { get; set; }
+
+        /// <inheritdoc />
+        public string? ChatCreator => Splitter?.GetChatCreator();
+
+        /// <inheritdoc />
         public IAdditionalChatInfo? AdditionalChatInfo { get; set; }
+
+        /// <inheritdoc />
+        public DateTime? ChatCreationDate => Splitter?.GetChatCreationDate();
+
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IDialogResponse? other)
         {
             return other is not null &&  
@@ -53,11 +70,13 @@ namespace ChatApi.WA.Dialogs.Responses
                    AdditionalChatInfo == other.AdditionalChatInfo;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return Equals(this, obj) || obj is IDialogResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -72,13 +91,16 @@ namespace ChatApi.WA.Dialogs.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (DialogResponse? left, DialogResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (DialogResponse? left, DialogResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(ChatId), ChatId, shift);

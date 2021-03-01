@@ -2,5 +2,6 @@
 
 namespace ChatApi.WA.Ban.Requests.Interfaces
 {
+    /// <summary/>
     public interface IBanSettingsRequest : IBanSettings { }
 }

@@ -5,6 +5,7 @@ using ChatApi.WA.Messages.Responses.Interfaces;
 
 namespace ChatApi.WA.Messages
 {
+    /// <summary/>
     public interface IMessagesOperation
     {
         /// <summary>

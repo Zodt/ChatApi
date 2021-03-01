@@ -2,5 +2,6 @@
 
 namespace ChatApi.WA.Dialogs.Responses.UI
 {
+    /// <summary/>
     public sealed class LabeledChatResponse : ChatOperationResponse, ILabeledChatResponse { }
 }

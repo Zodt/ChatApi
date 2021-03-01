@@ -4,18 +4,23 @@ using ChatApi.WA.Messages.Requests.Interfaces;
 
 namespace ChatApi.WA.Messages.Requests
 {
+    /// <summary/>
     public sealed class ForwardMessageRequest : IForwardMessageRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Phone { get; set; }
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        /// <inheritdoc />
         public ForwardMessagesCollection? MessagesCollection { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IForwardMessageRequest? other)
         {
             return other is not null && MessagesCollection == other.MessagesCollection &&
@@ -23,11 +28,13 @@ namespace ChatApi.WA.Messages.Requests
                    string.Equals(ChatId, other.ChatId);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IForwardMessageRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -39,7 +46,9 @@ namespace ChatApi.WA.Messages.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (ForwardMessageRequest? left, ForwardMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (ForwardMessageRequest? left, ForwardMessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion

@@ -4,6 +4,7 @@ using ChatApi.Core.Models;
 
 namespace ChatApi.Core.Response.Interfaces
 {
+    /// <summary/>
     public interface IResponseSettings
     {
         /// <summary>

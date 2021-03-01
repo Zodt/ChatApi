@@ -5,20 +5,27 @@ using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Account.Responses.Interfaces.IAdditionInformationStatus" />
     public sealed class AdditionInformationStatus : Printable, IAdditionInformationStatus
     {
         #region Properties
 
+        /// <inheritdoc />
         public IInstanceStatus? Retry { get; set; }
+        /// <inheritdoc />
         public IInstanceStatus? Expiry { get; set; }
+        /// <inheritdoc />
         public IInstanceStatus? Logout { get; set; }
+        /// <inheritdoc />
         public IInstanceStatus? Takeover { get; set; }
+        /// <inheritdoc />
         public IInstanceStatus? LearnMore { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IAdditionInformationStatus? other)
         {
             return other is not null &&
@@ -29,11 +36,13 @@ namespace ChatApi.WA.Account.Responses
                    LearnMore == other.LearnMore;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IAdditionInformationStatus other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -47,13 +56,16 @@ namespace ChatApi.WA.Account.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (AdditionInformationStatus? left, AdditionInformationStatus? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (AdditionInformationStatus? left, AdditionInformationStatus? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Retry), Retry, shift);

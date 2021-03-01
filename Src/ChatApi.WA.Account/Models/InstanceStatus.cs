@@ -5,18 +5,23 @@ using ChatApi.WA.Account.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Models
 {
+    /// <summary/>
     public class InstanceStatus : Printable, IExpiry, ILogout, IRetry, ITakeover, ILearnMore
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Link { get; set; }
+        /// <inheritdoc />
         public string? Label { get; set; }
+        /// <inheritdoc />
         public InstanceStatusActionType? Action { get; set; }
 
         #endregion
          
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IInstanceStatus? other)
         {
             return other is not null && Action == other.Action &&
@@ -24,9 +29,11 @@ namespace ChatApi.WA.Account.Models
                    string.Equals(Label, other.Label, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj) => 
             ReferenceEquals(this, obj) || obj is IInstanceStatus other && Equals(other);
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -38,13 +45,16 @@ namespace ChatApi.WA.Account.Models
             }
         }
 
+        /// <summary/>
         public static bool operator == (InstanceStatus? left, InstanceStatus? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (InstanceStatus? left, InstanceStatus? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Action), Action, shift);

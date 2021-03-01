@@ -9,16 +9,20 @@ using ChatApi.WA.Messages.Responses.Interfaces;
 
 namespace ChatApi.WA.Messages
 {
+    /// <summary/>
     public sealed class MessagesOperation : IMessagesOperation
     {
         private readonly IWhatsAppConnect _connect;
+        /// <summary/>
         public MessagesOperation(IWhatsAppConnect connect) => _connect = connect;
 
         #region Send text message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> SendTextMessage(ITextMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.SendTextMessage, message.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> SendTextMessageAsync(ITextMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.SendTextMessage, message.Serialize(), responseSettings);
 
@@ -26,9 +30,11 @@ namespace ChatApi.WA.Messages
 
         #region Send link message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> SendLinkMessage(ILinkMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.SendLinkMessage, message.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> SendLinkMessageAsync(ILinkMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.SendLinkMessage, message.Serialize(), responseSettings);
 
@@ -36,9 +42,11 @@ namespace ChatApi.WA.Messages
 
         #region Forward message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> ForwardMessage(IForwardMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.ForwardMessage, message.Serialize(), responseSettings);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> ForwardMessageAsync(IForwardMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.ForwardMessage, message.Serialize(), responseSettings);
 
@@ -46,9 +54,11 @@ namespace ChatApi.WA.Messages
 
         #region Send file message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> SendFileMessage(IFileMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.SendFileMessage, message.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> SendFileMessageAsync(IFileMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.SendFileMessage, message.Serialize(), responseSettings);
 
@@ -56,9 +66,11 @@ namespace ChatApi.WA.Messages
 
         #region Send voice message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> SendVoiceMessage(IVoiceMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.SendVoiceMessage, message.Serialize(), responseSettings);
 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> SendVoiceMessageAsync(IVoiceMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.SendVoiceMessage, message.Serialize(), responseSettings);
 
@@ -66,9 +78,11 @@ namespace ChatApi.WA.Messages
 
         #region Send contact message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> SendContactMessage(IContactMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.SendContactMessage, message.Serialize(), responseSettings);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> SendContactMessageAsync(IContactMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.SendContactMessage, message.Serialize(), responseSettings);
 
@@ -76,9 +90,11 @@ namespace ChatApi.WA.Messages
 
         #region Send location message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> SendLocationMessage(ILocationMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.SendLocationMessage, message.Serialize(), responseSettings);
                 
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> SendLocationMessageAsync(ILocationMessageRequest message, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.SendLocationMessage, message.Serialize(), responseSettings);
 
@@ -86,9 +102,11 @@ namespace ChatApi.WA.Messages
 
         #region Delete message
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessageResponse?> DeleteMessage(string messageId, IResponseSettings? responseSettings = null) => 
             _connect.Post<MessageResponse>(Resources.DeleteMessage, messageId.Serialize(), responseSettings);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessageResponse?>> DeleteMessageAsync(string messageId, IResponseSettings? responseSettings = null) => 
             _connect.PostAsync<MessageResponse, IMessageResponse>(Resources.DeleteMessage, messageId.Serialize(), responseSettings);
 
@@ -97,9 +115,11 @@ namespace ChatApi.WA.Messages
 
         #region Get messages
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessagesResponse?> GetMessages(IMessagesRequest messages, IResponseSettings? responseSettings = null) => 
             _connect.Get<MessagesResponse>(Resources.GetMessages, responseSettings, messages.Parameters);
         
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessagesResponse?>> GetMessagesAsync(IMessagesRequest messages, IResponseSettings? responseSettings = null) => 
             _connect.GetAsync<MessagesResponse, IMessagesResponse>(Resources.GetMessages, responseSettings, messages.Parameters);
 
@@ -107,8 +127,10 @@ namespace ChatApi.WA.Messages
 
         #region Get message history
 
+        /// <inheritdoc />
         public IChatApiResponse<IMessagesHistoryResponse?> GetMessagesHistory(IMessagesHistoryRequest messagesHistory, IResponseSettings? responseSettings = null) =>
             _connect.Get<MessagesHistoryResponse>(Resources.GetMessagesHistory, responseSettings, messagesHistory.Parameters);
+        /// <inheritdoc />
         public Task<IChatApiResponse<IMessagesHistoryResponse?>> GetMessagesHistoryAsync(IMessagesHistoryRequest messagesHistory, IResponseSettings? responseSettings = null) =>
             _connect.GetAsync<MessagesHistoryResponse, IMessagesHistoryResponse>(Resources.GetMessagesHistory, responseSettings, messagesHistory.Parameters);
         

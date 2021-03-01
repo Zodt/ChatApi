@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Linq;
-using Newtonsoft.Json;
-using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace ChatApi.Core.Converters
 {
+    /// <inheritdoc />
     public class PhoneConverter : JsonConverter<string?>
     {
 
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override void WriteJson(JsonWriter writer, string? value, JsonSerializer serializer)
         {
@@ -22,6 +24,7 @@ namespace ChatApi.Core.Converters
                     .Aggregate(string.Concat)));
         }
 
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override string? ReadJson(JsonReader reader, Type objectType, string? existingValue, 
             bool hasExistingValue, JsonSerializer serializer)

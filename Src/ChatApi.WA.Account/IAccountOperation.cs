@@ -5,6 +5,7 @@ using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account
 {
+    /// <summary/>
     public interface IAccountOperation
     {
         /// <summary>

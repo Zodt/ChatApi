@@ -1,27 +1,35 @@
-﻿using ChatApi.Core.Models;
-using ChatApi.Core.Helpers;
+﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Account.Models;
 using ChatApi.WA.Account.Models.Interfaces;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
+    /// <summary/>
     public sealed class AccountStatusResponse : Printable, IAccountStatusResponse
     {
         #region Properties
+        /// <inheritdoc />
         public string? QrCode { get; set; }
+        /// <inheritdoc />
         public AccountStatusType? AccountStatus { get; set; }
+        /// <inheritdoc />
         public IAccountStatusData? StatusData { get; set; }
 
         
+        /// <inheritdoc />
         public bool? Success { get; set; }
+        /// <inheritdoc />
         public string? Result { get; set; }
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IAccountStatusResponse? other)
         {
             return other is not null &&
@@ -34,11 +42,13 @@ namespace ChatApi.WA.Account.Responses
                    Equals(StatusData, other.StatusData);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IAccountStatusResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -53,13 +63,16 @@ namespace ChatApi.WA.Account.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (AccountStatusResponse? left, AccountStatusResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (AccountStatusResponse? left, AccountStatusResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(QrCode), QrCode?.Substring(0, 20), shift);

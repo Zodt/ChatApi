@@ -1,11 +1,12 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Converters;
 using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Dialogs.Helpers.Collections;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
+    /// <summary/>
     public interface IDialogCollectionResponse : IErrorResponse, IEquatable<IDialogCollectionResponse?>, IPrintable
     {
         /// <summary>

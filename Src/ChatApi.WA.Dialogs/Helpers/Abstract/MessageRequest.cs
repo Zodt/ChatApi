@@ -4,11 +4,22 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Helpers.Abstract
 {
+    /// <inheritdoc cref="ChatApi.Core.Models.Interfaces.IMessageRequest" />
     public abstract class MessageRequest : IMessageRequest, IEquatable<IMessageRequest?>
     {
+        #region Properties
+
+        /// <inheritdoc />
         public string? Phone { get; set; }
+        
+        /// <inheritdoc />
         public string? ChatId { get; set; }
 
+        #endregion
+
+        #region Equatable
+
+        /// <inheritdoc />
         public bool Equals(IMessageRequest? other)
         {
             return 
@@ -17,8 +28,10 @@ namespace ChatApi.WA.Dialogs.Helpers.Abstract
                 Phone == other.Phone;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is IMessageRequest self && Equals(self);
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -28,7 +41,11 @@ namespace ChatApi.WA.Dialogs.Helpers.Abstract
             }
         }
 
+        /// <summary/>
         public static bool operator == (MessageRequest? left, MessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (MessageRequest? left, MessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
     }
 }

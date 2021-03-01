@@ -5,22 +5,31 @@ using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
 {
+    /// <summary/>
     public sealed class AccountInformationResponse : Printable, IAccountInformationResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Id { get; set; }
+        /// <inheritdoc />
         public string? Battery { get; set; }
+        /// <inheritdoc />
         public string? Locale { get; set; }
+        /// <inheritdoc />
         public string? Name { get; set; }
+        /// <inheritdoc />
         public string? WhatsAppVersion { get; set; }
+        /// <inheritdoc />
         public IDeviceCharacteristic? Device { get; set; }
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IAccountInformationResponse? other)
         {
             return other is not null &&
@@ -33,11 +42,13 @@ namespace ChatApi.WA.Account.Responses
                    Device == other.Device;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IAccountInformationResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -53,13 +64,16 @@ namespace ChatApi.WA.Account.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (AccountInformationResponse? left, AccountInformationResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (AccountInformationResponse? left, AccountInformationResponse? right) => !EquatableHelper.IsEquatable(left, right);
         
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Id), Id, shift);

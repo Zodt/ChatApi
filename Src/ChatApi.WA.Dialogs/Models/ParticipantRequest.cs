@@ -4,12 +4,25 @@ using ChatApi.WA.Dialogs.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Models
 {
+    /// <summary/>
     public abstract class ParticipantRequest : IParticipantRequest
     {
+        #region Properties
+
+        /// <inheritdoc />
         public string? GroupId { get; set; }
+        
+        /// <inheritdoc />
         public string? ParticipantChatId { get; set; }
+        
+        /// <inheritdoc />
         public string? ParticipantPhone { get; set; }
 
+        #endregion
+
+        #region Equatable
+
+        /// <inheritdoc />
         public bool Equals(IParticipantRequest? other)
         {
             return other is not null &&
@@ -18,11 +31,13 @@ namespace ChatApi.WA.Dialogs.Models
                    string.Equals(ParticipantChatId, other.ParticipantChatId, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IParticipantRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -34,7 +49,11 @@ namespace ChatApi.WA.Dialogs.Models
             }
         }
 
+        /// <summary/>
         public static bool operator == (ParticipantRequest? left, ParticipantRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (ParticipantRequest? left, ParticipantRequest? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
     }
 }

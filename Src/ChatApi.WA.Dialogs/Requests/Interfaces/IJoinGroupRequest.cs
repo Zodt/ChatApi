@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Requests.Interfaces
 {
+    /// <summary/>
     public interface IJoinGroupRequest : IEquatable<IJoinGroupRequest?>
     {
         /// <summary>

@@ -1,9 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Requests.Interfaces
 {
+    /// <summary/>
     public interface IAccountStatusRequest : IParameters, IEquatable<IAccountStatusRequest?>, IPrintable
     {
         /// <summary>

@@ -15,7 +15,7 @@ This method is available in both synchronous and asynchronous implementations.
 | `PaidTill`            | End date of the paid period                           | `DateTime`
 | `Instance`            | The unique identifier of the instance                 | `String`
 | `IsActive`            | An indicator of the activity instance                 | `Boolean`
-| `TypeInstance`        | Instance t ype                                        | `ChatApiInstanceType`
+| `TypeInstance`        | Instance type                                        | `ChatApiInstanceType`
 | `PaymentsCount`       | Number of paid months                                 | `Integer`
 
 ## Example

@@ -4,23 +4,33 @@ using ChatApi.WA.Messages.Requests.Interfaces;
 
 namespace ChatApi.WA.Messages.Requests
 {
+    /// <summary/>
     public sealed class LinkMessageRequest : ILinkMessageRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Body { get; set; }
+        /// <inheritdoc />
         public string? Title { get; set; }
+        /// <inheritdoc />
         public string? Phone { get; set; }
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        /// <inheritdoc />
         public string? Description { get; set; }
+        /// <inheritdoc />
         public string? PreviewBase64 { get; set; }
+        /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
+        /// <inheritdoc />
         public MentionedPhonesCollection? MentionedPhones { get; set; }
         
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(ILinkMessageRequest? other)
         {
             return other is not null &&
@@ -34,11 +44,13 @@ namespace ChatApi.WA.Messages.Requests
                    Description == other.Description;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is ILinkMessageRequest self && Equals(self);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -55,7 +67,9 @@ namespace ChatApi.WA.Messages.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator ==(LinkMessageRequest? left, LinkMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator !=(LinkMessageRequest? left, LinkMessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion

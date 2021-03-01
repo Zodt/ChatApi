@@ -33,7 +33,7 @@ namespace ChatApi.WA.Dialogs.Helpers
                 return null;
             if (ChatIds?.Count != 2 || !long.TryParse(ChatIds[1], out var dateUtc))
                 return null;
-            return UnixDateTimeConverter.ConvertRead(dateUtc);
+            return UnixDateTimeConverter.Convert(dateUtc);
         }
     }
 }

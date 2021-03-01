@@ -1,9 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
+    /// <summary/>
     public interface ICreateGroupResponse : IChatId, IErrorResponse, IEquatable<ICreateGroupResponse?>, IPrintable
     {
         /// <summary>

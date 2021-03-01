@@ -5,18 +5,25 @@ using ChatApi.WA.Queues.Responses.Interfaces;
 
 namespace ChatApi.WA.Queues.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Queues.Responses.Interfaces.IShowActionsQueueResponse" />
     public sealed class ShowActionsQueueResponse : Printable, IShowActionsQueueResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public int? TotalActions { get; set; }
+        
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        
+        /// <inheritdoc />
         public OutboundActionCollection? OutboundActions { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IShowActionsQueueResponse? other)
         {
             return other is not null &&
@@ -25,11 +32,13 @@ namespace ChatApi.WA.Queues.Responses
                    OutboundActions == other.OutboundActions;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IShowActionsQueueResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -41,13 +50,16 @@ namespace ChatApi.WA.Queues.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (ShowActionsQueueResponse? left, ShowActionsQueueResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (ShowActionsQueueResponse? left, ShowActionsQueueResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
         
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(TotalActions), TotalActions, shift);
@@ -56,6 +68,5 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         #endregion
-        
     }
 }

@@ -1,24 +1,29 @@
 ﻿using System;
-
 using ChatApi.Core.Helpers;
 using ChatApi.WA.Messages.Collections;
 using ChatApi.WA.Messages.Requests.Interfaces;
 
 namespace ChatApi.WA.Messages.Requests
 {
+    /// <summary/>
     public sealed class ContactMessageRequest : IContactMessageRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Phone { get; set; }
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
+        /// <inheritdoc />
         public ContactCollection? ContactId { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IContactMessageRequest? other)
         {
             return other is not null && ContactId == other.ContactId && 
@@ -27,11 +32,13 @@ namespace ChatApi.WA.Messages.Requests
                 string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IContactMessageRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -44,7 +51,9 @@ namespace ChatApi.WA.Messages.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (ContactMessageRequest? left, ContactMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (ContactMessageRequest? left, ContactMessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion

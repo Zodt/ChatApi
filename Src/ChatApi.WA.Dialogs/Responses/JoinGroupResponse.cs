@@ -5,17 +5,22 @@ using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IJoinGroupResponse" />
     public sealed class JoinGroupResponse : Printable, IJoinGroupResponse
     {
         #region Properies
 
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IJoinGroupResponse? other)
         {
             return 
@@ -24,11 +29,13 @@ namespace ChatApi.WA.Dialogs.Responses
                 string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is JoinGroupResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -37,13 +44,16 @@ namespace ChatApi.WA.Dialogs.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (JoinGroupResponse? left, JoinGroupResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (JoinGroupResponse? left, JoinGroupResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(ChatId), ChatId, shift);

@@ -1,24 +1,32 @@
 ﻿using System;
-
-using ChatApi.Core.Models;
 using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Responses.UI.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses.UI
 {
+    /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.IReadChatResponse" />
     public sealed class ReadChatResponse : Printable, IReadChatResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public bool? Read { get; set; }
+        
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        
+        /// <inheritdoc />
         public string? Message { get; set; }
+        
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IReadChatResponse? other)
         {
             return other is not null && Read == other.Read &&
@@ -27,11 +35,13 @@ namespace ChatApi.WA.Dialogs.Responses.UI
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IReadChatResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -44,13 +54,16 @@ namespace ChatApi.WA.Dialogs.Responses.UI
             }
         }
 
+        /// <summary/>
         public static bool operator == (ReadChatResponse? left, ReadChatResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (ReadChatResponse? left, ReadChatResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Read), Read, shift);

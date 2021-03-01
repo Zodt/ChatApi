@@ -1,9 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Requests.Interfaces
 {
+    /// <summary/>
     public interface IDialogRequest : IChatId, IParameters, IEquatable<IDialogRequest?>
     {
         /// <summary>

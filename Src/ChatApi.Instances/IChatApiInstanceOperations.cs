@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
 using ChatApi.Core.Response.Interfaces;
-using ChatApi.Instances.Responses.Interfaces;
 using ChatApi.Instances.Requests.Interfaces;
+using ChatApi.Instances.Responses.Interfaces;
 
 namespace ChatApi.Instances
 {
+    /// <summary/>
     public interface IChatApiInstanceOperations
     {
         /// <summary>

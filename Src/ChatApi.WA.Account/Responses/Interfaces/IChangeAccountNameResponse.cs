@@ -1,10 +1,13 @@
-﻿using Newtonsoft.Json;
-using ChatApi.Core.Models.Interfaces;
+﻿using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
+    //Need description:chatApi
+    /// <summary/>
     public interface IChangeAccountNameResponse : IOperationResponse
     {
+        /// <summary/>
         [JsonProperty("pushname", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         string PushName { get; set; }
     }

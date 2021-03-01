@@ -5,19 +5,28 @@ using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IGroupOperationResponse" />
     public abstract class GroupOperationResponse : Printable, IGroupOperationResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public bool? IsSuccess { get; set; }
+        
+        /// <inheritdoc />
         public string? GroupId { get; set; }
+        
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        
+        /// <inheritdoc />
         public string? StatusMessage { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IGroupOperationResponse? other)
         {
             return other is not null && IsSuccess == other.IsSuccess &&
@@ -26,11 +35,13 @@ namespace ChatApi.WA.Dialogs.Responses
                    string.Equals(StatusMessage, other.StatusMessage, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IGroupOperationResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -43,13 +54,16 @@ namespace ChatApi.WA.Dialogs.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (GroupOperationResponse? left, GroupOperationResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (GroupOperationResponse? left, GroupOperationResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(IsSuccess), IsSuccess, shift);

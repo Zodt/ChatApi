@@ -1,45 +1,71 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>default</LangVersion>
+
+        <!-- Basic technical information about the project -->
         <Nullable>enable</Nullable>
+        <LangVersion>9</LangVersion>
+        <TargetFramework>netstandard2.0</TargetFramework>
+
+        <!-- Generating a NuGet package (with docs) -->
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+
+        <!-- Information about the NuGet package -->
         <Title>ChatApi.Instances</Title>
         <Authors>Roman Vorontsov</Authors>
-        <Description>ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com</Description>
-        <PackageProjectUrl></PackageProjectUrl>
-        <PackageLicenseUrl></PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/Zodt/ChatApi</RepositoryUrl>
-        <RepositoryType>GitHub</RepositoryType>
-        <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
-        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageIconUrl></PackageIconUrl>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageIcon>ChatApi.png</PackageIcon>
         <NeutralLanguage>en</NeutralLanguage>
+        <PackageIcon>ChatApi.png</PackageIcon>
+        <PackageVersion>1.0.1-alpha</PackageVersion>
+        <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
+        <Description>
+            ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com
+        </Description>
+        <ReleaseNotes>
+            1. Refactoring code
+            2. Add xml doc
+        </ReleaseNotes>
+
+        <!-- NuGet Package license information -->
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+        <!-- Information about the project repository -->
+        <RepositoryType>GitHub</RepositoryType>
+        <RepositoryUrl>https://github.com/Zodt/ChatApi</RepositoryUrl>
+
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Connect\Interfaces" />
+
+        <!-- References -->
+        <ProjectReference Include="..\ChatApi.Core\ChatApi.Core.csproj" />
+
+        <!-- Resources -->
+        <Compile Update="Properties\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <EmbeddedResource Update="Properties\Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+
+        <!-- NuGet project logo -->
+        <None Include="../../Images/ChatApi.png">
+            <Pack>True</Pack>
+            <PackagePath />
+        </None>
+        
     </ItemGroup>
 
-    <ItemGroup>
-      <EmbeddedResource Update="Properties\Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\ChatApi.Core\ChatApi.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="..\ChatApi.png">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
-    </ItemGroup>
-
+    <!-- Copying a NuGet package to a specific directory -->
+    <Target Name="CopyCustomContent" AfterTargets="AfterBuild" 
+            Condition="Exists('..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg')">
+        <Copy SourceFiles="..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg" 
+              DestinationFolder="..\..\NuGet\$(PackageVersion)" SkipUnchangedFiles="false" ContinueOnError="true" />
+    </Target>
+    
 </Project>

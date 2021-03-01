@@ -5,6 +5,7 @@ using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Operations.Interfaces
 {
+    /// <summary/>
     public interface IGroupParticipantOperations
     {
         

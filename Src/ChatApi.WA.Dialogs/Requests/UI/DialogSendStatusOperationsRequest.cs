@@ -1,29 +1,38 @@
 ﻿using System;
-
 using ChatApi.Core.Helpers;
 using ChatApi.Core.Models;
 using ChatApi.WA.Dialogs.Requests.UI.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Requests.UI
 {
+    /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.UI.Interfaces.IDialogSendStatusOperationsRequest" />
     public abstract class DialogSendStatusOperationsRequest : Printable, IDialogSendStatusOperationsRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Phone { get; set; }
+        
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        
+        /// <inheritdoc />
         public uint? Duration { get; set; }
+        
+        /// <inheritdoc />
         public bool? EnableStatusDisplay { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IDialogSendStatusOperationsRequest? other) => other is not null && 
-            string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
-            string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
-            Duration == other.Duration && EnableStatusDisplay == other.EnableStatusDisplay;
+                                                                         string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
+                                                                         string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
+                                                                         Duration == other.Duration && EnableStatusDisplay == other.EnableStatusDisplay;
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -31,6 +40,7 @@ namespace ChatApi.WA.Dialogs.Requests.UI
             return ReferenceEquals(this, obj) || obj is IDialogSendStatusOperationsRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -43,13 +53,16 @@ namespace ChatApi.WA.Dialogs.Requests.UI
             }
         }
 
+        /// <summary/>
         public static bool operator == (DialogSendStatusOperationsRequest? left, DialogSendStatusOperationsRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (DialogSendStatusOperationsRequest? left, DialogSendStatusOperationsRequest? right) => !EquatableHelper.IsEquatable(left, right);        
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Phone), Phone, shift);

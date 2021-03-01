@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Models.Interfaces
 {
+    /// <summary/>
     public interface IDeviceCharacteristic: IEquatable<IDeviceCharacteristic?>, IPrintable
     {
         /// <summary>

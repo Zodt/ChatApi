@@ -5,18 +5,23 @@ using ChatApi.WA.Queues.Responses.Interfaces;
 
 namespace ChatApi.WA.Queues.Responses
 {
+    /// <summary/>
     public sealed class ClearMessagesQueueResponse : Printable, IClearMessagesQueueResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Message { get; set; }
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        /// <inheritdoc />
         public MessageTextBodyCollection? MessagesCollection { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IClearMessagesQueueResponse? other)
         {
             return other is not null && 
@@ -25,11 +30,13 @@ namespace ChatApi.WA.Queues.Responses
                    MessagesCollection == other.MessagesCollection;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IClearMessagesQueueResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -41,13 +48,16 @@ namespace ChatApi.WA.Queues.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (ClearMessagesQueueResponse? left, ClearMessagesQueueResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (ClearMessagesQueueResponse? left, ClearMessagesQueueResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Message), Message, shift);
