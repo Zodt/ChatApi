@@ -17,10 +17,10 @@
         <Authors>Roman Vorontsov</Authors>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageIcon>ChatApi.png</PackageIcon>
-        <PackageVersion>1.0.1-alpha</PackageVersion>
+        <PackageVersion>1.0.1</PackageVersion>
         <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
         <Description>
-            ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com
+            ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com.
         </Description>
         <ReleaseNotes>
             1. Refactoring code
