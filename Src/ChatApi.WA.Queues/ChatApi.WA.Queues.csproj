@@ -17,10 +17,11 @@
         <Authors>Roman Vorontsov</Authors>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageIcon>ChatApi.png</PackageIcon>
-        <PackageVersion>1.0.1-alpha</PackageVersion>
+        <PackageVersion>1.0.1</PackageVersion>
         <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
         <Description>
-            ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com
+            ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com.
+            `ChatApi.WA.Queues` allows you to work directly with queues, performing operations such as: receiving messages or actions that are in the message queue, as well as clearing queues.
         </Description>
         <ReleaseNotes>
             1. Refactoring code
