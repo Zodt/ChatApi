@@ -1,19 +1,13 @@
 ﻿using System;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ChatApi.Core.Models.Interfaces;
-
-using ChatApi.Instances.Models;
+using ChatApi.Instances.Models.Interfaces;
 
 namespace ChatApi.Instances.Requests.Interfaces
 {
-    public interface IChatApiCreateInstanceRequest : IChatApiKey, IEquatable<IChatApiCreateInstanceRequest?>
+    /// <summary/>
+    public interface IChatApiCreateInstanceRequest : IChatApiKey, IChatApiInstanceType, IEquatable<IChatApiCreateInstanceRequest?>
     {
+        /// <inheritdoc cref="IChatApiKey.ApiKey" />
         new string? ApiKey { get; internal set; }
-        
-        [JsonProperty("type")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ChatApiInstanceType Type { get; set; }
     }
 }

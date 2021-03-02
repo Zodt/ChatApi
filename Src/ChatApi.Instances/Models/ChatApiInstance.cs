@@ -4,21 +4,37 @@ using ChatApi.Instances.Models.Interfaces;
 
 namespace ChatApi.Instances.Models
 {
+    /// <summary/>
     public sealed class ChatApiInstance : IChatApiInstance
     {
         #region Properties
 
-        public string? Instance { get; set; }
-        public string? ApiUrl { get; set; }
-        public DateTime? PaidTill { get; set; }
-        public int? PaymentsCount { get; set; }
-        public bool? IsActive { get; set; }
-        public ChatApiInstanceType? TypeInstance { get; set; }
+        /// <inheritdoc />
         public string? Name { get; set; }
+
+        /// <inheritdoc />
+        public bool? IsActive { get; set; }
+
+        /// <inheritdoc />
+        public string? ApiUrl { get; set; }
+
+        /// <inheritdoc />
+        public string? Instance { get; set; }
+
+        /// <inheritdoc />
+        public DateTime? PaidTill { get; set; }
+
+        /// <inheritdoc />
+        public int? PaymentsCount { get; set; }
+
+        /// <inheritdoc />
+        public ChatApiInstanceType? TypeInstance { get; set; }
 
         #endregion
 
         #region Equatable
+        
+        /// <inheritdoc />
         public bool Equals(IChatApiInstance? other)
         {
             return other is not null && PaidTill == other.PaidTill && IsActive == other.IsActive &&
@@ -28,8 +44,10 @@ namespace ChatApi.Instances.Models
                    TypeInstance == other.TypeInstance && PaymentsCount == other.PaymentsCount;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is IChatApiInstance other && Equals(other);
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -45,7 +63,9 @@ namespace ChatApi.Instances.Models
             }
         }
 
+        /// <summary/>
         public static bool operator == (ChatApiInstance? left, ChatApiInstance? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (ChatApiInstance? left, ChatApiInstance? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion

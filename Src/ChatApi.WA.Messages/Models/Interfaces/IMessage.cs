@@ -1,13 +1,13 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Converters;
 using ChatApi.Core.Models;
 using ChatApi.Core.Models.Interfaces;
-using UnixDateTimeConverter = ChatApi.Core.Converters.UnixDateTimeConverter;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Messages.Models.Interfaces
 {
-    public interface IMessage : IChatId, IEquatable<IMessage?>
+    /// <summary/>
+    public interface IMessage : IChatId, IEquatable<IMessage?>, IPrintable
     {
         /// <summary>
         ///     Unique id of the message

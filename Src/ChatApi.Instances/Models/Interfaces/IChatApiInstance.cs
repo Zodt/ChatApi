@@ -1,29 +1,36 @@
 ﻿using System;
 using ChatApi.Core.Converters;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using UnixDateTimeConverter = ChatApi.Core.Converters.UnixDateTimeConverter;
 
 namespace ChatApi.Instances.Models.Interfaces
 {
-    public interface IChatApiInstance : IChatApiInstanceId, IChatApiInstanceUrl, IEquatable<IChatApiInstance?>
+    /// <summary/>
+    public interface IChatApiInstance : IChatApiInstanceId, IChatApiInstanceUrl, IChatApiInstanceType, IEquatable<IChatApiInstance?>
     {
-        [JsonProperty("paidTill")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        DateTime? PaidTill { get; set; }
+        /// <summary>
+        ///     The name of the instance <br/> <b>Can be empty</b>
+        /// </summary>
+        [JsonProperty("name")]
+        string? Name { get; set; }
 
-        [JsonProperty("paymentsCount")]
-        int? PaymentsCount { get; set; }
-
+        /// <summary>
+        ///     An indicator of the activity instance
+        /// </summary>
         [JsonProperty("stopped")]
         [JsonConverter(typeof(NegativeBoolConverter))]
         bool? IsActive { get; set; }
 
-        [JsonProperty("type")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        ChatApiInstanceType? TypeInstance { get; set; }
+        /// <summary>
+        ///     Number of paid months
+        /// </summary>
+        [JsonProperty("paymentsCount")]
+        int? PaymentsCount { get; set; }
 
-        [JsonProperty("name")]
-        string? Name { get; set; }
+        /// <summary>
+        ///     End date of the paid period
+        /// </summary>
+        [JsonProperty("paidTill")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        DateTime? PaidTill { get; set; }
     }
 }

@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
-using ChatApi.Core.Converters;
+﻿using ChatApi.Core.Converters;
 using ChatApi.WA.Messages.Collections;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Messages.Requests.Interfaces
 {
+    /// <summary/>
     public interface IMentionedPhones
     {
         /// <summary>

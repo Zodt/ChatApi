@@ -5,6 +5,7 @@ using ChatApi.WA.Dialogs.Responses.UI.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Operations.Interfaces
 {
+    /// <summary/>
     public interface IWhatsAppBusinessOperations
     {
         /// <summary>

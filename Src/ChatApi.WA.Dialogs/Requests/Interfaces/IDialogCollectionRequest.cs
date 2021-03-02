@@ -3,6 +3,7 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Requests.Interfaces
 {
+    /// <summary/>
     public interface IDialogCollectionRequest : IEquatable<IDialogCollectionRequest?>, IParameters
     {
         /// <summary>

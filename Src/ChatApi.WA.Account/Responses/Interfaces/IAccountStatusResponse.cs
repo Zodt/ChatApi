@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 {
+    /// <summary/>
     public interface IAccountStatusResponse : IAccountStatus, IEquatable<IAccountStatusResponse?>
     {
         /// <summary>

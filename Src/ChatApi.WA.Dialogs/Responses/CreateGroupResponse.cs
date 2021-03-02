@@ -5,20 +5,31 @@ using ChatApi.WA.Dialogs.Responses.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.ICreateGroupResponse" />
     public sealed class CreateGroupResponse : Printable, ICreateGroupResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public bool? Created { get; set; }
+        
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        
+        /// <inheritdoc />
         public string? Message { get; set; }
+        
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        
+        /// <inheritdoc />
         public string? GroupInviteLink { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(ICreateGroupResponse? other)
         {
             return other is not null && Created == other.Created &&
@@ -28,11 +39,13 @@ namespace ChatApi.WA.Dialogs.Responses
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is CreateGroupResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -46,13 +59,16 @@ namespace ChatApi.WA.Dialogs.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (CreateGroupResponse? left, CreateGroupResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (CreateGroupResponse? left, CreateGroupResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Created), Created, shift);

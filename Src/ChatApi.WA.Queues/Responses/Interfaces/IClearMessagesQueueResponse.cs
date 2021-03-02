@@ -1,10 +1,11 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Queues.Collections;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
+    /// <summary/>
     public interface IClearMessagesQueueResponse : IErrorResponse, IEquatable<IClearMessagesQueueResponse?>, IPrintable
     {
         /// <summary>

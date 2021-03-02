@@ -6,17 +6,25 @@ using ChatApi.Core.Response.Interfaces;
 
 namespace ChatApi.Core.Response
 {
+    /// <inheritdoc/>
     public readonly struct ChatApiResponse<T> : IChatApiResponse<T?>
     {
         private readonly T? _value;
 
+        /// <inheritdoc />
         public bool IsSuccess => true;
+        /// <inheritdoc />
         public Exception? Exception => null;
 
         private ChatApiResponse(T? value) => _value = value;
         
+        /// <inheritdoc />
         public T? GetResult() => _value;
 
+        /// <summary>
+        ///     The creation of a intermediary
+        /// </summary>
+        /// <param name="resultFunc">Client operation</param>
         public static IChatApiResponse<T?> CreateInstance(Func<T?> resultFunc)
         {
             T? value;
@@ -29,16 +37,21 @@ namespace ChatApi.Core.Response
             {
                 for (int index = 0; index < e.InnerExceptions.Count; index++)
                     if (e.InnerExceptions[index] is WebException webException)
-                        return new WhatsAppBadResponse<T>(webException);
-                return new WhatsAppResultError<T?>(e);
+                        return new ChatApiBadResponse<T>(webException);
+                return new ChatApiResultError<T?>(e);
             }
-            catch (WebException e) { return new WhatsAppBadResponse<T>(e); }
-            catch (Exception e) { return new WhatsAppResultError<T>(e); }
+            catch (WebException e) { return new ChatApiBadResponse<T>(e); }
+            catch (Exception e) { return new ChatApiResultError<T>(e); }
 
             ChatApiResponse<T?> chatApiResponse = new(value);
             return chatApiResponse;
         }
         
+        /// <summary>
+        ///     The creation of a intermediary
+        /// </summary>
+        /// <param name="responseFuncAsync">Client operation</param>
+        /// <param name="continuation">Continuation of the client's operation</param>
         public static Task<IChatApiResponse<T?>> CreateInstanceAsync(
             Func<Task<string>> responseFuncAsync, 
             Func<string, T> continuation)
@@ -57,8 +70,8 @@ namespace ChatApi.Core.Response
                 
                 return task;
             }
-            catch (WebException e) { task = new Task<IChatApiResponse<T?>>(() => new WhatsAppBadResponse<T?>(e)); }
-            catch (Exception e) { task = new Task<IChatApiResponse<T?>>(() => new WhatsAppResultError<T?>(e)); }
+            catch (WebException e) { task = new Task<IChatApiResponse<T?>>(() => new ChatApiBadResponse<T?>(e)); }
+            catch (Exception e) { task = new Task<IChatApiResponse<T?>>(() => new ChatApiResultError<T?>(e)); }
 
             return task;
         }

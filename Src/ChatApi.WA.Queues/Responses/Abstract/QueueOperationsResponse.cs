@@ -5,25 +5,40 @@ using ChatApi.WA.Queues.Responses.Abstract.Interfaces;
 
 namespace ChatApi.WA.Queues.Responses.Abstract
 {
+    /// <inheritdoc />
     public abstract class QueueOperationsResponse : IQueueOperationsResponse
     {
+        #region Properties
+
+        /// <inheritdoc />
         public int? Id { get; set; }
+        
+        /// <inheritdoc />
         public ActionType? Type { get; set; }
+        
+        /// <inheritdoc />
         public DateTime? LastTimeTrySend { get; set; }
 
+        #endregion
+
+        #region Equatable
+
+        /// <inheritdoc />
         public bool Equals(IQueueOperationsResponse? other)
         {
             return other is not null && 
-                Id == other.Id && 
-                Type == other.Type && 
-                LastTimeTrySend == other.LastTimeTrySend;
+                   Id == other.Id && 
+                   Type == other.Type && 
+                   LastTimeTrySend == other.LastTimeTrySend;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IQueueOperationsResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -35,7 +50,11 @@ namespace ChatApi.WA.Queues.Responses.Abstract
             }
         }
 
+        /// <summary/>
         public static bool operator == (QueueOperationsResponse? left, QueueOperationsResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (QueueOperationsResponse? left, QueueOperationsResponse? right) => !EquatableHelper.IsEquatable(left, right);
+
+        #endregion
     }
 }

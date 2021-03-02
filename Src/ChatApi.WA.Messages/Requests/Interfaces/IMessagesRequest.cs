@@ -1,11 +1,12 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Converters;
 using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Messages.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Messages.Requests.Interfaces
 {
+    /// <summary/>
     public interface IMessagesRequest : IChatId, ILastMessageNumber, IParameters, IEquatable<IMessagesRequest>
     {
         /// <summary>

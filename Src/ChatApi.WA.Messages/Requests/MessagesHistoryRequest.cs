@@ -4,16 +4,23 @@ using ChatApi.WA.Messages.Requests.Interfaces;
 
 namespace ChatApi.WA.Messages.Requests
 {
+    /// <inheritdoc />
     public sealed class MessagesHistoryRequest : IMessagesHistoryRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public int? Page { get; set; }
+        
+        /// <inheritdoc />
         public int? Count { get; set; }
+        
+        /// <inheritdoc />
         public string? ChatId { get; set; }
 
         #endregion
 
+        /// <inheritdoc />
         public string Parameters
         {
             get
@@ -30,6 +37,7 @@ namespace ChatApi.WA.Messages.Requests
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IMessagesHistoryRequest? other)
         {
             return other is not null &&
@@ -38,11 +46,13 @@ namespace ChatApi.WA.Messages.Requests
                    Count == other.Count;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IMessagesHistoryRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -54,7 +64,9 @@ namespace ChatApi.WA.Messages.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (MessagesHistoryRequest? left, MessagesHistoryRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (MessagesHistoryRequest? left, MessagesHistoryRequest? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion

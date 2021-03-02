@@ -2,5 +2,6 @@
 
 namespace ChatApi.WA.Dialogs.Helpers.Collections
 {
+    /// <summary/>
     public class PhonesCollection : WhatsAppApiCollection<string> { }
 }

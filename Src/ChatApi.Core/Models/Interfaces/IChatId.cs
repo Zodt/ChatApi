@@ -2,6 +2,7 @@
 
 namespace ChatApi.Core.Models.Interfaces
 {
+    /// <summary/>
     public interface IChatId
     {
         /// <summary>

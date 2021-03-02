@@ -4,6 +4,7 @@ using ChatApi.WA.Queues.Responses.Interfaces;
 
 namespace ChatApi.WA.Queues
 {
+    /// <summary/>
     public interface IQueueOperations
     {
         /// <summary>

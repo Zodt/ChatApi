@@ -12,7 +12,7 @@ This method is available in both synchronous and asynchronous implementations.
 ## Response
 | `Parameter`           | `Description`                                           | `The data type of the parameter` | 
 |:---------------------:|:--------------------------------------------------------|:--------------------------------:|
-| `Read`                | The status of the request.                              | `Boolean`                        |
+| `Read`                | Message readability indicator                           | `Boolean`                        |
 | `ChatId`              | Unique ID of the dialog.                                | `String`                         |
 | `Message`             | Dialog reading status                                   | `String`                         |
 

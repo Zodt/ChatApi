@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using WhatsAppApi.Core.Interfaces;
+﻿using ChatApi.Core.Models.Interfaces;
 
-namespace WhatsAppApi.Messages.Requests.Interfaces
+namespace ChatApi.WA.Messages.Requests.Interfaces
 {
+    /// <summary/>
     public interface IMessageRequest : IChatId, IPhone { }
 }

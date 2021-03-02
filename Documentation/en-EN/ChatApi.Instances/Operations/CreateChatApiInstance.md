@@ -10,7 +10,7 @@ This method is available in both synchronous and asynchronous implementations.
 ## Response
 |  `Parameter`          | `Description`              | `The data type of the parameter` | 
 |:---------------------:|:---------------------------|:--------------------------------:|
-| `Result`              | Execution result           | `IChatApiCreateInstanceResult`
+| `Result`              | Result of creating a Chat Api instance           | `IChatApiCreateInstanceResult`
 
 ## Parameters of the `IChatApiCreateInstanceResult`
 |  `Parameter`           | `Description`                                        | `The data type of the parameter` | 

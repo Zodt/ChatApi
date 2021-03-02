@@ -2,27 +2,51 @@
 
 namespace ChatApi.Core.Models
 {
+    /// <summary>
+    ///     Type of the message
+    /// </summary>
     public enum MessageType : byte
     {
+        /// <summary/>
         NotFoundType,
+        
+        /// <summary/>
         [EnumMember(Value = "chat")]
-        Chat = 1,
+        TextMessage = 1,
+        
+        /// <summary/>
         [EnumMember(Value = "image")]
         Image = 2,
+        
+        /// <summary/>
         [EnumMember(Value = "ptt")]
         Voice = 3,
+        
+        /// <summary/>
         [EnumMember(Value = "document")]
         Document = 4,
+        
+        /// <summary/>
         [EnumMember(Value = "audio")]
         Audio = 5,
+        
+        /// <summary/>
         [EnumMember(Value = "video")]
         Video = 6,
+        
+        /// <summary/>
         [EnumMember(Value = "location")]
         Location = 7,
+        
+        /// <summary/>
         [EnumMember(Value = "vcard")]
         Contact = 8,
+        
+        /// <summary/>
         [EnumMember(Value = "multi_vcard")]
         Contacts = 9,
+        
+        /// <summary/>
         [EnumMember(Value = "call_log")]
         CallLog = 10
     }

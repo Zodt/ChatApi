@@ -6,29 +6,38 @@ using ChatApi.WA.Messages.Responses.Interfaces;
 
 namespace ChatApi.WA.Messages.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Messages.Responses.Interfaces.IMessagesHistoryResponse" />
     public sealed class MessagesHistoryResponse : Printable, IMessagesHistoryResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public int? Page { get; set; }
+        
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        
+        /// <inheritdoc />
         public MessageCollection? Messages { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IMessagesHistoryResponse? other)
         {
             return other is not null && Messages == other.Messages && Page == other.Page &&
                 string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IMessagesHistoryResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -40,13 +49,16 @@ namespace ChatApi.WA.Messages.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator ==(MessagesHistoryResponse? left, MessagesHistoryResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator !=(MessagesHistoryResponse? left, MessagesHistoryResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Page), Page, shift);

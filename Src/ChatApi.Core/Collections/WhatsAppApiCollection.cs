@@ -10,10 +10,16 @@ using ChatApi.Core.Models.Interfaces;
 
 namespace ChatApi.Core.Collections
 {
+    /// <summary>Provides the base class for a generic WhatsApp-collection.</summary>
+    /// <typeparam name="T">The type of elements in the collection.</typeparam>
     public abstract class WhatsAppApiCollection<T> : Collection<T?>, IPrintableCollection, IEquatable<Collection<T?>?> where T : class, IEquatable<T?>
     {
         #region Overridden collection methods
 
+        /// <summary>
+        ///     Adds an object to the end of the <see cref="T:System.Collections.ObjectModel.Collection`1"></see>.
+        /// </summary>
+        /// <param name="item">The object to be added to the end of the <see cref="T:System.Collections.ObjectModel.Collection`1"></see>. The value can be null for reference types.</param>
         public new void Add(T item)
         {
             if (Items.Contains(item)) return;
@@ -22,39 +28,71 @@ namespace ChatApi.Core.Collections
 
         #region AddRange
 
-        public void AddRange(IEnumerable<T> enumerable)
+        /// <summary>
+        ///     Adds the elements of the specified collection to the end of the <see cref="T:System.Collections.Generic.IEnumerable`1"></see>.
+        /// </summary>
+        /// <param name="collection">The collection whose elements should be added to the end of the <see cref="T:System.Collections.Generic.IEnumerable`1"></see>. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="collection">collection</paramref> is null.</exception>
+        public void AddRange(IEnumerable<T> collection)
         {
-            IList<T> list = enumerable.ToList();
+            if (collection is null) throw new ArgumentNullException(nameof(collection));
+
+            IList<T> list = collection.ToList();
             // ReSharper disable once ForCanBeConvertedToForeach
             for (int i = 0; i < list.Count; i++)
                 if (!Items.Contains(list[i])) 
                     base.Add(list[i]);
         }
-        public void AddRange(IList<T> enumerable)
+ 
+        /// <summary>
+        ///     Adds the elements of the specified collection to the end of the <see cref="T:System.Collections.Generic.IList`1"></see>.
+        /// </summary>
+        /// <param name="collection">The collection whose elements should be added to the end of the <see cref="T:System.Collections.Generic.IList`1"></see>. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="collection">collection</paramref> is null.</exception>
+        public void AddRange(IList<T>? collection)
         {
+            if (collection is null) throw new ArgumentNullException(nameof(collection));
+
             // ReSharper disable once ForCanBeConvertedToForeach
-            for (int i = 0; i < enumerable.Count; i++)
-                if (!Items.Contains(enumerable[i])) 
-                    base.Add(enumerable[i]);
+            for (int i = 0; i < collection.Count; i++)
+                if (!Items.Contains(collection[i])) 
+                    base.Add(collection[i]);
         }
-        public void AddRange(ICollection<T> enumerable)
+        /// <summary>
+        ///     Adds the elements of the specified collection to the end of the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+        /// </summary>
+        /// <param name="collection">The collection whose elements should be added to the end of the <see cref="T:System.Collections.Generic.ICollection`1"></see>. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="collection">collection</paramref> is null.</exception>
+        public void AddRange(ICollection<T> collection)
         {
-            IList<T> list = enumerable.ToList();
+            if (collection is null) throw new ArgumentNullException(nameof(collection));
+            IList<T> list = collection.ToList();
             // ReSharper disable once ForCanBeConvertedToForeach
             for (int i = 0; i < list.Count; i++)
                 if (!Items.Contains(list[i]))
                     base.Add(list[i]);
         }
-        public void AddRange(IReadOnlyList<T> enumerable)
+        /// <summary>
+        ///     Adds the elements of the specified collection to the end of the <see cref="T:System.Collections.Generic.IReadOnlyList`1"></see>.
+        /// </summary>
+        /// <param name="collection">The collection whose elements should be added to the end of the <see cref="T:System.Collections.Generic.IReadOnlyList`1"></see>. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="collection">collection</paramref> is null.</exception>
+        public void AddRange(IReadOnlyList<T> collection)
         {
+            if (collection is null) throw new ArgumentNullException(nameof(collection));
             // ReSharper disable once ForCanBeConvertedToForeach
-            for (int i = 0; i < enumerable.Count; i++)
-                if (!Items.Contains(enumerable[i]))
-                    base.Add(enumerable[i]);
+            for (int i = 0; i < collection.Count; i++)
+                if (!Items.Contains(collection[i]))
+                    base.Add(collection[i]);
         }
-        public void AddRange(IReadOnlyCollection<T> enumerable)
+        /// <summary>
+        ///     Adds the elements of the specified collection to the end of the <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"></see>.
+        /// </summary>
+        /// <param name="collection">The collection whose elements should be added to the end of the <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"></see>. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="collection">collection</paramref> is null.</exception>
+        public void AddRange(IReadOnlyCollection<T> collection)
         {
-            IList<T> list = enumerable.ToList();
+            IList<T> list = collection.ToList();
             // ReSharper disable once ForCanBeConvertedToForeach
             for (int i = 0; i < list.Count; i++)
                 if (!Items.Contains(list[i]))
@@ -68,6 +106,7 @@ namespace ChatApi.Core.Collections
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(Collection<T?>? other)
         {
             if (other is null || other.Count != Count) return false;
@@ -88,6 +127,7 @@ namespace ChatApi.Core.Collections
             return true;
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -102,8 +142,22 @@ namespace ChatApi.Core.Collections
             }
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is Collection<T?> self && Equals(self);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator == (WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator != (WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
@@ -128,6 +182,7 @@ namespace ChatApi.Core.Collections
             return stringBuilder.ToString();
         }
         
+        /// <inheritdoc />
         public string PrintMembers()
         {
             int shift = default;
@@ -155,6 +210,7 @@ namespace ChatApi.Core.Collections
 
             return _stringBuilder.ToString();
         }        
+        /// <inheritdoc />
         public string PrintMembers(int shift)
         {
             _stringBuilder.AppendLine("[");
@@ -167,11 +223,11 @@ namespace ChatApi.Core.Collections
             int maxPrint = Count >= 3 ? 3 : Count;
 
             string currentShift = GetShift(++shift);
-            if (this[0] is Printable)
+            if (this[0] is IPrintable)
                 for (int i = 0; i <= maxPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat((this[i] as Printable)!.PrintMembers(shift-1), ", "));
             
-            else if (this[0] is string || !typeof(T).IsInterface)   
+            else if (!typeof(T).IsInterface || !typeof(T).IsClass)   
                 for (int i = 0; i <= maxPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat(currentShift, this[i], ", "));
 
@@ -184,6 +240,7 @@ namespace ChatApi.Core.Collections
             return _stringBuilder.ToString();
         }
 
+        /// <inheritdoc />
         public string PrintMembers(int countElementPrint, int shift)
         {
             _stringBuilder.AppendLine("[");

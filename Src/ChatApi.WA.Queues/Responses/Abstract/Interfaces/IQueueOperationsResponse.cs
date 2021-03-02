@@ -1,10 +1,11 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Converters;
 using ChatApi.Core.Models;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Queues.Responses.Abstract.Interfaces
 {
+    /// <summary/>
     public interface IQueueOperationsResponse : IEquatable<IQueueOperationsResponse?>
     {
         /// <summary>

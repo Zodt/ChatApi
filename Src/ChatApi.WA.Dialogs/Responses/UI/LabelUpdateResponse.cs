@@ -5,22 +5,30 @@ using ChatApi.WA.Dialogs.Responses.UI.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Responses.UI
 {
+    /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.ILabelUpdateResponse" />
     public sealed class LabelUpdateResponse : Printable, ILabelUpdateResponse
     {
         #region Properties
 
-        public string? ErrorMessage { get; set; }
-        public string? Result { get; set; }
+        //Rewrite in the future maybe
+        /// <inheritdoc />
         public bool? Success
         {
             get => string.Equals(Result, "success", StringComparison.Ordinal); 
             set { } 
         }
 
+        /// <inheritdoc />
+        public string? Result { get; set; }
+
+        /// <inheritdoc />
+        public string? ErrorMessage { get; set; }
+
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(ILabelUpdateResponse? other)
         {
             return other is not null && Success == other.Success &&
@@ -28,8 +36,10 @@ namespace ChatApi.WA.Dialogs.Responses.UI
                    string.Equals(Result, other.Result, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is ILabelUpdateResponse other && Equals(other);
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -41,13 +51,16 @@ namespace ChatApi.WA.Dialogs.Responses.UI
             }
         }
 
+        /// <summary/>
         public static bool operator == (LabelUpdateResponse? left, LabelUpdateResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (LabelUpdateResponse? left, LabelUpdateResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Result), Result, shift);

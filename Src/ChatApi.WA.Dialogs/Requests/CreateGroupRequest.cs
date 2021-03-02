@@ -5,21 +5,29 @@ using ChatApi.WA.Dialogs.Requests.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Requests
 {
+    /// <summary/>
     public sealed class CreateGroupRequest : Printable, ICreateGroupRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Avatar { get; set; }
+        /// <inheritdoc />
         public string? Preview { get; set; }
+        /// <inheritdoc />
         public string? GroupName { get; set; }
+        /// <inheritdoc />
         public string? MessageText { get; set; }
+        /// <inheritdoc />
         public PhonesCollection? Phones { get; set; }
+        /// <inheritdoc />
         public ChatIdsCollection? ChatIds { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(ICreateGroupRequest? other)
         {
             return other is not null &&
@@ -32,11 +40,13 @@ namespace ChatApi.WA.Dialogs.Requests
                    MessageText == other.MessageText;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is ICreateGroupRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -53,13 +63,16 @@ namespace ChatApi.WA.Dialogs.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (CreateGroupRequest? left, CreateGroupRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (CreateGroupRequest? left, CreateGroupRequest? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Avatar), Avatar, shift);

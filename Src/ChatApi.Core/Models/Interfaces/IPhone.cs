@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.Core.Models.Interfaces
 {
+    /// <summary/>
     public interface IPhone
     {
         /// <summary>

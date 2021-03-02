@@ -1,10 +1,11 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
 { /* ReSharper disable once InconsistentNaming */
     
+    /// <summary/>
     public interface IOutputIPAddressResponse : IErrorResponse, IEquatable<IOutputIPAddressResponse?>, IPrintable
     {
         /// <summary>

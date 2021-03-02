@@ -5,30 +5,47 @@ using ChatApi.WA.Messages.Models.Interfaces;
 
 namespace ChatApi.WA.Messages.Models
 {
-    public sealed class Message : IMessage
+    /// <inheritdoc cref="ChatApi.WA.Messages.Models.Interfaces.IMessage" />
+    public sealed class Message : Printable, IMessage
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        /// <inheritdoc />
         public string? Id { get; set; }
+        /// <inheritdoc />
         public string? Body { get; set; }
+        /// <inheritdoc />
         public MessageType? Type { get; set; }
+        /// <inheritdoc />
         public string? SenderName { get; set; }
+        /// <inheritdoc />
         public bool? FromMe { get; set; }
+        /// <inheritdoc />
         public string? Author { get; set; }
+        /// <inheritdoc />
         public DateTime? Time { get; set; }
+        /// <inheritdoc />
         public int? MessageNumber { get; set; }
+        /// <inheritdoc />
         public int? Self { get; set; }
+        /// <inheritdoc />
         public int? IsForwarded { get; set; }
+        /// <inheritdoc />
         public string? QuotedMessageBody { get; set; }
+        /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
+        /// <inheritdoc />
         public MessageType? QuotedMessageType { get; set; }
+        /// <inheritdoc />
         public string? ChatName { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IMessage? other)
         {
             return other is not null &&
@@ -51,6 +68,7 @@ namespace ChatApi.WA.Messages.Models
                    ChatName == other.ChatName;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -58,6 +76,7 @@ namespace ChatApi.WA.Messages.Models
             return obj is IMessage message && Equals(message);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -81,8 +100,33 @@ namespace ChatApi.WA.Messages.Models
             }
         }
 
+        /// <summary/>
         public static bool operator == (Message? left, Message? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (Message? left, Message? right) => !EquatableHelper.IsEquatable(left, right); 
+
+        #endregion
+
+        #region Printable
+
+        /// <inheritdoc />
+        protected override void PrintContent(int shift)
+        {
+            AddMember(nameof(Id), Id, shift);
+            AddMember(nameof(ChatId), ChatId, shift);
+            AddMember(nameof(ChatName), ChatName, shift);
+            AddMember(nameof(Time), Time, shift);
+            AddMember(nameof(Type), Type, shift);
+            AddMember(nameof(Body), Body, shift);
+            AddMember(nameof(Self), Self, shift);
+            AddMember(nameof(FromMe), FromMe, shift);
+            AddMember(nameof(Author), Author, shift);
+            AddMember(nameof(IsForwarded), IsForwarded, shift);
+            AddMember(nameof(QuotedMessageBody), QuotedMessageBody, shift);
+            AddMember(nameof(QuotedMessageId), QuotedMessageId, shift);
+            AddMember(nameof(QuotedMessageType), QuotedMessageType, shift);
+            AddMember(nameof(MessageNumber), MessageNumber, shift);
+        }
 
         #endregion
     }

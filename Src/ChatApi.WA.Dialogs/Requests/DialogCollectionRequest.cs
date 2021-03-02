@@ -4,15 +4,17 @@ using ChatApi.WA.Dialogs.Requests.Interfaces;
 
 namespace ChatApi.WA.Dialogs.Requests
 {
+    /// <inheritdoc />
     public sealed class DialogCollectionRequest : IDialogCollectionRequest
     {
+        #region Properties
+
+        /// <inheritdoc />
         public int Page { get; set; }
+        /// <inheritdoc />
         public int Limit { get; set; }
 
-        public DialogCollectionRequest() { }
-        public DialogCollectionRequest(int limit) => Limit = limit;
-        public DialogCollectionRequest(int limit, int page) => (Limit, Page) = (limit, page);
-        
+        /// <inheritdoc />
         public string Parameters
         {
             get
@@ -22,8 +24,26 @@ namespace ChatApi.WA.Dialogs.Requests
                 stringBuilder.Append(string.Concat("&", nameof(Page).ToLower(), "=", Page));
                 return stringBuilder.ToString();
             }
-        }        
-        
+        }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary/>
+        public DialogCollectionRequest() { }
+
+        /// <summary/>
+        public DialogCollectionRequest(int limit) => Limit = limit;
+
+        /// <summary/>
+        public DialogCollectionRequest(int limit, int page) => (Limit, Page) = (limit, page);
+
+        #endregion
+
+        #region Equatable
+
+        /// <inheritdoc />
         public bool Equals(IDialogCollectionRequest? other)
         {
             return other is not null &&
@@ -31,11 +51,13 @@ namespace ChatApi.WA.Dialogs.Requests
                    Limit == other.Limit;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
             return ReferenceEquals(this, obj) || obj is DialogCollectionRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -44,9 +66,11 @@ namespace ChatApi.WA.Dialogs.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (DialogCollectionRequest? left, DialogCollectionRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (DialogCollectionRequest? left, DialogCollectionRequest? right) => !EquatableHelper.IsEquatable(left, right);
 
-
+        #endregion
     }
 }

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Ban.Models.Interfaces
 {
+    /// <summary/>
     public interface IBanSettings : IEquatable<IBanSettings?>, IPrintable
     {
         /// <summary>

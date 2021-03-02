@@ -2,5 +2,6 @@
 
 namespace ChatApi.WA.Messages.Collections
 {
+    /// <summary/>
     public class MentionedPhonesCollection : WhatsAppApiCollection<string> { }
 }

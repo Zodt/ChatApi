@@ -1,11 +1,11 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Converters;
-using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Messages.Collections;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Messages.Requests.Interfaces
 {
+    /// <summary/>
     public interface IForwardMessageRequest : IMessageRequest, IEquatable<IForwardMessageRequest?>
     {
         /// <summary>

@@ -4,31 +4,49 @@ using ChatApi.WA.Account.Models.Interfaces;
 
 namespace ChatApi.WA.Account.Models
 {
+    /// <summary/>
     public class AccountSettings : Printable, IAccountSettings
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+        /// <inheritdoc />
         public int? SendDelay { get; set; }
+        /// <inheritdoc />
         public string? WebhookUrl { get; set; }
+        /// <inheritdoc />
         public bool? InstanceStatuses { get; set; }
+        /// <inheritdoc />
         public bool? WebhookStatuses { get; set; }
+        /// <inheritdoc />
         public bool? StatusNotificationsOn { get; set; }
+        /// <inheritdoc />
         public bool? AckNotificationsOn { get; set; }
+        /// <inheritdoc />
         public bool? ChatUpdateOn { get; set; }
+        /// <inheritdoc />
         public bool? VideoUploadOn { get; set; }
+        /// <inheritdoc />
         public string? Proxy { get; set; }
+        /// <inheritdoc />
         public bool? GuaranteedHooks { get; set; }
+        /// <inheritdoc />
         public bool? IgnoreOldMessages { get; set; }
+        /// <inheritdoc />
         public int? OldMessagesPeriod { get; set; }
+        /// <inheritdoc />
         public bool? ProcessArchive { get; set; }
+        /// <inheritdoc />
         public bool? DisableDialogsArchive { get; set; }
+        /// <inheritdoc />
         public bool? ParallelHooks { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IAccountSettings? other)
         {
             return other is not null &&  
@@ -50,11 +68,13 @@ namespace ChatApi.WA.Account.Models
                    ParallelHooks == other.ParallelHooks;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IAccountSettings other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -79,13 +99,16 @@ namespace ChatApi.WA.Account.Models
             }
         }
 
+        /// <summary/>
         public static bool operator == (AccountSettings? left, AccountSettings? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (AccountSettings? left, AccountSettings? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
         
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(SendDelay), SendDelay, shift);

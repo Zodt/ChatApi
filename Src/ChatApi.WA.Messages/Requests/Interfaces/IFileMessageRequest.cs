@@ -1,10 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json;
-using ChatApi.Core.Models.Interfaces;
 using ChatApi.WA.Messages.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Messages.Requests.Interfaces
 {
+    /// <summary/>
     public interface IFileMessageRequest : IMessageRequest, IQuotedMessage, IMentionedPhones, IEquatable<IFileMessageRequest?>
     {
         /// <summary>

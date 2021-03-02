@@ -5,6 +5,7 @@ using ChatApi.WA.Ban.Responses.Interfaces;
 
 namespace ChatApi.WA.Ban
 {
+    /// <summary/>
     public interface IBanOperations
     {
         /// <summary>

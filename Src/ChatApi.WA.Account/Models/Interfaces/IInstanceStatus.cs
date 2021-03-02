@@ -1,16 +1,17 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Models.Interfaces
 {
+    /// <summary/>
     public interface IInstanceStatus : IEquatable<IInstanceStatus?>, IPrintable
     {
         /// <summary>
         ///     Method name
         /// </summary>
         [JsonProperty("act", NullValueHandling = NullValueHandling.Ignore)]
-        InstanceStatusActionType? Action { get; set; } 
+        InstanceStatusActionType? ActionType { get; set; } 
 
         /// <summary>
         ///     Action caption for the button

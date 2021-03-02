@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Requests.Interfaces
 {
+    /// <summary/>
     public interface IChangeAccountNameRequest : IEquatable<IChangeAccountNameRequest?>
     {
         /// <summary>

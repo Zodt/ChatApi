@@ -1,25 +1,33 @@
-﻿using ChatApi.Core.Models;
-using ChatApi.Core.Helpers;
+﻿using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Account.Models.Interfaces;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Models
 {
+    /// <summary/>
     public sealed class AccountStatusData : Printable, IAccountStatusData
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Title { get; set; }
+        /// <inheritdoc />
         public string? Message { get; set; }
+        /// <inheritdoc />
         public string? SubMessage { get; set; }
+        /// <inheritdoc />
         public InstanceStatusType? SubStatus { get; set; }
+        /// <inheritdoc />
         public IAdditionInformationStatus? Actions { get; set; }
+        /// <inheritdoc />
         public InstanceConnectionStatusType? Reason { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IAccountStatusData other)
         {
             return Title == other.Title &&
@@ -30,11 +38,13 @@ namespace ChatApi.WA.Account.Models
                    Actions == other.Actions;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IAccountStatusData other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -49,13 +59,16 @@ namespace ChatApi.WA.Account.Models
             }
         }
 
+        /// <summary/>
         public static bool operator == (AccountStatusData? left, AccountStatusData? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (AccountStatusData? left, AccountStatusData? right) => !EquatableHelper.IsEquatable(left, right);
         
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Title), Title, shift);

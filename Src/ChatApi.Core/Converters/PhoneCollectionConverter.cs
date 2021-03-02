@@ -6,8 +6,10 @@ using Newtonsoft.Json;
 
 namespace ChatApi.Core.Converters
 {
+    /// <inheritdoc />
     public class PhoneCollectionConverter : JsonConverter<WhatsAppApiCollection<string>?>
     {
+        /// <inheritdoc />
         public override void WriteJson(JsonWriter writer, WhatsAppApiCollection<string>? value, JsonSerializer serializer)
         {
             if (value is null || !value.Any()) return;
@@ -24,6 +26,7 @@ namespace ChatApi.Core.Converters
             writer.WriteRawValue(JsonConvert.SerializeObject(value));
         }
 
+        /// <inheritdoc />
         public override WhatsAppApiCollection<string>? ReadJson(JsonReader reader, Type objectType, WhatsAppApiCollection<string>? existingValue,
             bool hasExistingValue, JsonSerializer serializer)
         {

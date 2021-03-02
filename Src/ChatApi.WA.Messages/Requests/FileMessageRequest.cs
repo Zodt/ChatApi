@@ -5,23 +5,33 @@ using ChatApi.WA.Messages.Requests.Interfaces;
 
 namespace ChatApi.WA.Messages.Requests
 {
+    /// <summary/>
     public sealed class FileMessageRequest : IFileMessageRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Body { get; set; }
+        /// <inheritdoc />
         public bool? Cached { get; set; }
+        /// <inheritdoc />
         public string? Phone { get; set; }
+        /// <inheritdoc />
         public string? ChatId { get; set; }
+        /// <inheritdoc />
         public string? Caption { get; set; }
+        /// <inheritdoc />
         public string? FileName { get; set; }
+        /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
+        /// <inheritdoc />
         public MentionedPhonesCollection? MentionedPhones { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IFileMessageRequest? other)
         {
             return other is not null && Cached == other.Cached &&
@@ -34,6 +44,7 @@ namespace ChatApi.WA.Messages.Requests
                 string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -42,6 +53,7 @@ namespace ChatApi.WA.Messages.Requests
             return obj is IFileMessageRequest request && Equals(request);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -58,7 +70,9 @@ namespace ChatApi.WA.Messages.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (FileMessageRequest? left, FileMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (FileMessageRequest? left, FileMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
 
         #endregion

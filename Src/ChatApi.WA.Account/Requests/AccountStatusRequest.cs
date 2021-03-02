@@ -1,14 +1,16 @@
 ﻿using System.Text;
-using ChatApi.Core.Models;
 using ChatApi.Core.Helpers;
+using ChatApi.Core.Models;
 using ChatApi.WA.Account.Requests.Interfaces;
 
 namespace ChatApi.WA.Account.Requests
 {
+    /// <summary/>
     public class AccountStatusRequest : Printable, IAccountStatusRequest
     {
         #region Properties
 
+        /// <inheritdoc />
         public string Parameters
         {
             get
@@ -30,13 +32,16 @@ namespace ChatApi.WA.Account.Requests
             }
         }
 
+        /// <inheritdoc />
         public bool? NoWakeup { get; set; }
+        /// <inheritdoc />
         public bool? GetFullInformation { get; set; }
 
         #endregion
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(IAccountStatusRequest? other)
         {
             return other is not null && 
@@ -44,11 +49,13 @@ namespace ChatApi.WA.Account.Requests
                    GetFullInformation == other.GetFullInformation;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is IAccountStatusRequest other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -60,13 +67,16 @@ namespace ChatApi.WA.Account.Requests
             }
         }
 
+        /// <summary/>
         public static bool operator == (AccountStatusRequest? left, AccountStatusRequest? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (AccountStatusRequest? left, AccountStatusRequest? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
 
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(NoWakeup), NoWakeup, shift);

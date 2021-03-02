@@ -2,5 +2,6 @@
 
 namespace ChatApi.WA.Dialogs.Requests.Interfaces
 {
+    /// <summary/>
     public interface IAddGroupParticipantRequest : IParticipantRequest { }
 }

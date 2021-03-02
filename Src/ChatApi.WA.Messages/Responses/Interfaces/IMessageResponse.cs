@@ -1,9 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json;
 using ChatApi.Core.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace ChatApi.WA.Messages.Responses.Interfaces
 {
+    /// <summary/>
     public interface IMessageResponse : IErrorResponse, IEquatable<IMessageResponse?>, IPrintable
     {
         /// <summary>

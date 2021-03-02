@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
+    /// <summary/>
     public interface IMessageQueue : IQueueOperationsResponse, IEquatable<IMessageQueue?>
     {
         /// <summary>

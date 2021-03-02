@@ -4,14 +4,24 @@ using ChatApi.WA.Ban.Responses.Interfaces;
 
 namespace ChatApi.WA.Ban.Responses
 {
+    /// <inheritdoc cref="ChatApi.WA.Ban.Responses.Interfaces.ICheckBanResponse" />
     public sealed class CheckBanResponse : Printable, ICheckBanResponse
     {
         #region Properties
 
+        /// <inheritdoc />
         public string? Phone { get; set; }
+        
+        /// <inheritdoc />
         public bool? IsBanned { get; set; }
+        
+        /// <inheritdoc />
         public string? Message { get; set; }
+        
+        /// <inheritdoc />
         public string? BanPhoneMask { get; set; }
+        
+        /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
 
@@ -19,6 +29,7 @@ namespace ChatApi.WA.Ban.Responses
 
         #region Equatable
 
+        /// <inheritdoc />
         public bool Equals(ICheckBanResponse? other)
         {
             return other is not null && 
@@ -29,11 +40,13 @@ namespace ChatApi.WA.Ban.Responses
                    BanPhoneMask == other.BanPhoneMask;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object? obj)
         {
             return ReferenceEquals(this, obj) || obj is ICheckBanResponse other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
@@ -47,13 +60,16 @@ namespace ChatApi.WA.Ban.Responses
             }
         }
 
+        /// <summary/>
         public static bool operator == (CheckBanResponse? left, CheckBanResponse? right) => EquatableHelper.IsEquatable(left, right);
+        /// <summary/>
         public static bool operator != (CheckBanResponse? left, CheckBanResponse? right) => !EquatableHelper.IsEquatable(left, right);
 
         #endregion
         
         #region Printable
 
+        /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
             AddMember(nameof(Phone), Phone, shift);

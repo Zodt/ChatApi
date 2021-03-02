@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Text;
-
-using Newtonsoft.Json;
 using ChatApi.Core.Response.Interfaces;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using UnixDateTimeConverter = ChatApi.Core.Converters.UnixDateTimeConverter;
 
 namespace ChatApi.Core.Helpers
 {
+    /// <summary/>
     public static class ConversionHelper
     {
+        /// <summary/>
         public static string Serialize<T>(this T self, IResponseSettings? responseSettings = null) where T : class
         {
             if (self is null) throw new JsonSerializationException();
@@ -30,6 +31,7 @@ namespace ChatApi.Core.Helpers
             return serialize;
         }
 
+        /// <summary/>
         public static T Deserialize<T>(this string json, IResponseSettings? responseSettings = null) where T : class
         {
             if (string.IsNullOrEmpty(json)) throw new JsonReaderException();
