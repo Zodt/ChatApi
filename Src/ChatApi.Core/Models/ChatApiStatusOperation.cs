@@ -2,7 +2,6 @@
 
 namespace ChatApi.Core.Models
 {
-    //Need description:chatApi
     /// <summary/>
     public enum ChatApiStatusOperation : byte
     {

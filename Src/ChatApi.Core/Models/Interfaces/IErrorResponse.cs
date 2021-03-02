@@ -2,7 +2,6 @@
 
 namespace ChatApi.Core.Models.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface IErrorResponse
     {

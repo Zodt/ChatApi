@@ -4,15 +4,18 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface IReadChatResponse : IChatId, IErrorResponse, IEquatable<IReadChatResponse?>, IPrintable
     {
-        /// <summary/>
+        /// <summary>
+        ///     Chat reading status
+        /// </summary>
         [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
         string? Message { get; set; }
         
-        /// <summary/>
+        /// <summary>
+        ///     Message readability indicator
+        /// </summary>
         [JsonProperty("read", NullValueHandling = NullValueHandling.Ignore)]
         bool? Read { get; set; }
     }

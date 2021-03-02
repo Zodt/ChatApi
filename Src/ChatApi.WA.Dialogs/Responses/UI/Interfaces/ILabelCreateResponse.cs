@@ -7,11 +7,12 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface ILabelCreateResponse : IOperationResponse, IEquatable<ILabelCreateResponse?>, IPrintable 
     {
-        /// <summary/>
+        /// <summary>
+        ///     Data for the created label.
+        /// </summary>
         [JsonProperty("label")]
         [JsonConverter(typeof(InterfacesConverter<Label>))]
         ILabel? LabelInfo { get; set; }

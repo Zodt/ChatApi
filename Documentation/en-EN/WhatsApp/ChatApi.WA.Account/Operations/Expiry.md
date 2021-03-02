@@ -1,4 +1,4 @@
-# Updates the QR code after its expired
+# Updates the QR code after its expired.
 **<span style="color:green">Implementation notes</span>**<br/>
 This method is available in both synchronous and asynchronous implementations
 

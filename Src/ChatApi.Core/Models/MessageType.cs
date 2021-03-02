@@ -2,8 +2,9 @@
 
 namespace ChatApi.Core.Models
 {
-    //Need description:chatApi
-    /// <summary/>
+    /// <summary>
+    ///     Type of the message
+    /// </summary>
     public enum MessageType : byte
     {
         /// <summary/>

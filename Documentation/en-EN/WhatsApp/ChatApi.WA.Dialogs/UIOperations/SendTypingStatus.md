@@ -48,8 +48,8 @@ namespace ChatApiClient
 
             var chatApiResponse = userInterfaceOperations.SendTypingStatus(request);
             if (!chatApiResponse.IsSuccess) throw chatApiResponse.Exception!;
+            
             var response = chatApiResponse.GetResult();
-
             Console.WriteLine(response?.PrintMembers());
         }
     }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
-    //Need description:chatApi
+    //Rewrite in the future maybe
     /// <summary/>
     public interface IChatOperationResponse : IChatId, IErrorResponse, IEquatable<IChatOperationResponse?>, IPrintable
     {

@@ -5,11 +5,12 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface ILabelCollectionResponse : IErrorResponse, IEquatable<ILabelCollectionResponse?>, IPrintable
     {
-        /// <summary/>
+        /// <summary>
+        ///     A collection of label.
+        /// </summary>
         [JsonProperty("labels", NullValueHandling = NullValueHandling.Ignore)]
         LabelCollection? LabelCollection { get; set; }
     }

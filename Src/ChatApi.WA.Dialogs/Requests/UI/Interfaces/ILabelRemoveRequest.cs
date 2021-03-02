@@ -2,11 +2,12 @@
 
 namespace ChatApi.WA.Dialogs.Requests.UI.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface ILabelRemoveRequest
     {
-        /// <summary/>
+        /// <summary>
+        ///     Unique ID of the label
+        /// </summary>
         [JsonProperty("labelId")]
         string? LabelId { get; set; }
     }

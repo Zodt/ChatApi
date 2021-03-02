@@ -2,7 +2,8 @@
 
 namespace ChatApi.WA.Dialogs.Helpers.Collections
 {
-    //Need description:chatApi
-    /// <summary/>
+    /// <summary>
+    ///     The collection's unique identifier of chats
+    /// </summary>
     public class ChatIdsCollection : WhatsAppApiCollection<string> { }
 }

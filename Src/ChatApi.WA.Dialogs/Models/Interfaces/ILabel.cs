@@ -4,19 +4,24 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Models.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface ILabel : IEquatable<ILabel?>, IPrintable
     {
-        /// <summary/>
+        /// <summary>
+        ///     Unique ID of the label
+        /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string? LabelId { get; set; }
         
-        /// <summary/>
+        /// <summary>
+        ///     Name of the label
+        /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string? LabelName { get; set; }
         
-        /// <summary/>
+        /// <summary>
+        ///     Label's color in HEX
+        /// </summary>
         [JsonProperty("hexColor", NullValueHandling = NullValueHandling.Ignore)]
         public string? HexColor { get; set; }
     }

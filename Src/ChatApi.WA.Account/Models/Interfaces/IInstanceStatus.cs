@@ -11,7 +11,7 @@ namespace ChatApi.WA.Account.Models.Interfaces
         ///     Method name
         /// </summary>
         [JsonProperty("act", NullValueHandling = NullValueHandling.Ignore)]
-        InstanceStatusActionType? Action { get; set; } 
+        InstanceStatusActionType? ActionType { get; set; } 
 
         /// <summary>
         ///     Action caption for the button

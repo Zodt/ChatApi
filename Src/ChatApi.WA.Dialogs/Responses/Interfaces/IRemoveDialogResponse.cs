@@ -7,11 +7,12 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface IRemoveDialogResponse : IErrorResponse, IEquatable<IRemoveDialogResponse?>, IPrintable
     {
-        /// <summary/>
+        /// <summary>
+        ///     The result of the request
+        /// </summary>
         [JsonConverter(typeof(InterfacesConverter<OperationMessageResult>))]
         [JsonProperty("result", NullValueHandling = NullValueHandling.Ignore)]
         IOperationMessageResult? Result { get; set; }

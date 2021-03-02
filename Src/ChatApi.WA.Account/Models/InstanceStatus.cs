@@ -15,7 +15,7 @@ namespace ChatApi.WA.Account.Models
         /// <inheritdoc />
         public string? Label { get; set; }
         /// <inheritdoc />
-        public InstanceStatusActionType? Action { get; set; }
+        public InstanceStatusActionType? ActionType { get; set; }
 
         #endregion
          
@@ -24,7 +24,7 @@ namespace ChatApi.WA.Account.Models
         /// <inheritdoc />
         public bool Equals(IInstanceStatus? other)
         {
-            return other is not null && Action == other.Action &&
+            return other is not null && ActionType == other.ActionType &&
                    string.Equals(Link, other.Link, StringComparison.Ordinal) &&
                    string.Equals(Label, other.Label, StringComparison.Ordinal);
         }
@@ -38,7 +38,7 @@ namespace ChatApi.WA.Account.Models
         {
             unchecked
             {
-                int hashCode = Action is not null ? Action.GetHashCode() : 0;
+                int hashCode = ActionType is not null ? ActionType.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ (Label is not null ? Label.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Link is not null ? Link.GetHashCode() : 0);
                 return hashCode;
@@ -57,7 +57,7 @@ namespace ChatApi.WA.Account.Models
         /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
-            AddMember(nameof(Action), Action, shift);
+            AddMember(nameof(ActionType), ActionType, shift);
             AddMember(nameof(Label), Label, shift);
             AddMember(nameof(Link), Link, shift);
         }

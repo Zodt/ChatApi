@@ -6,15 +6,18 @@ using Newtonsoft.Json;
 
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
-    //Need description:chatApi
     /// <summary/>
     public interface IShowActionsQueueResponse : IErrorResponse, IEquatable<IShowActionsQueueResponse?>, IPrintable
     {
-        /// <summary/>
+        /// <summary>
+        ///     Total number of actions in the queue
+        /// </summary>
         [JsonProperty("totalActions", NullValueHandling = NullValueHandling.Ignore)]
         int? TotalActions { get; set; }        
         
-        /// <summary/>
+        /// <summary>
+        ///     The Collection Of outgoing actions
+        /// </summary>
         [JsonProperty("first100", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(InterfaceCollectionConverter<ActionQueue, IActionQueue, OutboundActionCollection>))]
         OutboundActionCollection? OutboundActions { get; set; }
