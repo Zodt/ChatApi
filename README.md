@@ -7,10 +7,10 @@
      <a href="https://www.nuget.org/packages/ChatApi.Core/"> 
           <img src="https://img.shields.io/badge/Version-1.0.1-success?style=for-the-badge&logo=appveyor" /> 
      </a>
-     <a href="https://github.com/Zodt/ChatApi/releases">
+     <a href="../../releases">
           <img src="https://img.shields.io/badge/Release-Ok-success.svg?style=for-the-badge&logo=appveyor"  />
      </a>
-     <a href="LICENSE">
+     <a href="LICENSE.md">
           <img src="https://img.shields.io/badge/license-MIT-success.svg?style=for-the-badge&logo=appveyor" 
                alt="License: We are using the MIT License"  />
      </a> 
