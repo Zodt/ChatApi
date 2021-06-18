@@ -20,18 +20,21 @@
 </p>
 <h2 align="center">What's ChatApi?</h2>
 
-The Chat Api is an unofficial cross-platform collection of libraries for interacting with the сhat-api service based on the WhatsApp API. <br/> <br/>
-It may be used for work on: 
-<ol>
-    <li>Sending and reading of messages operations</li> 
-    <li>Dialogs (personal chats and groups) operations</li> 
-    <li>Accounts operations</li> 
-    <li>Queues for sending messages operations</li> 
-    <li>Blacklist operations</li> 
-</ol><h6><u><i>For more information, see the documentation.</i></u></h6>
-Also WebHook operations for the instant notifications will be available soon. </br> <br/>
-Before using these libraries, we are recommended to read the documentation provided on Russian and English languages. </br> </br>
-
+<h4>The Chat Api is an unofficial cross-platform collection of libraries for interacting with the сhat-api service based on the WhatsApp API.</h4>
+<h4>It may be used for work on:</h4> 
+<h6>
+     <ol>
+          <li>Sending and reading of messages operations</li> 
+          <li>Dialogs (personal chats and groups) operations</li> 
+          <li>Accounts operations</li> 
+          <li>Queues for sending messages operations</li> 
+          <li>Blacklist operations</li> 
+     </ol>
+</h6>
+<h5>
+     Also WebHook operations for the instant notifications will be available soon.
+     Before using these libraries, we are recommended to read the documentation provided on Russian and English languages.
+</h5>
 <p align="center">
      <a href="Documentation/ru-RU/README.md">
           <img src="https://img.shields.io/badge/Docs-Russian-informational.svg?style=for-the-badge&logo=appveyor"  />
