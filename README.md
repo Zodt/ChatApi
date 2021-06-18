@@ -28,7 +28,7 @@ It may be used for work on:
     <li>Accounts operations</li> 
     <li>Queues for sending messages operations</li> 
     <li>Blacklist operations</li> 
-</ol><u><i>For more information, see the documentation.</i></u> <br/>
+</ol><h6><u><i>For more information, see the documentation.</i></u></h6>
 Also WebHook operations for the instant notifications will be available soon. </br> <br/>
 Before using these libraries, we are recommended to read the documentation provided on Russian and English languages. </br> </br>
 
