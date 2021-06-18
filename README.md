@@ -32,7 +32,7 @@
      </ol>
 </h6>
 <h5>
-     Also WebHook operations for the instant notifications will be available soon.
+     Also WebHook operations for the instant notifications will be available soon. </br>
      Before using these libraries, we are recommended to read the documentation provided on Russian and English languages.
 </h5>
 <p align="center">
