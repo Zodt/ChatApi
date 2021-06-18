@@ -7,7 +7,7 @@
      <a href="https://www.nuget.org/packages/ChatApi.Core/"> 
           <img src="https://img.shields.io/badge/Version-1.0.1-success?style=for-the-badge&logo=appveyor" /> 
      </a>
-     <a href="https://github.com/Zodt/ChatApi/Releases">
+     <a href="https://github.com/Zodt/ChatApi/releases">
           <img src="https://img.shields.io/badge/Release-Ok-success.svg?style=for-the-badge&logo=appveyor"  />
      </a>
      <a href="LICENSE">
