@@ -1,4 +1,4 @@
-# ChatApi.WA.Ban [![NuGet version (ChatApi.WA.Ban)](../../../../Images/NuGetVersions/ChatApi.WA.Ban_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Ban/)
+# ChatApi.WA.Ban [![NuGet version (ChatApi.WA.Ban)](https://img.shields.io/badge/NuGet%20version-1.0.1-success?style=for-the-badge&logo=appveyor)](https://www.nuget.org/packages/ChatApi.WA.Ban/)
 `ChatApi.WA.Ban` позволяет задавать шаблон для автоматической блокировки номеров телефонов.  <br/>
 Для более подробного ознакомления с имеющимся функционалом, рекомендуется прочтение материала, изложенного ниже.
 
