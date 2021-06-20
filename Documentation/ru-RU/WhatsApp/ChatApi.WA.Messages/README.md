@@ -1,4 +1,4 @@
-﻿# ChatApi.WA.Messages [![NuGet version (ChatApi.WA.Messages)](../../../../Images/NuGetVersions/ChatApi.WA.Messages_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Messages/)
+﻿# ChatApi.WA.Messages [![NuGet version (ChatApi.WA.Messages)](https://img.shields.io/badge/NuGet%20version-1.0.1%20Alpha-success?style=for-the-badge&logo=appveyor)](https://www.nuget.org/packages/ChatApi.WA.Messages/)
 `ChatApi.WA.Messages` позволяет работать напрямую с сообщениями, выполняя такие операции как: отправлять, получать, переотправлять и удалять сообщения. <br/>
 Для более подробного ознакомления с имеющимся функционалом, рекомендуется прочтение материала, изложенного ниже.
 

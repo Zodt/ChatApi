@@ -1,4 +1,4 @@
-# ChatApi.WA.Dialogs [![NuGet version (ChatApi.WA.Dialogs)](../../../../Images/NuGetVersions/ChatApi.WA.Dialogs_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Dialogs/)
+# ChatApi.WA.Dialogs [![NuGet version (ChatApi.WA.Dialogs)](https://img.shields.io/badge/NuGet%20version-1.0.1%20Alpha-success?style=for-the-badge&logo=appveyor)](https://www.nuget.org/packages/ChatApi.WA.Dialogs/)
 `ChatApi.WA.Dialogs` allows you to work with dialogs (personal chats and groups).
 
 ### Table of contents

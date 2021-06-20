@@ -1,4 +1,4 @@
-# ChatApi.WA.Messages [![NuGet version (ChatApi.WA.Messages)](../../../../Images/NuGetVersions/ChatApi.WA.Messages_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.WA.Messages/)
+# ChatApi.WA.Messages [![NuGet version (ChatApi.WA.Messages)](https://img.shields.io/badge/NuGet%20version-1.0.1%20Alpha-success?style=for-the-badge&logo=appveyor)](https://www.nuget.org/packages/ChatApi.WA.Messages/)
 `ChatApi.WA.Messages` allows you to work directly with messages, performing operations such as: send, receive, resend, and delete messages. <br/>
 For a more detailed introduction to the available functionality, it is recommended to read the material described below.
 

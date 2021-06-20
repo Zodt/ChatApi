@@ -1,4 +1,4 @@
-# ChatApi.Instances [![NuGet version (ChatApi.Instance)](../../../Images/NuGetVersions/ChatApi.Instance_NuGetVersion.png)](https://www.nuget.org/packages/ChatApi.Instance/)
+# ChatApi.Instances [![NuGet version (ChatApi.Instance)](https://img.shields.io/badge/NuGet%20version-1.0.1%20Alpha-success?style=for-the-badge&logo=appveyor)](https://www.nuget.org/packages/ChatApi.Instance/)
 `ChatApi.Instances` позволяет работать с экземплярами ChatApi.
 
 ### Оглавление
