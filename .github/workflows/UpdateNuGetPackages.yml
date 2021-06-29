@@ -6,16 +6,10 @@ on:
   workflow_dispatch:
 jobs:
   build:
+    if: github.ref == 'refs/heads/Release'
     runs-on: ubuntu-latest
     name: Update NuGet packages
     steps:
-      - name: Invoke workflow with inputs
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: Another Workflow
-          token: ${{ secrets.PERSONAL_TOKEN }}
-          inputs: '{ "debug": true }'
-        
       - name: Checkout repository
         uses: actions/checkout@v1
 
