@@ -1,31 +1,55 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Update NuGet packages
+name: Generate NuGet packages
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - Release
+      - Alpha
 jobs:
-  build:
-    if: github.ref == 'refs/heads/Release'
+  publish:
+    name: build, pack & publish
     runs-on: ubuntu-latest
-    name: Update NuGet packages
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - name: Setup .NET Core @ Latest
-        uses: actions/setup-dotnet@v1
+      # - name: Setup dotnet
+      #   uses: actions/setup-dotnet@v1
+      #   with:
+      #     dotnet-version: 3.1.200
+
+      # Publish
+      - name: publish on version change
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
         with:
-          source-url: https://nuget.pkg.github.com/Zodt/index.json
-          dotnet-version: '5.0.101'
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+          # Filepath of the project to be packaged, relative to root of repository
+          PROJECT_FILE_PATH: Src/ChatApi.Core/ChatApi.Core.csproj
           
-      - name: Build solution and generate NuGet packages
-        run: |  
-          cd Src/
-          dotnet pack --configuration=Release --output=.\nuget
-      - name: Push generated package to GitHub registry
-        run: |
-          cd Src/.nuget
-          dotnet nuget push '*.nupkg' --skip-duplicate
+          # NuGet package id, used for version detection & defaults to project name
+          PACKAGE_NAME: Core
+          
+          # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
+          # VERSION_FILE_PATH: Directory.Build.props
+
+          # Regex pattern to extract version info in a capturing group
+          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          
+          # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
+          # VERSION_STATIC: 1.0.0
+
+          # Flag to toggle git tagging, enabled by default
+          # TAG_COMMIT: true
+
+          # Format of the git tag, [*] gets replaced with actual version
+          # TAG_FORMAT: v*
+
+          # API key to authenticate with NuGet server
+          # NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+
+          # NuGet server uri hosting the packages, defaults to https://api.nuget.org
+          NUGET_SOURCE: https://nuget.pkg.github.com/Zodt/index.json
+
+          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
+          # INCLUDE_SYMBOLS: false
