@@ -3,10 +3,7 @@
 name: Update NuGet packages
 
 on:
-  push:
-    branches: [ Release ]
-  pull_request:
-    branches: [ Release ]
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,5 +26,5 @@ jobs:
           dotnet pack --configuration=Release --output=.\nuget
       - name: Push generated package to GitHub registry
         run: |
-          cd Src/
+          cd Src/.nuget
           dotnet nuget push '*.nupkg' --skip-duplicate
