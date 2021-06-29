@@ -1,0 +1,31 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Update NuGet packages
+
+on:
+  workflow_dispatch: 
+jobs:
+  build:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    name: Update NuGet packages
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup .NET Core @ Latest
+        uses: actions/setup-dotnet@v1
+        with:
+          source-url: https://nuget.pkg.github.com/Zodt/index.json
+          dotnet-version: '5.0.101'
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+          
+      - name: Build solution and generate NuGet packages
+        run: |  
+          cd Src/
+          dotnet pack --configuration=Release --output=.\nuget
+      - name: Push generated package to GitHub registry
+        run: |
+          cd Src/
+          dotnet nuget push '*.nupkg' --skip-duplicate
