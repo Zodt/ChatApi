@@ -10,7 +10,7 @@ jobs:
     name: Update NuGet packages
     steps:
       - name: Workflow Dispatch
-        uses: benc-uk/workflow-dispatch@v1
+        uses: workflow-dispatch@v1
         
       - name: Checkout repository
         uses: actions/checkout@v1
