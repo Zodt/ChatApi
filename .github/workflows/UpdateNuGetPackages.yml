@@ -3,7 +3,10 @@
 name: Update NuGet packages
 
 on:
-  workflow_dispatch: 
+  push:
+    branches: [ Release ]
+  pull_request:
+    branches: [ Release ]
 jobs:
   build:
     if: github.ref == 'refs/heads/master'
