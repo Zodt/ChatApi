@@ -17,7 +17,7 @@ jobs:
           source-url: https://nuget.pkg.github.com/Zodt/index.json
           dotnet-version: '5.0.101'
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+          NUGET_AUTH_TOKEN: ${{secrets.CHATAPI_TOKEN}}        
           
       - name: Build solution and generate NuGet packages
         run: |  
