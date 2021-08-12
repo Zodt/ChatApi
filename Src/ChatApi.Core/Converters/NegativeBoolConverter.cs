@@ -16,9 +16,9 @@ namespace ChatApi.Core.Converters
         /// <inheritdoc />
         public override bool? ReadJson(JsonReader reader, Type objectType, bool? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-            if (reader.TokenType != JsonToken.Boolean || (bool?)reader.Value is null ) return null;
+            if (reader.TokenType != JsonToken.Boolean || (bool?)reader.Value is null) return null;
 
-            return !(bool) reader.Value;
+            return !(bool)reader.Value;
         }
     }
 }

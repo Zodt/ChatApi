@@ -8,14 +8,15 @@ namespace ChatApi.WA.Dialogs.Models
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Models.Interfaces.IDialogStatusOperation" />
     public abstract class DialogStatusOperation : Printable, IDialogStatusOperation
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? Success { get; set; }
-        
+
         /// <inheritdoc />
         public string? Result { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -26,7 +27,7 @@ namespace ChatApi.WA.Dialogs.Models
         /// <inheritdoc />
         public bool Equals(IDialogStatusOperation? other)
         {
-            return other is not null && Success == other.Success && 
+            return other is not null && Success == other.Success &&
                    string.Equals(Result, other.Result, StringComparison.Ordinal) &&
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
@@ -47,9 +48,15 @@ namespace ChatApi.WA.Dialogs.Models
         }
 
         /// <summary/>
-        public static bool operator == (DialogStatusOperation? left, DialogStatusOperation? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(DialogStatusOperation? left, DialogStatusOperation? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (DialogStatusOperation? left, DialogStatusOperation? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(DialogStatusOperation? left, DialogStatusOperation? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -64,5 +71,6 @@ namespace ChatApi.WA.Dialogs.Models
         }
 
         #endregion
+
     }
 }

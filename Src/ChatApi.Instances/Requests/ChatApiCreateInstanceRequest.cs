@@ -11,6 +11,7 @@ namespace ChatApi.Instances.Requests
     {
         /// <inheritdoc />
         public string? ApiKey { get; internal set; }
+
         string? IChatApiCreateInstanceRequest.ApiKey
         {
             get => ApiKey;
@@ -33,7 +34,7 @@ namespace ChatApi.Instances.Requests
         /// <inheritdoc />
         public bool Equals(IChatApiCreateInstanceRequest? other)
         {
-            return other is not null && TypeInstance == other.TypeInstance && 
+            return other is not null && TypeInstance == other.TypeInstance &&
                    string.Equals(ApiKey, other.ApiKey, StringComparison.Ordinal);
         }
 
@@ -52,8 +53,14 @@ namespace ChatApi.Instances.Requests
             }
         }
         /// <summary/>
-        public static bool operator == (ChatApiCreateInstanceRequest? left, ChatApiCreateInstanceRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatApiCreateInstanceRequest? left, ChatApiCreateInstanceRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatApiCreateInstanceRequest? left, ChatApiCreateInstanceRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatApiCreateInstanceRequest? left, ChatApiCreateInstanceRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
     }
 }

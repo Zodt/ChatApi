@@ -12,7 +12,7 @@ namespace ChatApi.Instances.Models
         /// </summary>
         [EnumMember(Value = "whatsapp")]
         WhatsApp = 1,
-        
+
         /// <summary>
         ///     WhatsApp development instance type
         /// </summary>

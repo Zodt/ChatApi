@@ -10,6 +10,7 @@ namespace ChatApi.Instances.Requests
     {
         /// <inheritdoc />
         public string? ApiKey { get; internal set; }
+
         string? IChatApiRemoveInstanceRequest.ApiKey
         {
             get => ApiKey;
@@ -28,7 +29,7 @@ namespace ChatApi.Instances.Requests
         /// <inheritdoc />
         public bool Equals(IChatApiRemoveInstanceRequest? other)
         {
-            return other is not null && 
+            return other is not null &&
                    string.Equals(ApiKey, other.ApiKey, StringComparison.Ordinal) &&
                    string.Equals(Instance, other.Instance, StringComparison.Ordinal);
         }
@@ -46,8 +47,14 @@ namespace ChatApi.Instances.Requests
             }
         }
         /// <summary/>
-        public static bool operator == (ChatApiRemoveInstanceRequest? left, ChatApiRemoveInstanceRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatApiRemoveInstanceRequest? left, ChatApiRemoveInstanceRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatApiRemoveInstanceRequest? left, ChatApiRemoveInstanceRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatApiRemoveInstanceRequest? left, ChatApiRemoveInstanceRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
     }
 }

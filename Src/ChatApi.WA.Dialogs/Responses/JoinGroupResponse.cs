@@ -8,11 +8,12 @@ namespace ChatApi.WA.Dialogs.Responses
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IJoinGroupResponse" />
     public sealed class JoinGroupResponse : Printable, IJoinGroupResponse
     {
+
         #region Properies
 
         /// <inheritdoc />
         public string? ChatId { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -23,7 +24,7 @@ namespace ChatApi.WA.Dialogs.Responses
         /// <inheritdoc />
         public bool Equals(IJoinGroupResponse? other)
         {
-            return 
+            return
                 other is not null &&
                 string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
                 string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
@@ -45,9 +46,15 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         /// <summary/>
-        public static bool operator == (JoinGroupResponse? left, JoinGroupResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(JoinGroupResponse? left, JoinGroupResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (JoinGroupResponse? left, JoinGroupResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(JoinGroupResponse? left, JoinGroupResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -61,5 +68,6 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         #endregion
+
     }
 }

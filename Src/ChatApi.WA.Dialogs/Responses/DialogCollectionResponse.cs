@@ -8,6 +8,7 @@ namespace ChatApi.WA.Dialogs.Responses
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IDialogCollectionResponse" />
     public sealed class DialogCollectionResponse : Printable, IDialogCollectionResponse
     {
+
         #region Properties
 
         /// <inheritdoc/>
@@ -23,8 +24,8 @@ namespace ChatApi.WA.Dialogs.Responses
         /// <inheritdoc/>
         public bool Equals(IDialogCollectionResponse? other)
         {
-            return other is not null && 
-                   Dialogs == other.Dialogs && 
+            return other is not null &&
+                   Dialogs == other.Dialogs &&
                    ErrorMessage == other.ErrorMessage;
         }
 
@@ -45,9 +46,15 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         /// <summary />
-        public static bool operator == (DialogCollectionResponse? left, DialogCollectionResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(DialogCollectionResponse? left, DialogCollectionResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary />
-        public static bool operator != (DialogCollectionResponse? left, DialogCollectionResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(DialogCollectionResponse? left, DialogCollectionResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -61,5 +68,6 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         #endregion
+
     }
 }

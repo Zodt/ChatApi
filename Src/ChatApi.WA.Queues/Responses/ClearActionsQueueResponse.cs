@@ -8,14 +8,15 @@ namespace ChatApi.WA.Queues.Responses
     /// <inheritdoc cref="ChatApi.WA.Queues.Responses.Interfaces.IClearActionsQueueResponse" />
     public sealed class ClearActionsQueueResponse : Printable, IClearActionsQueueResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Message { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public ActionOperationsCollection? ActionsCollection { get; set; }
 
@@ -26,9 +27,9 @@ namespace ChatApi.WA.Queues.Responses
         /// <inheritdoc />
         public bool Equals(IClearActionsQueueResponse? other)
         {
-            return other is not null && 
-                   ErrorMessage == other.ErrorMessage && 
-                   Message == other.Message && 
+            return other is not null &&
+                   ErrorMessage == other.ErrorMessage &&
+                   Message == other.Message &&
                    ActionsCollection == other.ActionsCollection;
         }
 
@@ -51,9 +52,15 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         /// <summary/>
-        public static bool operator == (ClearActionsQueueResponse? left, ClearActionsQueueResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ClearActionsQueueResponse? left, ClearActionsQueueResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ClearActionsQueueResponse? left, ClearActionsQueueResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ClearActionsQueueResponse? left, ClearActionsQueueResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -68,5 +75,6 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         #endregion
+
     }
 }

@@ -7,14 +7,15 @@ namespace ChatApi.WA.Messages.Requests
     /// <inheritdoc />
     public sealed class MessagesHistoryRequest : IMessagesHistoryRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public int? Page { get; set; }
-        
+
         /// <inheritdoc />
         public int? Count { get; set; }
-        
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
 
@@ -41,8 +42,8 @@ namespace ChatApi.WA.Messages.Requests
         public bool Equals(IMessagesHistoryRequest? other)
         {
             return other is not null &&
-                ChatId == other.ChatId && 
-                   Page == other.Page && 
+                   ChatId == other.ChatId &&
+                   Page == other.Page &&
                    Count == other.Count;
         }
 
@@ -65,10 +66,17 @@ namespace ChatApi.WA.Messages.Requests
         }
 
         /// <summary/>
-        public static bool operator == (MessagesHistoryRequest? left, MessagesHistoryRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(MessagesHistoryRequest? left, MessagesHistoryRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (MessagesHistoryRequest? left, MessagesHistoryRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(MessagesHistoryRequest? left, MessagesHistoryRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

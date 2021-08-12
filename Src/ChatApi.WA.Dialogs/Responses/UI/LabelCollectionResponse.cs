@@ -9,11 +9,12 @@ namespace ChatApi.WA.Dialogs.Responses.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.ILabelCollectionResponse" />
     public sealed class LabelCollectionResponse : Printable, ILabelCollectionResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public LabelCollection? LabelCollection { get; set; }
 
@@ -26,20 +27,31 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         {
             unchecked
             {
-                return ((ErrorMessage != null ? ErrorMessage.GetHashCode() : 0) * 397) ^ (LabelCollection != null ? LabelCollection.GetHashCode() : 0);
+                return ((ErrorMessage != null ? ErrorMessage.GetHashCode() : 0) * 397) ^
+                       (LabelCollection != null ? LabelCollection.GetHashCode() : 0);
             }
         }
         /// <inheritdoc />
-        public bool Equals(ILabelCollectionResponse? other) => 
-            other is not null && LabelCollection == other.LabelCollection &&
-            string.Equals(ErrorMessage,  other.ErrorMessage, StringComparison.Ordinal);
+        public bool Equals(ILabelCollectionResponse? other)
+        {
+            return other is not null && LabelCollection == other.LabelCollection &&
+                   string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
+        }
         /// <inheritdoc />
-        public override bool Equals(object? obj) => 
-            ReferenceEquals(this, obj) || obj is ILabelCollectionResponse other && Equals(other);
+        public override bool Equals(object? obj)
+        {
+            return ReferenceEquals(this, obj) || obj is ILabelCollectionResponse other && Equals(other);
+        }
         /// <summary/>
-        public static bool operator == (LabelCollectionResponse? left, LabelCollectionResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LabelCollectionResponse? left, LabelCollectionResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LabelCollectionResponse? left, LabelCollectionResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LabelCollectionResponse? left, LabelCollectionResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -53,5 +65,6 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         #endregion
+
     }
 }

@@ -7,23 +7,23 @@ namespace ChatApi.WA.Ban.Responses
     /// <inheritdoc cref="ChatApi.WA.Ban.Responses.Interfaces.ICheckBanResponse" />
     public sealed class CheckBanResponse : Printable, ICheckBanResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Phone { get; set; }
-        
+
         /// <inheritdoc />
         public bool? IsBanned { get; set; }
-        
+
         /// <inheritdoc />
         public string? Message { get; set; }
-        
+
         /// <inheritdoc />
         public string? BanPhoneMask { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-
 
         #endregion
 
@@ -32,11 +32,11 @@ namespace ChatApi.WA.Ban.Responses
         /// <inheritdoc />
         public bool Equals(ICheckBanResponse? other)
         {
-            return other is not null && 
-                   ErrorMessage == other.ErrorMessage && 
-                   Phone == other.Phone && 
-                   IsBanned == other.IsBanned && 
-                   Message == other.Message && 
+            return other is not null &&
+                   ErrorMessage == other.ErrorMessage &&
+                   Phone == other.Phone &&
+                   IsBanned == other.IsBanned &&
+                   Message == other.Message &&
                    BanPhoneMask == other.BanPhoneMask;
         }
 
@@ -61,12 +61,18 @@ namespace ChatApi.WA.Ban.Responses
         }
 
         /// <summary/>
-        public static bool operator == (CheckBanResponse? left, CheckBanResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(CheckBanResponse? left, CheckBanResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (CheckBanResponse? left, CheckBanResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(CheckBanResponse? left, CheckBanResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
-        
+
         #region Printable
 
         /// <inheritdoc />
@@ -80,5 +86,6 @@ namespace ChatApi.WA.Ban.Responses
         }
 
         #endregion
+
     }
 }

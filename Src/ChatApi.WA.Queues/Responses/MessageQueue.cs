@@ -8,17 +8,18 @@ namespace ChatApi.WA.Queues.Responses
     /// <inheritdoc cref="ChatApi.WA.Queues.Responses.Interfaces.IMessageQueue" />
     public sealed class MessageQueue : QueueOperationsResponse, IMessageQueue
     {
+
         #region Properties
 
         /// <inheritdoc cref="IMessageQueue.Id" />
         public new int? Id { get; set; }
-        
+
         /// <inheritdoc />
         public string? Body { get; set; }
-        
+
         /// <inheritdoc />
         public new MessageType? Type { get; set; }
-        
+
         /// <inheritdoc />
         public string? MessageAdditionalInformation { get; set; }
 
@@ -29,12 +30,10 @@ namespace ChatApi.WA.Queues.Responses
         /// <inheritdoc />
         public bool Equals(IMessageQueue? other)
         {
-            return other is not null && 
-                   
+            return other is not null &&
                    Type == other.Type &&
-                   Body == other.Body && 
+                   Body == other.Body &&
                    MessageAdditionalInformation == other.MessageAdditionalInformation &&
-                   
                    base.Equals(other);
         }
 
@@ -57,10 +56,17 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         /// <summary/>
-        public static bool operator == (MessageQueue? left, MessageQueue? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(MessageQueue? left, MessageQueue? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (MessageQueue? left, MessageQueue? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(MessageQueue? left, MessageQueue? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

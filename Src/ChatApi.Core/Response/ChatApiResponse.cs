@@ -13,11 +13,12 @@ namespace ChatApi.Core.Response
 
         /// <inheritdoc />
         public bool IsSuccess => true;
+
         /// <inheritdoc />
         public Exception? Exception => null;
 
         private ChatApiResponse(T? value) => _value = value;
-        
+
         /// <inheritdoc />
         public T? GetResult() => _value;
 
@@ -46,14 +47,14 @@ namespace ChatApi.Core.Response
             ChatApiResponse<T?> chatApiResponse = new(value);
             return chatApiResponse;
         }
-        
+
         /// <summary>
         ///     The creation of a intermediary
         /// </summary>
         /// <param name="responseFuncAsync">Client operation</param>
         /// <param name="continuation">Continuation of the client's operation</param>
         public static Task<IChatApiResponse<T?>> CreateInstanceAsync(
-            Func<Task<string>> responseFuncAsync, 
+            Func<Task<string>> responseFuncAsync,
             Func<string, T> continuation)
         {
             Task<IChatApiResponse<T?>> task;
@@ -61,13 +62,13 @@ namespace ChatApi.Core.Response
             {
                 task = responseFuncAsync()
                     .ContinueWith(x =>
-                        CreateInstance( () =>
+                        CreateInstance(() =>
                         {
                             if (x.Exception is not null) Task.FromException(x.Exception);
                             // ReSharper disable once AsyncConverter.AsyncWait
                             return continuation(x.Result);
                         }));
-                
+
                 return task;
             }
             catch (WebException e) { task = new Task<IChatApiResponse<T?>>(() => new ChatApiBadResponse<T?>(e)); }

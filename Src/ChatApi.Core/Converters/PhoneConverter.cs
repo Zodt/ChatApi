@@ -26,7 +26,7 @@ namespace ChatApi.Core.Converters
 
         /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override string? ReadJson(JsonReader reader, Type objectType, string? existingValue, 
+        public override string? ReadJson(JsonReader reader, Type objectType, string? existingValue,
             bool hasExistingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null || reader.Value is not string phone) return null;

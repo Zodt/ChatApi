@@ -3,8 +3,8 @@ using ChatApi.Core.Models.Interfaces;
 using Newtonsoft.Json;
 
 namespace ChatApi.WA.Account.Responses.Interfaces
-{ /* ReSharper disable once InconsistentNaming */
-    
+{/* ReSharper disable once InconsistentNaming */
+
     /// <summary/>
     public interface IOutputIPAddressResponse : IErrorResponse, IEquatable<IOutputIPAddressResponse?>, IPrintable
     {
@@ -12,7 +12,7 @@ namespace ChatApi.WA.Account.Responses.Interfaces
         ///     Instance IP-address
         /// </summary>
         [JsonProperty("address", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        string? Address { get; set; } 
+        string? Address { get; set; }
     }
-    
+
 }

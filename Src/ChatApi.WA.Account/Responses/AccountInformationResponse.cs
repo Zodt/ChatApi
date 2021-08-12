@@ -8,20 +8,27 @@ namespace ChatApi.WA.Account.Responses
     /// <summary/>
     public sealed class AccountInformationResponse : Printable, IAccountInformationResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Id { get; set; }
+
         /// <inheritdoc />
         public string? Battery { get; set; }
+
         /// <inheritdoc />
         public string? Locale { get; set; }
+
         /// <inheritdoc />
         public string? Name { get; set; }
+
         /// <inheritdoc />
         public string? WhatsAppVersion { get; set; }
+
         /// <inheritdoc />
         public IDeviceCharacteristic? Device { get; set; }
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -33,12 +40,11 @@ namespace ChatApi.WA.Account.Responses
         public bool Equals(IAccountInformationResponse? other)
         {
             return other is not null &&
-                   ErrorMessage == other.ErrorMessage && 
-                   Id == other.Id && Battery == other.Battery && 
-                   Locale == other.Locale && 
-                   Name == other.Name && 
-                   WhatsAppVersion == other.WhatsAppVersion && 
-                   
+                   ErrorMessage == other.ErrorMessage &&
+                   Id == other.Id && Battery == other.Battery &&
+                   Locale == other.Locale &&
+                   Name == other.Name &&
+                   WhatsAppVersion == other.WhatsAppVersion &&
                    Device == other.Device;
         }
 
@@ -65,10 +71,16 @@ namespace ChatApi.WA.Account.Responses
         }
 
         /// <summary/>
-        public static bool operator == (AccountInformationResponse? left, AccountInformationResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(AccountInformationResponse? left, AccountInformationResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (AccountInformationResponse? left, AccountInformationResponse? right) => !EquatableHelper.IsEquatable(left, right);
-        
+        public static bool operator !=(AccountInformationResponse? left, AccountInformationResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
+
         #endregion
 
         #region Printable
@@ -86,5 +98,6 @@ namespace ChatApi.WA.Account.Responses
         }
 
         #endregion
+
     }
 }

@@ -15,14 +15,14 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         /// <remarks>If this parameter is passed, the <b>"LastMessageNumber"</b> parameter will be ignored.</remarks>
         [JsonProperty("last", NullValueHandling = NullValueHandling.Ignore)]
         bool? Last { get; set; }
-        
+
         /// <summary>
         ///     Sets the length of the list of unloaded messages.
         /// </summary>
         /// <remarks>By default, 100. If set to 0, it returns all messages.</remarks>
         [JsonProperty("limit", NullValueHandling = NullValueHandling.Ignore)]
         int? Limit { get; set; }
-        
+
         /// <summary>
         ///     Filters messages received after the specified time.
         /// </summary>
@@ -30,7 +30,7 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [JsonProperty("min_time", NullValueHandling = NullValueHandling.Ignore)]
         DateTime? MinTime { get; set; }
-        
+
         /// <summary>
         ///     Filters messages received before the specified time
         /// </summary>

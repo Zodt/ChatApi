@@ -12,6 +12,6 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         ///     Can be used with mentionedPhones, example: this text for @78005553535
         /// </summary>
         [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
-        string? Body { get; set; }        
+        string? Body { get; set; }
     }
 }

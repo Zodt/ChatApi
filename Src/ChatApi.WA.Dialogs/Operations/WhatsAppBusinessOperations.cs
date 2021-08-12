@@ -23,51 +23,59 @@ namespace ChatApi.WA.Dialogs.Operations
         #region Get labels
 
         /// <inheritdoc />
-        public IChatApiResponse<ILabelCollectionResponse?> GetLabels(ILabelCollectionRequest? labelCollectionRequest = null, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<ILabelCollectionResponse?> GetLabels(ILabelCollectionRequest? labelCollectionRequest = null,
+            IResponseSettings? responseSettings = null) =>
             _connect.Post<LabelCollectionResponse>(Resources.GetLabels, string.Empty, responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<ILabelCollectionResponse?>> GetLabelsAsync(ILabelCollectionRequest? labelCollectionRequest = null, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<ILabelCollectionResponse?>> GetLabelsAsync(ILabelCollectionRequest? labelCollectionRequest = null,
+            IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<LabelCollectionResponse, ILabelCollectionResponse>(Resources.GetLabels, string.Empty, responseSettings);
 
         #endregion
-        
+
         #region Create label
 
         /// <inheritdoc />
-        public IChatApiResponse<ILabelCreateResponse?> CreateLabel(ILabelCreateRequest labelCreateRequest, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<ILabelCreateResponse?>
+            CreateLabel(ILabelCreateRequest labelCreateRequest, IResponseSettings? responseSettings = null) =>
             _connect.Post<LabelCreateResponse>(Resources.CreateLabel, labelCreateRequest.Serialize(), responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<ILabelCreateResponse?>> CreateLabelAsync(ILabelCreateRequest labelCreateRequest, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<ILabelCreateResponse?>> CreateLabelAsync(ILabelCreateRequest labelCreateRequest,
+            IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<LabelCreateResponse, ILabelCreateResponse>(Resources.CreateLabel, labelCreateRequest.Serialize(), responseSettings);
 
         #endregion
-        
+
         #region Update label
 
         /// <inheritdoc />
-        public IChatApiResponse<ILabelUpdateResponse?> UpdateLabel(ILabelUpdateRequest labelUpdateRequest, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<ILabelUpdateResponse?>
+            UpdateLabel(ILabelUpdateRequest labelUpdateRequest, IResponseSettings? responseSettings = null) =>
             _connect.Post<LabelUpdateResponse>(Resources.UpdateLabel, labelUpdateRequest.Serialize(), responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<ILabelUpdateResponse?>> UpdateLabelAsync(ILabelUpdateRequest labelUpdateRequest, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<ILabelUpdateResponse?>> UpdateLabelAsync(ILabelUpdateRequest labelUpdateRequest,
+            IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<LabelUpdateResponse, ILabelUpdateResponse>(Resources.UpdateLabel, labelUpdateRequest.Serialize(), responseSettings);
 
         #endregion
-        
+
         #region Remove label
 
         /// <inheritdoc />
-        public IChatApiResponse<ILabelRemoveResponse?> RemoveLabel(ILabelRemoveRequest labelRemoveRequest, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<ILabelRemoveResponse?>
+            RemoveLabel(ILabelRemoveRequest labelRemoveRequest, IResponseSettings? responseSettings = null) =>
             _connect.Post<LabelRemoveResponse>(Resources.RemoveLabel, labelRemoveRequest.Serialize(), responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<ILabelRemoveResponse?>> RemoveLabelAsync(ILabelRemoveRequest labelRemoveRequest, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<ILabelRemoveResponse?>> RemoveLabelAsync(ILabelRemoveRequest labelRemoveRequest,
+            IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<LabelRemoveResponse, ILabelRemoveResponse>(Resources.RemoveLabel, labelRemoveRequest.Serialize(), responseSettings);
 
         #endregion
-        
+
         #region LabeledChat
 
         /// <inheritdoc />
@@ -75,7 +83,8 @@ namespace ChatApi.WA.Dialogs.Operations
             _connect.Post<LabeledChatResponse>(Resources.LabeledChat, labelChat.Serialize(), responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<ILabeledChatResponse?>> LabeledChatAsync(ILabeledChatRequest labelChat, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<ILabeledChatResponse?>> LabeledChatAsync(ILabeledChatRequest labelChat,
+            IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<LabeledChatResponse, ILabeledChatResponse>(Resources.LabeledChat, labelChat.Serialize(), responseSettings);
 
         #endregion
@@ -83,15 +92,18 @@ namespace ChatApi.WA.Dialogs.Operations
         #region UnlabeledChat
 
         /// <inheritdoc />
-        public IChatApiResponse<IUnlabeledChatResponse?> UnlabeledChat(IUnlabeledChatRequest unlabeledChat, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<IUnlabeledChatResponse?> UnlabeledChat(IUnlabeledChatRequest unlabeledChat,
+            IResponseSettings? responseSettings = null) =>
             _connect.Post<UnlabeledChatResponse>(Resources.UnlabeledChat, unlabeledChat.Serialize(), responseSettings);
-        
+
         /// <inheritdoc />
-        public Task<IChatApiResponse<IUnlabeledChatResponse?>> UnlabeledChatAsync(IUnlabeledChatRequest unlabeledChat, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<IUnlabeledChatResponse?>> UnlabeledChatAsync(IUnlabeledChatRequest unlabeledChat,
+            IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<UnlabeledChatResponse, IUnlabeledChatResponse>(Resources.UnlabeledChat, unlabeledChat.Serialize(), responseSettings);
 
         #endregion
 
         #endregion
+
     }
 }

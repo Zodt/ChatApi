@@ -7,12 +7,15 @@ namespace ChatApi.WA.Messages.Requests
     /// <summary/>
     public sealed class ForwardMessageRequest : IForwardMessageRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Phone { get; set; }
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
+
         /// <inheritdoc />
         public ForwardMessagesCollection? MessagesCollection { get; set; }
 
@@ -47,10 +50,17 @@ namespace ChatApi.WA.Messages.Requests
         }
 
         /// <summary/>
-        public static bool operator == (ForwardMessageRequest? left, ForwardMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ForwardMessageRequest? left, ForwardMessageRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ForwardMessageRequest? left, ForwardMessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ForwardMessageRequest? left, ForwardMessageRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

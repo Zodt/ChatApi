@@ -18,7 +18,7 @@ namespace ChatApi.WA.Messages.Responses.Interfaces
         /// </summary>
         [JsonProperty("sent", NullValueHandling = NullValueHandling.Ignore)]
         bool? Sent { get; set; }
-        
+
         /// <summary>
         /// Posting status message
         /// </summary>

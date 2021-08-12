@@ -9,23 +9,24 @@ namespace ChatApi.WA.Messages.Requests
     /// <inheritdoc />
     public sealed class MessagesRequest : IMessagesRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? Last { get; set; }
-        
+
         /// <inheritdoc />
         public int? Limit { get; set; }
-        
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
-        
+
         /// <inheritdoc />
         public DateTime? MinTime { get; set; }
-        
+
         /// <inheritdoc />
         public DateTime? MaxTime { get; set; }
-        
+
         /// <inheritdoc />
         public int? LastMessageNumber { get; set; }
 
@@ -54,12 +55,12 @@ namespace ChatApi.WA.Messages.Requests
         /// <inheritdoc />
         public bool Equals(IMessagesRequest? other)
         {
-            return other is not null && 
-                ChatId == other.ChatId && 
-                   LastMessageNumber == other.LastMessageNumber && 
-                   Last == other.Last && 
-                   Limit == other.Limit && 
-                   Nullable.Equals(MinTime, other.MinTime) && 
+            return other is not null &&
+                   ChatId == other.ChatId &&
+                   LastMessageNumber == other.LastMessageNumber &&
+                   Last == other.Last &&
+                   Limit == other.Limit &&
+                   Nullable.Equals(MinTime, other.MinTime) &&
                    Nullable.Equals(MaxTime, other.MaxTime);
         }
 
@@ -85,10 +86,17 @@ namespace ChatApi.WA.Messages.Requests
         }
 
         /// <summary/>
-        public static bool operator == (MessagesRequest? left, MessagesRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(MessagesRequest? left, MessagesRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (MessagesRequest? left, MessagesRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(MessagesRequest? left, MessagesRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

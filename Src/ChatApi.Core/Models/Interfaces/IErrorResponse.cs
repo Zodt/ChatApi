@@ -7,6 +7,6 @@ namespace ChatApi.Core.Models.Interfaces
     {
         /// <summary/>
         [JsonProperty("error", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        string? ErrorMessage { get; set; } 
+        string? ErrorMessage { get; set; }
     }
 }

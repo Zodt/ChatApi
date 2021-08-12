@@ -14,6 +14,6 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         /// <example>"http://audio-opus.com/14a5ef65p5efsf"</example>
         /// <example>"data:audio/ogg;base64,..."</example>
         [JsonProperty("audio", Required = Required.Always, NullValueHandling = NullValueHandling.Ignore)]
-        string? Audio { get; set; } 
+        string? Audio { get; set; }
     }
 }

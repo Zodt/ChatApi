@@ -8,6 +8,7 @@ namespace ChatApi.WA.Dialogs.Requests.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.UI.Interfaces.ILabelUpdateRequest" />
     public sealed class LabelUpdateRequest : Label, ILabelUpdateRequest
     {
+
         #region Equatable
 
         /// <inheritdoc />
@@ -17,10 +18,17 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         /// <inheritdoc />
         public override int GetHashCode() => base.GetHashCode();
         /// <summary/>
-        public static bool operator == (LabelUpdateRequest? left, LabelUpdateRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LabelUpdateRequest? left, LabelUpdateRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LabelUpdateRequest? left, LabelUpdateRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LabelUpdateRequest? left, LabelUpdateRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

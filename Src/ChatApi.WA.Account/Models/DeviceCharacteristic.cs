@@ -7,12 +7,15 @@ namespace ChatApi.WA.Account.Models
     /// <summary/>
     public sealed class DeviceCharacteristic : Printable, IDeviceCharacteristic
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Model { get; set; }
+
         /// <inheritdoc />
         public string? OsVersion { get; set; }
+
         /// <inheritdoc />
         public string? Manufacturer { get; set; }
 
@@ -23,9 +26,9 @@ namespace ChatApi.WA.Account.Models
         /// <inheritdoc />
         public bool Equals(IDeviceCharacteristic? other)
         {
-            return other is not null && 
-                OsVersion == other.OsVersion && 
-                   Manufacturer == other.Manufacturer && 
+            return other is not null &&
+                   OsVersion == other.OsVersion &&
+                   Manufacturer == other.Manufacturer &&
                    Model == other.Model;
         }
 
@@ -51,7 +54,7 @@ namespace ChatApi.WA.Account.Models
         public static bool operator ==(DeviceCharacteristic? left, DeviceCharacteristic? right) => EquatableHelper.IsEquatable(left, right);
         /// <summary/>
         public static bool operator !=(DeviceCharacteristic? left, DeviceCharacteristic? right) => !EquatableHelper.IsEquatable(left, right);
-        
+
         #endregion
 
         #region Printable
@@ -65,5 +68,6 @@ namespace ChatApi.WA.Account.Models
         }
 
         #endregion
+
     }
 }

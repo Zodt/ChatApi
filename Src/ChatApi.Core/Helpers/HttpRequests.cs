@@ -13,23 +13,24 @@ namespace ChatApi.Core.Helpers
     /// <summary/>
     public static class HttpRequests
     {
+
         #region Get
 
         #region Synchronous get
 
         /// <summary/>
-        public static IChatApiResponse<TClass?> Get<TClass>(this IConnect connect, string operationName, 
-            IResponseSettings? responseSettings = null, string? parameters = null) 
+        public static IChatApiResponse<TClass?> Get<TClass>(this IConnect connect, string operationName,
+            IResponseSettings? responseSettings = null, string? parameters = null)
             where TClass : class, IErrorResponse, new()
         {
-            return Get(connect, operationName, 
+            return Get(connect, operationName,
                 x => x.Deserialize<TClass>(responseSettings), responseSettings, parameters);
         }
 
         /// <summary/>
-        public static IChatApiResponse<TClass?> Get<TClass>(this IConnect connect, string operationName, 
-            Func<string, TClass> deserialization, 
-            IResponseSettings? responseSettings = null, string? parameters = null) 
+        public static IChatApiResponse<TClass?> Get<TClass>(this IConnect connect, string operationName,
+            Func<string, TClass> deserialization,
+            IResponseSettings? responseSettings = null, string? parameters = null)
             where TClass : class, IErrorResponse, new()
         {
             string link = connect.CreateLink(operationName, responseSettings, parameters);
@@ -49,20 +50,20 @@ namespace ChatApi.Core.Helpers
         #region Asynchronous get
 
         /// <summary/>
-        public static Task<IChatApiResponse<TInterface?>> GetAsync<TClass, TInterface>(this IConnect connect, 
-            string operationName, IResponseSettings? responseSettings = null, string? parameters = null) 
+        public static Task<IChatApiResponse<TInterface?>> GetAsync<TClass, TInterface>(this IConnect connect,
+            string operationName, IResponseSettings? responseSettings = null, string? parameters = null)
             where TClass : class, TInterface, IErrorResponse, new()
         {
             return GetAsync(
-                connect, operationName, 
-                x => (TInterface) x.Deserialize<TClass>(responseSettings), 
+                connect, operationName,
+                x => (TInterface)x.Deserialize<TClass>(responseSettings),
                 responseSettings, parameters);
         }
 
         /// <summary/>
-        public static Task<IChatApiResponse<TInterface?>> GetAsync<TInterface>(this IConnect connect, 
+        public static Task<IChatApiResponse<TInterface?>> GetAsync<TInterface>(this IConnect connect,
             string operationName, Func<string, TInterface> deserialization,
-            IResponseSettings? responseSettings = null, string? parameters = null) 
+            IResponseSettings? responseSettings = null, string? parameters = null)
         {
             string link = connect.CreateLink(operationName, responseSettings, parameters);
 
@@ -86,18 +87,19 @@ namespace ChatApi.Core.Helpers
         #region Synchronous post
 
         /// <summary/>
-        public static IChatApiResponse<T?> Post<T>(this IConnect connect, string operationName, string? json = null, 
+        public static IChatApiResponse<T?> Post<T>(this IConnect connect, string operationName, string? json = null,
             IResponseSettings? responseSettings = null) where T : class, IErrorResponse, new()
         {
             return Post(connect, operationName, x => x.Deserialize<T>(responseSettings), json, responseSettings);
-        }       
+        }
 
         /// <summary/>
-        public static IChatApiResponse<TClass?> Post<TClass>(this IConnect connect, string operationName, Func<string, TClass> deserialization, string? json = null, 
-            IResponseSettings? responseSettings = null) where TClass : class, IErrorResponse, new() 
+        public static IChatApiResponse<TClass?> Post<TClass>(this IConnect connect, string operationName, Func<string, TClass> deserialization,
+            string? json = null,
+            IResponseSettings? responseSettings = null) where TClass : class, IErrorResponse, new()
         {
             string link = connect.CreateLink(operationName, responseSettings);
-            
+
             IChatApiResponse<TClass?> chatApiResponse = ChatApiResponse<TClass?>
                 .CreateInstance(() =>
                 {
@@ -115,19 +117,19 @@ namespace ChatApi.Core.Helpers
         #region Asynchronous post
 
         /// <summary/>
-        public static Task<IChatApiResponse<TInterface?>> PostAsync<TClass, TInterface>(this IConnect connect, 
-            string operationName, string? json = null, IResponseSettings? responseSettings = null) 
+        public static Task<IChatApiResponse<TInterface?>> PostAsync<TClass, TInterface>(this IConnect connect,
+            string operationName, string? json = null, IResponseSettings? responseSettings = null)
             where TClass : class, TInterface, IErrorResponse, new()
         {
             return PostAsync(
-                connect, operationName, 
-                x => (TInterface) x.Deserialize<TClass>(responseSettings), 
+                connect, operationName,
+                x => (TInterface)x.Deserialize<TClass>(responseSettings),
                 json, responseSettings);
         }
 
         /// <summary/>
-        public static Task<IChatApiResponse<TInterface?>> PostAsync<TInterface>(this IConnect connect, 
-            string operationName, Func<string, TInterface> deserialization, string? json = null, 
+        public static Task<IChatApiResponse<TInterface?>> PostAsync<TInterface>(this IConnect connect,
+            string operationName, Func<string, TInterface> deserialization, string? json = null,
             IResponseSettings? responseSettings = null)
         {
             string link = connect.CreateLink(operationName, responseSettings);
@@ -149,12 +151,12 @@ namespace ChatApi.Core.Helpers
 
         #region Helpers
 
-        private static WebClient CreateHeaders(this WebClient client) 
+        private static WebClient CreateHeaders(this WebClient client)
         {
             client.Headers.Clear();
-                client.Headers[HttpRequestHeader.Accept] =
-                    client.Headers[HttpRequestHeader.ContentType] =
-                        "application/json; charset=utf-8";
+            client.Headers[HttpRequestHeader.Accept] =
+                client.Headers[HttpRequestHeader.ContentType] =
+                    "application/json; charset=utf-8";
 
             return client;
         }
@@ -164,7 +166,7 @@ namespace ChatApi.Core.Helpers
         {
             responseSettings ??= WhatsAppResponseSettings.Default;
 
-            StringBuilder stringBuilder = new ();
+            StringBuilder stringBuilder = new();
 
             stringBuilder.Append(
                 responseSettings.TypeProtocol switch
@@ -173,7 +175,7 @@ namespace ChatApi.Core.Helpers
                     Protocol.Https => "https://",
                     _ => throw new ArgumentOutOfRangeException()
                 });
-            
+
             switch (connect)
             {
                 case IWhatsAppConnect whatsAppConnect:
@@ -185,6 +187,7 @@ namespace ChatApi.Core.Helpers
                     stringBuilder.Append("?token=");
                     stringBuilder.Append(whatsAppConnect.Token);
                     break;
+
                 case IChatApiInstanceConnect:
                     stringBuilder.Append("us-central1-app-chat-api-com.cloudfunctions.net/");
                     stringBuilder.Append(operationName);
@@ -196,5 +199,6 @@ namespace ChatApi.Core.Helpers
         }
 
         #endregion
+
     }
 }

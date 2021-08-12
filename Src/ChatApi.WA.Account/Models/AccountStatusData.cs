@@ -8,18 +8,24 @@ namespace ChatApi.WA.Account.Models
     /// <summary/>
     public sealed class AccountStatusData : Printable, IAccountStatusData
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Title { get; set; }
+
         /// <inheritdoc />
         public string? Message { get; set; }
+
         /// <inheritdoc />
         public string? SubMessage { get; set; }
+
         /// <inheritdoc />
         public InstanceStatusType? SubStatus { get; set; }
+
         /// <inheritdoc />
         public IAdditionInformationStatus? Actions { get; set; }
+
         /// <inheritdoc />
         public InstanceConnectionStatusType? Reason { get; set; }
 
@@ -60,10 +66,16 @@ namespace ChatApi.WA.Account.Models
         }
 
         /// <summary/>
-        public static bool operator == (AccountStatusData? left, AccountStatusData? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(AccountStatusData? left, AccountStatusData? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (AccountStatusData? left, AccountStatusData? right) => !EquatableHelper.IsEquatable(left, right);
-        
+        public static bool operator !=(AccountStatusData? left, AccountStatusData? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
+
         #endregion
 
         #region Printable
@@ -80,5 +92,6 @@ namespace ChatApi.WA.Account.Models
         }
 
         #endregion
+
     }
 }

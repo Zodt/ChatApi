@@ -9,6 +9,7 @@ namespace ChatApi.WA.Dialogs.Responses.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.ILabelCreateResponse" />
     public sealed class LabelCreateResponse : Printable, ILabelCreateResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
@@ -17,10 +18,13 @@ namespace ChatApi.WA.Dialogs.Responses.UI
             get => string.Equals(Result, "success", StringComparison.Ordinal);
             set { }
         }
+
         /// <inheritdoc />
         public string? Result { get; set; }
+
         /// <inheritdoc />
         public ILabel? LabelInfo { get; set; }
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -31,9 +35,9 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         /// <inheritdoc />
         public bool Equals(ILabelCreateResponse? other)
         {
-            return other is not null && Success == other.Success && LabelInfo == other.LabelInfo && 
-                   string.Equals(Result,other.Result, StringComparison.Ordinal) &&
-                   string.Equals(ErrorMessage,other.ErrorMessage, StringComparison.Ordinal);
+            return other is not null && Success == other.Success && LabelInfo == other.LabelInfo &&
+                   string.Equals(Result, other.Result, StringComparison.Ordinal) &&
+                   string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
         /// <inheritdoc />
@@ -56,12 +60,18 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         /// <summary/>
-        public static bool operator == (LabelCreateResponse? left, LabelCreateResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LabelCreateResponse? left, LabelCreateResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LabelCreateResponse? left, LabelCreateResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LabelCreateResponse? left, LabelCreateResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
-        
+
         #region Printable
 
         /// <inheritdoc />
@@ -74,5 +84,6 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         #endregion
+
     }
 }

@@ -14,6 +14,7 @@ namespace ChatApi.Core.Collections
     /// <typeparam name="T">The type of elements in the collection.</typeparam>
     public abstract class WhatsAppApiCollection<T> : Collection<T?>, IPrintableCollection, IEquatable<Collection<T?>?> where T : class, IEquatable<T?>
     {
+
         #region Overridden collection methods
 
         /// <summary>
@@ -40,10 +41,10 @@ namespace ChatApi.Core.Collections
             IList<T> list = collection.ToList();
             // ReSharper disable once ForCanBeConvertedToForeach
             for (int i = 0; i < list.Count; i++)
-                if (!Items.Contains(list[i])) 
+                if (!Items.Contains(list[i]))
                     base.Add(list[i]);
         }
- 
+
         /// <summary>
         ///     Adds the elements of the specified collection to the end of the <see cref="T:System.Collections.Generic.IList`1"></see>.
         /// </summary>
@@ -55,7 +56,7 @@ namespace ChatApi.Core.Collections
 
             // ReSharper disable once ForCanBeConvertedToForeach
             for (int i = 0; i < collection.Count; i++)
-                if (!Items.Contains(collection[i])) 
+                if (!Items.Contains(collection[i]))
                     base.Add(collection[i]);
         }
         /// <summary>
@@ -100,7 +101,6 @@ namespace ChatApi.Core.Collections
         }
 
         #endregion
-        
 
         #endregion
 
@@ -115,7 +115,7 @@ namespace ChatApi.Core.Collections
             {
                 // ReSharper disable once LoopCanBeConvertedToQuery
                 for (int i = 0; i < other.Count; i++)
-                    if (!string.Equals(this[i] as string, other[i] as string, StringComparison.Ordinal)) 
+                    if (!string.Equals(this[i] as string, other[i] as string, StringComparison.Ordinal))
                         return false;
             }
             else
@@ -138,35 +138,41 @@ namespace ChatApi.Core.Collections
                 for (int i = 0; i < Count; i++)
                     hashCode = (hashCode * 397) ^ (this[i]?.GetHashCode() ?? 0);
 
-                return hashCode;    
+                return hashCode;
             }
         }
 
         /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is Collection<T?> self && Equals(self);
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator == (WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator != (WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
         #region Printable
 
         private const string Shift = "  ";
-        private readonly StringBuilder _stringBuilder = new ();
-        
+        private readonly StringBuilder _stringBuilder = new();
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static string GetShift(int? shiftValue)
         {
@@ -181,7 +187,7 @@ namespace ChatApi.Core.Collections
 
             return stringBuilder.ToString();
         }
-        
+
         /// <inheritdoc />
         public string PrintMembers()
         {
@@ -198,18 +204,18 @@ namespace ChatApi.Core.Collections
             if (this[0] is Printable)
                 for (int i = 0; i <= maxPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat((this[i] as Printable)!.PrintMembers(shift), ", "));
-            
+
             else if (this[0] is string || !typeof(T).IsInterface)
                 for (int i = 0; i <= maxPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat(currentShift, this[i], ", "));
 
             _stringBuilder.Remove(_stringBuilder.Length - shift - 1, shift + 1);
-            if (Count > maxPrint) _stringBuilder.Append("\n" + currentShift +"... ");
+            if (Count > maxPrint) _stringBuilder.Append("\n" + currentShift + "... ");
             _stringBuilder.AppendLine();
-            _stringBuilder.Append(GetShift(shift-1) + "]");
+            _stringBuilder.Append(GetShift(shift - 1) + "]");
 
             return _stringBuilder.ToString();
-        }        
+        }
         /// <inheritdoc />
         public string PrintMembers(int shift)
         {
@@ -225,17 +231,17 @@ namespace ChatApi.Core.Collections
             string currentShift = GetShift(++shift);
             if (this[0] is IPrintable)
                 for (int i = 0; i <= maxPrint - 1; i++)
-                    _stringBuilder.AppendLine(string.Concat((this[i] as Printable)!.PrintMembers(shift-1), ", "));
-            
-            else if (!typeof(T).IsInterface || !typeof(T).IsClass)   
+                    _stringBuilder.AppendLine(string.Concat((this[i] as Printable)!.PrintMembers(shift - 1), ", "));
+
+            else if (!typeof(T).IsInterface || !typeof(T).IsClass)
                 for (int i = 0; i <= maxPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat(currentShift, this[i], ", "));
 
             _stringBuilder.Remove(_stringBuilder.Length - shift - 1, shift + 1);
 
-            if (Count > maxPrint) _stringBuilder.Append("\n" + currentShift +"... ");
+            if (Count > maxPrint) _stringBuilder.Append("\n" + currentShift + "... ");
             _stringBuilder.AppendLine();
-            _stringBuilder.Append(GetShift(shift-1) + "]");
+            _stringBuilder.Append(GetShift(shift - 1) + "]");
 
             return _stringBuilder.ToString();
         }
@@ -246,14 +252,14 @@ namespace ChatApi.Core.Collections
             _stringBuilder.AppendLine("[");
 
             if (Count == 0) return _stringBuilder.Append(GetShift(--shift) + "]").ToString();
-            
+
             countElementPrint = countElementPrint > Count ? Count : countElementPrint;
 
             string currentShift = GetShift(++shift);
             if (this[0] is Printable)
                 for (int i = 0; i <= countElementPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat((this[i] as Printable)!.PrintMembers(shift), ", "));
-            
+
             else if (this[0] is string || !typeof(T).IsInterface || !typeof(T).IsClass)
                 for (int i = 0; i <= countElementPrint - 1; i++)
                     _stringBuilder.AppendLine(string.Concat(currentShift, this[i], ", "));
@@ -262,12 +268,13 @@ namespace ChatApi.Core.Collections
 
             if (Count > countElementPrint) _stringBuilder.Append("\n" + currentShift + "... ");
             _stringBuilder.AppendLine();
-            _stringBuilder.Append(GetShift(shift-1) + "]");
-            
+            _stringBuilder.Append(GetShift(shift - 1) + "]");
+
 
             return _stringBuilder.ToString();
         }
 
         #endregion
+
     }
 }

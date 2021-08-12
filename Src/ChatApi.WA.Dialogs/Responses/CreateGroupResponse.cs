@@ -8,20 +8,21 @@ namespace ChatApi.WA.Dialogs.Responses
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.ICreateGroupResponse" />
     public sealed class CreateGroupResponse : Printable, ICreateGroupResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? Created { get; set; }
-        
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
-        
+
         /// <inheritdoc />
         public string? Message { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public string? GroupInviteLink { get; set; }
 
@@ -52,17 +53,23 @@ namespace ChatApi.WA.Dialogs.Responses
             {
                 int hashCode = Created.GetHashCode();
                 hashCode = (hashCode * 397) ^ (ChatId is null ? 0 : ChatId.GetHashCode());
-                hashCode = (hashCode * 397) ^ (Message  is null ? 0 : Message.GetHashCode());
-                hashCode = (hashCode * 397) ^ (ErrorMessage  is null ? 0 : ErrorMessage.GetHashCode());
-                hashCode = (hashCode * 397) ^ (GroupInviteLink  is null ? 0 : GroupInviteLink.GetHashCode());
+                hashCode = (hashCode * 397) ^ (Message is null ? 0 : Message.GetHashCode());
+                hashCode = (hashCode * 397) ^ (ErrorMessage is null ? 0 : ErrorMessage.GetHashCode());
+                hashCode = (hashCode * 397) ^ (GroupInviteLink is null ? 0 : GroupInviteLink.GetHashCode());
                 return hashCode;
             }
         }
 
         /// <summary/>
-        public static bool operator == (CreateGroupResponse? left, CreateGroupResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(CreateGroupResponse? left, CreateGroupResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (CreateGroupResponse? left, CreateGroupResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(CreateGroupResponse? left, CreateGroupResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -79,5 +86,6 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         #endregion
+
     }
 }

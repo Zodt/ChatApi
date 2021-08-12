@@ -9,11 +9,12 @@ namespace ChatApi.WA.Dialogs.Responses
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.ILeaveGroupResponse" />
     public sealed class LeaveGroupResponse : Printable, ILeaveGroupResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public IOperationMessageResult? Result { get; set; }
 
@@ -24,7 +25,7 @@ namespace ChatApi.WA.Dialogs.Responses
         /// <inheritdoc />
         public bool Equals(ILeaveGroupResponse? other)
         {
-            return other is not null && 
+            return other is not null &&
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal) &&
                    Result == other.Result;
         }
@@ -45,9 +46,15 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         /// <summary/>
-        public static bool operator == (LeaveGroupResponse? left, LeaveGroupResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LeaveGroupResponse? left, LeaveGroupResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LeaveGroupResponse? left, LeaveGroupResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LeaveGroupResponse? left, LeaveGroupResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -61,5 +68,6 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         #endregion
+
     }
 }

@@ -17,34 +17,34 @@ namespace ChatApi.WA.Account.Responses.Interfaces
         /// </summary>
         [JsonConverter(typeof(InterfacesConverter<InstanceStatus>))]
         [JsonProperty("expiry", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        IInstanceStatus? Expiry { get; set; } 
+        IInstanceStatus? Expiry { get; set; }
 
         /// <summary>
         ///     Indicates that the manual synchronization attempt with the device must be repeated.
         /// </summary>
         [JsonConverter(typeof(InterfacesConverter<InstanceStatus>))]
         [JsonProperty("retry", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        IInstanceStatus? Retry { get; set; } 
+        IInstanceStatus? Retry { get; set; }
 
         /// <summary>
         ///     Indicates that you need to log out of WhatsApp Web to get a new QR code.
         /// </summary>
         [JsonConverter(typeof(InterfacesConverter<InstanceStatus>))]
         [JsonProperty("logout", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        IInstanceStatus? Logout { get; set; } 
+        IInstanceStatus? Logout { get; set; }
 
         /// <summary>
         ///     Indicates the need to return the active session.
         /// </summary>
         [JsonConverter(typeof(InterfacesConverter<InstanceStatus>))]
         [JsonProperty("takeover", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        IInstanceStatus? Takeover { get; set; } 
+        IInstanceStatus? Takeover { get; set; }
 
         /// <summary>
         ///     Providing advanced information
         /// </summary>
         [JsonConverter(typeof(InterfacesConverter<InstanceStatus>))]
         [JsonProperty("learn_more", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        IInstanceStatus? LearnMore { get; set; } 
+        IInstanceStatus? LearnMore { get; set; }
     }
 }

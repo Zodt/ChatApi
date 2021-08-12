@@ -8,17 +8,18 @@ namespace ChatApi.WA.Dialogs.Requests.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.UI.Interfaces.IDialogSendStatusOperationsRequest" />
     public abstract class DialogSendStatusOperationsRequest : Printable, IDialogSendStatusOperationsRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Phone { get; set; }
-        
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
-        
+
         /// <inheritdoc />
         public uint? Duration { get; set; }
-        
+
         /// <inheritdoc />
         public bool? EnableStatusDisplay { get; set; }
 
@@ -27,10 +28,13 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         #region Equatable
 
         /// <inheritdoc />
-        public bool Equals(IDialogSendStatusOperationsRequest? other) => other is not null && 
-                                                                         string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
-                                                                         string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
-                                                                         Duration == other.Duration && EnableStatusDisplay == other.EnableStatusDisplay;
+        public bool Equals(IDialogSendStatusOperationsRequest? other)
+        {
+            return other is not null &&
+                   string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
+                   string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
+                   Duration == other.Duration && EnableStatusDisplay == other.EnableStatusDisplay;
+        }
 
         /// <inheritdoc />
         public override bool Equals(object? obj)
@@ -54,9 +58,15 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         }
 
         /// <summary/>
-        public static bool operator == (DialogSendStatusOperationsRequest? left, DialogSendStatusOperationsRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(DialogSendStatusOperationsRequest? left, DialogSendStatusOperationsRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (DialogSendStatusOperationsRequest? left, DialogSendStatusOperationsRequest? right) => !EquatableHelper.IsEquatable(left, right);        
+        public static bool operator !=(DialogSendStatusOperationsRequest? left, DialogSendStatusOperationsRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -72,5 +82,6 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         }
 
         #endregion
+
     }
 }

@@ -6,6 +6,7 @@ namespace ChatApi.WA.Ban.Requests
     /// <inheritdoc />
     public class CheckBanRequest : ICheckBanRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
@@ -18,7 +19,7 @@ namespace ChatApi.WA.Ban.Requests
         /// <inheritdoc />
         public bool Equals(ICheckBanRequest? other)
         {
-            return other is not null && 
+            return other is not null &&
                    Phone == other.Phone;
         }
 
@@ -35,10 +36,17 @@ namespace ChatApi.WA.Ban.Requests
         }
 
         /// <summary/>
-        public static bool operator == (CheckBanRequest? left, CheckBanRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(CheckBanRequest? left, CheckBanRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (CheckBanRequest? left, CheckBanRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(CheckBanRequest? left, CheckBanRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

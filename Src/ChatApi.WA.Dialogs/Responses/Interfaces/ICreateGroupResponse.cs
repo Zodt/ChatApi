@@ -12,13 +12,13 @@ namespace ChatApi.WA.Dialogs.Responses.Interfaces
         /// </summary>
         [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
         bool? Created { get; set; }
-        
+
         /// <summary>
         ///     Group creation status
         /// </summary>
         [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
         string? Message { get; set; }
-        
+
         /// <summary>
         ///     Link invitation to the group
         /// </summary>

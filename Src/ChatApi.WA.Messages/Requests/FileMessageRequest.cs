@@ -8,22 +8,30 @@ namespace ChatApi.WA.Messages.Requests
     /// <summary/>
     public sealed class FileMessageRequest : IFileMessageRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Body { get; set; }
+
         /// <inheritdoc />
         public bool? Cached { get; set; }
+
         /// <inheritdoc />
         public string? Phone { get; set; }
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
+
         /// <inheritdoc />
         public string? Caption { get; set; }
+
         /// <inheritdoc />
         public string? FileName { get; set; }
+
         /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
+
         /// <inheritdoc />
         public MentionedPhonesCollection? MentionedPhones { get; set; }
 
@@ -35,13 +43,13 @@ namespace ChatApi.WA.Messages.Requests
         public bool Equals(IFileMessageRequest? other)
         {
             return other is not null && Cached == other.Cached &&
-                MentionedPhones == other.MentionedPhones &&
-                string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
-                string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
-                string.Equals(Body, other.Body, StringComparison.Ordinal) &&
-                string.Equals(FileName, other.FileName, StringComparison.Ordinal) &&
-                string.Equals(Caption, other.Caption, StringComparison.Ordinal) &&
-                string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal);
+                   MentionedPhones == other.MentionedPhones &&
+                   string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
+                   string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
+                   string.Equals(Body, other.Body, StringComparison.Ordinal) &&
+                   string.Equals(FileName, other.FileName, StringComparison.Ordinal) &&
+                   string.Equals(Caption, other.Caption, StringComparison.Ordinal) &&
+                   string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal);
         }
 
         /// <inheritdoc />
@@ -49,7 +57,7 @@ namespace ChatApi.WA.Messages.Requests
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            
+
             return obj is IFileMessageRequest request && Equals(request);
         }
 
@@ -71,10 +79,17 @@ namespace ChatApi.WA.Messages.Requests
         }
 
         /// <summary/>
-        public static bool operator == (FileMessageRequest? left, FileMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(FileMessageRequest? left, FileMessageRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (FileMessageRequest? left, FileMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(FileMessageRequest? left, FileMessageRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

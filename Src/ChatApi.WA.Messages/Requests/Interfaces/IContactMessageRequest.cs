@@ -14,6 +14,6 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         /// </summary>
         [JsonConverter(typeof(InterfaceCollectionConverter<string, string, ContactCollection>))]
         [JsonProperty("contactId", Required = Required.Always, NullValueHandling = NullValueHandling.Ignore)]
-        ContactCollection? ContactId { get; set; } 
+        ContactCollection? ContactId { get; set; }
     }
 }

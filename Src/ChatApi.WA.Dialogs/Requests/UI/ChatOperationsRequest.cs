@@ -8,10 +8,12 @@ namespace ChatApi.WA.Dialogs.Requests.UI
     /// <inheritdoc />
     public abstract class ChatOperationsRequest : IChatOperationsRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? ChatId { get; set; }
+
         /// <inheritdoc />
         public string? Phone { get; set; }
 
@@ -38,16 +40,23 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         {
             unchecked
             {
-                return ((ChatId is null ? 0 : ChatId.GetHashCode()) * 397) ^ 
+                return ((ChatId is null ? 0 : ChatId.GetHashCode()) * 397) ^
                        (Phone is null ? 0 : Phone.GetHashCode());
             }
         }
 
         /// <summary/>
-        public static bool operator == (ChatOperationsRequest? left, ChatOperationsRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatOperationsRequest? left, ChatOperationsRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatOperationsRequest? left, ChatOperationsRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatOperationsRequest? left, ChatOperationsRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

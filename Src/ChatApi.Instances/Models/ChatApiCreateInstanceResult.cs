@@ -9,13 +9,14 @@ namespace ChatApi.Instances.Models
     {
         /// <inheritdoc />
         public ChatApiStatusOperation? Status { get; set; }
+
         /// <inheritdoc />
         public IChatApiInstanceParameters? InstanceParameters { get; set; }
 
         /// <inheritdoc />
         public bool Equals(IChatApiCreateInstanceResult? other)
         {
-            return other is not null && Status == other.Status && 
+            return other is not null && Status == other.Status &&
                    InstanceParameters == other.InstanceParameters;
         }
 
@@ -34,8 +35,14 @@ namespace ChatApi.Instances.Models
             }
         }
         /// <summary/>
-        public static bool operator == (ChatApiCreateInstanceResult? left, ChatApiCreateInstanceResult? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatApiCreateInstanceResult? left, ChatApiCreateInstanceResult? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatApiCreateInstanceResult? left, ChatApiCreateInstanceResult? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatApiCreateInstanceResult? left, ChatApiCreateInstanceResult? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
     }
 }

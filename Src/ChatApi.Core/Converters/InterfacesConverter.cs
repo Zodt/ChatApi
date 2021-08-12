@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.Core.Converters
 {
     /// <summary/>
-    public class InterfacesConverter<T> : JsonConverter<T?> where T: class
+    public class InterfacesConverter<T> : JsonConverter<T?> where T : class
     {
         /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

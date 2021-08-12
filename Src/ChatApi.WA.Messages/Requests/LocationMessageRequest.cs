@@ -7,18 +7,24 @@ namespace ChatApi.WA.Messages.Requests
     /// <summary/>
     public sealed class LocationMessageRequest : ILocationMessageRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Phone { get; set; }
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
+
         /// <inheritdoc />
         public string? Address { get; set; }
+
         /// <inheritdoc />
         public double? Latitude { get; set; }
+
         /// <inheritdoc />
         public double? Longitude { get; set; }
+
         /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
 
@@ -29,12 +35,12 @@ namespace ChatApi.WA.Messages.Requests
         /// <inheritdoc />
         public bool Equals(ILocationMessageRequest? other)
         {
-            return other is not null && 
-                   ChatId == other.ChatId && 
-                   Phone == other.Phone && 
-                   QuotedMessageId == other.QuotedMessageId && 
-                   Nullable.Equals(Latitude, other.Latitude) && 
-                   Nullable.Equals(Longitude, other.Longitude) && 
+            return other is not null &&
+                   ChatId == other.ChatId &&
+                   Phone == other.Phone &&
+                   QuotedMessageId == other.QuotedMessageId &&
+                   Nullable.Equals(Latitude, other.Latitude) &&
+                   Nullable.Equals(Longitude, other.Longitude) &&
                    Address == other.Address;
         }
 
@@ -60,11 +66,17 @@ namespace ChatApi.WA.Messages.Requests
         }
 
         /// <summary/>
-        public static bool operator == (LocationMessageRequest? left, LocationMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LocationMessageRequest? left, LocationMessageRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LocationMessageRequest? left, LocationMessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
-
+        public static bool operator !=(LocationMessageRequest? left, LocationMessageRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

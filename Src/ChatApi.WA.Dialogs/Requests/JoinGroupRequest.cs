@@ -7,10 +7,12 @@ namespace ChatApi.WA.Dialogs.Requests
     /// <inheritdoc />
     public sealed class JoinGroupRequest : IJoinGroupRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? InvitationLink { get; set; }
+
         /// <inheritdoc />
         public string? InvitationCode { get; set; }
 
@@ -37,16 +39,23 @@ namespace ChatApi.WA.Dialogs.Requests
         {
             unchecked
             {
-                return ((InvitationLink is null ? 0 : InvitationLink.GetHashCode()) * 397) ^ 
+                return ((InvitationLink is null ? 0 : InvitationLink.GetHashCode()) * 397) ^
                        (InvitationCode is null ? 0 : InvitationCode.GetHashCode());
             }
         }
 
         /// <summary/>
-        public static bool operator == (JoinGroupRequest? left, JoinGroupRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(JoinGroupRequest? left, JoinGroupRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (JoinGroupRequest? left, JoinGroupRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(JoinGroupRequest? left, JoinGroupRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

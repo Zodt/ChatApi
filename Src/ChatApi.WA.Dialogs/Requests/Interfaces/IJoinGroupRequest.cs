@@ -13,7 +13,7 @@ namespace ChatApi.WA.Dialogs.Requests.Interfaces
         /// <example>https://chat.whatsapp.com/GUF2kjFAFZKBRI8vhs2sqK</example>
         [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         string? InvitationLink { get; set; }
-        
+
         /// <summary>
         ///     Code from invite link (part after last slash).
         /// </summary>

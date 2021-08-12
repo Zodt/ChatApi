@@ -7,12 +7,12 @@
 
     interface IPrintableSetting
     {
-        
+
     }
 
     interface IPrintableCollectionSettings : IPrintableSetting
     {
-        
+
     }
-    
+
 }

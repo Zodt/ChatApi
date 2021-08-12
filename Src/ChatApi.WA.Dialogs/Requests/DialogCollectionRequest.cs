@@ -7,10 +7,12 @@ namespace ChatApi.WA.Dialogs.Requests
     /// <inheritdoc />
     public sealed class DialogCollectionRequest : IDialogCollectionRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public int Page { get; set; }
+
         /// <inheritdoc />
         public int Limit { get; set; }
 
@@ -67,10 +69,17 @@ namespace ChatApi.WA.Dialogs.Requests
         }
 
         /// <summary/>
-        public static bool operator == (DialogCollectionRequest? left, DialogCollectionRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(DialogCollectionRequest? left, DialogCollectionRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (DialogCollectionRequest? left, DialogCollectionRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(DialogCollectionRequest? left, DialogCollectionRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

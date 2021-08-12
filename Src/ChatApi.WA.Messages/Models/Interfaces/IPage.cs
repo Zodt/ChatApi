@@ -10,6 +10,6 @@ namespace ChatApi.WA.Messages.Models.Interfaces
         /// </summary>
         /// <example>5</example>
         [JsonProperty("page", NullValueHandling = NullValueHandling.Ignore)]
-        int? Page { get; set; }   
+        int? Page { get; set; }
     }
 }

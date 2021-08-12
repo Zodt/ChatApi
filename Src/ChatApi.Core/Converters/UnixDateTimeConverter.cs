@@ -13,6 +13,7 @@ namespace ChatApi.Core.Converters
         ///     Time-zone offset. <br/> Default: current time zone offset
         /// </summary>
         public TimeSpan? Offset { get; set; }
+
         private static readonly DateTime Epoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
@@ -24,12 +25,13 @@ namespace ChatApi.Core.Converters
         public static string? Convert(DateTime? value)
         {
             if (value is null) return null;
-            
+
             var universalTime = TimeZoneInfo.ConvertTimeToUtc(value.Value) - Epoch;
             long seconds = (long)(universalTime.TotalMilliseconds / 1000d);
 
-            if (seconds < 0) throw new JsonSerializationException(
-                "Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
+            if (seconds < 0)
+                throw new JsonSerializationException(
+                    "Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
 
             return seconds.ToString();
         }
@@ -71,7 +73,7 @@ namespace ChatApi.Core.Converters
             if (reader.Value is null) return null;
             var firstOrDefault = serializer.Converters
                 .FirstOrDefault(x => x is UnixDateTimeConverter) as UnixDateTimeConverter;
-            return Convert((long) reader.Value, firstOrDefault?.Offset);
+            return Convert((long)reader.Value, firstOrDefault?.Offset);
         }
     }
 }

@@ -14,38 +14,38 @@ namespace ChatApi.WA.Account.Responses.Interfaces
         ///     Unique ID of the chat with the account
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-        string? Id { get; set; } 
+        string? Id { get; set; }
 
         /// <summary>
         ///     Percent of the battery charge
         /// </summary>
         [JsonProperty("battery", NullValueHandling = NullValueHandling.Ignore)]
-        string? Battery { get; set; } 
+        string? Battery { get; set; }
 
         /// <summary>
         ///     Culture
         /// </summary>
         [JsonProperty("locale", NullValueHandling = NullValueHandling.Ignore)]
-        string? Locale { get; set; } 
+        string? Locale { get; set; }
 
         /// <summary>
         ///     Account owner name
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        string? Name { get; set; } 
+        string? Name { get; set; }
 
         /// <summary>
         ///     Version of installed WhatsApp application on the account owner's phone
         /// </summary>
         [JsonProperty("wa_version", NullValueHandling = NullValueHandling.Ignore)]
-        string? WhatsAppVersion { get; set; } 
+        string? WhatsAppVersion { get; set; }
 
         /// <summary>
         ///     Account owner's phone information
         /// </summary>
         [JsonConverter(typeof(InterfacesConverter<DeviceCharacteristic>))]
         [JsonProperty("device", NullValueHandling = NullValueHandling.Ignore, TypeNameHandling = TypeNameHandling.Auto)]
-        IDeviceCharacteristic? Device { get; set; } 
+        IDeviceCharacteristic? Device { get; set; }
 
     }
 }

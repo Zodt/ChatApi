@@ -6,17 +6,21 @@ namespace ChatApi.WA.Messages.Requests
     /// <summary/>
     public sealed class VoiceMessageRequest : IVoiceMessageRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? ChatId { get; set; }
+
         /// <inheritdoc />
         public string? Phone { get; set; }
+
         /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
+
         /// <inheritdoc />
         public string? Audio { get; set; }
-        
+
         #endregion
 
         #region Equatable
@@ -24,11 +28,11 @@ namespace ChatApi.WA.Messages.Requests
         /// <inheritdoc />
         public bool Equals(IVoiceMessageRequest? other)
         {
-            return other is not null && 
-                ChatId == other.ChatId && 
-                Phone == other.Phone && 
-                QuotedMessageId == other.QuotedMessageId && 
-                Audio == other.Audio;
+            return other is not null &&
+                   ChatId == other.ChatId &&
+                   Phone == other.Phone &&
+                   QuotedMessageId == other.QuotedMessageId &&
+                   Audio == other.Audio;
         }
 
         /// <inheritdoc />
@@ -51,10 +55,17 @@ namespace ChatApi.WA.Messages.Requests
         }
 
         /// <summary/>
-        public static bool operator == (VoiceMessageRequest? left, VoiceMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(VoiceMessageRequest? left, VoiceMessageRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (VoiceMessageRequest? left, VoiceMessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(VoiceMessageRequest? left, VoiceMessageRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

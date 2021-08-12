@@ -12,18 +12,18 @@ namespace ChatApi.Core.Models
         /// <summary/>
         [EnumMember(Value = "success")]
         Success = 1,
-        
+
         /// <summary/>
         [EnumMember(Value = "created")]
         Created = 2,
-        
+
         /// <summary/>
         [EnumMember(Value = "deleted")]
         Deleted = 3,
-        
+
         /// <summary/>
         [EnumMember(Value = "exists")]
         Exists = 4,
-        
+
     }
 }

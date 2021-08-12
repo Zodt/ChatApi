@@ -8,6 +8,7 @@ namespace ChatApi.WA.Account.Requests
     /// <summary/>
     public class AccountStatusRequest : Printable, IAccountStatusRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
@@ -19,7 +20,7 @@ namespace ChatApi.WA.Account.Requests
                 if (GetFullInformation is not null)
                 {
                     stringBuilder.Append("&full=");
-                    stringBuilder.Append(GetFullInformation);                    
+                    stringBuilder.Append(GetFullInformation);
                 }
 
                 if (NoWakeup is not null)
@@ -27,13 +28,14 @@ namespace ChatApi.WA.Account.Requests
                     stringBuilder.Append("&no_wakeup=");
                     stringBuilder.Append(NoWakeup);
                 }
-                
+
                 return stringBuilder.ToString();
             }
         }
 
         /// <inheritdoc />
         public bool? NoWakeup { get; set; }
+
         /// <inheritdoc />
         public bool? GetFullInformation { get; set; }
 
@@ -44,8 +46,8 @@ namespace ChatApi.WA.Account.Requests
         /// <inheritdoc />
         public bool Equals(IAccountStatusRequest? other)
         {
-            return other is not null && 
-                   NoWakeup == other.NoWakeup && 
+            return other is not null &&
+                   NoWakeup == other.NoWakeup &&
                    GetFullInformation == other.GetFullInformation;
         }
 
@@ -68,9 +70,15 @@ namespace ChatApi.WA.Account.Requests
         }
 
         /// <summary/>
-        public static bool operator == (AccountStatusRequest? left, AccountStatusRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(AccountStatusRequest? left, AccountStatusRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (AccountStatusRequest? left, AccountStatusRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(AccountStatusRequest? left, AccountStatusRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -84,5 +92,6 @@ namespace ChatApi.WA.Account.Requests
         }
 
         #endregion
+
     }
 }

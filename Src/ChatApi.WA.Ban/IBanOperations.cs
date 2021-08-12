@@ -19,7 +19,7 @@ namespace ChatApi.WA.Ban
         /// </summary>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IBanSettingsResponse?>> GetBanSettingsAsync(IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Send the phone number to find out if the instance is banning it
         /// </summary>
@@ -33,19 +33,20 @@ namespace ChatApi.WA.Ban
         /// <param name="checkBan">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<ICheckBanResponse?>> CheckBanAsync(ICheckBanRequest checkBan, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Set settings
         /// </summary>
         /// <param name="banSettings">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IBanSettingsResponse?> SetBanSettings(IBanSettingsRequest banSettings, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous set settings
         /// </summary>
         /// <param name="banSettings">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>        
-        Task<IChatApiResponse<IBanSettingsResponse?>> SetBanSettingsAsync(IBanSettingsRequest banSettings, IResponseSettings? responseSettings = null);
+        Task<IChatApiResponse<IBanSettingsResponse?>>
+            SetBanSettingsAsync(IBanSettingsRequest banSettings, IResponseSettings? responseSettings = null);
     }
 }

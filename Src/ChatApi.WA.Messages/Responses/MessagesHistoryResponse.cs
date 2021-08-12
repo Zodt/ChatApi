@@ -9,14 +9,15 @@ namespace ChatApi.WA.Messages.Responses
     /// <inheritdoc cref="ChatApi.WA.Messages.Responses.Interfaces.IMessagesHistoryResponse" />
     public sealed class MessagesHistoryResponse : Printable, IMessagesHistoryResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public int? Page { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public MessageCollection? Messages { get; set; }
 
@@ -28,7 +29,7 @@ namespace ChatApi.WA.Messages.Responses
         public bool Equals(IMessagesHistoryResponse? other)
         {
             return other is not null && Messages == other.Messages && Page == other.Page &&
-                string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
+                   string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
         /// <inheritdoc />
@@ -67,5 +68,6 @@ namespace ChatApi.WA.Messages.Responses
         }
 
         #endregion
+
     }
 }

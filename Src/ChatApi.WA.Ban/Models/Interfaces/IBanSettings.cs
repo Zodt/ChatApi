@@ -12,13 +12,13 @@ namespace ChatApi.WA.Ban.Models.Interfaces
         /// </summary>
         [JsonProperty("banPhoneMask", NullValueHandling = NullValueHandling.Ignore)]
         string? BanPhoneMask { get; set; }
-        
+
         /// <summary>
         ///     Warning message If it is set, a message will be sent before sending the ban.
         /// </summary>
         [JsonProperty("preBanMessage", NullValueHandling = NullValueHandling.Ignore)]
         string? PreBanMessage { get; set; }
-        
+
         /// <summary>
         ///     Flag indicating that the current request has changed ban settings
         /// </summary>

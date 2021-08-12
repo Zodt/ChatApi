@@ -16,7 +16,7 @@ namespace ChatApi.WA.Queues
         /// <remarks>This method give the last 100 messages in the queue.</remarks>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IShowMessagesQueueResponse?> ShowMessagesQueue(IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous get outbound messages queue.
         ///     When sending messages, all messages are in the queue.
@@ -26,7 +26,7 @@ namespace ChatApi.WA.Queues
         /// <remarks>This method give the last 100 messages in the queue.</remarks>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IShowMessagesQueueResponse?>> ShowMessagesQueueAsync(IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Clear outbound messages queue.
         ///     This method is needed when you accidentally sent thousands of messages in a row.
@@ -40,7 +40,7 @@ namespace ChatApi.WA.Queues
         /// </summary>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IClearMessagesQueueResponse?>> ClearMessagesQueueAsync(IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Get outbound messages queue.
         ///     When you create an action, all actions are queued up.
@@ -60,14 +60,14 @@ namespace ChatApi.WA.Queues
         /// <remarks>This method give the last 100 actions in the queue.</remarks>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IShowActionsQueueResponse?>> ShowActionsQueueAsync(IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Clear outbound actions queue.
         ///     This method is needed when you accidentally sent thousands of actions in a row.
         /// </summary>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IClearActionsQueueResponse?> ClearActionsQueue(IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous clear outbound actions queue.
         ///     This method is needed when you accidentally sent thousands of actions in a row.

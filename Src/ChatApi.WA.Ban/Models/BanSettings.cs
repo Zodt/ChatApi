@@ -7,14 +7,15 @@ namespace ChatApi.WA.Ban.Models
     /// <inheritdoc cref="ChatApi.WA.Ban.Models.Interfaces.IBanSettings" />
     public abstract class BanSettings : Printable, IBanSettings
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? IsSet { get; set; }
-        
+
         /// <inheritdoc />
         public string? BanPhoneMask { get; set; }
-        
+
         /// <inheritdoc />
         public string? PreBanMessage { get; set; }
 
@@ -25,9 +26,9 @@ namespace ChatApi.WA.Ban.Models
         /// <inheritdoc />
         public bool Equals(IBanSettings? other)
         {
-            return other is not null && 
+            return other is not null &&
                    IsSet == other.IsSet &&
-                   BanPhoneMask == other.BanPhoneMask && 
+                   BanPhoneMask == other.BanPhoneMask &&
                    PreBanMessage == other.PreBanMessage;
         }
 
@@ -50,12 +51,18 @@ namespace ChatApi.WA.Ban.Models
         }
 
         /// <summary/>
-        public static bool operator == (BanSettings? left, BanSettings? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(BanSettings? left, BanSettings? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (BanSettings? left, BanSettings? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(BanSettings? left, BanSettings? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
-        
+
         #region Printable
 
         /// <inheritdoc />
@@ -67,5 +74,6 @@ namespace ChatApi.WA.Ban.Models
         }
 
         #endregion
+
     }
 }

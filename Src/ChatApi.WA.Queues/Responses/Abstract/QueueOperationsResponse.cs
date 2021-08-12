@@ -8,14 +8,15 @@ namespace ChatApi.WA.Queues.Responses.Abstract
     /// <inheritdoc />
     public abstract class QueueOperationsResponse : IQueueOperationsResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public int? Id { get; set; }
-        
+
         /// <inheritdoc />
         public ActionType? Type { get; set; }
-        
+
         /// <inheritdoc />
         public DateTime? LastTimeTrySend { get; set; }
 
@@ -26,9 +27,9 @@ namespace ChatApi.WA.Queues.Responses.Abstract
         /// <inheritdoc />
         public bool Equals(IQueueOperationsResponse? other)
         {
-            return other is not null && 
-                   Id == other.Id && 
-                   Type == other.Type && 
+            return other is not null &&
+                   Id == other.Id &&
+                   Type == other.Type &&
                    LastTimeTrySend == other.LastTimeTrySend;
         }
 
@@ -51,10 +52,17 @@ namespace ChatApi.WA.Queues.Responses.Abstract
         }
 
         /// <summary/>
-        public static bool operator == (QueueOperationsResponse? left, QueueOperationsResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(QueueOperationsResponse? left, QueueOperationsResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (QueueOperationsResponse? left, QueueOperationsResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(QueueOperationsResponse? left, QueueOperationsResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

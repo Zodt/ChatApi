@@ -10,13 +10,14 @@ namespace ChatApi.Instances.Responses
     {
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+
         /// <inheritdoc />
         public ChatApiStatusOperation Status { get; set; }
 
         /// <inheritdoc />
         public bool Equals(IChatApiRemoveInstanceResponse? other)
         {
-            return other is not null && Status == other.Status && 
+            return other is not null && Status == other.Status &&
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
@@ -31,13 +32,19 @@ namespace ChatApi.Instances.Responses
         {
             unchecked
             {
-                return ((ErrorMessage != null ? ErrorMessage.GetHashCode() : 0) * 397) ^ (int) Status;
+                return ((ErrorMessage != null ? ErrorMessage.GetHashCode() : 0) * 397) ^ (int)Status;
             }
         }
 
         /// <summary/>
-        public static bool operator == (ChatApiRemoveInstanceResponse? left, ChatApiRemoveInstanceResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatApiRemoveInstanceResponse? left, ChatApiRemoveInstanceResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatApiRemoveInstanceResponse? left, ChatApiRemoveInstanceResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatApiRemoveInstanceResponse? left, ChatApiRemoveInstanceResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
     }
 }

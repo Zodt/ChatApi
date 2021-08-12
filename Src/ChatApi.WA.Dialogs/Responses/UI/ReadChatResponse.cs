@@ -8,17 +8,18 @@ namespace ChatApi.WA.Dialogs.Responses.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.IReadChatResponse" />
     public sealed class ReadChatResponse : Printable, IReadChatResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? Read { get; set; }
-        
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
-        
+
         /// <inheritdoc />
         public string? Message { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -48,16 +49,22 @@ namespace ChatApi.WA.Dialogs.Responses.UI
             {
                 int hashCode = Read.GetHashCode();
                 hashCode = (hashCode * 397) ^ (ChatId is null ? 0 : ChatId.GetHashCode());
-                hashCode = (hashCode * 397) ^ (Message is null? 0 : Message.GetHashCode());
-                hashCode = (hashCode * 397) ^ (ErrorMessage is null? 0 : ErrorMessage.GetHashCode());
+                hashCode = (hashCode * 397) ^ (Message is null ? 0 : Message.GetHashCode());
+                hashCode = (hashCode * 397) ^ (ErrorMessage is null ? 0 : ErrorMessage.GetHashCode());
                 return hashCode;
             }
         }
 
         /// <summary/>
-        public static bool operator == (ReadChatResponse? left, ReadChatResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ReadChatResponse? left, ReadChatResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ReadChatResponse? left, ReadChatResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ReadChatResponse? left, ReadChatResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -70,7 +77,7 @@ namespace ChatApi.WA.Dialogs.Responses.UI
             AddMember(nameof(ChatId), ChatId, shift);
             AddMember(nameof(Message), Message, shift);
             AddMember(nameof(ErrorMessage), ErrorMessage, shift);
-        }        
+        }
 
         #endregion
 

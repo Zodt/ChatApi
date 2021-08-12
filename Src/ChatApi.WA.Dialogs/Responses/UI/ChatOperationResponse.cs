@@ -8,12 +8,15 @@ namespace ChatApi.WA.Dialogs.Responses.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.IChatOperationResponse" />
     public abstract class ChatOperationResponse : Printable, IChatOperationResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? ChatId { get; set; }
+
         /// <inheritdoc />
         public ChatApiStatusOperation? Result { get; set; }
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -24,7 +27,7 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         /// <inheritdoc />
         public bool Equals(IChatOperationResponse? other)
         {
-            return other is not null && Result == other.Result && 
+            return other is not null && Result == other.Result &&
                    string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
@@ -48,9 +51,15 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         /// <summary/>
-        public static bool operator == (ChatOperationResponse? left, ChatOperationResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatOperationResponse? left, ChatOperationResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatOperationResponse? left, ChatOperationResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatOperationResponse? left, ChatOperationResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -65,5 +74,6 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         #endregion
+
     }
 }

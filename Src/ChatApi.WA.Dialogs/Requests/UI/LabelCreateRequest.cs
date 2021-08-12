@@ -7,6 +7,7 @@ namespace ChatApi.WA.Dialogs.Requests.UI
     /// <inheritdoc />
     public sealed class LabelCreateRequest : ILabelCreateRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
@@ -24,10 +25,17 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is ILabelCreateRequest other && Equals(other);
         /// <summary/>
-        public static bool operator == (LabelCreateRequest? left, LabelCreateRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LabelCreateRequest? left, LabelCreateRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LabelCreateRequest? left, LabelCreateRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LabelCreateRequest? left, LabelCreateRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

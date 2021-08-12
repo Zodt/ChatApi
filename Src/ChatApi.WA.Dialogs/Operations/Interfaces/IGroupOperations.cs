@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-
 using ChatApi.Core.Response.Interfaces;
-
 using ChatApi.WA.Dialogs.Requests.Interfaces;
 using ChatApi.WA.Dialogs.Responses.Interfaces;
 
@@ -17,7 +15,7 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         ///     Manage group participant operations
         /// </summary>
         public Lazy<IGroupParticipantOperations> GroupParticipantOperations { get; }
-        
+
         /// <summary>
         ///     Creates a group and sends the message to the created group.
         /// </summary>
@@ -27,7 +25,7 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         /// <param name="createGroup">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<ICreateGroupResponse?> CreateGroup(ICreateGroupRequest createGroup, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Creates a group and sends the message to the created group.
         /// </summary>
@@ -45,14 +43,14 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         /// <param name="joinGroup">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IJoinGroupResponse?> JoinGroup(IJoinGroupRequest joinGroup, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous join group by link or code
         /// </summary>
         /// <param name="joinGroup">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IJoinGroupResponse?>> JoinGroupAsync(IJoinGroupRequest joinGroup, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Leave group
         /// </summary>
@@ -66,6 +64,6 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         /// <param name="leaveGroup">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<ILeaveGroupResponse?>> LeaveGroupAsync(ILeaveGroupRequest leaveGroup, IResponseSettings? responseSettings = null);
-        
+
     }
 }

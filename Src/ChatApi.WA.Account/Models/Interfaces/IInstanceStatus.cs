@@ -11,14 +11,14 @@ namespace ChatApi.WA.Account.Models.Interfaces
         ///     Method name
         /// </summary>
         [JsonProperty("act", NullValueHandling = NullValueHandling.Ignore)]
-        InstanceStatusActionType? ActionType { get; set; } 
+        InstanceStatusActionType? ActionType { get; set; }
 
         /// <summary>
         ///     Action caption for the button
         /// </summary>
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
-        string? Label { get; set; }    
-        
+        string? Label { get; set; }
+
         /// <summary>
         ///     Reference URL instead of method
         /// </summary>
