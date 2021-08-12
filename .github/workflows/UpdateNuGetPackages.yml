@@ -17,13 +17,17 @@ jobs:
           source-url: https://nuget.pkg.github.com/Zodt/index.json
           dotnet-version: '5.0.101'
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.CHATAPI_TOKEN}}        
+          NUGET_AUTH_TOKEN: ${{secrets.CHATAPI_NUGET_TOKEN}}        
           
       - name: Build solution and generate NuGet packages
         run: |  
           cd Src/
           dotnet pack --configuration=Release --output=.\nuget
+          
+      - name: Add GitHub source
+        run: dotnet nuget add source --username Zodt --password ${{secrets.CHATAPI_GITHUB_TOKEN}} --name github https://nuget.pkg.github.com/Zodt/index.json
+        
       - name: Push generated package to GitHub registry
         run: |
           cd Src/.nuget
-          dotnet nuget push '*.nupkg' --skip-duplicate
+          dotnet nuget push '*.nupkg' github --skip-duplicate
