@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
     /// <summary/>
-    public interface ILabelCollectionResponse : IErrorResponse, IEquatable<ILabelCollectionResponse?>, IPrintable
+    public interface ILabelCollectionResponse : IErrorResponse, IEquatable<ILabelCollectionResponse?>
     {
         /// <summary>
         ///     A collection of label.

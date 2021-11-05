@@ -9,7 +9,7 @@ namespace ChatApi.WA.Dialogs.Requests.Interfaces
     /// <summary>
     ///     Creates a group and sends the message to the created group.
     /// </summary>
-    public interface ICreateGroupRequest : IEquatable<ICreateGroupRequest?>, IPrintable
+    public interface ICreateGroupRequest : IEquatable<ICreateGroupRequest?>
     {
         /// <summary>
         ///     Name of the group being created

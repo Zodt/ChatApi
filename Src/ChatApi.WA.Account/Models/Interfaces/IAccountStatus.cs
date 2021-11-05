@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Account.Models.Interfaces
 {
     /// <summary/>
-    public interface IAccountStatus : IOperationResponse, IPrintable
+    public interface IAccountStatus : IOperationResponse
     {
         /// <summary>
         ///     Account status

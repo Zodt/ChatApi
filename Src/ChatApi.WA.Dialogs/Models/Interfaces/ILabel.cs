@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Models.Interfaces
 {
     /// <summary/>
-    public interface ILabel : IEquatable<ILabel?>, IPrintable
+    public interface ILabel : IEquatable<ILabel?>
     {
         /// <summary>
         ///     Unique ID of the label

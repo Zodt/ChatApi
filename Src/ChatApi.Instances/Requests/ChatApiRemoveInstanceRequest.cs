@@ -6,10 +6,10 @@ using ChatApi.Instances.Requests.Interfaces;
 namespace ChatApi.Instances.Requests
 {
     /// <summary/>
-    public sealed class ChatApiRemoveInstanceRequest : IChatApiRemoveInstanceRequest
+    public sealed record ChatApiRemoveInstanceRequest : IChatApiRemoveInstanceRequest
     {
         /// <inheritdoc />
-        public string? ApiKey { get; internal set; }
+        public string? ApiKey { get; private set; }
 
         string? IChatApiRemoveInstanceRequest.ApiKey
         {
@@ -33,28 +33,6 @@ namespace ChatApi.Instances.Requests
                    string.Equals(ApiKey, other.ApiKey, StringComparison.Ordinal) &&
                    string.Equals(Instance, other.Instance, StringComparison.Ordinal);
         }
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is IChatApiRemoveInstanceRequest other && Equals(other);
-        }
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((ApiKey != null ? ApiKey.GetHashCode() : 0) * 397) ^ (Instance != null ? Instance.GetHashCode() : 0);
-            }
-        }
-        /// <summary/>
-        public static bool operator ==(ChatApiRemoveInstanceRequest? left, ChatApiRemoveInstanceRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(ChatApiRemoveInstanceRequest? left, ChatApiRemoveInstanceRequest? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
-        }
+
     }
 }

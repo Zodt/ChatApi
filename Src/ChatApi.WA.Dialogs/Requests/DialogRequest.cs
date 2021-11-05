@@ -5,7 +5,7 @@ using ChatApi.WA.Dialogs.Requests.Interfaces;
 namespace ChatApi.WA.Dialogs.Requests
 {
     /// <inheritdoc />
-    public sealed class DialogRequest : IDialogRequest
+    public sealed record DialogRequest : IDialogRequest
     {
         #region Properties
 
@@ -22,14 +22,6 @@ namespace ChatApi.WA.Dialogs.Requests
         /// <inheritdoc />
         public bool Equals(IDialogRequest? other) => other is not null &&
                                                      string.Equals(ChatId, other.ChatId, StringComparison.Ordinal);
-        /// <inheritdoc />
-        public override int GetHashCode() => ChatId != null ? ChatId.GetHashCode() : 0;
-        /// <summary/>
-        public static bool operator ==(DialogRequest? left, DialogRequest? right) => EquatableHelper.IsEquatable(left, right);
-        /// <summary/>
-        public static bool operator !=(DialogRequest? left, DialogRequest? right) => !EquatableHelper.IsEquatable(left, right);
-        /// <inheritdoc />
-        public override bool Equals(object? obj) => ReferenceEquals(null, obj) || obj is IDialogRequest other && Equals(other);
 
         #endregion
     }

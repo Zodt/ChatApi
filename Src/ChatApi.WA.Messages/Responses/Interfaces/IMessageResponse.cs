@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Messages.Responses.Interfaces
 {
     /// <summary/>
-    public interface IMessageResponse : IErrorResponse, IEquatable<IMessageResponse?>, IPrintable
+    public interface IMessageResponse : IErrorResponse, IEquatable<IMessageResponse?>
     {
         /// <summary>
         /// Unique message id

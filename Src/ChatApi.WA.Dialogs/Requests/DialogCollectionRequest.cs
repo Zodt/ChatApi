@@ -5,7 +5,7 @@ using ChatApi.WA.Dialogs.Requests.Interfaces;
 namespace ChatApi.WA.Dialogs.Requests
 {
     /// <inheritdoc />
-    public sealed class DialogCollectionRequest : IDialogCollectionRequest
+    public sealed record DialogCollectionRequest : IDialogCollectionRequest
     {
 
         #region Properties
@@ -51,32 +51,6 @@ namespace ChatApi.WA.Dialogs.Requests
             return other is not null &&
                    Page == other.Page &&
                    Limit == other.Limit;
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object obj)
-        {
-            return ReferenceEquals(this, obj) || obj is DialogCollectionRequest other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (Page * 397) ^ Limit;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(DialogCollectionRequest? left, DialogCollectionRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(DialogCollectionRequest? left, DialogCollectionRequest? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
         }
 
         #endregion

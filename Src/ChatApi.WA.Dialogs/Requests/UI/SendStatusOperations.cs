@@ -3,8 +3,8 @@
 namespace ChatApi.WA.Dialogs.Requests.UI
 {
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.UI.Interfaces.IVoiceRecordingRequest" />
-    public class VoiceRecordingRequest : DialogSendStatusOperationsRequest, IVoiceRecordingRequest { }
+    public sealed record VoiceRecordingRequest : DialogSendStatusOperationsRequest, IVoiceRecordingRequest;
 
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.UI.Interfaces.ITypingRequest" />
-    public class TypingRequest : DialogSendStatusOperationsRequest, ITypingRequest { }
+    public sealed record TypingRequest : DialogSendStatusOperationsRequest, ITypingRequest;
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Account.Models.Interfaces
 {
     /// <summary/>
-    public interface IAccountSettings : IErrorResponse, IEquatable<IAccountSettings?>, IPrintable
+    public interface IAccountSettings : IErrorResponse, IEquatable<IAccountSettings?>
     {
 
         /// <summary>

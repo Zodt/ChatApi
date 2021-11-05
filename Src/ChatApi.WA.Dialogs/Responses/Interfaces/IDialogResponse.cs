@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
     /// <summary/>
-    public interface IDialogResponse : IErrorResponse, IEquatable<IDialogResponse?>, IPrintable
+    public interface IDialogResponse : IErrorResponse, IEquatable<IDialogResponse?>
     {
         /// <summary>
         ///     The unique ID of the chat

@@ -7,10 +7,10 @@ using ChatApi.Instances.Requests.Interfaces;
 namespace ChatApi.Instances.Requests
 {
     /// <summary/>
-    public sealed class ChatApiCreateInstanceRequest : IChatApiCreateInstanceRequest
+    public sealed record ChatApiCreateInstanceRequest : IChatApiCreateInstanceRequest
     {
         /// <inheritdoc />
-        public string? ApiKey { get; internal set; }
+        public string? ApiKey { get; private set; }
 
         string? IChatApiCreateInstanceRequest.ApiKey
         {
@@ -38,29 +38,5 @@ namespace ChatApi.Instances.Requests
                    string.Equals(ApiKey, other.ApiKey, StringComparison.Ordinal);
         }
 
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is IChatApiCreateInstanceRequest other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((ApiKey != null ? ApiKey.GetHashCode() : 0) * 397) ^ (TypeInstance?.GetHashCode() ?? 0);
-            }
-        }
-        /// <summary/>
-        public static bool operator ==(ChatApiCreateInstanceRequest? left, ChatApiCreateInstanceRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(ChatApiCreateInstanceRequest? left, ChatApiCreateInstanceRequest? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
-        }
     }
 }

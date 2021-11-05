@@ -5,7 +5,7 @@ using ChatApi.Instances.Models.Interfaces;
 namespace ChatApi.Instances.Models
 {
     /// <summary/>
-    public sealed class ChatApiInstance : IChatApiInstance
+    public sealed record ChatApiInstance : IChatApiInstance
     {
 
         #region Properties
@@ -45,38 +45,7 @@ namespace ChatApi.Instances.Models
                    TypeInstance == other.TypeInstance && PaymentsCount == other.PaymentsCount;
         }
 
-        /// <inheritdoc />
-        public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is IChatApiInstance other && Equals(other);
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = (Instance != null ? Instance.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ApiUrl != null ? ApiUrl.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ PaidTill.GetHashCode();
-                hashCode = (hashCode * 397) ^ PaymentsCount.GetHashCode();
-                hashCode = (hashCode * 397) ^ IsActive.GetHashCode();
-                hashCode = (hashCode * 397) ^ (TypeInstance != null ? TypeInstance.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(ChatApiInstance? left, ChatApiInstance? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(ChatApiInstance? left, ChatApiInstance? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
-        }
-
         #endregion
-
 
     }
 }

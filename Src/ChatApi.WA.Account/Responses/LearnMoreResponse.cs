@@ -3,5 +3,5 @@
 namespace ChatApi.WA.Account.Responses
 {
     /// <summary/>
-    public class LearnMoreResponse : InstanceStatusResponse, ILearnMoreResponse { }
+    public sealed record LearnMoreResponse : InstanceStatusResponse, ILearnMoreResponse;
 }

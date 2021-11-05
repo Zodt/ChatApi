@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
     /// <summary/>
-    public interface ILabelCreateResponse : IOperationResponse, IEquatable<ILabelCreateResponse?>, IPrintable
+    public interface ILabelCreateResponse : IOperationResponse, IEquatable<ILabelCreateResponse?>
     {
         /// <summary>
         ///     Data for the created label.

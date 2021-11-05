@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
     /// <summary/>
-    public interface IRemoveDialogResponse : IErrorResponse, IEquatable<IRemoveDialogResponse?>, IPrintable
+    public interface IRemoveDialogResponse : IErrorResponse, IEquatable<IRemoveDialogResponse?>
     {
         /// <summary>
         ///     The result of the request

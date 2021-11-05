@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
     /// <summary/>
-    public interface ICreateGroupResponse : IChatId, IErrorResponse, IEquatable<ICreateGroupResponse?>, IPrintable
+    public interface ICreateGroupResponse : IChatId, IErrorResponse, IEquatable<ICreateGroupResponse?>
     {
         /// <summary>
         ///     Flag for creating a group

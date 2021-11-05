@@ -7,7 +7,7 @@ namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
     //Rewrite in the future maybe
     /// <summary/>
-    public interface IChatOperationResponse : IChatId, IErrorResponse, IEquatable<IChatOperationResponse?>, IPrintable
+    public interface IChatOperationResponse : IChatId, IErrorResponse, IEquatable<IChatOperationResponse?>
     {
         /// <summary/>
         [JsonProperty("result", NullValueHandling = NullValueHandling.Ignore)]

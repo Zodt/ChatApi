@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
     /// <summary/>
-    public interface ILeaveGroupResponse : IErrorResponse, IEquatable<ILeaveGroupResponse?>, IPrintable
+    public interface ILeaveGroupResponse : IErrorResponse, IEquatable<ILeaveGroupResponse?>
     {
         /// <summary>
         ///     The result of the query

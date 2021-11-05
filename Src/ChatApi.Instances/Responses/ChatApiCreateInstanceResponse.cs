@@ -6,7 +6,7 @@ using ChatApi.Instances.Responses.Interfaces;
 namespace ChatApi.Instances.Responses
 {
     /// <summary/>
-    public sealed class ChatApiCreateInstanceResponse : IChatApiCreateInstanceResponse
+    public sealed record ChatApiCreateInstanceResponse : IChatApiCreateInstanceResponse
     {
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
@@ -21,29 +21,5 @@ namespace ChatApi.Instances.Responses
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is IChatApiCreateInstanceResponse other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((ErrorMessage != null ? ErrorMessage.GetHashCode() : 0) * 397) ^ (Result != null ? Result.GetHashCode() : 0);
-            }
-        }
-        /// <summary/>
-        public static bool operator ==(ChatApiCreateInstanceResponse? left, ChatApiCreateInstanceResponse? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(ChatApiCreateInstanceResponse? left, ChatApiCreateInstanceResponse? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
-        }
     }
 }

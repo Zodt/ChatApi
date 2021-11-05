@@ -6,7 +6,7 @@ using ChatApi.WA.Messages.Requests.Interfaces;
 namespace ChatApi.WA.Messages.Requests
 {
     /// <summary/>
-    public sealed class FileMessageRequest : IFileMessageRequest
+    public sealed record FileMessageRequest : IFileMessageRequest
     {
 
         #region Properties
@@ -50,43 +50,6 @@ namespace ChatApi.WA.Messages.Requests
                    string.Equals(FileName, other.FileName, StringComparison.Ordinal) &&
                    string.Equals(Caption, other.Caption, StringComparison.Ordinal) &&
                    string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal);
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-
-            return obj is IFileMessageRequest request && Equals(request);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = ChatId is not null ? ChatId.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (Phone is not null ? Phone.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (QuotedMessageId is not null ? QuotedMessageId.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Body is not null ? Body.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (FileName is not null ? FileName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Caption is not null ? Caption.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (MentionedPhones is not null ? MentionedPhones.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Cached.GetHashCode();
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(FileMessageRequest? left, FileMessageRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(FileMessageRequest? left, FileMessageRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
         }
 
         #endregion
