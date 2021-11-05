@@ -13,27 +13,27 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         /// <example>"https://upload.wikimedia.org/wikipedia/ru/3/33/NatureCover2001.jpg"</example>
         /// <example>"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ..."</example>
         [JsonProperty("body", Required = Required.Always, NullValueHandling = NullValueHandling.Ignore)]
-        string? Body { get; set; }         
-        
+        string? Body { get; set; }
+
         /// <summary>
         /// File name
         /// </summary>
         /// <example>"example 1.jpg"</example>
         /// <example>"DailyReport.xlsx"</example>
         [JsonProperty("filename", Required = Required.Always, NullValueHandling = NullValueHandling.Ignore)]
-        string? FileName { get; set; }  
-        
+        string? FileName { get; set; }
+
         /// <summary>
         /// Text under the file. When sending an image сan be used with mentionedPhones
         /// </summary>
         /// <example>"this image for 78005553535"</example>
         [JsonProperty("caption", NullValueHandling = NullValueHandling.Ignore)]
-        string? Caption { get; set; } 
-        
+        string? Caption { get; set; }
+
         /// <summary>
         /// Try to use a previously uploaded file instead of uploading it with each request
         /// </summary>
         [JsonProperty("cached", NullValueHandling = NullValueHandling.Ignore)]
-        bool? Cached { get; set; }  
+        bool? Cached { get; set; }
     }
 }

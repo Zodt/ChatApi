@@ -35,8 +35,8 @@ namespace ChatApi.WA.Messages
         /// <param name="message">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IMessageResponse?>> SendFileMessageAsync(IFileMessageRequest message, IResponseSettings? responseSettings = null);
-        
-        
+
+
         /// <summary>
         ///     Send text with link and link's preview to a new or existing chat.
         /// </summary>
@@ -64,7 +64,7 @@ namespace ChatApi.WA.Messages
         /// <param name="message">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IMessageResponse?>> SendVoiceMessageAsync(IVoiceMessageRequest message, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Sending a contact or contact list to a new or existing chat.
         /// </summary>
@@ -78,7 +78,7 @@ namespace ChatApi.WA.Messages
         /// <param name="message">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IMessageResponse?>> SendContactMessageAsync(IContactMessageRequest message, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Sending a location to a new or existing chat.
         /// </summary>
@@ -91,8 +91,9 @@ namespace ChatApi.WA.Messages
         /// </summary>
         /// <param name="message">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        Task<IChatApiResponse<IMessageResponse?>> SendLocationMessageAsync(ILocationMessageRequest message, IResponseSettings? responseSettings = null);
-        
+        Task<IChatApiResponse<IMessageResponse?>> SendLocationMessageAsync(ILocationMessageRequest message,
+            IResponseSettings? responseSettings = null);
+
         /// <summary>
         ///     Forwarding messages to a new or existing chat.
         /// </summary>
@@ -106,35 +107,37 @@ namespace ChatApi.WA.Messages
         /// <param name="message">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IMessageResponse?>> ForwardMessageAsync(IForwardMessageRequest message, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Get a list of messages.
         /// </summary>
         /// <param name="messages">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IMessagesResponse?> GetMessages(IMessagesRequest messages, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous get a list of messages..
         /// </summary>
         /// <param name="messages">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IMessagesResponse?>> GetMessagesAsync(IMessagesRequest messages, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Get a list of messages sorted by time descending
         /// </summary>
         /// <param name="messagesHistory">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        IChatApiResponse<IMessagesHistoryResponse?> GetMessagesHistory(IMessagesHistoryRequest messagesHistory, IResponseSettings? responseSettings = null);
+        IChatApiResponse<IMessagesHistoryResponse?> GetMessagesHistory(IMessagesHistoryRequest messagesHistory,
+            IResponseSettings? responseSettings = null);
 
         /// <summary>
         ///     Asynchronous get a list of messages sorted by time descending.
         /// </summary>
         /// <param name="messagesHistory">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        Task<IChatApiResponse<IMessagesHistoryResponse?>> GetMessagesHistoryAsync(IMessagesHistoryRequest messagesHistory, IResponseSettings? responseSettings = null);
-        
+        Task<IChatApiResponse<IMessagesHistoryResponse?>> GetMessagesHistoryAsync(IMessagesHistoryRequest messagesHistory,
+            IResponseSettings? responseSettings = null);
+
         /// <summary>
         ///     Delete message from WhatsApp
         /// </summary>

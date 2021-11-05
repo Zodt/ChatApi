@@ -13,16 +13,14 @@ namespace ChatApi.Core.Converters
         public override void WriteJson(JsonWriter writer, WhatsAppApiCollection<string>? value, JsonSerializer serializer)
         {
             if (value is null || !value.Any()) return;
-            
+
             for (int i = 0; i < value.Count; i++)
-            {
                 value[i] = new Regex(@"[0-9]*")
                     .Matches(value[i]!)
                     .Cast<Match>()
                     .Select(x => x.Value)
                     .Aggregate(string.Concat);
-            } 
-            
+
             writer.WriteRawValue(JsonConvert.SerializeObject(value));
         }
 

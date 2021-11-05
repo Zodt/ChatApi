@@ -9,19 +9,25 @@ namespace ChatApi.WA.Account.Responses
     /// <summary/>
     public sealed class AccountStatusResponse : Printable, IAccountStatusResponse
     {
+
         #region Properties
+
         /// <inheritdoc />
         public string? QrCode { get; set; }
+
         /// <inheritdoc />
         public AccountStatusType? AccountStatus { get; set; }
+
         /// <inheritdoc />
         public IAccountStatusData? StatusData { get; set; }
 
-        
+
         /// <inheritdoc />
         public bool? Success { get; set; }
+
         /// <inheritdoc />
         public string? Result { get; set; }
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -33,12 +39,11 @@ namespace ChatApi.WA.Account.Responses
         public bool Equals(IAccountStatusResponse? other)
         {
             return other is not null &&
-                AccountStatus == other.AccountStatus &&
+                   AccountStatus == other.AccountStatus &&
                    ErrorMessage == other.ErrorMessage &&
                    QrCode == other.QrCode &&
                    Result == other.Result &&
                    Success == other.Success &&
-
                    Equals(StatusData, other.StatusData);
         }
 
@@ -64,9 +69,15 @@ namespace ChatApi.WA.Account.Responses
         }
 
         /// <summary/>
-        public static bool operator == (AccountStatusResponse? left, AccountStatusResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(AccountStatusResponse? left, AccountStatusResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (AccountStatusResponse? left, AccountStatusResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(AccountStatusResponse? left, AccountStatusResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -84,5 +95,6 @@ namespace ChatApi.WA.Account.Responses
         }
 
         #endregion
+
     }
 }

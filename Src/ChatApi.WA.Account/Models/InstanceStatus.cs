@@ -8,17 +8,20 @@ namespace ChatApi.WA.Account.Models
     /// <summary/>
     public class InstanceStatus : Printable, IExpiry, ILogout, IRetry, ITakeover, ILearnMore
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Link { get; set; }
+
         /// <inheritdoc />
         public string? Label { get; set; }
+
         /// <inheritdoc />
         public InstanceStatusActionType? ActionType { get; set; }
 
         #endregion
-         
+
         #region Equatable
 
         /// <inheritdoc />
@@ -30,8 +33,10 @@ namespace ChatApi.WA.Account.Models
         }
 
         /// <inheritdoc />
-        public override bool Equals(object? obj) => 
-            ReferenceEquals(this, obj) || obj is IInstanceStatus other && Equals(other);
+        public override bool Equals(object? obj)
+        {
+            return ReferenceEquals(this, obj) || obj is IInstanceStatus other && Equals(other);
+        }
 
         /// <inheritdoc />
         public override int GetHashCode()
@@ -46,9 +51,15 @@ namespace ChatApi.WA.Account.Models
         }
 
         /// <summary/>
-        public static bool operator == (InstanceStatus? left, InstanceStatus? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(InstanceStatus? left, InstanceStatus? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (InstanceStatus? left, InstanceStatus? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(InstanceStatus? left, InstanceStatus? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -63,5 +74,6 @@ namespace ChatApi.WA.Account.Models
         }
 
         #endregion
+
     }
 }

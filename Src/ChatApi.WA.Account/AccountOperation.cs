@@ -24,18 +24,25 @@ namespace ChatApi.WA.Account
 
         /// <inheritdoc />
         public Task<IChatApiResponse<IQrCodeResponse?>> GetQrCodeAsync() =>
-            _connect.GetAsync<IQrCodeResponse>(Resources.GetQrCode, x => new QrCodeResponse {QrCodeImage = x});
-   
+            _connect.GetAsync<IQrCodeResponse>(Resources.GetQrCode, x => new QrCodeResponse
+            {
+                QrCodeImage = x
+            });
+
         #endregion
 
         #region GetSettings
 
         /// <inheritdoc />
-        public IChatApiResponse<IAccountSettingsResponse?> GetSettings(IResponseSettings? responseSettings = null) => 
-            _connect.Get<AccountSettingsResponse>(Resources.GetSettings, responseSettings);
+        public IChatApiResponse<IAccountSettingsResponse?> GetSettings(IResponseSettings? responseSettings = null)
+        {
+            return _connect.Get<AccountSettingsResponse>(Resources.GetSettings, responseSettings);
+        }
         /// <inheritdoc />
-        public Task<IChatApiResponse<IAccountSettingsResponse?>> GetSettingsAsync(IResponseSettings? responseSettings = null) => 
-            _connect.GetAsync<AccountSettingsResponse, IAccountSettingsResponse>(Resources.GetSettings, responseSettings);
+        public Task<IChatApiResponse<IAccountSettingsResponse?>> GetSettingsAsync(IResponseSettings? responseSettings = null)
+        {
+            return _connect.GetAsync<AccountSettingsResponse, IAccountSettingsResponse>(Resources.GetSettings, responseSettings);
+        }
 
         #endregion
 
@@ -68,7 +75,8 @@ namespace ChatApi.WA.Account
             _connect.Get<AccountStatusResponse>(Resources.GetStatus, responseSettings, request.Parameters);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<IAccountStatusResponse?>> GetStatusAsync(IAccountStatusRequest request, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<IAccountStatusResponse?>> GetStatusAsync(IAccountStatusRequest request,
+            IResponseSettings? responseSettings = null) =>
             _connect.GetAsync<AccountStatusResponse, IAccountStatusResponse>(Resources.GetStatus, responseSettings, request.Parameters);
 
         #endregion
@@ -77,44 +85,60 @@ namespace ChatApi.WA.Account
         #region Expiry
 
         /// <inheritdoc />
-        public IChatApiResponse<IExpiryResponse?> Expiry(IResponseSettings? responseSettings = null) => 
-            _connect.Post<ExpiryResponse>(Resources.Expiry, string.Empty, responseSettings);
+        public IChatApiResponse<IExpiryResponse?> Expiry(IResponseSettings? responseSettings = null)
+        {
+            return _connect.Post<ExpiryResponse>(Resources.Expiry, string.Empty, responseSettings);
+        }
         /// <inheritdoc />
-        public Task<IChatApiResponse<IExpiryResponse?>> ExpiryAsync(IResponseSettings? responseSettings = null) => 
-            _connect.PostAsync<ExpiryResponse, IExpiryResponse>(Resources.Expiry, string.Empty, responseSettings);
+        public Task<IChatApiResponse<IExpiryResponse?>> ExpiryAsync(IResponseSettings? responseSettings = null)
+        {
+            return _connect.PostAsync<ExpiryResponse, IExpiryResponse>(Resources.Expiry, string.Empty, responseSettings);
+        }
 
         #endregion
 
         #region Logout
 
         /// <inheritdoc />
-        public IChatApiResponse<ILogoutResponse?> Logout(IResponseSettings? responseSettings = null) => 
-            _connect.Post<LogoutResponse>(Resources.Logout, string.Empty, responseSettings);
+        public IChatApiResponse<ILogoutResponse?> Logout(IResponseSettings? responseSettings = null)
+        {
+            return _connect.Post<LogoutResponse>(Resources.Logout, string.Empty, responseSettings);
+        }
         /// <inheritdoc />
-        public Task<IChatApiResponse<ILogoutResponse?>> LogoutAsync(IResponseSettings? responseSettings = null) => 
-            _connect.PostAsync<LogoutResponse, ILogoutResponse>(Resources.Logout, string.Empty, responseSettings);
+        public Task<IChatApiResponse<ILogoutResponse?>> LogoutAsync(IResponseSettings? responseSettings = null)
+        {
+            return _connect.PostAsync<LogoutResponse, ILogoutResponse>(Resources.Logout, string.Empty, responseSettings);
+        }
 
         #endregion
 
         #region Takeover
 
         /// <inheritdoc />
-        public IChatApiResponse<ITakeoverResponse?> Takeover(IResponseSettings? responseSettings = null) => 
-            _connect.Post<TakeoverResponse>(Resources.Takeover, string.Empty, responseSettings);
+        public IChatApiResponse<ITakeoverResponse?> Takeover(IResponseSettings? responseSettings = null)
+        {
+            return _connect.Post<TakeoverResponse>(Resources.Takeover, string.Empty, responseSettings);
+        }
         /// <inheritdoc />
-        public Task<IChatApiResponse<ITakeoverResponse?>> TakeoverAsync(IResponseSettings? responseSettings = null) => 
-            _connect.PostAsync<TakeoverResponse, ITakeoverResponse>(Resources.Takeover, string.Empty, responseSettings);
+        public Task<IChatApiResponse<ITakeoverResponse?>> TakeoverAsync(IResponseSettings? responseSettings = null)
+        {
+            return _connect.PostAsync<TakeoverResponse, ITakeoverResponse>(Resources.Takeover, string.Empty, responseSettings);
+        }
 
         #endregion
 
         #region AccountReboot
 
         /// <inheritdoc />
-        public IChatApiResponse<IAccountRebootResponse?> AccountReboot(IResponseSettings? responseSettings = null) => 
-            _connect.Post<AccountRebootResponse>(Resources.AccountReboot, string.Empty, responseSettings);
+        public IChatApiResponse<IAccountRebootResponse?> AccountReboot(IResponseSettings? responseSettings = null)
+        {
+            return _connect.Post<AccountRebootResponse>(Resources.AccountReboot, string.Empty, responseSettings);
+        }
         /// <inheritdoc />
-        public Task<IChatApiResponse<IAccountRebootResponse?>> AccountRebootAsync(IResponseSettings? responseSettings = null) => 
-            _connect.PostAsync<AccountRebootResponse, IAccountRebootResponse>(Resources.AccountReboot, string.Empty, responseSettings);
+        public Task<IChatApiResponse<IAccountRebootResponse?>> AccountRebootAsync(IResponseSettings? responseSettings = null)
+        {
+            return _connect.PostAsync<AccountRebootResponse, IAccountRebootResponse>(Resources.AccountReboot, string.Empty, responseSettings);
+        }
 
         #endregion
 
@@ -133,12 +157,15 @@ namespace ChatApi.WA.Account
         #region ChangeSettings
 
         /// <inheritdoc />
-        public IChatApiResponse<IAccountSettingsResponse?> ChangeSettings(IAccountSettingsRequest settingsRequest, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<IAccountSettingsResponse?> ChangeSettings(IAccountSettingsRequest settingsRequest,
+            IResponseSettings? responseSettings = null) =>
             _connect.Post<AccountSettingsResponse>(Resources.ChangeSettings, settingsRequest.Serialize(), responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<IAccountSettingsResponse?>> ChangeSettingsAsync(IAccountSettingsRequest settingsRequest, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<AccountSettingsResponse, IAccountSettingsResponse>(Resources.ChangeSettings, settingsRequest.Serialize(), responseSettings);
+        public Task<IChatApiResponse<IAccountSettingsResponse?>> ChangeSettingsAsync(IAccountSettingsRequest settingsRequest,
+            IResponseSettings? responseSettings = null) =>
+            _connect.PostAsync<AccountSettingsResponse, IAccountSettingsResponse>(Resources.ChangeSettings, settingsRequest.Serialize(),
+                responseSettings);
 
         #endregion
 
@@ -146,27 +173,36 @@ namespace ChatApi.WA.Account
         #region ChangeAccountName
 
         /// <inheritdoc />
-        public IChatApiResponse<IChangeAccountNameResponse?> ChangeAccountName(IChangeAccountNameRequest changeAccountNameRequest, IResponseSettings? responseSettings = null) => 
+        public IChatApiResponse<IChangeAccountNameResponse?> ChangeAccountName(IChangeAccountNameRequest changeAccountNameRequest,
+            IResponseSettings? responseSettings = null)
+        {
             throw new NotImplementedException();
-        
+        }
+
         /// <inheritdoc />
-        public Task<IChatApiResponse<IChangeAccountNameResponse?>> ChangeAccountNameAsync(IChangeAccountNameRequest changeAccountNameRequest, IResponseSettings? responseSettings = null) => 
+        public Task<IChatApiResponse<IChangeAccountNameResponse?>> ChangeAccountNameAsync(IChangeAccountNameRequest changeAccountNameRequest,
+            IResponseSettings? responseSettings = null)
+        {
             throw new NotImplementedException();
+        }
 
         #endregion
 
         #region ChangeAccountStatus
 
         /// <inheritdoc />
-        public IChatApiResponse<IChangeAccountStatusResponse?> ChangeAccountStatus(IChangeAccountStatusRequest changeAccountStatusRequest, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<IChangeAccountStatusResponse?> ChangeAccountStatus(IChangeAccountStatusRequest changeAccountStatusRequest,
+            IResponseSettings? responseSettings = null) =>
             throw new NotImplementedException();
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<IChangeAccountStatusResponse?>> ChangeAccountStatusAsync(IChangeAccountStatusRequest changeAccountStatusRequest, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<IChangeAccountStatusResponse?>> ChangeAccountStatusAsync(IChangeAccountStatusRequest changeAccountStatusRequest,
+            IResponseSettings? responseSettings = null) =>
             throw new NotImplementedException();
 
         #endregion
 
         #endregion
+
     }
 }

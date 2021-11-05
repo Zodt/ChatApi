@@ -49,13 +49,19 @@ namespace ChatApi.Instances.Models
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator == (ChatApiInstanceParameters? left, ChatApiInstanceParameters? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatApiInstanceParameters? left, ChatApiInstanceParameters? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator != (ChatApiInstanceParameters? left, ChatApiInstanceParameters? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatApiInstanceParameters? left, ChatApiInstanceParameters? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
     }
 }

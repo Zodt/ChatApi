@@ -43,7 +43,7 @@ namespace ChatApi.WA.Dialogs
         /// <param name="dialogRequest">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IDialogResponse?>> GetDialogAsync(IDialogRequest dialogRequest, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Get the dialogs list.
         /// </summary>
@@ -52,8 +52,9 @@ namespace ChatApi.WA.Dialogs
         /// </remarks>
         /// <param name="dialogCollectionRequest">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        IChatApiResponse<IDialogCollectionResponse?> GetDialogs(IDialogCollectionRequest dialogCollectionRequest, IResponseSettings? responseSettings = null);
-        
+        IChatApiResponse<IDialogCollectionResponse?> GetDialogs(IDialogCollectionRequest dialogCollectionRequest,
+            IResponseSettings? responseSettings = null);
+
         /// <summary>
         ///     Asynchronous get the dialogs list.
         /// </summary>
@@ -62,8 +63,9 @@ namespace ChatApi.WA.Dialogs
         /// </remarks>
         /// <param name="dialogCollectionRequest">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        Task<IChatApiResponse<IDialogCollectionResponse?>> GetDialogsAsync(IDialogCollectionRequest dialogCollectionRequest, IResponseSettings? responseSettings = null);
-                
+        Task<IChatApiResponse<IDialogCollectionResponse?>> GetDialogsAsync(IDialogCollectionRequest dialogCollectionRequest,
+            IResponseSettings? responseSettings = null);
+
         /// <summary>
         ///     Remove chat, dialog or group
         /// </summary>
@@ -76,6 +78,7 @@ namespace ChatApi.WA.Dialogs
         /// </summary>
         /// <param name="removeDialog">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        Task<IChatApiResponse<IRemoveDialogResponse?>> RemoveDialogAsync(IRemoveDialogRequest removeDialog, IResponseSettings? responseSettings = null);
+        Task<IChatApiResponse<IRemoveDialogResponse?>> RemoveDialogAsync(IRemoveDialogRequest removeDialog,
+            IResponseSettings? responseSettings = null);
     }
 }

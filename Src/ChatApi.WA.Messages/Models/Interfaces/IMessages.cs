@@ -11,6 +11,6 @@ namespace ChatApi.WA.Messages.Models.Interfaces
         /// <summary/>
         [JsonProperty("messages", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(InterfaceCollectionConverter<Message, IMessage, MessageCollection>))]
-        MessageCollection? Messages { get; set; } 
+        MessageCollection? Messages { get; set; }
     }
 }

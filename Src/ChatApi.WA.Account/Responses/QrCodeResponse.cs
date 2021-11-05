@@ -7,11 +7,12 @@ namespace ChatApi.WA.Account.Responses
     /// <inheritdoc cref="ChatApi.WA.Account.Responses.Interfaces.IQrCodeResponse" />
     public sealed class QrCodeResponse : Printable, IQrCodeResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? QrCodeImage { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -41,9 +42,15 @@ namespace ChatApi.WA.Account.Responses
         }
 
         /// <summary/>
-        public static bool operator == (QrCodeResponse? left, QrCodeResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(QrCodeResponse? left, QrCodeResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (QrCodeResponse? left, QrCodeResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(QrCodeResponse? left, QrCodeResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -52,10 +59,11 @@ namespace ChatApi.WA.Account.Responses
         /// <inheritdoc />
         protected override void PrintContent(int shift)
         {
-            AddMember(nameof(QrCodeImage), string.IsNullOrWhiteSpace(QrCodeImage) ? string.Empty : QrCodeImage?.Substring(0,50) + "...", shift);
+            AddMember(nameof(QrCodeImage), string.IsNullOrWhiteSpace(QrCodeImage) ? string.Empty : QrCodeImage?.Substring(0, 50) + "...", shift);
             AddMember(nameof(ErrorMessage), ErrorMessage, shift);
         }
 
         #endregion
+
     }
 }

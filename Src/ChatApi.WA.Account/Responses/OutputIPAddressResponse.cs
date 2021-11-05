@@ -3,15 +3,16 @@ using ChatApi.Core.Models;
 using ChatApi.WA.Account.Responses.Interfaces;
 
 namespace ChatApi.WA.Account.Responses
-{ /* ReSharper disable once InconsistentNaming */
+{/* ReSharper disable once InconsistentNaming */
     /// <summary/>
     public sealed class OutputIPAddressResponse : Printable, IOutputIPAddressResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Address { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -42,10 +43,16 @@ namespace ChatApi.WA.Account.Responses
         }
 
         /// <summary/>
-        public static bool operator == (OutputIPAddressResponse? left, OutputIPAddressResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(OutputIPAddressResponse? left, OutputIPAddressResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (OutputIPAddressResponse? left, OutputIPAddressResponse? right) => !EquatableHelper.IsEquatable(left, right);
-        
+        public static bool operator !=(OutputIPAddressResponse? left, OutputIPAddressResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
+
         #endregion
 
         #region Printable
@@ -58,5 +65,6 @@ namespace ChatApi.WA.Account.Responses
         }
 
         #endregion
+
     }
 }

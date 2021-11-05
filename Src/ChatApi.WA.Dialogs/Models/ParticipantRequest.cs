@@ -7,14 +7,15 @@ namespace ChatApi.WA.Dialogs.Models
     /// <summary/>
     public abstract class ParticipantRequest : IParticipantRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? GroupId { get; set; }
-        
+
         /// <inheritdoc />
         public string? ParticipantChatId { get; set; }
-        
+
         /// <inheritdoc />
         public string? ParticipantPhone { get; set; }
 
@@ -50,10 +51,17 @@ namespace ChatApi.WA.Dialogs.Models
         }
 
         /// <summary/>
-        public static bool operator == (ParticipantRequest? left, ParticipantRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ParticipantRequest? left, ParticipantRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ParticipantRequest? left, ParticipantRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ParticipantRequest? left, ParticipantRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

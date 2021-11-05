@@ -8,14 +8,15 @@ namespace ChatApi.WA.Dialogs.Responses.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.ILabelUpdateResponse" />
     public sealed class LabelUpdateResponse : Printable, ILabelUpdateResponse
     {
+
         #region Properties
 
         //Rewrite in the future maybe
         /// <inheritdoc />
         public bool? Success
         {
-            get => string.Equals(Result, "success", StringComparison.Ordinal); 
-            set { } 
+            get => string.Equals(Result, "success", StringComparison.Ordinal);
+            set { }
         }
 
         /// <inheritdoc />
@@ -52,9 +53,15 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         /// <summary/>
-        public static bool operator == (LabelUpdateResponse? left, LabelUpdateResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LabelUpdateResponse? left, LabelUpdateResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LabelUpdateResponse? left, LabelUpdateResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LabelUpdateResponse? left, LabelUpdateResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -69,5 +76,6 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         #endregion
+
     }
 }

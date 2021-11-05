@@ -8,10 +8,12 @@ namespace ChatApi.WA.Dialogs.Responses
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IRemoveDialogResponse" />
     public sealed class RemoveDialogResponse : Printable, IRemoveDialogResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+
         /// <inheritdoc />
         public IOperationMessageResult? Result { get; set; }
 
@@ -22,8 +24,8 @@ namespace ChatApi.WA.Dialogs.Responses
         /// <inheritdoc />
         public bool Equals(IRemoveDialogResponse? other)
         {
-            return other is not null && 
-                   ErrorMessage == other.ErrorMessage && 
+            return other is not null &&
+                   ErrorMessage == other.ErrorMessage &&
                    Result == other.Result;
         }
 
@@ -38,15 +40,21 @@ namespace ChatApi.WA.Dialogs.Responses
         {
             unchecked
             {
-                return ((Result is not null ? Result.GetHashCode() : 0) * 397) ^ 
+                return ((Result is not null ? Result.GetHashCode() : 0) * 397) ^
                        (string.IsNullOrWhiteSpace(ErrorMessage) ? 0 : ErrorMessage!.GetHashCode());
             }
         }
 
         /// <summary/>
-        public static bool operator == (RemoveDialogResponse? left, RemoveDialogResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(RemoveDialogResponse? left, RemoveDialogResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (RemoveDialogResponse? left, RemoveDialogResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(RemoveDialogResponse? left, RemoveDialogResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -60,5 +68,6 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         #endregion
+
     }
 }

@@ -12,13 +12,13 @@ namespace ChatApi.WA.Dialogs.Models.Interfaces
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string? LabelId { get; set; }
-        
+
         /// <summary>
         ///     Name of the label
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string? LabelName { get; set; }
-        
+
         /// <summary>
         ///     Label's color in HEX
         /// </summary>

@@ -13,13 +13,13 @@ namespace ChatApi.WA.Dialogs.Models.Interfaces
         /// </summary>
         [JsonProperty("groupInviteLink", NullValueHandling = NullValueHandling.Ignore)]
         string? GroupInviteLink { get; set; }
-        
+
         /// <summary>
         ///     Flag indicating whether information was uploaded by group or by chat
         /// </summary>
         [JsonProperty("isGroup", NullValueHandling = NullValueHandling.Ignore)]
         bool? IsGroup { get; set; }
-        
+
         /// <summary>
         ///     Participants of the dialogue
         /// </summary>

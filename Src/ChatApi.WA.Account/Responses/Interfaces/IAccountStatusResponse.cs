@@ -13,13 +13,13 @@ namespace ChatApi.WA.Account.Responses.Interfaces
         ///     QR-code in base64 format
         /// </summary>
         [JsonProperty("qrCode", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        string? QrCode { get; set; } 
+        string? QrCode { get; set; }
 
         /// <summary>
         ///     Additional account status information
         /// </summary>
         [JsonConverter(typeof(InterfacesConverter<AccountStatusData>))]
         [JsonProperty("statusData", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        IAccountStatusData? StatusData { get; set; } 
+        IAccountStatusData? StatusData { get; set; }
     }
 }

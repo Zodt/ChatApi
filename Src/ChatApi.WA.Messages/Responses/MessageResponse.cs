@@ -7,17 +7,18 @@ namespace ChatApi.WA.Messages.Responses
     /// <inheritdoc cref="ChatApi.WA.Messages.Responses.Interfaces.IMessageResponse" />
     public sealed class MessageResponse : Printable, IMessageResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Id { get; set; }
-        
+
         /// <inheritdoc />
         public bool? Sent { get; set; }
-        
+
         /// <inheritdoc />
         public string? Message { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -28,8 +29,8 @@ namespace ChatApi.WA.Messages.Responses
         /// <inheritdoc />
         public bool Equals(IMessageResponse? other)
         {
-            return other is not null && 
-                Id == other.Id && Sent == other.Sent && Message == other.Message && ErrorMessage == other.ErrorMessage;
+            return other is not null &&
+                   Id == other.Id && Sent == other.Sent && Message == other.Message && ErrorMessage == other.ErrorMessage;
         }
 
         /// <inheritdoc />
@@ -52,9 +53,15 @@ namespace ChatApi.WA.Messages.Responses
         }
 
         /// <summary/>
-        public static bool operator == (MessageResponse? left, MessageResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(MessageResponse? left, MessageResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (MessageResponse? left, MessageResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(MessageResponse? left, MessageResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -70,5 +77,6 @@ namespace ChatApi.WA.Messages.Responses
         }
 
         #endregion
+
     }
 }

@@ -7,11 +7,12 @@ namespace ChatApi.WA.Dialogs.Helpers.Abstract
     /// <inheritdoc cref="ChatApi.Core.Models.Interfaces.IMessageRequest" />
     public abstract class MessageRequest : IMessageRequest, IEquatable<IMessageRequest?>
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Phone { get; set; }
-        
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
 
@@ -22,9 +23,9 @@ namespace ChatApi.WA.Dialogs.Helpers.Abstract
         /// <inheritdoc />
         public bool Equals(IMessageRequest? other)
         {
-            return 
+            return
                 other is not null &&
-                ChatId == other.ChatId && 
+                ChatId == other.ChatId &&
                 Phone == other.Phone;
         }
 
@@ -36,16 +37,23 @@ namespace ChatApi.WA.Dialogs.Helpers.Abstract
         {
             unchecked
             {
-                return ((string.IsNullOrWhiteSpace(ChatId) ? 0 : ChatId!.GetHashCode()) * 397) ^ 
+                return ((string.IsNullOrWhiteSpace(ChatId) ? 0 : ChatId!.GetHashCode()) * 397) ^
                        (string.IsNullOrWhiteSpace(Phone) ? 0 : Phone!.GetHashCode());
             }
         }
 
         /// <summary/>
-        public static bool operator == (MessageRequest? left, MessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(MessageRequest? left, MessageRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (MessageRequest? left, MessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(MessageRequest? left, MessageRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

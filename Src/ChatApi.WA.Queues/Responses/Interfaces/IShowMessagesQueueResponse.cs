@@ -13,8 +13,8 @@ namespace ChatApi.WA.Queues.Responses.Interfaces
         ///     Total number of messages in the queue
         /// </summary>
         [JsonProperty("totalMessages", NullValueHandling = NullValueHandling.Ignore)]
-        int? TotalMessage { get; set; }        
-        
+        int? TotalMessage { get; set; }
+
         /// <summary>
         ///     The Collection Of Outgoing Messages
         /// </summary>

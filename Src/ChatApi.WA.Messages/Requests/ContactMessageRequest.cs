@@ -8,14 +8,18 @@ namespace ChatApi.WA.Messages.Requests
     /// <summary/>
     public sealed class ContactMessageRequest : IContactMessageRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Phone { get; set; }
+
         /// <inheritdoc />
         public string? ChatId { get; set; }
+
         /// <inheritdoc />
         public string? QuotedMessageId { get; set; }
+
         /// <inheritdoc />
         public ContactCollection? ContactId { get; set; }
 
@@ -26,10 +30,10 @@ namespace ChatApi.WA.Messages.Requests
         /// <inheritdoc />
         public bool Equals(IContactMessageRequest? other)
         {
-            return other is not null && ContactId == other.ContactId && 
-                string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
-                string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
-                string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal);
+            return other is not null && ContactId == other.ContactId &&
+                   string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
+                   string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
+                   string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal);
         }
 
         /// <inheritdoc />
@@ -52,10 +56,17 @@ namespace ChatApi.WA.Messages.Requests
         }
 
         /// <summary/>
-        public static bool operator == (ContactMessageRequest? left, ContactMessageRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ContactMessageRequest? left, ContactMessageRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ContactMessageRequest? left, ContactMessageRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ContactMessageRequest? left, ContactMessageRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

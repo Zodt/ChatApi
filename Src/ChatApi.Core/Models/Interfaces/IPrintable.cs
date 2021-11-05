@@ -42,7 +42,7 @@
         ///}
         /// </example>
         string PrintMembers();
-        
+
         /// <summary>
         ///     Output of all of the class data with shift
         /// </summary>

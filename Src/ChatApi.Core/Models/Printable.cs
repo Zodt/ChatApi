@@ -9,7 +9,7 @@ namespace ChatApi.Core.Models
     public abstract class Printable : IPrintable
     {
         private const string Shift = "  ";
-        private readonly StringBuilder _stringBuilder = new ();
+        private readonly StringBuilder _stringBuilder = new();
 
         /// <summary>
         ///     Description of the properties contained by the class
@@ -33,12 +33,23 @@ namespace ChatApi.Core.Models
         /// <param name="memberName">Name of property</param>
         /// <param name="value">Value of property</param>
         /// <param name="shift">The measure of displacement of the carriage on the level of nesting</param>
-        protected void AddMember<T>(string memberName, T value, int shift) { switch (value)
+        protected void AddMember<T>(string memberName, T value, int shift)
         {
-            case string stringValue: AddMember(memberName, stringValue, shift); return;
-            case Printable printable: AddMember(memberName, printable.PrintMembers(shift), shift); return;
-            default: AddMember(memberName, value?.ToString(), shift); return;
-        }}
+            switch (value)
+            {
+                case string stringValue:
+                    AddMember(memberName, stringValue, shift);
+                    return;
+
+                case Printable printable:
+                    AddMember(memberName, printable.PrintMembers(shift), shift);
+                    return;
+
+                default:
+                    AddMember(memberName, value?.ToString(), shift);
+                    return;
+            }
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static string GetShift(int? shiftValue)
@@ -54,7 +65,7 @@ namespace ChatApi.Core.Models
 
             return shift;
         }
-        
+
         /// <inheritdoc />
         public string PrintMembers()
         {
@@ -68,9 +79,9 @@ namespace ChatApi.Core.Models
         /// <inheritdoc />
         public string PrintMembers(int shift)
         {
-            _stringBuilder.AppendLine(GetShift(shift-1) + "{");
+            _stringBuilder.AppendLine(GetShift(shift - 1) + "{");
             PrintContent(++shift);
-            _stringBuilder.Append(string.Concat(GetShift(--shift-1), "}"));
+            _stringBuilder.Append(string.Concat(GetShift(--shift - 1), "}"));
             return _stringBuilder.ToString();
         }
     }

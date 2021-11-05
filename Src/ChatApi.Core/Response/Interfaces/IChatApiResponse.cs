@@ -13,12 +13,12 @@ namespace ChatApi.Core.Response.Interfaces
         ///     Success rate of the operation completion
         /// </summary>
         bool IsSuccess { get; }
-        
+
         /// <summary>
         ///     Error about receiving a response from the service.
         /// </summary>
         Exception? Exception { get; }
-        
+
         /// <summary>
         ///     Getting the query result
         /// </summary>

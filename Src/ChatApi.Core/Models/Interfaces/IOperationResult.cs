@@ -9,6 +9,6 @@ namespace ChatApi.Core.Models.Interfaces
         ///     The status of the request.
         /// </summary>
         [JsonProperty("result", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        string? Result { get; set; } 
+        string? Result { get; set; }
     }
 }

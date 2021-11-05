@@ -13,7 +13,7 @@ namespace ChatApi.Instances
         /// </summary>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IChatApiInstanceCollectionResponse?> GetChatApiInstances(IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous retrieval of a collection of Chat API instances
         /// </summary>
@@ -26,30 +26,33 @@ namespace ChatApi.Instances
         /// </summary>
         /// <param name="request">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        IChatApiResponse<IChatApiCreateInstanceResponse?> CreateChatApiInstance(IChatApiCreateInstanceRequest request, IResponseSettings? responseSettings = null);
-        
+        IChatApiResponse<IChatApiCreateInstanceResponse?> CreateChatApiInstance(IChatApiCreateInstanceRequest request,
+            IResponseSettings? responseSettings = null);
+
         /// <summary>
         ///     Adding an instance of the ChatApi asynchronously
         /// </summary>
         /// <param name="request">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        Task<IChatApiResponse<IChatApiCreateInstanceResponse?>> CreateChatApiInstanceAsync(IChatApiCreateInstanceRequest request, IResponseSettings? responseSettings = null);
-        
+        Task<IChatApiResponse<IChatApiCreateInstanceResponse?>> CreateChatApiInstanceAsync(IChatApiCreateInstanceRequest request,
+            IResponseSettings? responseSettings = null);
+
         /// <summary>
         ///     Removing of the Chat-API instance
         /// </summary>
         /// <param name="request">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        IChatApiResponse<IChatApiRemoveInstanceResponse?> RemoveChatApiInstance(IChatApiRemoveInstanceRequest request, IResponseSettings? responseSettings = null);
-        
+        IChatApiResponse<IChatApiRemoveInstanceResponse?> RemoveChatApiInstance(IChatApiRemoveInstanceRequest request,
+            IResponseSettings? responseSettings = null);
+
         /// <summary>
         ///     Asynchronous removing of the Chat-API instance
         /// </summary>
         /// <param name="request">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        Task<IChatApiResponse<IChatApiRemoveInstanceResponse?>> RemoveChatApiInstanceAsync(IChatApiRemoveInstanceRequest request, IResponseSettings? responseSettings = null);
-        
-        
-        
+        Task<IChatApiResponse<IChatApiRemoveInstanceResponse?>> RemoveChatApiInstanceAsync(IChatApiRemoveInstanceRequest request,
+            IResponseSettings? responseSettings = null);
+
+
     }
 }

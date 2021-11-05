@@ -6,13 +6,13 @@
 <div>
      <p align="center">
           <a href="https://www.nuget.org/packages/ChatApi.Core/"> 
-               <img src="https://img.shields.io/badge/Development%20version-1.0.1%20Alpha-success?style=for-the-badge&logo=appveyor" /> 
+               <img src="https://img.shields.io/badge/Development%20version-1.0.1-success?style=for-the-badge&logo=appveyor" /> 
           </a>
           <a href="../../releases">
                <img src="https://img.shields.io/badge/Release%20version-1.0.1-success.svg?style=for-the-badge&logo=appveyor"  />
           </a>
           <a href="LICENSE.md">
-               <img src="https://img.shields.io/badge/license-MIT-success.svg?style=for-the-badge&logo=appveyor" 
+               <img src="https://img.shields.io/badge/license-GNU%20GPL-success.svg?style=for-the-badge&logo=appveyor" 
                     alt="License: We are using the MIT License"  />
           </a> 
           <a href="../../../">

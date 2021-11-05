@@ -12,6 +12,6 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         ///     The number of messages on the results page. Default value is 100.
         /// </summary>
         [JsonProperty("count", NullValueHandling = NullValueHandling.Ignore)]
-        int? Count { get; set; }  
+        int? Count { get; set; }
     }
 }

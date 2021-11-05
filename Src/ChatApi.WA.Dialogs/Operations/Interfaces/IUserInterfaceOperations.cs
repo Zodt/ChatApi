@@ -17,22 +17,21 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         ///     Manage WhatsApp Business operations
         /// </summary>
         Lazy<IWhatsAppBusinessOperations> WhatsAppBusinessOperations { get; }
-        
+
         /// <summary>
         ///     Mark chat, dialog or group as "pinned"
         /// </summary>
         /// <param name="pinChat">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IPinChatResponse?> PinChat(IPinChatRequest pinChat, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Mark chat, dialog or group as "pinned"
         /// </summary>
         /// <param name="pinChat">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-
         Task<IChatApiResponse<IPinChatResponse?>> PinChatAsync(IPinChatRequest pinChat, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Open chat for reading messages
         ///     Use this method to make users see their messages read.
@@ -50,28 +49,28 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         /// <param name="readChat">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IReadChatResponse?>> ReadChatAsync(IReadChatRequest readChat, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Removes the "pinned" mark from the chat
         /// </summary>
         /// <param name="unpinChat">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IUnpinChatResponse?> UnpinChat(IUnpinChatRequest unpinChat, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous removes the "pinned" mark from the chat
         /// </summary>
         /// <param name="unpinChat">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         Task<IChatApiResponse<IUnpinChatResponse?>> UnpinChatAsync(IUnpinChatRequest unpinChat, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Mark dialog of group as "unread"
         /// </summary>
         /// <param name="unreadChat">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<IUnreadChatResponse?> UnreadChat(IUnreadChatRequest unreadChat, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous mark dialog of group as "unread"
         /// </summary>
@@ -88,7 +87,7 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         /// <param name="typing">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<ITypingResponse?> SendTypingStatus(ITypingRequest typing, IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous send "Typing" status to chat
         /// </summary>
@@ -109,7 +108,7 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         /// <param name="responseSettings">Response message settings</param>
         IChatApiResponse<VoiceRecordingResponse?> SendVoiceRecordingStatus(IVoiceRecordingRequest voiceRecording,
             IResponseSettings? responseSettings = null);
-        
+
         /// <summary>
         ///     Asynchronous send "Recording" status to chat
         /// </summary>
@@ -118,8 +117,9 @@ namespace ChatApi.WA.Dialogs.Operations.Interfaces
         /// </remarks>
         /// <param name="voiceRecording">Request parameters</param>
         /// <param name="responseSettings">Response message settings</param>
-        Task<IChatApiResponse<IVoiceRecordingResponse?>> SendVoiceRecordingStatusAsync(IVoiceRecordingRequest voiceRecording, IResponseSettings? responseSettings = null);
+        Task<IChatApiResponse<IVoiceRecordingResponse?>> SendVoiceRecordingStatusAsync(IVoiceRecordingRequest voiceRecording,
+            IResponseSettings? responseSettings = null);
 
-        
+
     }
 }

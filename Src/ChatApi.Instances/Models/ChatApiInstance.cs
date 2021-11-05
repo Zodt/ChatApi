@@ -7,6 +7,7 @@ namespace ChatApi.Instances.Models
     /// <summary/>
     public sealed class ChatApiInstance : IChatApiInstance
     {
+
         #region Properties
 
         /// <inheritdoc />
@@ -33,7 +34,7 @@ namespace ChatApi.Instances.Models
         #endregion
 
         #region Equatable
-        
+
         /// <inheritdoc />
         public bool Equals(IChatApiInstance? other)
         {
@@ -64,9 +65,15 @@ namespace ChatApi.Instances.Models
         }
 
         /// <summary/>
-        public static bool operator == (ChatApiInstance? left, ChatApiInstance? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatApiInstance? left, ChatApiInstance? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatApiInstance? left, ChatApiInstance? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatApiInstance? left, ChatApiInstance? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 

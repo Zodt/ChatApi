@@ -15,6 +15,7 @@ namespace ChatApi.WA.Dialogs.Operations
     public sealed class GroupOperations : IGroupOperations
     {
         private readonly IWhatsAppConnect _connect;
+
         /// <inheritdoc />
         public Lazy<IGroupParticipantOperations> GroupParticipantOperations { get; }
 
@@ -32,7 +33,7 @@ namespace ChatApi.WA.Dialogs.Operations
         /// <inheritdoc />
         public IChatApiResponse<IJoinGroupResponse?> JoinGroup(IJoinGroupRequest joinGroup, IResponseSettings? responseSettings = null) =>
             _connect.Post<JoinGroupResponse>(Resources.JoinGroup, joinGroup.Serialize(), responseSettings);
-        
+
         /// <inheritdoc />
         public Task<IChatApiResponse<IJoinGroupResponse?>> JoinGroupAsync(IJoinGroupRequest joinGroup, IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<JoinGroupResponse, IJoinGroupResponse>(Resources.JoinGroup, joinGroup.Serialize(), responseSettings);
@@ -46,25 +47,24 @@ namespace ChatApi.WA.Dialogs.Operations
             _connect.Post<LeaveGroupResponse>(Resources.LeaveGroup, leaveGroup.Serialize(), responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<ILeaveGroupResponse?>> LeaveGroupAsync(ILeaveGroupRequest leaveGroup, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<ILeaveGroupResponse?>>
+            LeaveGroupAsync(ILeaveGroupRequest leaveGroup, IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<LeaveGroupResponse, ILeaveGroupResponse>(Resources.LeaveGroup, leaveGroup.Serialize(), responseSettings);
 
         #endregion
 
         #region CreateGroup
 
-
         /// <inheritdoc />
         public IChatApiResponse<ICreateGroupResponse?> CreateGroup(ICreateGroupRequest createGroup, IResponseSettings? responseSettings = null) =>
             _connect.Post<CreateGroupResponse>(Resources.CreateGroup, createGroup.Serialize(), responseSettings);
-        
+
         /// <inheritdoc />
-        public Task<IChatApiResponse<ICreateGroupResponse?>> CreateGroupAsync(ICreateGroupRequest createGroup, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<ICreateGroupResponse?>> CreateGroupAsync(ICreateGroupRequest createGroup,
+            IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<CreateGroupResponse, ICreateGroupResponse>(Resources.CreateGroup, createGroup.Serialize(), responseSettings);
 
         #endregion
-
-
 
         #endregion
 

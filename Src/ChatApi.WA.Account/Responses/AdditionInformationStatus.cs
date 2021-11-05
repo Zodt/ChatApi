@@ -8,16 +8,21 @@ namespace ChatApi.WA.Account.Responses
     /// <inheritdoc cref="ChatApi.WA.Account.Responses.Interfaces.IAdditionInformationStatus" />
     public sealed class AdditionInformationStatus : Printable, IAdditionInformationStatus
     {
+
         #region Properties
 
         /// <inheritdoc />
         public IInstanceStatus? Retry { get; set; }
+
         /// <inheritdoc />
         public IInstanceStatus? Expiry { get; set; }
+
         /// <inheritdoc />
         public IInstanceStatus? Logout { get; set; }
+
         /// <inheritdoc />
         public IInstanceStatus? Takeover { get; set; }
+
         /// <inheritdoc />
         public IInstanceStatus? LearnMore { get; set; }
 
@@ -57,9 +62,15 @@ namespace ChatApi.WA.Account.Responses
         }
 
         /// <summary/>
-        public static bool operator == (AdditionInformationStatus? left, AdditionInformationStatus? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(AdditionInformationStatus? left, AdditionInformationStatus? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (AdditionInformationStatus? left, AdditionInformationStatus? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(AdditionInformationStatus? left, AdditionInformationStatus? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -76,5 +87,6 @@ namespace ChatApi.WA.Account.Responses
         }
 
         #endregion
+
     }
 }

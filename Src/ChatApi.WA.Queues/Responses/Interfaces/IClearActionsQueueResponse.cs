@@ -12,8 +12,8 @@ namespace ChatApi.WA.Queues.Responses.Interfaces
         ///     Actions queue clear status
         /// </summary>
         [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
-        string? Message { get; set; }        
-        
+        string? Message { get; set; }
+
         /// <summary>
         ///     Type of the first hundred actions from the cleaned queue
         /// </summary>

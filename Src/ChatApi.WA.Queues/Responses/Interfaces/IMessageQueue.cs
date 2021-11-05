@@ -12,18 +12,18 @@ namespace ChatApi.WA.Queues.Responses.Interfaces
         ///     Message id in queue
         /// </summary>
         new int? Id { get; set; }
-        
+
         /// <summary>
         ///     Type of the message in queue
         /// </summary>
         new MessageType? Type { get; set; }
-        
+
         /// <summary>
         ///     Text message in queue
         /// </summary>
         [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
         string? Body { get; set; }
-        
+
         /// <summary>
         ///     Additional message data
         /// </summary>

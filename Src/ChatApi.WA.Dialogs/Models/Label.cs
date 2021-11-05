@@ -8,14 +8,15 @@ namespace ChatApi.WA.Dialogs.Models
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Models.Interfaces.ILabel" />
     public class Label : Printable, ILabel
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? LabelId { get; set; }
-        
+
         /// <inheritdoc />
         public string? LabelName { get; set; }
-        
+
         /// <inheritdoc />
         public string? HexColor { get; set; }
 
@@ -26,7 +27,7 @@ namespace ChatApi.WA.Dialogs.Models
         /// <inheritdoc />
         public bool Equals(ILabel? other)
         {
-            return other is not null && 
+            return other is not null &&
                    string.Equals(LabelId, other.LabelId, StringComparison.Ordinal) &&
                    string.Equals(LabelName, other.LabelName, StringComparison.Ordinal) &&
                    string.Equals(HexColor, other.HexColor, StringComparison.Ordinal);
@@ -51,10 +52,16 @@ namespace ChatApi.WA.Dialogs.Models
         }
 
         /// <summary/>
-        public static bool operator == (Label? left, Label? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(Label? left, Label? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
 
         /// <summary/>
-        public static bool operator != (Label? left, Label? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(Label? left, Label? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -69,5 +76,6 @@ namespace ChatApi.WA.Dialogs.Models
         }
 
         #endregion
+
     }
 }

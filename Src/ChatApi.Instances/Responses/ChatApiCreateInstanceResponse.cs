@@ -10,14 +10,15 @@ namespace ChatApi.Instances.Responses
     {
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+
         /// <inheritdoc />
         public IChatApiCreateInstanceResult? Result { get; set; }
 
         /// <inheritdoc />
         public bool Equals(IChatApiCreateInstanceResponse? other)
         {
-            return other is not null && Result == other.Result && 
-                string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
+            return other is not null && Result == other.Result &&
+                   string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
         /// <inheritdoc />
@@ -35,8 +36,14 @@ namespace ChatApi.Instances.Responses
             }
         }
         /// <summary/>
-        public static bool operator == (ChatApiCreateInstanceResponse? left, ChatApiCreateInstanceResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChatApiCreateInstanceResponse? left, ChatApiCreateInstanceResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChatApiCreateInstanceResponse? left, ChatApiCreateInstanceResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChatApiCreateInstanceResponse? left, ChatApiCreateInstanceResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
     }
 }

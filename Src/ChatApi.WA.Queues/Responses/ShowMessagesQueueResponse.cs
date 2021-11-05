@@ -11,8 +11,10 @@ namespace ChatApi.WA.Queues.Responses
     {
         /// <inheritdoc />
         public int? TotalMessage { get; set; }
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
+
         /// <inheritdoc />
         public OutboundMessageCollection? OutboundMessages { get; set; }
 
@@ -23,7 +25,7 @@ namespace ChatApi.WA.Queues.Responses
         public bool Equals(IShowMessagesQueueResponse? other)
         {
             return other is not null && TotalMessage == other.TotalMessage &&
-                   OutboundMessages == other.OutboundMessages && 
+                   OutboundMessages == other.OutboundMessages &&
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
         }
 
@@ -45,12 +47,18 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         /// <summary/>
-        public static bool operator == (ShowMessagesQueueResponse? left, ShowMessagesQueueResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ShowMessagesQueueResponse? left, ShowMessagesQueueResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ShowMessagesQueueResponse? left, ShowMessagesQueueResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ShowMessagesQueueResponse? left, ShowMessagesQueueResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
-        
+
         #region Printable
 
         /// <inheritdoc />
@@ -62,5 +70,6 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         #endregion
+
     }
 }

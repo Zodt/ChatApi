@@ -8,18 +8,24 @@ namespace ChatApi.WA.Dialogs.Requests
     /// <summary/>
     public sealed class CreateGroupRequest : Printable, ICreateGroupRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? Avatar { get; set; }
+
         /// <inheritdoc />
         public string? Preview { get; set; }
+
         /// <inheritdoc />
         public string? GroupName { get; set; }
+
         /// <inheritdoc />
         public string? MessageText { get; set; }
+
         /// <inheritdoc />
         public PhonesCollection? Phones { get; set; }
+
         /// <inheritdoc />
         public ChatIdsCollection? ChatIds { get; set; }
 
@@ -31,12 +37,11 @@ namespace ChatApi.WA.Dialogs.Requests
         public bool Equals(ICreateGroupRequest? other)
         {
             return other is not null &&
-                   
-                   Avatar == other.Avatar && 
-                   Preview == other.Preview && 
-                   GroupName == other.GroupName && 
-                   Phones == other.Phones && 
-                   ChatIds == other.ChatIds && 
+                   Avatar == other.Avatar &&
+                   Preview == other.Preview &&
+                   GroupName == other.GroupName &&
+                   Phones == other.Phones &&
+                   ChatIds == other.ChatIds &&
                    MessageText == other.MessageText;
         }
 
@@ -54,19 +59,25 @@ namespace ChatApi.WA.Dialogs.Requests
                 int hashCode = string.IsNullOrWhiteSpace(Avatar) ? 0 : Avatar!.GetHashCode();
                 hashCode = (hashCode * 397) ^ (string.IsNullOrWhiteSpace(Preview) ? 0 : Preview!.GetHashCode());
                 hashCode = (hashCode * 397) ^ (string.IsNullOrWhiteSpace(GroupName) ? 0 : GroupName!.GetHashCode());
-                
+
                 hashCode = (hashCode * 397) ^ (Phones != null ? Phones.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (ChatIds != null ? ChatIds.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (MessageText != null ? MessageText.GetHashCode() : 0);
-                
+
                 return hashCode;
             }
         }
 
         /// <summary/>
-        public static bool operator == (CreateGroupRequest? left, CreateGroupRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(CreateGroupRequest? left, CreateGroupRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (CreateGroupRequest? left, CreateGroupRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(CreateGroupRequest? left, CreateGroupRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -84,5 +95,6 @@ namespace ChatApi.WA.Dialogs.Requests
         }
 
         #endregion
+
     }
 }

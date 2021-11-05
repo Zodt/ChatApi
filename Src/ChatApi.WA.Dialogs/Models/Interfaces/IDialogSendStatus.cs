@@ -10,7 +10,7 @@ namespace ChatApi.WA.Dialogs.Models.Interfaces
         /// </summary>
         [JsonProperty("on", NullValueHandling = NullValueHandling.Ignore)]
         bool? EnableStatusDisplay { get; set; }
-        
+
         /// <summary>
         ///     Time in seconds. Use if you want set status and cancel it automatically after N seconds.
         /// </summary>

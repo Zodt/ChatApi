@@ -8,14 +8,15 @@ namespace ChatApi.WA.Queues.Responses
     /// <inheritdoc cref="ChatApi.WA.Queues.Responses.Interfaces.IShowActionsQueueResponse" />
     public sealed class ShowActionsQueueResponse : Printable, IShowActionsQueueResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public int? TotalActions { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public OutboundActionCollection? OutboundActions { get; set; }
 
@@ -27,8 +28,8 @@ namespace ChatApi.WA.Queues.Responses
         public bool Equals(IShowActionsQueueResponse? other)
         {
             return other is not null &&
-                   ErrorMessage == other.ErrorMessage && 
-                   TotalActions == other.TotalActions && 
+                   ErrorMessage == other.ErrorMessage &&
+                   TotalActions == other.TotalActions &&
                    OutboundActions == other.OutboundActions;
         }
 
@@ -51,12 +52,18 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         /// <summary/>
-        public static bool operator == (ShowActionsQueueResponse? left, ShowActionsQueueResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ShowActionsQueueResponse? left, ShowActionsQueueResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ShowActionsQueueResponse? left, ShowActionsQueueResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ShowActionsQueueResponse? left, ShowActionsQueueResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
-        
+
         #region Printable
 
         /// <inheritdoc />
@@ -68,5 +75,6 @@ namespace ChatApi.WA.Queues.Responses
         }
 
         #endregion
+
     }
 }

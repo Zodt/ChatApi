@@ -9,6 +9,6 @@ namespace ChatApi.WA.Messages.Models.Interfaces
         ///     The lastMessageNumber parameter from the last response
         /// </summary>
         [JsonProperty("lastMessageNumber", NullValueHandling = NullValueHandling.Ignore)]
-        int? LastMessageNumber { get; set; }    
+        int? LastMessageNumber { get; set; }
     }
 }

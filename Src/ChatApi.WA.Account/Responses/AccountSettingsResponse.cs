@@ -8,6 +8,7 @@ namespace ChatApi.WA.Account.Responses
     /// <inheritdoc cref="ChatApi.WA.Account.Responses.Interfaces.IAccountSettingsResponse" />
     public sealed class AccountSettingsResponse : AccountSettings, IAccountSettingsResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
@@ -20,8 +21,8 @@ namespace ChatApi.WA.Account.Responses
         /// <inheritdoc />
         public bool Equals(IAccountSettingsResponse? other)
         {
-            return other is not null && 
-                   base.Equals(other) && 
+            return other is not null &&
+                   base.Equals(other) &&
                    Update == other.Update;
         }
 
@@ -40,12 +41,18 @@ namespace ChatApi.WA.Account.Responses
         }
 
         /// <summary/>
-        public static bool operator == (AccountSettingsResponse? left, AccountSettingsResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(AccountSettingsResponse? left, AccountSettingsResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (AccountSettingsResponse? left, AccountSettingsResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(AccountSettingsResponse? left, AccountSettingsResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
-        
+
         #region Printable
 
         /// <inheritdoc />
@@ -56,5 +63,6 @@ namespace ChatApi.WA.Account.Responses
         }
 
         #endregion
+
     }
 }

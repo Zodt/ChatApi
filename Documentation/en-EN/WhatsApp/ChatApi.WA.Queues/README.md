@@ -1,4 +1,4 @@
-# ChatApi.WA.Queues [![NuGet version (ChatApi.WA.Queues)](https://img.shields.io/badge/NuGet%20version-1.0.1%20Alpha-success?style=for-the-badge&logo=appveyorpackages/ChatApi.WA.Queues/)
+# ChatApi.WA.Queues [![NuGet version (ChatApi.WA.Queues)](https://img.shields.io/badge/NuGet%20version-1.0.1-success?style=for-the-badge&logo=appveyor)](https://www.nuget.org/packages/ChatApi.WA.Queues/)
 `ChatApi.WA.Queues` allows you to work directly with queues, performing operations such as: receiving messages or actions that are in the message queue, as well as clearing queues. <br/>
 For a more detailed introduction to the available functionality, it is recommended to read the material described below.
 

@@ -12,7 +12,7 @@ namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
         /// </summary>
         [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
         string? Message { get; set; }
-        
+
         /// <summary>
         ///     Message readability indicator
         /// </summary>

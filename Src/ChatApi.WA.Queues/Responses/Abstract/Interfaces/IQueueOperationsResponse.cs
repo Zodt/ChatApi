@@ -13,13 +13,13 @@ namespace ChatApi.WA.Queues.Responses.Abstract.Interfaces
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         int? Id { get; set; }
-        
+
         /// <summary>
         ///     Type of the action in queue
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         ActionType? Type { get; set; }
-        
+
         /// <summary>
         ///     Last try time to execute a action
         /// </summary>

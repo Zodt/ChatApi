@@ -15,13 +15,13 @@ namespace ChatApi.WA.Dialogs.Responses.Interfaces
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         string? ChatId { get; set; }
-        
+
         /// <summary>
         ///     The name of the chat
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         string? ChatName { get; set; }
-        
+
         /// <summary>
         ///     The Creator of the chat
         /// </summary>
@@ -33,7 +33,7 @@ namespace ChatApi.WA.Dialogs.Responses.Interfaces
         /// </summary>
         [JsonIgnore]
         DateTime? ChatCreationDate { get; }
-        
+
         /// <summary>
         ///     HTTPS link on avatar or group image
         /// </summary>

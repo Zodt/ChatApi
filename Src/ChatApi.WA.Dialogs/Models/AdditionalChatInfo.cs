@@ -9,14 +9,15 @@ namespace ChatApi.WA.Dialogs.Models
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Models.Interfaces.IAdditionalChatInfo" />
     public sealed class AdditionalChatInfo : Printable, IAdditionalChatInfo
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? IsGroup { get; set; }
-        
+
         /// <inheritdoc />
         public string? GroupInviteLink { get; set; }
-        
+
         /// <inheritdoc />
         public ParticipantsCollection? Participants { get; set; }
 
@@ -27,7 +28,7 @@ namespace ChatApi.WA.Dialogs.Models
         /// <inheritdoc />
         public bool Equals(IAdditionalChatInfo? other)
         {
-            return 
+            return
                 other is not null &&
                 string.Equals(GroupInviteLink, other.GroupInviteLink, StringComparison.Ordinal) &&
                 IsGroup == other.IsGroup &&
@@ -53,9 +54,15 @@ namespace ChatApi.WA.Dialogs.Models
         }
 
         /// <summary/>
-        public static bool operator == (AdditionalChatInfo? left, AdditionalChatInfo? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(AdditionalChatInfo? left, AdditionalChatInfo? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (AdditionalChatInfo? left, AdditionalChatInfo? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(AdditionalChatInfo? left, AdditionalChatInfo? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -70,5 +77,6 @@ namespace ChatApi.WA.Dialogs.Models
         }
 
         #endregion
+
     }
 }

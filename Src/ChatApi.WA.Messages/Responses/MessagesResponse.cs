@@ -9,14 +9,15 @@ namespace ChatApi.WA.Messages.Responses
     /// <inheritdoc cref="ChatApi.WA.Messages.Responses.Interfaces.IMessagesResponse" />
     public sealed class MessagesResponse : Printable, IMessagesResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public int? LastMessageNumber { get; set; }
-        
+
         /// <inheritdoc />
         public MessageCollection? Messages { get; set; }
 
@@ -68,5 +69,6 @@ namespace ChatApi.WA.Messages.Responses
         }
 
         #endregion
+
     }
 }

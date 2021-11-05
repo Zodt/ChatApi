@@ -13,6 +13,6 @@ namespace ChatApi.WA.Messages.Requests.Interfaces
         /// </summary>
         [JsonConverter(typeof(InterfaceCollectionConverter<string, string, ForwardMessagesCollection>))]
         [JsonProperty("messageId", Required = Required.Always, NullValueHandling = NullValueHandling.Ignore)]
-        ForwardMessagesCollection? MessagesCollection { get; set; } 
+        ForwardMessagesCollection? MessagesCollection { get; set; }
     }
 }

@@ -7,6 +7,7 @@ namespace ChatApi.WA.Dialogs.Requests.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.UI.Interfaces.ILabelOperationsRequest" />
     public abstract class LabelOperationsRequest : ChatOperationsRequest, ILabelOperationsRequest
     {
+
         #region Properties
 
         /// <inheritdoc />
@@ -19,7 +20,7 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         /// <inheritdoc />
         public bool Equals(ILabelOperationsRequest? other)
         {
-            return other is not null && 
+            return other is not null &&
                    string.Equals(LabelId, other.LabelId, StringComparison.Ordinal) &&
                    base.Equals(other);
         }
@@ -40,10 +41,17 @@ namespace ChatApi.WA.Dialogs.Requests.UI
         }
 
         /// <summary/>
-        public static bool operator == (LabelOperationsRequest? left, LabelOperationsRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LabelOperationsRequest? left, LabelOperationsRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LabelOperationsRequest? left, LabelOperationsRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LabelOperationsRequest? left, LabelOperationsRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
+
     }
 }

@@ -18,6 +18,7 @@ namespace ChatApi.WA.Dialogs.Operations
 
         /// <inheritdoc />
         public Lazy<IWhatsAppBusinessOperations> WhatsAppBusinessOperations { get; }
+
         /// <summary/>
         public UserInterfaceOperations(IWhatsAppConnect connect)
         {
@@ -32,7 +33,7 @@ namespace ChatApi.WA.Dialogs.Operations
         /// <inheritdoc />
         public IChatApiResponse<IPinChatResponse?> PinChat(IPinChatRequest pinChat, IResponseSettings? responseSettings = null) =>
             _connect.Post<PinChatResponse>(Resources.PinChat, pinChat.Serialize(), responseSettings);
-        
+
         /// <inheritdoc />
         public Task<IChatApiResponse<IPinChatResponse?>> PinChatAsync(IPinChatRequest pinChat, IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<PinChatResponse, IPinChatResponse>(Resources.PinChat, pinChat.Serialize(), responseSettings);
@@ -51,7 +52,7 @@ namespace ChatApi.WA.Dialogs.Operations
 
         #endregion
 
-        
+
         #region ReadChat
 
         /// <inheritdoc />
@@ -71,11 +72,12 @@ namespace ChatApi.WA.Dialogs.Operations
             _connect.Post<UnreadChatResponse>(Resources.UnReadChat, unreadChat.Serialize(), responseSettings);
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<IUnreadChatResponse?>> UnReadChatAsync(IUnreadChatRequest unreadChat, IResponseSettings? responseSettings = null) =>
+        public Task<IChatApiResponse<IUnreadChatResponse?>>
+            UnReadChatAsync(IUnreadChatRequest unreadChat, IResponseSettings? responseSettings = null) =>
             _connect.PostAsync<UnreadChatResponse, IUnreadChatResponse>(Resources.UnReadChat, unreadChat.Serialize(), responseSettings);
 
         #endregion
-        
+
 
         #region SendTypingStatus
 
@@ -92,15 +94,19 @@ namespace ChatApi.WA.Dialogs.Operations
         #region SendVoiceRecordingStatus
 
         /// <inheritdoc />
-        public IChatApiResponse<VoiceRecordingResponse?> SendVoiceRecordingStatus(IVoiceRecordingRequest voiceRecording, IResponseSettings? responseSettings = null) =>
+        public IChatApiResponse<VoiceRecordingResponse?> SendVoiceRecordingStatus(IVoiceRecordingRequest voiceRecording,
+            IResponseSettings? responseSettings = null) =>
             _connect.Post<VoiceRecordingResponse>(Resources.SendVoiceRecordingStatus, voiceRecording.Serialize(), responseSettings);
-        
+
         /// <inheritdoc />
-        public Task<IChatApiResponse<IVoiceRecordingResponse?>> SendVoiceRecordingStatusAsync(IVoiceRecordingRequest voiceRecording, IResponseSettings? responseSettings = null) =>
-            _connect.PostAsync<VoiceRecordingResponse, IVoiceRecordingResponse>(Resources.SendVoiceRecordingStatus, voiceRecording.Serialize(), responseSettings);
+        public Task<IChatApiResponse<IVoiceRecordingResponse?>> SendVoiceRecordingStatusAsync(IVoiceRecordingRequest voiceRecording,
+            IResponseSettings? responseSettings = null) =>
+            _connect.PostAsync<VoiceRecordingResponse, IVoiceRecordingResponse>(Resources.SendVoiceRecordingStatus, voiceRecording.Serialize(),
+                responseSettings);
 
         #endregion
-        
+
         #endregion
+
     }
 }

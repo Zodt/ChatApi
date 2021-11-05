@@ -10,6 +10,7 @@ namespace ChatApi.WA.Dialogs.Responses
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IDialogResponse" />
     public sealed class DialogResponse : Printable, IDialogResponse
     {
+
         #region Backing fields
 
         private string? _chatId;
@@ -59,14 +60,14 @@ namespace ChatApi.WA.Dialogs.Responses
         /// <inheritdoc />
         public bool Equals(IDialogResponse? other)
         {
-            return other is not null &&  
+            return other is not null &&
                    string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal) &&
                    string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
                    string.Equals(ChatName, other.ChatName, StringComparison.Ordinal) &&
                    string.Equals(ChatCreator, other.ChatCreator, StringComparison.Ordinal) &&
                    string.Equals(Image, other.Image, StringComparison.Ordinal) &&
-                   ChatCreationDate == other.ChatCreationDate && 
-                   LastMessageTime == other.LastMessageTime && 
+                   ChatCreationDate == other.ChatCreationDate &&
+                   LastMessageTime == other.LastMessageTime &&
                    AdditionalChatInfo == other.AdditionalChatInfo;
         }
 
@@ -92,9 +93,15 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         /// <summary/>
-        public static bool operator == (DialogResponse? left, DialogResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(DialogResponse? left, DialogResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (DialogResponse? left, DialogResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(DialogResponse? left, DialogResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -114,5 +121,6 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         #endregion
+
     }
 }

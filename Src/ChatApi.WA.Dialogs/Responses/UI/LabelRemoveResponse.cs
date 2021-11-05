@@ -8,14 +8,15 @@ namespace ChatApi.WA.Dialogs.Responses.UI
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.ILabelRemoveResponse" />
     public sealed class LabelRemoveResponse : Printable, ILabelRemoveResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? Success { get; set; }
-        
+
         /// <inheritdoc />
         public string? Result { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
 
@@ -24,10 +25,12 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         #region Equatable
 
         /// <inheritdoc />
-        public bool Equals(ILabelRemoveResponse? other) => 
-            other is not null && Success == other.Success && 
-            string.Equals(Result, other.Result, StringComparison.Ordinal) &&
-            string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
+        public bool Equals(ILabelRemoveResponse? other)
+        {
+            return other is not null && Success == other.Success &&
+                   string.Equals(Result, other.Result, StringComparison.Ordinal) &&
+                   string.Equals(ErrorMessage, other.ErrorMessage, StringComparison.Ordinal);
+        }
         /// <inheritdoc />
         public override int GetHashCode()
         {
@@ -42,12 +45,18 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is ILabelRemoveResponse other && Equals(other);
         /// <summary/>
-        public static bool operator == (LabelRemoveResponse? left, LabelRemoveResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(LabelRemoveResponse? left, LabelRemoveResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (LabelRemoveResponse? left, LabelRemoveResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(LabelRemoveResponse? left, LabelRemoveResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
-        
+
         #region Printable
 
         /// <inheritdoc />
@@ -59,5 +68,6 @@ namespace ChatApi.WA.Dialogs.Responses.UI
         }
 
         #endregion
+
     }
 }

@@ -8,17 +8,18 @@ namespace ChatApi.WA.Dialogs.Responses
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IGroupOperationResponse" />
     public abstract class GroupOperationResponse : Printable, IGroupOperationResponse
     {
+
         #region Properties
 
         /// <inheritdoc />
         public bool? IsSuccess { get; set; }
-        
+
         /// <inheritdoc />
         public string? GroupId { get; set; }
-        
+
         /// <inheritdoc />
         public string? ErrorMessage { get; set; }
-        
+
         /// <inheritdoc />
         public string? StatusMessage { get; set; }
 
@@ -55,9 +56,15 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         /// <summary/>
-        public static bool operator == (GroupOperationResponse? left, GroupOperationResponse? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(GroupOperationResponse? left, GroupOperationResponse? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (GroupOperationResponse? left, GroupOperationResponse? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(GroupOperationResponse? left, GroupOperationResponse? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
 
         #endregion
 
@@ -73,6 +80,6 @@ namespace ChatApi.WA.Dialogs.Responses
         }
 
         #endregion
-        
+
     }
 }

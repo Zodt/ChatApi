@@ -27,16 +27,19 @@ namespace ChatApi.Instances
                 Resources.GetChatApiInstances, responseSettings, string.Concat("?uid=", _connect.ApiKey));
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<IChatApiInstanceCollectionResponse?>> GetChatApiInstancesAsync(IResponseSettings? responseSettings = null) => 
-            _connect.GetAsync<ChatApiInstanceCollectionResponse, IChatApiInstanceCollectionResponse>(
+        public Task<IChatApiResponse<IChatApiInstanceCollectionResponse?>> GetChatApiInstancesAsync(IResponseSettings? responseSettings = null)
+        {
+            return _connect.GetAsync<ChatApiInstanceCollectionResponse, IChatApiInstanceCollectionResponse>(
                 Resources.GetChatApiInstances, responseSettings, string.Concat("?uid=", _connect.ApiKey));
+        }
 
         #endregion
 
         #region Create ChatApi instance
 
         /// <inheritdoc />
-        public IChatApiResponse<IChatApiCreateInstanceResponse?> CreateChatApiInstance(IChatApiCreateInstanceRequest request, IResponseSettings? responseSettings = null)
+        public IChatApiResponse<IChatApiCreateInstanceResponse?> CreateChatApiInstance(IChatApiCreateInstanceRequest request,
+            IResponseSettings? responseSettings = null)
         {
             request.ApiKey ??= _connect.ApiKey;
             return _connect.Post<ChatApiCreateInstanceResponse>(
@@ -44,7 +47,8 @@ namespace ChatApi.Instances
         }
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<IChatApiCreateInstanceResponse?>> CreateChatApiInstanceAsync(IChatApiCreateInstanceRequest request, IResponseSettings? responseSettings = null)
+        public Task<IChatApiResponse<IChatApiCreateInstanceResponse?>> CreateChatApiInstanceAsync(IChatApiCreateInstanceRequest request,
+            IResponseSettings? responseSettings = null)
         {
             request.ApiKey ??= _connect.ApiKey;
             return _connect.PostAsync<ChatApiCreateInstanceResponse, IChatApiCreateInstanceResponse>(
@@ -52,11 +56,12 @@ namespace ChatApi.Instances
         }
 
         #endregion
-        
+
         #region Remove ChatApi instance
 
         /// <inheritdoc />
-        public IChatApiResponse<IChatApiRemoveInstanceResponse?> RemoveChatApiInstance(IChatApiRemoveInstanceRequest request, IResponseSettings? responseSettings = null)
+        public IChatApiResponse<IChatApiRemoveInstanceResponse?> RemoveChatApiInstance(IChatApiRemoveInstanceRequest request,
+            IResponseSettings? responseSettings = null)
         {
             request.ApiKey ??= _connect.ApiKey;
             return _connect.Post<ChatApiRemoveInstanceResponse>(
@@ -64,7 +69,8 @@ namespace ChatApi.Instances
         }
 
         /// <inheritdoc />
-        public Task<IChatApiResponse<IChatApiRemoveInstanceResponse?>> RemoveChatApiInstanceAsync(IChatApiRemoveInstanceRequest request, IResponseSettings? responseSettings = null)
+        public Task<IChatApiResponse<IChatApiRemoveInstanceResponse?>> RemoveChatApiInstanceAsync(IChatApiRemoveInstanceRequest request,
+            IResponseSettings? responseSettings = null)
         {
             request.ApiKey ??= _connect.ApiKey;
             return _connect.PostAsync<ChatApiRemoveInstanceResponse, IChatApiRemoveInstanceResponse>(
@@ -74,6 +80,6 @@ namespace ChatApi.Instances
         #endregion
 
         #endregion
-        
+
     }
 }

@@ -18,8 +18,14 @@ namespace ChatApi.WA.Account.Requests
         /// <inheritdoc />
         public override bool Equals(object? obj) => ReferenceEquals(this, obj) || obj is IChangeAccountNameRequest other && Equals(other);
         /// <summary/>
-        public static bool operator == (ChangeAccountNameRequest? left, ChangeAccountNameRequest? right) => EquatableHelper.IsEquatable(left, right);
+        public static bool operator ==(ChangeAccountNameRequest? left, ChangeAccountNameRequest? right)
+        {
+            return EquatableHelper.IsEquatable(left, right);
+        }
         /// <summary/>
-        public static bool operator != (ChangeAccountNameRequest? left, ChangeAccountNameRequest? right) => !EquatableHelper.IsEquatable(left, right);
+        public static bool operator !=(ChangeAccountNameRequest? left, ChangeAccountNameRequest? right)
+        {
+            return !EquatableHelper.IsEquatable(left, right);
+        }
     }
 }
