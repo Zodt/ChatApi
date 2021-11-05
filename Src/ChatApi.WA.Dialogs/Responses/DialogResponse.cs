@@ -8,7 +8,7 @@ using ChatApi.WA.Dialogs.Responses.Interfaces;
 namespace ChatApi.WA.Dialogs.Responses
 {
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.Interfaces.IDialogResponse" />
-    public sealed class DialogResponse : Printable, IDialogResponse
+    public sealed record DialogResponse : IDialogResponse
     {
 
         #region Backing fields
@@ -69,55 +69,6 @@ namespace ChatApi.WA.Dialogs.Responses
                    ChatCreationDate == other.ChatCreationDate &&
                    LastMessageTime == other.LastMessageTime &&
                    AdditionalChatInfo == other.AdditionalChatInfo;
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return Equals(this, obj) || obj is IDialogResponse other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = LastMessageTime.GetHashCode();
-                hashCode = (hashCode * 397) ^ (string.IsNullOrWhiteSpace(Image) ? 0 : Image!.GetHashCode());
-                hashCode = (hashCode * 397) ^ (string.IsNullOrWhiteSpace(ChatId) ? 0 : ChatId!.GetHashCode());
-                hashCode = (hashCode * 397) ^ (string.IsNullOrWhiteSpace(ChatName) ? 0 : ChatName!.GetHashCode());
-                hashCode = (hashCode * 397) ^ (AdditionalChatInfo == null ? 0 : AdditionalChatInfo.GetHashCode());
-                hashCode = (hashCode * 397) ^ (string.IsNullOrWhiteSpace(ErrorMessage) ? 0 : ErrorMessage!.GetHashCode());
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(DialogResponse? left, DialogResponse? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(DialogResponse? left, DialogResponse? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
-        }
-
-        #endregion
-
-        #region Printable
-
-        /// <inheritdoc />
-        protected override void PrintContent(int shift)
-        {
-            AddMember(nameof(ChatId), ChatId, shift);
-            AddMember(nameof(ChatName), ChatName, shift);
-            AddMember(nameof(ChatCreator), ChatCreator, shift);
-            AddMember(nameof(ChatCreationDate), ChatCreationDate, shift);
-            AddMember(nameof(Image), Image, shift);
-            AddMember(nameof(LastMessageTime), LastMessageTime, shift);
-            AddMember(nameof(AdditionalChatInfo), AdditionalChatInfo, shift);
-            AddMember(nameof(ErrorMessage), ErrorMessage, shift);
         }
 
         #endregion

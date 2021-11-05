@@ -7,7 +7,7 @@ using ChatApi.Core.Response.Interfaces;
 namespace ChatApi.Core.Response
 {
     /// <inheritdoc/>
-    public readonly struct ChatApiResponse<T> : IChatApiResponse<T?>
+    public sealed record ChatApiResponse<T> : IChatApiResponse<T?>
     {
         private readonly T? _value;
 

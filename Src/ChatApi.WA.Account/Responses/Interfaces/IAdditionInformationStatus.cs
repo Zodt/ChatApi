@@ -10,7 +10,7 @@ namespace ChatApi.WA.Account.Responses.Interfaces
     /// <summary>
     ///     Represents the current state of the account
     /// </summary>
-    public interface IAdditionInformationStatus : IEquatable<IAdditionInformationStatus?>, IPrintable
+    public interface IAdditionInformationStatus : IEquatable<IAdditionInformationStatus?>
     {
         /// <summary>
         ///     Indicates the need to update the QR code since it has expired.

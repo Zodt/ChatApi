@@ -4,6 +4,6 @@ using ChatApi.WA.Dialogs.Responses.UI.Interfaces;
 namespace ChatApi.WA.Dialogs.Responses.UI
 {
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.IVoiceRecordingResponse" />
-    public sealed class VoiceRecordingResponse : DialogStatusOperation, IVoiceRecordingResponse { }
+    public sealed record VoiceRecordingResponse : DialogStatusOperation, IVoiceRecordingResponse;
 
 }

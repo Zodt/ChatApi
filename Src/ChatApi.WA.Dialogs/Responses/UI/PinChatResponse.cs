@@ -3,5 +3,5 @@
 namespace ChatApi.WA.Dialogs.Responses.UI
 {
     /// <summary/>
-    public sealed class PinChatResponse : ChatOperationResponse, IPinChatResponse { }
+    public sealed record PinChatResponse : ChatOperationResponse, IPinChatResponse;
 }

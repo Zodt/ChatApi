@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Ban.Models.Interfaces
 {
     /// <summary/>
-    public interface IBanSettings : IEquatable<IBanSettings?>, IPrintable
+    public interface IBanSettings : IEquatable<IBanSettings?>
     {
         /// <summary>
         ///     Regular expression on which bans on numbers will be sent

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
     /// <summary/>
-    public interface IShowActionsQueueResponse : IErrorResponse, IEquatable<IShowActionsQueueResponse?>, IPrintable
+    public interface IShowActionsQueueResponse : IErrorResponse, IEquatable<IShowActionsQueueResponse?>
     {
         /// <summary>
         ///     Total number of actions in the queue

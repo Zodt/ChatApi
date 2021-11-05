@@ -4,5 +4,5 @@ using ChatApi.WA.Dialogs.Requests.Interfaces;
 namespace ChatApi.WA.Dialogs.Requests
 {
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.Interfaces.IRemoveGroupParticipantRequest" />
-    public class RemoveGroupParticipantRequest : ParticipantRequest, IRemoveGroupParticipantRequest { }
+    public sealed record RemoveGroupParticipantRequest : ParticipantRequest, IRemoveGroupParticipantRequest;
 }

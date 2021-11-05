@@ -6,7 +6,7 @@ namespace ChatApi.WA.Account.Responses.Interfaces
 {/* ReSharper disable once InconsistentNaming */
 
     /// <summary/>
-    public interface IOutputIPAddressResponse : IErrorResponse, IEquatable<IOutputIPAddressResponse?>, IPrintable
+    public interface IOutputIPAddressResponse : IErrorResponse, IEquatable<IOutputIPAddressResponse?>
     {
         /// <summary>
         ///     Instance IP-address

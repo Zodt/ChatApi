@@ -7,7 +7,7 @@ using ChatApi.WA.Messages.Requests.Interfaces;
 namespace ChatApi.WA.Messages.Requests
 {
     /// <inheritdoc />
-    public sealed class MessagesRequest : IMessagesRequest
+    public sealed record MessagesRequest : IMessagesRequest
     {
 
         #region Properties
@@ -62,38 +62,6 @@ namespace ChatApi.WA.Messages.Requests
                    Limit == other.Limit &&
                    Nullable.Equals(MinTime, other.MinTime) &&
                    Nullable.Equals(MaxTime, other.MaxTime);
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is IMessagesRequest other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = ChatId != null ? ChatId.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ LastMessageNumber.GetHashCode();
-                hashCode = (hashCode * 397) ^ Last.GetHashCode();
-                hashCode = (hashCode * 397) ^ Limit.GetHashCode();
-                hashCode = (hashCode * 397) ^ MinTime.GetHashCode();
-                hashCode = (hashCode * 397) ^ MaxTime.GetHashCode();
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(MessagesRequest? left, MessagesRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(MessagesRequest? left, MessagesRequest? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
         }
 
         #endregion

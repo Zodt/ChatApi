@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Queues.Responses.Interfaces
 {
     /// <summary/>
-    public interface IClearActionsQueueResponse : IErrorResponse, IEquatable<IClearActionsQueueResponse?>, IPrintable
+    public interface IClearActionsQueueResponse : IErrorResponse, IEquatable<IClearActionsQueueResponse?>
     {
         /// <summary>
         ///     Actions queue clear status

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Account.Requests.Interfaces
 {
     /// <summary/>
-    public interface IAccountStatusRequest : IParameters, IEquatable<IAccountStatusRequest?>, IPrintable
+    public interface IAccountStatusRequest : IParameters, IEquatable<IAccountStatusRequest?>
     {
         /// <summary>
         ///     Ignore account auto-wake

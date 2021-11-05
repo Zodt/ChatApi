@@ -3,5 +3,5 @@
 namespace ChatApi.WA.Dialogs.Responses.UI
 {
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Responses.UI.Interfaces.IUnpinChatResponse" />
-    public sealed class UnpinChatResponse : ChatOperationResponse, IUnpinChatResponse { }
+    public sealed record UnpinChatResponse : ChatOperationResponse, IUnpinChatResponse;
 }

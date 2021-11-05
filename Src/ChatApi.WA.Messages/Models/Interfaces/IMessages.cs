@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Messages.Models.Interfaces
 {
     /// <summary/>
-    public interface IMessages : IPrintable
+    public interface IMessages
     {
         /// <summary/>
         [JsonProperty("messages", NullValueHandling = NullValueHandling.Ignore)]

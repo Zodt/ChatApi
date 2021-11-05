@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Models.Interfaces
 {
     /// <summary/>
-    public interface IAdditionalChatInfo : IEquatable<IAdditionalChatInfo?>, IPrintable
+    public interface IAdditionalChatInfo : IEquatable<IAdditionalChatInfo?>
     {
         /// <summary>
         ///     Link to the invitation to the group

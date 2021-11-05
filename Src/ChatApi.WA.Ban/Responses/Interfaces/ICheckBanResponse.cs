@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Ban.Responses.Interfaces
 {
     /// <summary/>
-    public interface ICheckBanResponse : IErrorResponse, IPhone, IEquatable<ICheckBanResponse?>, IPrintable
+    public interface ICheckBanResponse : IErrorResponse, IPhone, IEquatable<ICheckBanResponse?>
     {
         /// <summary>
         ///     Blocking  indicator

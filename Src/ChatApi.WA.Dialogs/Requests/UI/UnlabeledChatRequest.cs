@@ -3,5 +3,5 @@
 namespace ChatApi.WA.Dialogs.Requests.UI
 {
     /// <inheritdoc cref="ChatApi.WA.Dialogs.Requests.UI.Interfaces.IUnlabeledChatRequest" />
-    public sealed class UnlabeledChatRequest : LabelOperationsRequest, IUnlabeledChatRequest { }
+    public sealed record UnlabeledChatRequest : LabelOperationsRequest, IUnlabeledChatRequest { }
 }

@@ -6,7 +6,7 @@ using ChatApi.WA.Account.Requests.Interfaces;
 namespace ChatApi.WA.Account.Requests
 {
     /// <summary/>
-    public class AccountStatusRequest : Printable, IAccountStatusRequest
+    public sealed record AccountStatusRequest : IAccountStatusRequest
     {
 
         #region Properties
@@ -49,46 +49,6 @@ namespace ChatApi.WA.Account.Requests
             return other is not null &&
                    NoWakeup == other.NoWakeup &&
                    GetFullInformation == other.GetFullInformation;
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is IAccountStatusRequest other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = Parameters.GetHashCode();
-                hashCode = (hashCode * 397) ^ NoWakeup.GetHashCode();
-                hashCode = (hashCode * 397) ^ GetFullInformation.GetHashCode();
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(AccountStatusRequest? left, AccountStatusRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(AccountStatusRequest? left, AccountStatusRequest? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
-        }
-
-        #endregion
-
-        #region Printable
-
-        /// <inheritdoc />
-        protected override void PrintContent(int shift)
-        {
-            AddMember(nameof(NoWakeup), NoWakeup, shift);
-            AddMember(nameof(GetFullInformation), GetFullInformation, shift);
         }
 
         #endregion

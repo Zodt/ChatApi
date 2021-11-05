@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Account.Models.Interfaces
 {
     /// <summary/>
-    public interface IInstanceStatus : IEquatable<IInstanceStatus?>, IPrintable
+    public interface IInstanceStatus : IEquatable<IInstanceStatus?>
     {
         /// <summary>
         ///     Method name

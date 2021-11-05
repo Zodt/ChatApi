@@ -6,7 +6,7 @@ using ChatApi.WA.Messages.Models.Interfaces;
 namespace ChatApi.WA.Messages.Models
 {
     /// <inheritdoc cref="ChatApi.WA.Messages.Models.Interfaces.IMessage" />
-    public sealed class Message : Printable, IMessage
+    public sealed record Message : IMessage
     {
 
         #region Properties
@@ -80,72 +80,6 @@ namespace ChatApi.WA.Messages.Models
                    QuotedMessageId == other.QuotedMessageId &&
                    QuotedMessageType == other.QuotedMessageType &&
                    ChatName == other.ChatName;
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj is IMessage message && Equals(message);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = ChatId != null ? ChatId.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (Id != null ? Id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Body != null ? Body.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Type != null ? Type.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (SenderName != null ? SenderName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ FromMe.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Author != null ? Author.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Time.GetHashCode();
-                hashCode = (hashCode * 397) ^ MessageNumber.GetHashCode();
-                hashCode = (hashCode * 397) ^ Self.GetHashCode();
-                hashCode = (hashCode * 397) ^ IsForwarded.GetHashCode();
-                hashCode = (hashCode * 397) ^ (QuotedMessageBody != null ? QuotedMessageBody.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (QuotedMessageId != null ? QuotedMessageId.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (QuotedMessageType != null ? QuotedMessageType.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ChatName != null ? ChatName.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(Message? left, Message? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(Message? left, Message? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
-        }
-
-        #endregion
-
-        #region Printable
-
-        /// <inheritdoc />
-        protected override void PrintContent(int shift)
-        {
-            AddMember(nameof(Id), Id, shift);
-            AddMember(nameof(ChatId), ChatId, shift);
-            AddMember(nameof(ChatName), ChatName, shift);
-            AddMember(nameof(Time), Time, shift);
-            AddMember(nameof(Type), Type, shift);
-            AddMember(nameof(Body), Body, shift);
-            AddMember(nameof(Self), Self, shift);
-            AddMember(nameof(FromMe), FromMe, shift);
-            AddMember(nameof(Author), Author, shift);
-            AddMember(nameof(IsForwarded), IsForwarded, shift);
-            AddMember(nameof(QuotedMessageBody), QuotedMessageBody, shift);
-            AddMember(nameof(QuotedMessageId), QuotedMessageId, shift);
-            AddMember(nameof(QuotedMessageType), QuotedMessageType, shift);
-            AddMember(nameof(MessageNumber), MessageNumber, shift);
         }
 
         #endregion

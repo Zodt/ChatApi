@@ -3,5 +3,5 @@
 namespace ChatApi.WA.Account.Responses
 {
     /// <summary/>
-    public class AccountRebootResponse : InstanceStatusResponse, IAccountRebootResponse { }
+    public sealed record AccountRebootResponse : InstanceStatusResponse, IAccountRebootResponse;
 }

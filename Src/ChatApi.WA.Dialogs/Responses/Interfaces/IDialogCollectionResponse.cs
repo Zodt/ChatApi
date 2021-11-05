@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
     /// <summary/>
-    public interface IDialogCollectionResponse : IErrorResponse, IEquatable<IDialogCollectionResponse?>, IPrintable
+    public interface IDialogCollectionResponse : IErrorResponse, IEquatable<IDialogCollectionResponse?>
     {
         /// <summary>
         ///     Dialog collection

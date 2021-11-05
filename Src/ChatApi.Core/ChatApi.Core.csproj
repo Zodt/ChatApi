@@ -62,10 +62,8 @@
     </ItemGroup>
 
     <!-- Copying a NuGet package to a specific directory -->
-    <Target Name="CopyCustomContent" AfterTargets="AfterBuild"
-            Condition="Exists('..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg')">
-        <Copy SourceFiles="..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg"
-              DestinationFolder="..\..\NuGet\$(PackageVersion)" SkipUnchangedFiles="false" ContinueOnError="true" />
+    <Target Name="CopyCustomContent" AfterTargets="AfterBuild" Condition="Exists('..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg')">
+        <Copy SourceFiles="..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg" DestinationFolder="..\..\NuGet\$(PackageVersion)" SkipUnchangedFiles="false" ContinueOnError="true" />
     </Target>
         
 </Project>

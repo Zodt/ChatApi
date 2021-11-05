@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Account.Models.Interfaces
 {
     /// <summary/>
-    public interface IDeviceCharacteristic : IEquatable<IDeviceCharacteristic?>, IPrintable
+    public interface IDeviceCharacteristic : IEquatable<IDeviceCharacteristic?>
     {
         /// <summary>
         ///     Version of operation system on the account owner's phone

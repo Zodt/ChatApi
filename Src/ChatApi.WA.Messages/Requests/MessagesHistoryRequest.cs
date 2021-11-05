@@ -5,7 +5,7 @@ using ChatApi.WA.Messages.Requests.Interfaces;
 namespace ChatApi.WA.Messages.Requests
 {
     /// <inheritdoc />
-    public sealed class MessagesHistoryRequest : IMessagesHistoryRequest
+    public sealed record MessagesHistoryRequest : IMessagesHistoryRequest
     {
 
         #region Properties
@@ -45,35 +45,6 @@ namespace ChatApi.WA.Messages.Requests
                    ChatId == other.ChatId &&
                    Page == other.Page &&
                    Count == other.Count;
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is IMessagesHistoryRequest other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = ChatId != null ? ChatId.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ Page.GetHashCode();
-                hashCode = (hashCode * 397) ^ Count.GetHashCode();
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(MessagesHistoryRequest? left, MessagesHistoryRequest? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(MessagesHistoryRequest? left, MessagesHistoryRequest? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
         }
 
         #endregion

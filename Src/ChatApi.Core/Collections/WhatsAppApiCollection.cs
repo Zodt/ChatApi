@@ -8,6 +8,7 @@ using ChatApi.Core.Helpers;
 using ChatApi.Core.Models;
 using ChatApi.Core.Models.Interfaces;
 
+// ReSharper disable LoopCanBeConvertedToQuery
 namespace ChatApi.Core.Collections
 {
     /// <summary>Provides the base class for a generic WhatsApp-collection.</summary>
@@ -111,18 +112,13 @@ namespace ChatApi.Core.Collections
         {
             if (other is null || other.Count != Count) return false;
 
-            if (typeof(T) == typeof(string))
-            {
-                // ReSharper disable once LoopCanBeConvertedToQuery
-                for (int i = 0; i < other.Count; i++)
-                    if (!string.Equals(this[i] as string, other[i] as string, StringComparison.Ordinal))
-                        return false;
-            }
-            else
-                // ReSharper disable once LoopCanBeConvertedToQuery
-                for (int i = 0; i < other.Count; i++)
-                    if (this[i] != other[i])
-                        return false;
+            Func<int, bool> anotherTypeCondition = index => this[index] != other[index];
+            Func<int, bool> stringCondition = index => !string.Equals(this[index] as string, other[index] as string, StringComparison.Ordinal);
+            bool Condition(int index) => typeof(T) == typeof(string) ? stringCondition(index) : anotherTypeCondition(index);
+
+            for (int i = 0; i < other.Count; i++)
+                if (Condition(i))
+                    return false;
 
             return true;
         }
@@ -153,7 +149,7 @@ namespace ChatApi.Core.Collections
         /// <returns></returns>
         public static bool operator ==(WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right)
         {
-            return EquatableHelper.IsEquatable(left, right);
+            return right?.Equals(left) ?? left is null;
         }
         /// <summary>
         /// 
@@ -163,7 +159,7 @@ namespace ChatApi.Core.Collections
         /// <returns></returns>
         public static bool operator !=(WhatsAppApiCollection<T>? left, WhatsAppApiCollection<T>? right)
         {
-            return !EquatableHelper.IsEquatable(left, right);
+            return !(right?.Equals(left) ?? left is null);
         }
 
         #endregion

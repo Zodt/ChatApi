@@ -8,7 +8,7 @@ namespace ChatApi.Core.Response
     /// <summary>
     ///     Chat-api's response message settings
     /// </summary>
-    public sealed class WhatsAppResponseSettings : IResponseSettings
+    public sealed record WhatsAppResponseSettings : IResponseSettings
     {
         /// <inheritdoc />
         public bool IsNewSchema { get; set; }

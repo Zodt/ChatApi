@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Messages.Models.Interfaces
 {
     /// <summary/>
-    public interface IMessage : IChatId, IEquatable<IMessage?>, IPrintable
+    public interface IMessage : IChatId, IEquatable<IMessage?>
     {
         /// <summary>
         ///     Unique id of the message

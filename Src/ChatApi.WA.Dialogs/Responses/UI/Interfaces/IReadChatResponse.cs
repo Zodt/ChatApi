@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.UI.Interfaces
 {
     /// <summary/>
-    public interface IReadChatResponse : IChatId, IErrorResponse, IEquatable<IReadChatResponse?>, IPrintable
+    public interface IReadChatResponse : IChatId, IErrorResponse, IEquatable<IReadChatResponse?>
     {
         /// <summary>
         ///     Chat reading status

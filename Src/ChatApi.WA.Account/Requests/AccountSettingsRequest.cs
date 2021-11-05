@@ -4,5 +4,5 @@ using ChatApi.WA.Account.Requests.Interfaces;
 namespace ChatApi.WA.Account.Requests
 {
     /// <summary/>
-    public class AccountSettingsRequest : AccountSettings, IAccountSettingsRequest { }
+    public sealed record AccountSettingsRequest : AccountSettings, IAccountSettingsRequest;
 }

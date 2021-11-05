@@ -3,7 +3,7 @@
 namespace ChatApi.WA.Dialogs.Requests.UI
 {
     /// <inheritdoc />
-    public sealed class LabelRemoveRequest : ILabelRemoveRequest
+    public sealed record LabelRemoveRequest : ILabelRemoveRequest
     {
         /// <inheritdoc />
         public string? LabelId { get; set; }

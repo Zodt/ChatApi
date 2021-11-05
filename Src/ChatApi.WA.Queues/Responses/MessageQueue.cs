@@ -1,12 +1,11 @@
-﻿using ChatApi.Core.Helpers;
-using ChatApi.Core.Models;
+﻿using ChatApi.Core.Models;
 using ChatApi.WA.Queues.Responses.Abstract;
 using ChatApi.WA.Queues.Responses.Interfaces;
 
 namespace ChatApi.WA.Queues.Responses
 {
     /// <inheritdoc cref="ChatApi.WA.Queues.Responses.Interfaces.IMessageQueue" />
-    public sealed class MessageQueue : QueueOperationsResponse, IMessageQueue
+    public sealed record MessageQueue : QueueOperationsResponse, IMessageQueue
     {
 
         #region Properties
@@ -35,35 +34,6 @@ namespace ChatApi.WA.Queues.Responses
                    Body == other.Body &&
                    MessageAdditionalInformation == other.MessageAdditionalInformation &&
                    base.Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is IMessageQueue other && Equals(other);
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = base.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Body != null ? Body.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (MessageAdditionalInformation != null ? MessageAdditionalInformation.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
-
-        /// <summary/>
-        public static bool operator ==(MessageQueue? left, MessageQueue? right)
-        {
-            return EquatableHelper.IsEquatable(left, right);
-        }
-        /// <summary/>
-        public static bool operator !=(MessageQueue? left, MessageQueue? right)
-        {
-            return !EquatableHelper.IsEquatable(left, right);
         }
 
         #endregion

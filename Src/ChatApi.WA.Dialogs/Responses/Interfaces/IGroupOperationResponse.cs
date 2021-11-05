@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace ChatApi.WA.Dialogs.Responses.Interfaces
 {
     /// <summary/>
-    public interface IGroupOperationResponse : IErrorResponse, IEquatable<IGroupOperationResponse?>, IPrintable
+    public interface IGroupOperationResponse : IErrorResponse, IEquatable<IGroupOperationResponse?>
     {
         /// <summary>
         ///     Flag for adding a participant to the group
