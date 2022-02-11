@@ -95,5 +95,11 @@ namespace ChatApi.WA.Messages.Models.Interfaces
         /// </summary>
         [JsonProperty("chatName", NullValueHandling = NullValueHandling.Ignore)]
         string? ChatName { get; set; }
+
+        /// <summary>
+        ///     Text under the file. When sending an image сan be used with mentionedPhones
+        /// </summary>
+        [JsonProperty("caption", NullValueHandling = NullValueHandling.Ignore)]
+        public string? Caption { get; set; }
     }
 }

@@ -13,7 +13,7 @@
           </a>
           <a href="LICENSE.md">
                <img src="https://img.shields.io/badge/license-GNU%20GPL-success.svg?style=for-the-badge&logo=appveyor" 
-                    alt="License: We are using the MIT License"  />
+                    alt="License: We are using the GNU GPL v3.0 License"  />
           </a> 
           <a href="../../../">
                <img src="https://img.shields.io/badge/Author-Zodt-success.svg?style=for-the-badge&logo=appveyor"  />

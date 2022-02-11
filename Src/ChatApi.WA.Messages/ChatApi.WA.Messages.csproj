@@ -4,7 +4,7 @@
 
         <!-- Basic technical information about the project -->
         <Nullable>enable</Nullable>
-        <LangVersion>9</LangVersion>
+        <LangVersion>10</LangVersion>
         <TargetFramework>netstandard2.0</TargetFramework>
 
         <!-- Generating a NuGet package (with docs) -->
@@ -17,19 +17,18 @@
         <Authors>Roman Vorontsov</Authors>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageIcon>ChatApi.png</PackageIcon>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
         <PackageTags>ChatApi, WhatsAppApi, WhatsApp-Api, WhatsApp</PackageTags>
         <Description>
             ChatApi is an unofficial cross-platform libraries for interacting with the chat-api.com.
             `ChatApi.WA.Messages` allows you to work directly with messages, performing operations such as: send, receive, resend, and delete messages.
         </Description>
         <ReleaseNotes>
-            1. Refactoring code
-            2. Add xml doc
+            1. Bugfix from "Message"
         </ReleaseNotes>
 
         <!-- NuGet Package license information -->
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseExpression>GNU GPL v3.0</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 
         <!-- Information about the project repository -->
@@ -63,10 +62,8 @@
     </ItemGroup>
 
     <!-- Copying a NuGet package to a specific directory -->
-    <Target Name="CopyCustomContent" AfterTargets="AfterBuild"
-            Condition="Exists('..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg')">
-        <Copy SourceFiles="..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg"
-              DestinationFolder="..\..\NuGet\$(PackageVersion)" SkipUnchangedFiles="false" ContinueOnError="true" />
+    <Target Name="CopyCustomContent" AfterTargets="AfterBuild" Condition="Exists('..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg')">
+        <Copy SourceFiles="..\..\Src\$(ProjectName)\bin\$(Configuration)\$(ProjectName).$(PackageVersion).nupkg" DestinationFolder="..\..\NuGet\$(PackageVersion)" SkipUnchangedFiles="false" ContinueOnError="true" />
     </Target>
     
 </Project>

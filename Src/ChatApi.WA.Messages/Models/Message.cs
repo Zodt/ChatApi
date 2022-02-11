@@ -8,7 +8,6 @@ namespace ChatApi.WA.Messages.Models
     /// <inheritdoc cref="ChatApi.WA.Messages.Models.Interfaces.IMessage" />
     public sealed record Message : IMessage
     {
-
         #region Properties
 
         /// <inheritdoc />
@@ -56,33 +55,35 @@ namespace ChatApi.WA.Messages.Models
         /// <inheritdoc />
         public string? ChatName { get; set; }
 
+        public string? Caption { get; set; }
+
         #endregion
 
-        #region Equatable
 
-        /// <inheritdoc />
-        public bool Equals(IMessage? other)
+        public bool Equals(IMessage? other) => Equals(other as Message);
+
+        public override int GetHashCode()
         {
-            return other is not null &&
-                   string.Equals(Id, other.Id, StringComparison.Ordinal) &&
-                   string.Equals(Body, other.Body, StringComparison.Ordinal) &&
-                   string.Equals(ChatId, other.ChatId, StringComparison.Ordinal) &&
-                   string.Equals(Author, other.Author, StringComparison.Ordinal) &&
-                   string.Equals(SenderName, other.SenderName, StringComparison.Ordinal) &&
-                   string.Equals(QuotedMessageId, other.QuotedMessageId, StringComparison.Ordinal) &&
-                   string.Equals(QuotedMessageBody, other.QuotedMessageBody, StringComparison.Ordinal) &&
-                   Type == other.Type &&
-                   FromMe == other.FromMe &&
-                   Time == other.Time &&
-                   MessageNumber == other.MessageNumber &&
-                   Self == other.Self &&
-                   IsForwarded == other.IsForwarded &&
-                   QuotedMessageId == other.QuotedMessageId &&
-                   QuotedMessageType == other.QuotedMessageType &&
-                   ChatName == other.ChatName;
+            unchecked
+            {
+                var hashCode = (ChatId != null ? ChatId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Id != null ? Id.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Body != null ? Body.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Type.GetHashCode();
+                hashCode = (hashCode * 397) ^ (SenderName != null ? SenderName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ FromMe.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Author != null ? Author.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Time.GetHashCode();
+                hashCode = (hashCode * 397) ^ MessageNumber.GetHashCode();
+                hashCode = (hashCode * 397) ^ Self.GetHashCode();
+                hashCode = (hashCode * 397) ^ IsForwarded.GetHashCode();
+                hashCode = (hashCode * 397) ^ (QuotedMessageBody != null ? QuotedMessageBody.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (QuotedMessageId != null ? QuotedMessageId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ QuotedMessageType.GetHashCode();
+                hashCode = (hashCode * 397) ^ (ChatName != null ? ChatName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Caption != null ? Caption.GetHashCode() : 0);
+                return hashCode;
+            }
         }
-
-        #endregion
-
     }
 }
