@@ -24,11 +24,12 @@
             `ChatApi.WA.Queues` allows you to work directly with queues, performing operations such as: receiving messages or actions that are in the message queue, as well as clearing queues.
         </Description>
         <ReleaseNotes>
-            1. Bugfix
+            1. Refactoring code
+            2. Add xml doc
         </ReleaseNotes>
 
         <!-- NuGet Package license information -->
-        <PackageLicenseExpression>GNU GPL v3.0</PackageLicenseExpression>
+        <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 
         <!-- Information about the project repository -->

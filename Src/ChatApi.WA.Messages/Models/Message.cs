@@ -55,13 +55,16 @@ namespace ChatApi.WA.Messages.Models
         /// <inheritdoc />
         public string? ChatName { get; set; }
 
+        /// <inheritdoc />
         public string? Caption { get; set; }
 
         #endregion
 
 
+        /// <inheritdoc />
         public bool Equals(IMessage? other) => Equals(other as Message);
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
