@@ -21,18 +21,13 @@
 
 ## Пример использования
 ```csharp
-using System;
-
 using ChatApi.Core.Connect;
 using ChatApi.Core.Connect.Interfaces;
 
 using ChatApi.WA.Messages;
-using ChatApi.WA.Messages.Collections;
-
 using ChatApi.WA.Messages.Requests;
 using ChatApi.WA.Messages.Requests.Interfaces;
 
-using ChatApiClient.Properties;
 namespace ChatApiClient
 {
     internal class Program
@@ -42,13 +37,13 @@ namespace ChatApiClient
         internal static void Main()
         {
             // put your chat-api's data
-            Connect = new WhatsAppConnect(WhatsApp_Server, WhatsApp_Instance, WhatsApp_Token); 
+            Connect = new WhatsAppConnect("WhatsApp_Server", "WhatsApp_Instance", "WhatsApp_Token");
             IMessagesOperation messageOperation = new MessagesOperation(Connect);
             
-            ITextMessageRequest textMessage = new TextMessageRequest
+            ITextMessageRequest request = new TextMessageRequest
             {
                 Phone = "79001111111",
-                Message = "Test TextMessage"
+                Body = "Test TextMessage"
             };
 
             var chatApiResponse = messageOperation.SendTextMessage(request);
