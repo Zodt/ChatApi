@@ -1,8 +1,7 @@
-<p align="center">
-     <a href="https://chat-api.com">
-          <img src="https://chat-api.com/img/logo-light.png" width="15%"  />
-     </a>
-</p>
+
+# !!! WARNING !!! 02/14/2023: The Chat Api project is closed by the will of its creators, and therefore this repository will be archived.
+
+
 <div>
      <p align="center">
           <a href="https://www.nuget.org/packages/ChatApi.Core/"> 
